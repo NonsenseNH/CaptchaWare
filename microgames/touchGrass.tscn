@@ -1,0 +1,336 @@
+[gd_scene load_steps=21 format=3 uid="uid://ceavec6yp3k7y"]
+
+[ext_resource type="Script" uid="uid://c33tf7db1ih2y" path="res://scripts/microgames/touch_grass/touch_grass.gd" id="1_f6ok3"]
+[ext_resource type="Texture2D" uid="uid://hbaxg7brte0p" path="res://sprites/touch_grass/grass_images/grass1.png" id="2_4gcub"]
+[ext_resource type="Script" uid="uid://b3dufowj6wkr7" path="res://scripts/microgames/touch_grass/hand.gd" id="3_2tcok"]
+[ext_resource type="Texture2D" uid="uid://uvx2iptbv40j" path="res://sprites/touch_grass/hand_open.png" id="4_667yt"]
+[ext_resource type="Texture2D" uid="uid://c4isjifihfhrl" path="res://sprites/touch_grass/hand_close.png" id="5_i301x"]
+[ext_resource type="Texture2D" uid="uid://c53urjsqv183f" path="res://sprites/touch_grass/hand_thumbs.png" id="6_4gcub"]
+[ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="6_q0dx4"]
+[ext_resource type="AudioStream" uid="uid://6aelfr0kl86f" path="res://sounds/microgames/touch_grass/grass_1.mp3" id="7_i301x"]
+[ext_resource type="AudioStream" uid="uid://c0cu2rq7uruvh" path="res://sounds/microgames/touch_grass/grass_2.mp3" id="8_q0dx4"]
+[ext_resource type="AudioStream" uid="uid://dstblkxeciiy4" path="res://sounds/microgames/touch_grass/grass_3.mp3" id="9_qrep6"]
+[ext_resource type="AudioStream" uid="uid://cd8vjih1cse40" path="res://sounds/microgames/touch_grass/whip.mp3" id="10_q0dx4"]
+
+[sub_resource type="Animation" id="Animation_0qy5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("handSprite/handSpriteImage:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_667yt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("handSprite/handSpriteImage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("handSprite/handSpriteImage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.23, 2.23)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/whip:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7nf3m"]
+resource_name = "grab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("handSprite/handSpriteImage:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_i301x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("handSprite/handSpriteImage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.316667),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Vector2(-0.259733, 11.6631), Vector2(-1.52588e-05, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("handSprite/handSpriteImage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.316667),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Vector2(2.25157, 2.12682), Vector2(2.23, 2.11489)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_grass_particle"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/grass")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2ocox"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("handSprite/handSpriteImage:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(0.258816, 1),
+"update": 0,
+"values": [Vector2(2.18157, 2.25183), Vector2(2.23, 2.23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("handSprite/handSpriteImage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(0.258816, 1),
+"update": 0,
+"values": [Vector2(0.582897, -3.65215), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("handSprite/handSpriteImage:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_667yt")]
+}
+
+[sub_resource type="Animation" id="Animation_2tcok"]
+resource_name = "thumbs up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("handSprite/handSpriteImage:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(0.258816, 1),
+"update": 0,
+"values": [Vector2(2.18157, 2.25183), Vector2(2.23, 2.23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("handSprite/handSpriteImage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(0.258816, 1),
+"update": 0,
+"values": [Vector2(0.582897, -3.65215), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("handSprite/handSpriteImage:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_4gcub")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/whip:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7nf3m"]
+_data = {
+&"RESET": SubResource("Animation_0qy5o"),
+&"grab": SubResource("Animation_7nf3m"),
+&"open": SubResource("Animation_2ocox"),
+&"thumbs up": SubResource("Animation_2tcok")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hihd0"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("7_i301x")
+stream_1/stream = ExtResource("8_q0dx4")
+stream_2/stream = ExtResource("9_qrep6")
+
+[sub_resource type="Animation" id="Animation_q8sys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kuf18"]
+resource_name = "shake"
+length = 0.400003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(-2.07053, -2.07053, -2.07053, -2.07053),
+"update": 0,
+"values": [Vector2(1, 3), Vector2(2, -1), Vector2(-1, -1), Vector2(-2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0wup"]
+_data = {
+&"RESET": SubResource("Animation_q8sys"),
+&"shake": SubResource("Animation_kuf18")
+}
+
+[node name="touchGrass" type="ColorRect"]
+clip_children = 1
+z_index = 2
+offset_right = 414.0
+offset_bottom = 533.0
+script = ExtResource("1_f6ok3")
+
+[node name="grass" type="TextureRect" parent="."]
+clip_children = 2
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4gcub")
+
+[node name="hand" type="Node2D" parent="grass" node_paths=PackedStringArray("gameplay_code")]
+position = Vector2(247, 138)
+script = ExtResource("3_2tcok")
+gameplay_code = NodePath("../..")
+
+[node name="particles" type="Node2D" parent="grass/hand"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="grass/hand"]
+libraries = {
+&"": SubResource("AnimationLibrary_7nf3m")
+}
+
+[node name="grass" type="AudioStreamPlayer" parent="grass/hand/AnimationPlayer"]
+stream = SubResource("AudioStreamRandomizer_hihd0")
+bus = &"Microgame Sounds"
+
+[node name="whip" type="AudioStreamPlayer" parent="grass/hand/AnimationPlayer"]
+stream = ExtResource("10_q0dx4")
+bus = &"Microgame Sounds"
+
+[node name="handSprite" type="Node2D" parent="grass/hand"]
+
+[node name="handSpriteImage" type="Sprite2D" parent="grass/hand/handSprite"]
+scale = Vector2(2.23, 2.23)
+texture = ExtResource("4_667yt")
+offset = Vector2(12.037, 34.2593)
+
+[node name="handShake" type="AnimationPlayer" parent="grass/hand/handSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_n0wup")
+}
+autoplay = "shake"
+
+[node name="handPosition" type="Marker2D" parent="grass"]
+position = Vector2(415, 664)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 423.0
+offset_right = 414.0
+offset_bottom = 450.0
+theme = ExtResource("6_q0dx4")

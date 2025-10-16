@@ -1,0 +1,111 @@
+{
+	"microgames": {
+		"imageLocation" : {
+			"instructionsBig" : "",
+			"InstructionsSmall" : "Select all squares with--Click verify once all are selected.",
+			"referenceImage" : "",
+			"errorMessage" : "Please select all matching images.",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 0.0,
+			"slowGame": false
+		},
+		"imagesCategory":{
+			"instructionsBig" : "",
+			"InstructionsSmall" : "Select all squares with--Click verify once all are selected.",
+			"referenceImage" : "",
+			"errorMessage" : "Please select all matching images.",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 0.0,
+			"slowGame": false
+		},
+		"puzzlePiece":{
+			"instructionsBig" : "puzzle piece",
+			"InstructionsSmall" : "Place the puzzle piece in the right place--Click verify when all pieces are in place.",
+			"referenceImage" : "",
+			"errorMessage" : "Please place the puzzle piece.",
+			"Length": 691.835,
+			"Width": 430.0,
+			"BonusTime": 1.5,
+			"slowGame": false
+		},
+		"typeCaptcha":{
+			"instructionsBig" : "",
+			"InstructionsSmall" : "Type the word below--Click verify when done.",
+			"referenceImage" : "",
+			"errorMessage" : "Please type the words in the box.",
+			"Length": 294.835,
+			"Width": 430.0,
+			"BonusTime": 0.0,
+			"slowGame": false
+		},
+		"mathCaptcha":{
+			"instructionsBig" : "",
+			"InstructionsSmall" : "solve this equation--Click verify when done.",
+			"referenceImage" : "",
+			"errorMessage" : "Please type the answer in the box.",
+			"Length": 294.835,
+			"Width": 430.0,
+			"BonusTime": 0.0,
+			"slowGame": true
+		},
+		"doNothing":{
+			"instructionsBig" : "cool image",
+			"InstructionsSmall" : "Look at this--Take the time to appreciate this image.",
+			"referenceImage" : "",
+			"errorMessage" : "",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 0.0,
+			"slowGame": true
+		},
+		"touchGrass":{
+			"instructionsBig" : "touch grass",
+			"InstructionsSmall" : "Click the grass image to--Fill up the bar.",
+			"referenceImage" : "res://sprites/touch_grass/grass_images/grass1.png",
+			"errorMessage" : "Please fill up the bar",
+			"Length": 609.835,
+			"Width": 430.0,
+			"BonusTime": 2,
+			"slowGame": false
+		},
+		"howManyFingers":{
+			"instructionsBig" : "Watch closely",
+			"InstructionsSmall" : "--Watch the hand.",
+			"referenceImage" : "",
+			"errorMessage" : "Please choose an answer",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 1.5,
+			"slowGame": true
+		},
+		"termsOfService":{
+			"instructionsBig" : "Terms of Conditions",
+			"InstructionsSmall" : "Please Agree to the--Click verify when done.",
+			"referenceImage" : "",
+			"errorMessage" : "Please read the terms of conditions.",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 3.5,
+			"slowGame": false
+		}
+	},
+	"microgame_pool" :{
+		"normal" : [
+			"imagesCategory",
+			"imageLocation",
+			"puzzlePiece",
+			"typeCaptcha",
+            "mathCaptcha"
+		],
+		"all" : [
+		],
+		"absurd" :[
+			"doNothing",
+			"touchGrass",
+            "howManyFingers",
+			"termsOfService"
+		]
+	}
+}

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4y0qaq8fism0"]
+
+[ext_resource type="Script" uid="uid://d1cdmjtboy4md" path="res://scripts/microgames/math_captcha/math_captcha.gd" id="1_l773x"]
+[ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="2_iwvfa"]
+
+[node name="mathCaptcha" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_l773x")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+light_mask = 0
+layout_mode = 0
+offset_left = 25.0
+offset_top = 53.0
+offset_right = 383.0
+offset_bottom = 99.0
+theme = ExtResource("2_iwvfa")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+keep_editing_on_text_submit = true
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]

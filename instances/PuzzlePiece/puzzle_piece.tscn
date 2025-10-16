@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvtthkv7d54ht"]
+
+[ext_resource type="Script" uid="uid://cdjnuyx3i8jkm" path="res://scripts/microgames/puzzle_piece/puzzle_piece.gd" id="1_sh1c2"]
+[ext_resource type="Shader" uid="uid://b35lp3yhltbmw" path="res://shaders/puzzle_piece.gdshader" id="2_d267s"]
+[ext_resource type="Texture2D" uid="uid://bcaqtmiap4pqd" path="res://sprites/puzzle_piece/1.png" id="3_d267s"]
+[ext_resource type="Texture2D" uid="uid://5kji2wxrajwj" path="res://sprites/captcha_check.png" id="4_i5awx"]
+[ext_resource type="AudioStream" uid="uid://bvw7ba3b35gjc" path="res://sounds/microgames/tap.mp3" id="5_j8fln"]
+[ext_resource type="AudioStream" uid="uid://cnak3oxxs5acy" path="res://sounds/microgames/slide.mp3" id="6_i4x3w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d267s"]
+resource_local_to_scene = true
+shader = ExtResource("2_d267s")
+shader_parameter/base_texture = ExtResource("3_d267s")
+shader_parameter/base_texture_offset = Vector2(50, 50)
+shader_parameter/base_texture_scale = Vector2(413, 413)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23iti"]
+size = Vector2(100, 100)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w8ycv"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_j8fln")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3m8yl"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_i4x3w")
+
+[node name="puzzlePiece" type="Node2D"]
+script = ExtResource("1_sh1c2")
+
+[node name="puzzlePieceMask" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_d267s")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+exclude_parent = false
+target_position = Vector2(0, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="clickArea" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="clickShape" type="CollisionShape2D" parent="clickArea"]
+shape = SubResource("RectangleShape2D_23iti")
+
+[node name="check" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.47826, 1.47826)
+texture = ExtResource("4_i5awx")
+
+[node name="PuzzlePlace" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_w8ycv")
+volume_db = 2.6
+bus = &"Microgame Sounds"
+
+[node name="puzzleGrab" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3m8yl")
+volume_db = 3.9
+bus = &"Microgame Sounds"
+
+[connection signal="mouse_entered" from="clickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="clickArea" to="." method="_on_click_area_mouse_exited"]

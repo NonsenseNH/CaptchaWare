@@ -1,0 +1,17 @@
+{
+    "category":{
+        "traffic_lights": {
+            "range":[1, 5]
+        },
+        "cars": {
+            "range":[1, 4]
+        },
+        "fire_hydrant": {
+            "range":[1, 5]
+        },
+        "street_signs": {
+            "range":[1, 5]
+        }
+        
+    }
+}

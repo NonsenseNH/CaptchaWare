@@ -1,0 +1,258 @@
+[gd_scene load_steps=34 format=3 uid="uid://bfsemdv668ekw"]
+
+[ext_resource type="Script" uid="uid://bnjqqa2nf5s2f" path="res://scripts/gameplay.gd" id="1_36rkl"]
+[ext_resource type="Texture2D" uid="uid://d71nyi6c4e1f" path="res://sprites/captcha.png" id="1_fs0b5"]
+[ext_resource type="Shader" uid="uid://hhls21rays5e" path="res://shaders/scroll.gdshader" id="2_fs0b5"]
+[ext_resource type="Texture2D" uid="uid://birstl6rtmr8j" path="res://sprites/background.png" id="3_ma7h6"]
+[ext_resource type="PackedScene" uid="uid://b5kilhv8t3fcf" path="res://instances/captcha_window.tscn" id="5_gsxep"]
+[ext_resource type="AudioStream" uid="uid://5qixynf18hwv" path="res://sounds/mouse_click_up.mp3" id="9_lhr70"]
+[ext_resource type="AudioStream" uid="uid://timh0mbrw21y" path="res://sounds/mouse_click_down.mp3" id="10_wp0k4"]
+[ext_resource type="AudioStream" uid="uid://cfdwa54pxxvwa" path="res://sounds/keyboard_1.mp3" id="11_hq6as"]
+[ext_resource type="AudioStream" uid="uid://c5k4vkqkr3ju6" path="res://sounds/keyboard_2.mp3" id="12_kxyth"]
+[ext_resource type="AudioStream" uid="uid://o4fht8dkbxd0" path="res://sounds/keyboard_11.mp3" id="13_cobve"]
+[ext_resource type="AudioStream" uid="uid://d132lytm3563a" path="res://sounds/keyboard_12.mp3" id="14_cmqll"]
+[ext_resource type="AudioStream" uid="uid://dwmc65m6g871f" path="res://sounds/keyboard_13.mp3" id="15_8cp6k"]
+[ext_resource type="AudioStream" uid="uid://t8ktayia0fk3" path="res://sounds/keyboard_14.mp3" id="16_8b871"]
+[ext_resource type="AudioStream" uid="uid://d0vxmdlg3tncn" path="res://sounds/keyboard_3.mp3" id="17_pdwbg"]
+[ext_resource type="AudioStream" uid="uid://deac4fvuy15f" path="res://sounds/keyboard_4.mp3" id="18_5grtr"]
+[ext_resource type="AudioStream" uid="uid://7dqrcpj0v2lv" path="res://sounds/keyboard_5.mp3" id="19_vua0o"]
+[ext_resource type="AudioStream" uid="uid://bp48pvfs8foo" path="res://sounds/keyboard_6.mp3" id="20_t70y2"]
+[ext_resource type="AudioStream" uid="uid://ducwyc62p8fsq" path="res://sounds/keyboard_7.mp3" id="21_8gny2"]
+[ext_resource type="AudioStream" uid="uid://cf85fvbr2fni" path="res://sounds/keyboard_8.mp3" id="22_s3wmy"]
+[ext_resource type="AudioStream" uid="uid://dnowamxgnw2ho" path="res://sounds/keyboard_9.mp3" id="23_gdcyb"]
+[ext_resource type="AudioStream" uid="uid://b05mv75765lnm" path="res://sounds/keyboard_10.mp3" id="24_oa6sj"]
+[ext_resource type="AudioStream" uid="uid://d4biwfnyykclm" path="res://sounds/pc_hum.mp3" id="25_0f1tp"]
+[ext_resource type="AudioStream" uid="uid://bb34cufoy5udg" path="res://sounds/pc_overheat.mp3" id="26_0qimb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma7h6"]
+bg_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.746854, 0.7269452, 0.73687166, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2s0e"]
+bg_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.746854, 0.7269452, 0.73687166, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs0b5"]
+bg_color = Color(0.9764706, 0.9764706, 0.9764706, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.7513632, 0.73077273, 0.7426368, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsxep"]
+bg_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.746854, 0.7269452, 0.73687166, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Theme" id="Theme_ma7h6"]
+Button/styles/disabled = SubResource("StyleBoxFlat_ma7h6")
+Button/styles/focus = SubResource("StyleBoxFlat_ma7h6")
+Button/styles/hover = SubResource("StyleBoxFlat_e2s0e")
+Button/styles/normal = SubResource("StyleBoxFlat_fs0b5")
+Button/styles/pressed = SubResource("StyleBoxFlat_gsxep")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpfo2"]
+shader = ExtResource("2_fs0b5")
+shader_parameter/scroll_speed = 0.02
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i3aeo"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("9_lhr70")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5wyu1"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_wp0k4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j44qy"]
+random_pitch = 1.1
+streams_count = 14
+stream_0/stream = ExtResource("11_hq6as")
+stream_1/stream = ExtResource("12_kxyth")
+stream_2/stream = ExtResource("17_pdwbg")
+stream_3/stream = ExtResource("18_5grtr")
+stream_4/stream = ExtResource("19_vua0o")
+stream_5/stream = ExtResource("20_t70y2")
+stream_6/stream = ExtResource("21_8gny2")
+stream_7/stream = ExtResource("22_s3wmy")
+stream_8/stream = ExtResource("23_gdcyb")
+stream_9/stream = ExtResource("24_oa6sj")
+stream_10/stream = ExtResource("13_cobve")
+stream_11/stream = ExtResource("14_cmqll")
+stream_12/stream = ExtResource("15_8cp6k")
+stream_13/stream = ExtResource("16_8b871")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_rhq6j"]
+clip_count = 2
+clip_0/name = &"normal"
+clip_0/stream = ExtResource("25_0f1tp")
+clip_0/auto_advance = 0
+clip_1/name = &"overheating"
+clip_1/stream = ExtResource("26_0qimb")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.5,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="Game" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+metadata/_edit_horizontal_guides_ = [399.0]
+metadata/_edit_vertical_guides_ = [609.0]
+
+[node name="MainMenu" type="Node2D" parent="."]
+
+[node name="captchabox" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 609.0
+offset_top = 399.0
+offset_right = 649.0
+offset_bottom = 439.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="captchaSprite" type="Sprite2D" parent="MainMenu/captchabox"]
+scale = Vector2(0.41356257, 0.41356257)
+texture = ExtResource("1_fs0b5")
+
+[node name="Button" type="Button" parent="MainMenu/captchabox/captchaSprite"]
+offset_left = -417.5704
+offset_top = -37.83295
+offset_right = -343.358
+offset_bottom = 37.83282
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_ma7h6")
+disabled = true
+
+[node name="ErrorMessage" type="Label" parent="MainMenu/captchabox/captchaSprite"]
+offset_left = -444.91458
+offset_top = -101.556564
+offset_right = 253.89145
+offset_bottom = 3.65596
+theme_override_colors/font_color = Color(0.8509804, 0.1882353, 0.14509805, 1)
+theme_override_constants/line_spacing = -12
+theme_override_font_sizes/font_size = 37
+text = "Verification Failed. Please try again."
+autowrap_mode = 2
+
+[node name="MicrogameGameplay" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_36rkl")
+
+[node name="bg" type="TextureRect" parent="MicrogameGameplay"]
+visible = false
+self_modulate = Color(0.596078, 0.596078, 0.596078, 1)
+material = SubResource("ShaderMaterial_qpfo2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -335.0
+offset_top = -517.0
+offset_right = 722.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.815, 1.815)
+texture = ExtResource("3_ma7h6")
+expand_mode = 1
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="window" parent="MicrogameGameplay" node_paths=PackedStringArray("main_code", "timer_node") instance=ExtResource("5_gsxep")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 393.0
+offset_top = 20.0
+offset_right = 433.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+main_code = NodePath("..")
+timer_node = NodePath("../Timer")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="MicrogameGameplay"]
+
+[node name="Timer" type="Timer" parent="MicrogameGameplay"]
+wait_time = 5.0
+one_shot = true
+
+[node name="sounds" type="Node" parent="MicrogameGameplay"]
+
+[node name="mouse click up" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_i3aeo")
+volume_db = -15.0
+bus = &"Sounds"
+
+[node name="mouse click down" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_5wyu1")
+volume_db = -15.0
+bus = &"Sounds"
+
+[node name="keyboard typing" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_j44qy")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="monitor cooler" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamInteractive_rhq6j")
+volume_db = 6.701
+autoplay = true
+bus = &"Sounds"
+
+[connection signal="pressed" from="MainMenu/captchabox/captchaSprite/Button" to="MicrogameGameplay" method="checkbox_pressed"]
+[connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]

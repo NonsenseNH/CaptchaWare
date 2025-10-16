@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj2h1l8ocylfg"]
+
+[ext_resource type="Script" uid="uid://dg66bocy5iyxy" path="res://scripts/microgames/how_many_fingers/number_buttons.gd" id="1_sf6kk"]
+[ext_resource type="AudioStream" uid="uid://bvw7ba3b35gjc" path="res://sounds/microgames/tap.mp3" id="2_nbiba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbiba"]
+bg_color = Color(0.849556, 0.846118, 0.851236, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.712129, 0.71213, 0.712129, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.101961)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf6kk"]
+bg_color = Color(0.992157, 1, 0.996078, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.864675, 0.864675, 0.864675, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0, 0, 0, 0.101961)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7ph7"]
+bg_color = Color(0.992157, 1, 0.996078, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.864675, 0.864675, 0.864675, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.101961)
+shadow_size = 6
+
+[sub_resource type="Theme" id="Theme_f2qkf"]
+Button/colors/font_color = Color(0.154876, 0.154876, 0.154876, 1)
+Button/colors/font_disabled_color = Color(0.152941, 0.152941, 0.152941, 1)
+Button/colors/font_focus_color = Color(0.152941, 0.152941, 0.152941, 1)
+Button/colors/font_hover_color = Color(0.152941, 0.152941, 0.152941, 1)
+Button/colors/font_hover_pressed_color = Color(0.152941, 0.152941, 0.152941, 1)
+Button/colors/font_pressed_color = Color(0.152941, 0.152941, 0.152941, 1)
+Button/font_sizes/font_size = 21
+Button/styles/disabled = SubResource("StyleBoxFlat_nbiba")
+Button/styles/focus = SubResource("StyleBoxFlat_sf6kk")
+Button/styles/hover = SubResource("StyleBoxFlat_sf6kk")
+Button/styles/normal = SubResource("StyleBoxFlat_g7ph7")
+Button/styles/pressed = SubResource("StyleBoxFlat_nbiba")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_44ppm"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_nbiba")
+
+[node name="button" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_sf6kk")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = 170.0
+offset_bottom = 46.0
+focus_mode = 0
+theme = SubResource("Theme_f2qkf")
+disabled = true
+text = "..."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_44ppm")
+volume_db = 4.55
+bus = &"Microgame Sounds"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

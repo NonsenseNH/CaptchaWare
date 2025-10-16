@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl36pjasx6rub"]
+
+[ext_resource type="Script" uid="uid://3v73d1wdwjpe" path="res://scripts/microgames/terms_of_service/terms_of_service.gd" id="1_wfjr7"]
+
+[node name="termsOfService" type="ColorRect"]
+offset_right = 413.0
+offset_bottom = 376.0
+mouse_filter = 2
+color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+script = ExtResource("1_wfjr7")
+
+[node name="Mask" type="ColorRect" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="Mask"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 0
+offset_left = 406.0
+offset_right = 414.0
+offset_bottom = 376.0
+mouse_filter = 2
+max_value = 500.0
+page = 7.92
+
+[node name="TosArticle" type="RichTextLabel" parent="Mask/VScrollBar"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -386.0
+offset_top = 6.0
+offset_right = -15.0
+offset_bottom = 364.0
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 3
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 383.0
+offset_right = 56.0
+offset_bottom = 416.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.15686275, 0.42745098, 0.78039217, 1)
+theme_override_colors/font_focus_color = Color(0.15686275, 0.42745098, 0.78039217, 1)
+theme_override_colors/font_pressed_color = Color(0.15686275, 0.42745098, 0.78039217, 1)
+theme_override_colors/font_hover_color = Color(0.22372025, 0.6149829, 0.9446325, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.22352941, 0.6156863, 0.94509804, 1)
+theme_override_colors/font_disabled_color = Color(0.15949741, 0.32257837, 0.72604907, 1)
+disabled = true
+text = "I agree to the Terms and Conditions"
+
+[connection signal="value_changed" from="Mask/VScrollBar" to="." method="_on_v_scroll_bar_value_changed"]

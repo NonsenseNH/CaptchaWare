@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://x2f5xosob6pt"]
+
+[ext_resource type="Script" uid="uid://daen1l4x5i3wq" path="res://scripts/microgames/images_with/image_category_Minigame.gd" id="1_ocsy8"]
+[ext_resource type="AudioStream" uid="uid://bvw7ba3b35gjc" path="res://sounds/microgames/tap.mp3" id="2_6687q"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ms6k8"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_6687q")
+
+[node name="imagesCategory" type="GridContainer"]
+offset_right = 30.0
+offset_bottom = 25.0
+scale = Vector2(15.465, 15.465)
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 3
+script = ExtResource("1_ocsy8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ms6k8")
+volume_db = 4.55
+bus = &"Microgame Sounds"

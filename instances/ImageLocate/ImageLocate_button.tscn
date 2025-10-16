@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://f17y4s6cfnf4"]
+
+[ext_resource type="Script" uid="uid://knt2kk4sj7xw" path="res://scripts/microgames/image_location/imageLocate_button.gd" id="1_dgxsq"]
+[ext_resource type="Texture2D" uid="uid://dxu885rsts4j" path="res://sprites/captcha_check.png" id="3_xbnyt"]
+
+[node name="Button" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+script = ExtResource("1_dgxsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.01855, 4.01855)
+scale = Vector2(0.155, 0.155)
+hframes = 4
+vframes = 4
+
+[node name="check" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.34, 1.29)
+scale = Vector2(0.079, 0.079)
+texture = ExtResource("3_xbnyt")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]
+[connection signal="tree_entered" from="Sprite2D" to="." method="_on_sprite_2d_tree_entered"]

@@ -1,0 +1,568 @@
+[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+
+[ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
+[ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
+[ext_resource type="Shader" uid="uid://hhls21rays5e" path="res://shaders/scroll.gdshader" id="4_budfu"]
+[ext_resource type="Texture2D" uid="uid://birstl6rtmr8j" path="res://sprites/background.png" id="5_h8wee"]
+[ext_resource type="Script" uid="uid://cuc5li8gyqrv4" path="res://scripts/hud.gd" id="6_0qi3o"]
+[ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
+[ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
+[ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
+[ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
+[ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
+[ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
+[ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="23_cwhth"]
+[ext_resource type="AudioStream" uid="uid://5qixynf18hwv" path="res://sounds/mouse_click_up.mp3" id="24_5eq45"]
+[ext_resource type="AudioStream" uid="uid://timh0mbrw21y" path="res://sounds/mouse_click_down.mp3" id="25_hejar"]
+[ext_resource type="AudioStream" uid="uid://cfdwa54pxxvwa" path="res://sounds/keyboard_1.mp3" id="26_q4kkk"]
+[ext_resource type="AudioStream" uid="uid://c5k4vkqkr3ju6" path="res://sounds/keyboard_2.mp3" id="27_qcjme"]
+[ext_resource type="AudioStream" uid="uid://o4fht8dkbxd0" path="res://sounds/keyboard_11.mp3" id="28_cfwy0"]
+[ext_resource type="AudioStream" uid="uid://d132lytm3563a" path="res://sounds/keyboard_12.mp3" id="29_gg2ri"]
+[ext_resource type="AudioStream" uid="uid://dwmc65m6g871f" path="res://sounds/keyboard_13.mp3" id="30_gxlto"]
+[ext_resource type="AudioStream" uid="uid://t8ktayia0fk3" path="res://sounds/keyboard_14.mp3" id="31_dr2h3"]
+[ext_resource type="AudioStream" uid="uid://d0vxmdlg3tncn" path="res://sounds/keyboard_3.mp3" id="32_e5p0k"]
+[ext_resource type="AudioStream" uid="uid://deac4fvuy15f" path="res://sounds/keyboard_4.mp3" id="33_jfy48"]
+[ext_resource type="AudioStream" uid="uid://7dqrcpj0v2lv" path="res://sounds/keyboard_5.mp3" id="34_bmr66"]
+[ext_resource type="AudioStream" uid="uid://bp48pvfs8foo" path="res://sounds/keyboard_6.mp3" id="35_2jhcn"]
+[ext_resource type="AudioStream" uid="uid://ducwyc62p8fsq" path="res://sounds/keyboard_7.mp3" id="36_dvc8x"]
+[ext_resource type="AudioStream" uid="uid://cf85fvbr2fni" path="res://sounds/keyboard_8.mp3" id="37_gk1s0"]
+[ext_resource type="AudioStream" uid="uid://dnowamxgnw2ho" path="res://sounds/keyboard_9.mp3" id="38_mop1g"]
+[ext_resource type="AudioStream" uid="uid://b05mv75765lnm" path="res://sounds/keyboard_10.mp3" id="39_wsihr"]
+[ext_resource type="AudioStream" uid="uid://d4biwfnyykclm" path="res://sounds/pc_hum.mp3" id="40_ygnge"]
+[ext_resource type="AudioStream" uid="uid://bb34cufoy5udg" path="res://sounds/pc_overheat.mp3" id="41_y3owr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpfo2"]
+shader = ExtResource("4_budfu")
+shader_parameter/scroll_speed = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq6as"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxyth"]
+bg_color = Color(0, 0, 0, 0.133333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
+bg_color = Color(0.7962427, 0.7962432, 0.7962428, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8666667, 0.8666667, 0.8666667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1stys"]
+bg_color = Color(0.18431373, 0.5019608, 0.91764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.8666667, 0.8666667, 0.8666667, 1)
+
+[sub_resource type="Theme" id="Theme_cobve"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_eyf67")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_1stys")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i3aeo"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("24_5eq45")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5wyu1"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("25_hejar")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j44qy"]
+random_pitch = 1.1
+streams_count = 14
+stream_0/stream = ExtResource("26_q4kkk")
+stream_1/stream = ExtResource("27_qcjme")
+stream_2/stream = ExtResource("32_e5p0k")
+stream_3/stream = ExtResource("33_jfy48")
+stream_4/stream = ExtResource("34_bmr66")
+stream_5/stream = ExtResource("35_2jhcn")
+stream_6/stream = ExtResource("36_dvc8x")
+stream_7/stream = ExtResource("37_gk1s0")
+stream_8/stream = ExtResource("38_mop1g")
+stream_9/stream = ExtResource("39_wsihr")
+stream_10/stream = ExtResource("28_cfwy0")
+stream_11/stream = ExtResource("29_gg2ri")
+stream_12/stream = ExtResource("30_gxlto")
+stream_13/stream = ExtResource("31_dr2h3")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_rhq6j"]
+clip_count = 2
+clip_0/name = &"normal"
+clip_0/stream = ExtResource("40_ygnge")
+clip_0/auto_advance = 0
+clip_1/name = &"overheating"
+clip_1/stream = ExtResource("41_y3owr")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.5,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="Game" type="Node2D"]
+z_index = 2
+metadata/_edit_horizontal_guides_ = [399.0]
+metadata/_edit_vertical_guides_ = [609.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.238)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_rmvoj")
+metadata/_edit_lock_ = true
+
+[node name="MicrogameGameplay" type="Node2D" parent="."]
+script = ExtResource("2_xqagn")
+force_microgame = "doNothing"
+
+[node name="bg" type="TextureRect" parent="MicrogameGameplay"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = -1
+material = SubResource("ShaderMaterial_qpfo2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -335.0
+offset_top = -517.0
+offset_right = 722.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.815, 1.815)
+mouse_filter = 2
+texture = ExtResource("5_h8wee")
+expand_mode = 1
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="window" type="Control" parent="MicrogameGameplay" node_paths=PackedStringArray("main_code", "timer_node", "instructions", "big_text", "big_image", "reference_image", "error_label", "captcha_window")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 398.0
+offset_top = 17.0
+offset_right = 438.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("6_0qi3o")
+testing = true
+main_code = NodePath("..")
+timer_node = NodePath("../Timer")
+instructions = NodePath("captcha_window/blueBorder/instructions")
+big_text = NodePath("captcha_window/blueBorder/instructions/type")
+big_image = NodePath("captcha_window/blueBorder/instructions/typepic")
+reference_image = NodePath("captcha_window/blueBorder/instructions/reference")
+error_label = NodePath("captcha_window/errorText")
+captcha_window = NodePath("captcha_window")
+metadata/_edit_use_anchors_ = true
+
+[node name="captcha_window" type="TextureRect" parent="MicrogameGameplay/window"]
+use_parent_material = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 41.165
+offset_right = 410.0
+offset_bottom = 615.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(216, 333)
+mouse_filter = 2
+texture = ExtResource("7_tt0xq")
+expand_mode = 1
+
+[node name="blueBorder" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
+use_parent_material = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = -8.0
+offset_bottom = 138.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.184314, 0.501961, 0.917647, 1)
+
+[node name="instructions" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 29.0
+offset_top = 24.835
+offset_right = 376.0
+offset_bottom = 101.835
+theme_override_font_sizes/font_size = 14
+text = "Select all squares with"
+
+[node name="ProgressBar" type="ProgressBar" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -24.835
+offset_right = 38.0
+offset_bottom = 26.999992
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hq6as")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kxyth")
+value = 100.0
+show_percentage = false
+
+[node name="type" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+use_parent_material = true
+layout_mode = 0
+offset_top = 12.0
+offset_right = 347.0
+offset_bottom = 66.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 36
+text = "traffic lights"
+
+[node name="typepic" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+layout_mode = 0
+offset_top = 19.0
+offset_right = 265.0
+offset_bottom = 62.0
+expand_mode = 1
+
+[node name="instructions2" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = 57.0
+offset_right = 348.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 15
+text = "Click verify once you're done"
+
+[node name="reference" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -101.0
+offset_top = -10.0
+offset_right = 22.0
+offset_bottom = 88.0
+grow_horizontal = 0
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions/reference"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="curGame" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
+clip_children = 1
+z_index = 6
+z_as_relative = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 146.0
+offset_right = -8.0
+offset_bottom = -9.165039
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("8_wxqbu")
+expand_mode = 1
+
+[node name="verifyButton" type="Button" parent="MicrogameGameplay/window/captcha_window/lowbar"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -63.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("9_0la4d")
+text = "VERIFY"
+
+[node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
+self_modulate = Color(0, 0, 0, 0.2509804)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -91.165
+offset_right = 88.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_exop1")
+metadata/_edit_lock_ = true
+
+[node name="errorText" type="Label" parent="MicrogameGameplay/window/captcha_window"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -31.0
+offset_right = 38.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.85098, 0.188235, 0.145098, 1)
+text = "Try Again."
+
+[node name="intermissionText" type="Control" parent="MicrogameGameplay/window"]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+anchors_preset = 0
+offset_left = -2.35
+offset_top = 55.0
+offset_right = 37.65
+offset_bottom = 95.0
+metadata/_edit_lock_ = true
+
+[node name="judgementTextIntro" type="Label" parent="MicrogameGameplay/window/intermissionText"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 336.0
+offset_right = 400.0
+offset_bottom = 391.0
+theme = ExtResource("9_0la4d")
+theme_override_colors/font_color = Color(0.513726, 0.513726, 0.513726, 1)
+text = "Good!"
+horizontal_alignment = 1
+
+[node name="gamover Text" type="Control" parent="MicrogameGameplay/window/intermissionText"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="GameoverText" type="Label" parent="MicrogameGameplay/window/intermissionText/gamover Text"]
+layout_mode = 0
+offset_left = 59.350006
+offset_top = 332.0
+offset_right = 378.35
+offset_bottom = 382.0
+theme_override_colors/font_color = Color(0.8509804, 0.1882353, 0.14509805, 1)
+theme_override_fonts/font = ExtResource("11_eq5xm")
+theme_override_font_sizes/font_size = 36
+text = "Verification Failed"
+horizontal_alignment = 1
+
+[node name="speedUpText" type="Control" parent="MicrogameGameplay/window/intermissionText"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 2.350006
+offset_top = -55.0
+offset_right = 42.350006
+offset_bottom = -15.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Speed Text" type="Label" parent="MicrogameGameplay/window/intermissionText/speedUpText"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 377.0
+offset_right = 439.0
+offset_bottom = 432.0
+scale = Vector2(0.8084726, 0.8084726)
+theme = ExtResource("9_0la4d")
+theme_override_colors/font_color = Color(0.513726, 0.513726, 0.513726, 1)
+text = "Increasing Speed..."
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="MicrogameGameplay/window/intermissionText/speedUpText"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 426.0
+offset_right = 390.0
+offset_bottom = 453.0
+mouse_filter = 2
+theme = SubResource("Theme_cobve")
+theme_override_colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+
+[node name="judgement" type="Control" parent="MicrogameGameplay/window/intermissionText"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="judgementText" type="Label" parent="MicrogameGameplay/window/intermissionText/judgement"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 301.0
+offset_right = 400.0
+offset_bottom = 356.0
+theme = ExtResource("9_0la4d")
+theme_override_colors/font_color = Color(0.513726, 0.513726, 0.513726, 1)
+text = "Good!"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="attempts" type="Label" parent="MicrogameGameplay/window/intermissionText/judgement"]
+layout_mode = 0
+offset_left = -61.0
+offset_top = 353.0
+offset_right = 491.0
+offset_bottom = 408.0
+theme = ExtResource("9_0la4d")
+theme_override_colors/font_color = Color(0.513726, 0.513726, 0.513726, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 31
+text = "0 of 4 failed attempts"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="attemptBars" type="HBoxContainer" parent="MicrogameGameplay/window/intermissionText/judgement"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 410.0
+offset_right = 358.0
+offset_bottom = 450.0
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+script = ExtResource("12_2ebhr")
+metadata/_edit_lock_ = true
+
+[node name="slot" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot"]
+self_modulate = Color(0, 0, 0, 0.384)
+scale = Vector2(0.89999783, 0.8686306)
+texture = ExtResource("13_6cmcy")
+
+[node name="slot2" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot2"]
+self_modulate = Color(0, 0, 0, 0.384)
+scale = Vector2(0.89999783, 0.8686306)
+texture = ExtResource("13_6cmcy")
+
+[node name="slot3" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot3"]
+self_modulate = Color(0, 0, 0, 0.384)
+scale = Vector2(0.89999783, 0.8686306)
+texture = ExtResource("13_6cmcy")
+
+[node name="slot4" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot4"]
+self_modulate = Color(0, 0, 0, 0.384)
+scale = Vector2(0.89999783, 0.8686306)
+texture = ExtResource("13_6cmcy")
+
+[node name="camera" type="Camera2D" parent="MicrogameGameplay"]
+position = Vector2(608.96, 399.22)
+zoom = Vector2(1.43, 1.43)
+script = ExtResource("23_cwhth")
+parallax_offset_amount = 1.7
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="MicrogameGameplay"]
+
+[node name="Timer" type="Timer" parent="MicrogameGameplay"]
+wait_time = 5.0
+one_shot = true
+
+[node name="sounds" type="Node" parent="MicrogameGameplay"]
+
+[node name="mouse click up" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_i3aeo")
+volume_db = -15.0
+bus = &"Sounds"
+
+[node name="mouse click down" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_5wyu1")
+volume_db = -15.0
+bus = &"Sounds"
+
+[node name="keyboard typing" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_j44qy")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="monitor cooler" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamInteractive_rhq6j")
+volume_db = 6.701
+autoplay = true
+bus = &"Sounds"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
+[connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]

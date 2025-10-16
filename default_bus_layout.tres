@@ -1,0 +1,32 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cat0jjbtti4ij"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_j3pel"]
+resource_name = "Limiter"
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_j3pel"]
+resource_name = "PitchShift"
+
+[resource]
+bus/0/volume_db = -12.461078
+bus/0/effect/0/effect = SubResource("AudioEffectLimiter_j3pel")
+bus/0/effect/0/enabled = true
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectPitchShift_j3pel")
+bus/1/effect/0/enabled = false
+bus/2/name = &"Sounds"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"Microgame Sounds"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -80.0
+bus/3/send = &"Sounds"

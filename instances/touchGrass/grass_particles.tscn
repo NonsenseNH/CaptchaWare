@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck1pnmnev0nln"]
+
+[ext_resource type="Texture2D" uid="uid://dbdi5hd6f3gif" path="res://sprites/touch_grass/grass_images/grass1.png" id="1_5nhqd"]
+[ext_resource type="Script" uid="uid://ckfsc8eir6q1m" path="res://scripts/microgames/touch_grass/grass_particles.gd" id="2_h76qo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yt280"]
+particles_animation = true
+particles_anim_h_frames = 20
+particles_anim_v_frames = 20
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_do2l5"]
+_data = [Vector2(0, 0.348315), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="grassParticles" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_yt280")
+emitting = false
+texture = ExtResource("1_5nhqd")
+one_shot = true
+speed_scale = 1.45
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+fixed_fps = 30
+emission_shape = 1
+emission_sphere_radius = 22.63
+spread = 180.0
+initial_velocity_min = 142.65
+initial_velocity_max = 291.6
+scale_amount_min = 10.4
+scale_amount_max = 23.35
+scale_amount_curve = SubResource("Curve_do2l5")
+anim_offset_min = 0.041
+anim_offset_max = 1.0
+script = ExtResource("2_h76qo")

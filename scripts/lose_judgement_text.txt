@@ -1,0 +1,6 @@
+try again!,
+sorry!,
+not good!,
+do better!,
+failed!,
+oh no!

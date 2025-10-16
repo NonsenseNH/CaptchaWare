@@ -1,0 +1,385 @@
+[gd_scene load_steps=12 format=3 uid="uid://ddv4qb5wkwi1m"]
+
+[ext_resource type="Script" uid="uid://5tbpaivwvlrc" path="res://scripts/microgames/how_many_fingers/how_many_fingers.gd" id="1_o7y65"]
+[ext_resource type="Texture2D" uid="uid://ddfumbwpio1hq" path="res://sprites/how_many_fingers/hands_0.png" id="2_yo7k4"]
+[ext_resource type="AudioStream" uid="uid://52d705sr61ys" path="res://sounds/microgames/how_many_fingers/hand_open.mp3" id="3_mg175"]
+[ext_resource type="Texture2D" uid="uid://bc1vhybn3l5pt" path="res://sprites/how_many_fingers/thumbs.png" id="3_yo7k4"]
+[ext_resource type="AudioStream" uid="uid://dnhfeke4dnrjj" path="res://sounds/microgames/how_many_fingers/hand_close.mp3" id="4_y7ptt"]
+
+[sub_resource type="Animation" id="Animation_f2qkf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_yo7k4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(205, 142.835)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/animSound:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("anim/animSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g7ph7"]
+resource_name = "show fingers"
+length = 1.8005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_yo7k4"), ExtResource("2_yo7k4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.733333, 0.755124, 1.08846, 1.16667, 1.43333, 1.46667, 1.8),
+"transitions": PackedFloat32Array(0, 0.210224, 0, 0.210224, 0, 0.267944, 0, 0.210224, 0),
+"update": 0,
+"values": [Vector2(205, 142.835), Vector2(205, 155.475), Vector2(205, 142.835), Vector2(205, 155.475), Vector2(205, 142.835), Vector2(205, 113.265), Vector2(205, 127.27), Vector2(205, 155.475), Vector2(205, 142.835)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.16667, 1.76667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"get_random_fingers"
+}, {
+"args": [],
+"method": &"reveal_buttons_func"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("anim/animSound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.16722, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("3_mg175"), ExtResource("4_y7ptt")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("anim/animSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.16722, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_mg175"]
+resource_name = "show fingers 2"
+length = 1.8005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_yo7k4"), ExtResource("2_yo7k4"), ExtResource("2_yo7k4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.73333335, 0.8, 0.9738191, 1, 1.1551234, 1.2333333, 1.43333, 1.46667, 1.8),
+"transitions": PackedFloat32Array(0, 0.210224, 0, 0.267944, 0, 0.210224, 0, 0.267944, 0, 0.210224, 0),
+"update": 0,
+"values": [Vector2(205, 142.835), Vector2(205, 155.475), Vector2(205, 142.835), Vector2(205, 113.265), Vector2(205, 127.27), Vector2(205, 155.475), Vector2(205, 142.835), Vector2(205, 113.265), Vector2(205, 127.27), Vector2(205, 155.475), Vector2(205, 142.835)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8000001, 1.2333333, 1.76667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"get_random_fingers"
+}, {
+"args": [],
+"method": &"get_random_fingers"
+}, {
+"args": [],
+"method": &"reveal_buttons_func"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("anim/animSound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.80054665, 1, 1.2338834, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("3_mg175"), ExtResource("4_y7ptt"), ExtResource("3_mg175"), ExtResource("4_y7ptt")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("anim/animSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.80054665, 1, 1.2338834, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_y7ptt"]
+resource_name = "show fingers 3"
+length = 1.8005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7994499, 1.26612, 1.6333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_yo7k4"), ExtResource("2_yo7k4"), ExtResource("2_yo7k4"), ExtResource("2_yo7k4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.53278327, 0.59944993, 0.773269, 0.7994499, 0.9545733, 1.0327833, 1.23278, 1.26612, 1.4000001, 1.4333334, 1.6071525, 1.6333334, 1.8),
+"transitions": PackedFloat32Array(0, 0.210224, 0, 0.267944, 0, 0.210224, 0, 0.267944, 0, 0.210224, 0, 0.267944, 0, 0.210224, 0),
+"update": 0,
+"values": [Vector2(205, 142.835), Vector2(205, 155.475), Vector2(205, 142.835), Vector2(205, 113.265), Vector2(205, 127.27), Vector2(205, 155.475), Vector2(205, 142.835), Vector2(205, 113.265), Vector2(205, 127.27), Vector2(205, 155.475), Vector2(205, 142.835), Vector2(205, 113.265), Vector2(205, 127.27), Vector2(205, 155.475), Vector2(205, 142.835)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.59945, 1.0327833, 1.4333334, 1.76667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"get_random_fingers"
+}, {
+"args": [],
+"method": &"get_random_fingers"
+}, {
+"args": [],
+"method": &"get_random_fingers"
+}, {
+"args": [],
+"method": &"reveal_buttons_func"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("anim/animSound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.59999657, 0.7994499, 1.0333333, 1.26612, 1.4338801, 1.6333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("3_mg175"), ExtResource("4_y7ptt"), ExtResource("3_mg175"), ExtResource("4_y7ptt"), ExtResource("3_mg175"), ExtResource("4_y7ptt")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("anim/animSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.59999657, 0.7994499, 1.0333333, 1.26612, 1.4338801, 1.6333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true, true, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_o7y65"]
+resource_name = "thumbs up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_yo7k4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.450137),
+"transitions": PackedFloat32Array(0, 0.148651, 1),
+"update": 0,
+"values": [Vector2(205, 144.765), Vector2(205, 136.066), Vector2(205, 142.835)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/animSound:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_mg175")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("anim/animSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t2a6w"]
+_data = {
+&"RESET": SubResource("Animation_f2qkf"),
+&"show fingers": SubResource("Animation_g7ph7"),
+&"show fingers 2": SubResource("Animation_mg175"),
+&"show fingers 3": SubResource("Animation_y7ptt"),
+&"thumbs up": SubResource("Animation_o7y65")
+}
+
+[node name="howManyFingers" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_o7y65")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+offset_right = 414.0
+offset_bottom = 420.0
+mouse_filter = 2
+color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+
+[node name="hand_group" type="Node2D" parent="."]
+position = Vector2(0, 23.835)
+
+[node name="hand" type="Sprite2D" parent="hand_group"]
+position = Vector2(205, 142.835)
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("2_yo7k4")
+
+[node name="anim" type="AnimationPlayer" parent="hand_group/hand"]
+libraries = {
+&"": SubResource("AnimationLibrary_t2a6w")
+}
+
+[node name="animSound" type="AudioStreamPlayer" parent="hand_group/hand/anim"]
+volume_db = -13.0
+bus = &"Microgame Sounds"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 283.835
+offset_right = -11.0
+offset_bottom = -5.16501
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 203
+theme_override_constants/v_separation = 68
+columns = 2
