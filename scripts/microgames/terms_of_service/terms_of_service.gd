@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 	v_scroll_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v_scroll_bar.value_changed.connect(on_value_changed)
-	v_box_container.custom_minimum_size = Vector2.DOWN * scroll_length[4]
+	v_box_container.custom_minimum_size = Vector2.DOWN * scroll_length[difficulty]
 	the_end_of_bar = int(v_box_container.custom_minimum_size.y) - 376
 	
 	var prev_offset_text := 0
