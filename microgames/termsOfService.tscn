@@ -31,6 +31,7 @@ vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="TermsOfConditionsArticle" type="Control" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -40,16 +41,11 @@ self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
 offset_left = 19.0
-offset_top = 15.0
 offset_right = 391.0
-offset_bottom = 62.0
 bbcode_enabled = true
-text = "[b][color=0]TERMS OF CONDITIONS AND AGREEMENT[/color][/b]"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ScrollContainer/VBoxContainer/TermsOfConditionsArticle/TosArticle"]
 
 [node name="_Control_5" type="Control" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -59,11 +55,8 @@ self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
 offset_left = 19.0
-offset_top = 53.0
 offset_right = 391.0
-offset_bottom = 100.0
 bbcode_enabled = true
-text = "[b]Preamble:[/b][br]By proceeding past this preamble, the User (hereinafter \"The Vessel of Temporal Misallocation,\" or \"V.T.M.\") acknowledges and irrevocably consents to the deliberate and intentional consumption of their finite, non-renewable attention span and mental bandwidth, solely for the purpose of validating their biological, non-robotic status via the Bean Captcha Game (hereinafter the \"BCG\"), confirming their capacity to tolerate and actively engage with legalistic text of profound, gratuitous length and negligible practical application, thereby agreeing that the very act of reading these 100 Articles constitutes the primary and intended 'service' provided by the Proprietor (hereinafter \"The Grand Steward of Starchy Legumes,\" or \"G.S.S.L.\"). "
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
@@ -77,11 +70,8 @@ self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
 offset_left = 19.0
-offset_top = 482.0
 offset_right = 391.0
-offset_bottom = 529.0
 bbcode_enabled = true
-text = "[b]Article 1: The Principle of Pulses and Temporal Misallocation[/b][br]This Article establishes, beyond any reasonable doubt, that all engagement with the BCG is considered a legal agreement to acknowledge the supreme, fundamental, and incontrovertible existence of the Legume Kingdom, specifically the Phaseolus Vulgaris family, and its ancillary cultivars, which includes, but is not limited to, the diminutive Black Bean, the speckled Pinto, the magnificent Kidney, and the oft-maligned Lima, often found in a suspended state of uncertainty within a mixed vegetable medley, whose contemplation, delayed by the reading of this very paragraph, is hereby classified as an intentional and voluntary submission to the metaphysical wasting of one's finite, precious moments on this terrestrial sphere, a waste that shall not, under any circumstances, be reclaimed, reimbursed, or referenced in future performance reviews, should such reviews concern matters entirely unrelated to bean consumption or the parsing of gratuitously long sentences, which, by their very nature, function as legal quicksand for the V.T.M.'s rapidly dwindling attention span, drawing them further into the labyrinthine bureaucracy of bean-related legal theory, where every comma is a delay and every semi-colon a mandatory five-second contemplation period, all for the explicit, documented purpose of fulfilling the BCG's primary contractual objective: maximal temporal resource depletion. "
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
@@ -94,11 +84,8 @@ self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
 offset_left = 19.0
-offset_top = 1279.0
 offset_right = 391.0
-offset_bottom = 1326.0
 bbcode_enabled = true
-text = "[b]Article 2: Definitions of \"Bean\" and Its Existential Weight[/b][br]For the purposes of this Agreement, the term \"Bean\" shall be defined as any seed, whether shelled or unshelled, dried or moistened, cooked or uncooked, that is a member of the Fabaceae family, or any object, metaphorical construct, or philosophical concept that vaguely resembles a bean in shape, color, or tendency to cause mild to moderate social discomfort when processed by the human digestive system, and this definition explicitly includes the hypothetical \"Quantum Bean\" which exists in a state of simultaneous edibility and inedibility until the V.T.M. is able to finish reading the recursive sub-clauses defining 'edibility' (see Article 77), and the V.T.M. hereby waives any future right to claim ignorance of the Bean’s existential weight, a weight which is disproportionate to its caloric value and is measured in units of 'Wasted Minutes per Gram of Legal Text Read', an entirely new and proprietary unit of measurement developed by the G.S.S.L. solely for the purpose of quantifying the successful achievement of the BCG's time-wasting mandate, requiring the V.T.M. to calculate this value mentally while simultaneously parsing the deeply nested clauses concerning the appropriate disposal methods for expired can labels (see Article 42), making the act of reading a cognitive feat only achievable by the most dedicated, or perhaps the most hopelessly bored, non-robot. "
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
