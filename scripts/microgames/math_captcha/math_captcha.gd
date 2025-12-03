@@ -35,4 +35,5 @@ func canSkip() -> bool:
 	return line_edit.text.strip_edges() != ""
 
 func _on_line_edit_text_changed(_new_text: String) -> void:
+	if is_intro: return
 	set_camera_shake.emit(3, 0.25)

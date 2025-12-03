@@ -298,6 +298,7 @@ func change_game():
 	cur_microgame.skip_timer.connect(skip_timer)
 	cur_microgame.current_game_speed = cur_speed
 	cur_microgame.difficulty = difficulty
+	cur_microgame.is_intro = intro_sequence
 	
 	override_instructions(cur_microgame_data.instructionsBig, cur_microgame_data.InstructionsSmall, cur_microgame_data.referenceImage)
 	

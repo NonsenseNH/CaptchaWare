@@ -5,7 +5,7 @@ class_name Microgame
 signal override_instruction_text(big:String, small:String)
 signal set_camera_shake(intensity : float, duration : float)
 signal skip_timer
-
+var is_intro := false
 var skipped := false
 
 var is_Playing := true
