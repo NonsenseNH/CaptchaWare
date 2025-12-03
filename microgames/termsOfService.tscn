@@ -60,7 +60,6 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
-horizontal_alignment = 3
 
 [node name="_Control_7" type="Control" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -89,7 +88,6 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
-horizontal_alignment = 3
 
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 0
