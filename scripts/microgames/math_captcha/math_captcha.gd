@@ -13,19 +13,26 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func generate_math_eq() -> void:
-	var cur_math_signs : String = ["plus", "minus"].pick_random()
+	var equation_array : Array = generate_equation()
+	
+	cur_text_problem = str(equation_array[0]) + " " + equation_array[2] + " " + str(equation_array[1])
+	answer = equation_array[3]
+
+func generate_equation() -> Array:
 	var first_num : int = randi_range(0, 7)
 	var second_num : int = randi_range(0, 7)
+	var cur_math_signs : String = ["+", "-"].pick_random()
+	var set_answer : int = 0
 	
-	match cur_math_signs:
-		"plus":
-			cur_text_problem = str(first_num) + "+" + str(second_num)
-			answer = first_num + second_num
-		"minus":
-			if first_num < second_num:
-				second_num = first_num
-			cur_text_problem = str(first_num) + "-" + str(second_num)
-			answer = first_num - second_num
+	if cur_math_signs == "-":
+		while first_num - second_num == 0:
+			first_num = randi_range(0, 7)
+			second_num = randi_range(0, 7)
+		set_answer = first_num - second_num
+	else:
+		set_answer = first_num + second_num
+	
+	return [first_num, second_num, cur_math_signs, set_answer]
 
 func isWinning() -> bool:
 	super.isWinning()

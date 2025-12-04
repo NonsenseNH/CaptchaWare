@@ -71,6 +71,10 @@ var ui_data : Dictionary = {
 	"tweenSpeed" : 1
 }
 
+var musicState : String = "Captchaware Game"
+
+var win_streak : int = 0
+
 var fails : int = 0
 
 func _ready() -> void:
@@ -92,6 +96,7 @@ func start_game() -> void:
 	intro_sequence = set_intro_sequence
 	
 	fails = 0
+	win_streak = 0
 	games_played = 0
 	
 	if intro_sequence:
@@ -178,11 +183,7 @@ func transition_game() -> void:
 	ui_captcha_window._display_error_text("", true)
 	
 	if !intro_sequence:
-		if !music.playing:
-			music.play()
-			music.get_stream_playback().switch_to_clip_by_name("Captchaware Game Slow" if cur_microgame_data.slowGame else "Captchaware Game")
-		else:
-			music.get_stream_playback().switch_to_clip_by_name("Captchaware Failed" if did_fail else "Captchaware Win")
+		music_handler(did_fail)
 	
 	get_microgame_data()
 	
@@ -214,6 +215,25 @@ func transition_game() -> void:
 		set_game_speed(1)
 	
 	captcha_transition.set("parameters/conditions/failed", did_fail)
+
+func music_handler(has_failed : bool) -> void:
+	if !music.playing:
+		music.play()
+	
+	if has_failed:
+		win_streak = 0
+		music.get_stream_playback().switch_to_clip_by_name("Captchaware Failed")
+		musicState = "Captchaware Game"
+		return
+	
+	win_streak += 1
+	
+	if win_streak >= 4:
+		musicState = "Captchaware Win"
+	else:
+		musicState = "Captchaware Game"
+	
+	music.get_stream_playback().switch_to_clip_by_name(musicState)
 
 func end_intro_sequence() -> void:
 	music.play()
@@ -284,7 +304,7 @@ func remove_game() -> void:
 
 func change_game():
 	if music.playing:
-		music.get_stream_playback().switch_to_clip_by_name("Captchaware Game Slow" if cur_microgame_data.slowGame else "Captchaware Game")
+		music.get_stream_playback().switch_to_clip_by_name("Captchaware Game Slow" if cur_microgame_data.slowGame else musicState)
 	
 	cur_microgame.z_index += 1
 	
