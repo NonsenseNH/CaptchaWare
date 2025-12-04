@@ -58,7 +58,8 @@
 			"Length": 573.835,
 			"Width": 430.0,
 			"BonusTime": 0.0,
-			"slowGame": true
+			"slowGame": true,
+			"staticTimer" : true
 		},
 		"touchGrass":{
 			"instructionsBig" : "touch grass",
@@ -87,8 +88,9 @@
 			"errorMessage" : "Please read the terms of conditions.",
 			"Length": 573.835,
 			"Width": 430.0,
-			"BonusTime": 8.5,
-			"slowGame": false
+			"BonusTime": 3.0,
+			"slowGame": false,
+			"staticTimer" : true
 		}
 	},
 	"microgame_pool" :{
