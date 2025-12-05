@@ -25,7 +25,7 @@ func generate_equation() -> Array:
 	var set_answer : int = 0
 	
 	if cur_math_signs == "-":
-		while first_num - second_num == 0:
+		while first_num - second_num <= 0:
 			first_num = randi_range(0, 7)
 			second_num = randi_range(0, 7)
 		set_answer = first_num - second_num
