@@ -90,7 +90,8 @@ func _ready() -> void:
 		resource_preloader.add_resource(game, load("res://microgames/" + game + ".tscn"))
 
 func start_game() -> void:
-	cur_microgame_pool_array = []
+	cur_microgame_pool_array.clear()
+	
 	var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 	AudioServer.set_bus_volume_db(bus_index, -80)
 	intro_sequence = set_intro_sequence
@@ -193,7 +194,7 @@ func transition_game() -> void:
 			intro_sequence = false
 			games_played = 0
 			captcha_transition.set("parameters/conditions/speed up", true)
-			cur_microgame_pool_array = []
+			cur_microgame_pool_array.clear()
 			
 			var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 			AudioServer.set_bus_volume_db(bus_index, 0)
