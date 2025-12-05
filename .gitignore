@@ -15,3 +15,9 @@ export/Web/index.wasm
 export/Web/index.pck
 export/Web/index.js
 export/Web/index.html
+export/Windows/CaptchaWare.exe
+export/Windows/CaptchaWare.console.exe
+export/Web/index.wasm
+export/Web/index.pck
+export/Web/index.js
+export/Web/index.html

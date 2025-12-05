@@ -352,7 +352,7 @@ mouse_filter = 2
 color = Color(0.8901961, 0.8901961, 0.8901961, 1)
 
 [node name="hand_group" type="Node2D" parent="."]
-position = Vector2(0, 23.835)
+position = Vector2(0, -7)
 
 [node name="hand" type="Sprite2D" parent="hand_group"]
 position = Vector2(205, 142.835)
@@ -383,3 +383,13 @@ mouse_filter = 2
 theme_override_constants/h_separation = 203
 theme_override_constants/v_separation = 68
 columns = 2
+
+[node name="Numbers" type="Label" parent="."]
+layout_mode = 0
+offset_top = 239.0
+offset_right = 406.0
+offset_bottom = 296.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "1  2  2"
+horizontal_alignment = 1

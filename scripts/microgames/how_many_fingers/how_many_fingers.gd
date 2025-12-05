@@ -5,6 +5,7 @@ const BUTTON_ANSWERS = preload("res://instances/howManyFingers/buttonAnswers.tsc
 @onready var hand: Sprite2D = $hand_group/hand
 @onready var grid_container: GridContainer = $GridContainer
 @onready var hand_anim: AnimationPlayer = $hand_group/hand/anim
+@onready var numbers_label_node: Label = $Numbers
 
 var correct_fingers_array : Array[int] = []
 var fingers_shown : int = 0
@@ -14,6 +15,9 @@ var has_won : bool = false
 var answered : int = 0
 
 var buttons_pool : Array = []
+
+var number_label : Array[String]
+
 signal disable_buttons(curButtonAnswer: int, correct : bool)
 signal reveal_buttons
 
@@ -31,7 +35,16 @@ func _ready() -> void:
 	
 	for i in range(how_many_should_answer):
 		correct_fingers_array.append(randi_range(1,5))
+		number_label.append(" _ ")
+	
+	numbers_label_node.text = ""
+	
 	generate_answers_n_buttons()
+
+func update_number_text_on_top_of_hand() -> void:
+	numbers_label_node.text = ""
+	for i in number_label:
+		numbers_label_node.text += i
 
 func generate_answers_n_buttons() -> void:
 	var correct_fingers : int = correct_fingers_array[0]
@@ -92,6 +105,9 @@ func regenerate_answers() -> void:
 func answer_button_pressed(cur_button:Button) -> void:
 	var is_correct = cur_button.text == str(correct_fingers_array[answered])
 	
+	number_label[answered] = " " + str(correct_fingers_array[answered]) + " "
+	update_number_text_on_top_of_hand()
+	
 	answered += 1
 	
 	if !is_correct: 
@@ -122,3 +138,4 @@ func isWinning() -> bool:
 func get_random_fingers() -> void:
 	hand.texture = load("res://sprites/how_many_fingers/hands_" + str(correct_fingers_array[fingers_shown]) + ".png")
 	fingers_shown += 1
+	numbers_label_node.text += " _ "
