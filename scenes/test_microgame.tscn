@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=43 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
 [ext_resource type="Shader" uid="uid://hhls21rays5e" path="res://shaders/scroll.gdshader" id="4_budfu"]
 [ext_resource type="Texture2D" uid="uid://birstl6rtmr8j" path="res://sprites/background.png" id="5_h8wee"]
 [ext_resource type="Script" uid="uid://cuc5li8gyqrv4" path="res://scripts/hud.gd" id="6_0qi3o"]
+[ext_resource type="Script" uid="uid://ds8unqyajdlqr" path="res://scripts/microgames/phone_verification/phone_verification.gd" id="7_so1f2"]
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
@@ -126,7 +127,6 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("2_xqagn")
-force_microgame = "howManyFingers"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)
@@ -184,9 +184,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = 41.165
+offset_top = 132.73497
 offset_right = 410.0
-offset_bottom = 615.0
+offset_bottom = 504.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(216, 333)
@@ -306,6 +306,54 @@ offset_bottom = -9.165039
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="phoneVerification" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame"]
+anchors_preset = 0
+offset_right = 414.0
+offset_bottom = 216.26501
+script = ExtResource("7_so1f2")
+
+[node name="bg" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/phoneVerification"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9035985, 0.9035982, 0.9035982, 1)
+
+[node name="phonenumber" type="Label" parent="MicrogameGameplay/window/captcha_window/curGame/phoneVerification"]
+layout_mode = 0
+offset_top = 68.26503
+offset_right = 414.0
+offset_bottom = 125.26503
+theme_override_colors/font_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
+theme_override_colors/font_shadow_color = Color(0.47772512, 0.47772512, 0.47772512, 0.69100004)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 11
+theme_override_font_sizes/font_size = 31
+text = "+1 (111) 111-1111"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MicrogameGameplay/window/captcha_window/curGame/phoneVerification"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 42.26503
+offset_right = 413.0
+offset_bottom = 171.26501
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38928655, 0.38928664, 0.38928658, 0.53333336)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+text = "This phone number will call you:
+
+
+Please answer this number to verify
+your phone"
+horizontal_alignment = 1
 
 [node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 use_parent_material = true

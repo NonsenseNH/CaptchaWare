@@ -59,10 +59,13 @@ func camera_shake(intensity : float, duration : float) -> void:
 func get_microgame_data(force_game: String = "") -> void:
 	cur_microgame = get_microgame(force_game)
 	
+	if cur_microgame == null: return
+	
 	cur_microgame_data = microgame_json.microgames[cur_microgame.name]
 	cur_window_size = Vector2(cur_microgame_data.Width, cur_microgame_data.Length)
 
 func set_up_window_size(tween_window: bool = false) -> void:
+	if cur_microgame == null: return
 	ui_captcha_window.set_up_ui_data({
 		"windowSize" : Vector2(cur_microgame_data.Width, cur_microgame_data.Length),
 		"windowTween" : tween_window,
@@ -70,6 +73,7 @@ func set_up_window_size(tween_window: bool = false) -> void:
 	})
 
 func change_game():
+	if cur_microgame == null: return
 	cur_microgame.z_index += 1
 	
 	override_instructions(cur_microgame_data.instructionsBig, cur_microgame_data.InstructionsSmall, cur_microgame_data.referenceImage)
@@ -100,6 +104,7 @@ func _input(event: InputEvent) -> void:
 			skip_game()
 
 func skip_game() -> void:
+	if cur_microgame == null: return
 	if cur_microgame.canSkip():
 		print_debug("CanSkipGame")
 	else:
@@ -108,5 +113,6 @@ func skip_game() -> void:
 func get_microgame(force_game : String) -> Node:
 	var cur_game : Node
 	
+	if force_microgame == "": return null
 	cur_game = load("res://microgames/" + force_microgame + ".tscn").instantiate()
 	return cur_game
