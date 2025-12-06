@@ -114,5 +114,5 @@ func get_microgame(force_game : String) -> Node:
 	var cur_game : Node
 	
 	if force_microgame == "": return null
-	cur_game = load("res://microgames/" + force_microgame + ".tscn").instantiate()
+	cur_game = load("res://microgames/" + force_game + ".tscn").instantiate()
 	return cur_game

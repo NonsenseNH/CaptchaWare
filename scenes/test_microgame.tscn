@@ -128,6 +128,23 @@ metadata/_edit_lock_ = true
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("2_xqagn")
 
+[node name="phoneCallWindow" type="Control" parent="MicrogameGameplay"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_left = 430.0
+offset_top = 97.0
+offset_right = 799.0
+offset_bottom = 688.0
+
+[node name="ColorRect" type="ColorRect" parent="MicrogameGameplay/phoneCallWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = -1

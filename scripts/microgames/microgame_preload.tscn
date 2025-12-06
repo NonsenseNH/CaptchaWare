@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfoe5oma72tmg"]
-
-[ext_resource type="Script" uid="uid://d77coxy7u3xj" path="res://scripts/microgames/microgame_preload.gd" id="2_8xdi0"]
-
-[node name="microgame_preload" type="ResourcePreloader"]
-script = ExtResource("2_8xdi0")
