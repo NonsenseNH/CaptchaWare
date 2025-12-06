@@ -1,4 +1,4 @@
-extends Node2D
+extends SaveSystem
 
 const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 const JUDGEMENT_TEXT_LOCATION : String = "res://scripts/"
