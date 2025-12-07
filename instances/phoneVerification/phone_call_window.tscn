@@ -589,17 +589,17 @@ autostart = true
 
 [node name="answer" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("8_1qoe3")
-volume_db = -1.815
+volume_db = -6.295
 bus = &"Sounds"
 
 [node name="decline" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("8_ih10t")
-volume_db = -2.746
+volume_db = -3.616
 bus = &"Sounds"
 
 [node name="ringing" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("8_usair")
-volume_db = -1.7
+volume_db = -5.6
 autoplay = true
 bus = &"Sounds"
 
