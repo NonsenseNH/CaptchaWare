@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
-[ext_resource type="PackedScene" uid="uid://cteks1mmgmvgh" path="res://microgames/phoneVerification.tscn" id="9_so1f2"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
@@ -127,6 +126,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("2_xqagn")
+force_microgame = "phoneVerification"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)
@@ -339,9 +339,6 @@ offset_bottom = -9.165039
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="phoneVerification" parent="MicrogameGameplay/window/captcha_window/curGame" instance=ExtResource("9_so1f2")]
-layout_mode = 0
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)

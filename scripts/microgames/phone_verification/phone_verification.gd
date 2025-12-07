@@ -27,7 +27,7 @@ var fake_number_type : PackedStringArray = [
 func _ready() -> void:
 	phonenumber_label.text = generate_number()
 
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.5).timeout
 
 	pop_up_window()
 
@@ -95,7 +95,7 @@ func on_call_declined() -> void:
 		print_debug("FAILED")
 		return
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.5).timeout
 
 	pop_up_window()
 	
