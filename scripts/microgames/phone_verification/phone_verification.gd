@@ -29,7 +29,7 @@ var fake_number_type : PackedStringArray = [
 func _ready() -> void:
 	phonenumber_label.text = generate_number()
 
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(randf_range(2.0, 3.7)).timeout
 
 	pop_up_window()
 
