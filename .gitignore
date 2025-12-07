@@ -21,3 +21,11 @@ export/Web/index.wasm
 export/Web/index.pck
 export/Web/index.js
 export/Web/index.html
+export/Web/index.apple-touch-icon.png
+export/Web/index.apple-touch-icon.png.import
+export/Web/index.audio.position.worklet.js
+export/Web/index.audio.worklet.js
+export/Web/index.icon.png
+export/Web/index.icon.png.import
+export/Web/index.png
+export/Web/index.png.import
