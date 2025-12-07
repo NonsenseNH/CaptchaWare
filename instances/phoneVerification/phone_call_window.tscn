@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnyk2f5trja0r"]
+[gd_scene load_steps=23 format=3 uid="uid://bnyk2f5trja0r"]
 
 [ext_resource type="Script" uid="uid://l14gvnb5l88v" path="res://scripts/microgames/phone_verification/phone_call_window.gd" id="1_puh8p"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="2_usair"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bl7w5kd7iel27" path="res://sprites/phone_verification/phone_call_icon.png" id="4_1qoe3"]
 [ext_resource type="FontFile" uid="uid://bd7pih6s4pa1l" path="res://font/iphone.ttf" id="5_em8dk"]
 [ext_resource type="Texture2D" uid="uid://rv2mljn287w8" path="res://sprites/phone_verification/call_ui.png" id="6_l6b7c"]
+[ext_resource type="AudioStream" uid="uid://c5f75df5d7r7b" path="res://sounds/microgames/phone_verification/automated_message.mp3" id="7_puh8p"]
 
 [sub_resource type="Animation" id="Animation_puh8p"]
 length = 0.001
@@ -363,6 +364,12 @@ theme_override_font_sizes/font_size = 41
 text = "+1 (111) 111-1111"
 horizontal_alignment = 1
 
+[node name="phoneAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_puh8p")
+volume_db = 10.0
+bus = &"Sounds"
+
 [connection signal="pressed" from="ColorRect/accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="x" to="." method="_on_decline_pressed"]
 [connection signal="pressed" from="ringingUi/decline" to="." method="_on_decline_pressed"]
+[connection signal="finished" from="phoneAudio" to="." method="_on_phone_audio_finished"]
