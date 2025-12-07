@@ -1,0 +1,368 @@
+[gd_scene load_steps=22 format=3 uid="uid://bnyk2f5trja0r"]
+
+[ext_resource type="Script" uid="uid://l14gvnb5l88v" path="res://scripts/microgames/phone_verification/phone_call_window.gd" id="1_puh8p"]
+[ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="2_usair"]
+[ext_resource type="Texture2D" uid="uid://b8iyjoddvvbn6" path="res://sprites/phone_verification/bg_phone_call.jpg" id="3_ih10t"]
+[ext_resource type="Texture2D" uid="uid://bl7w5kd7iel27" path="res://sprites/phone_verification/phone_call_icon.png" id="4_1qoe3"]
+[ext_resource type="FontFile" uid="uid://bd7pih6s4pa1l" path="res://font/iphone.ttf" id="5_em8dk"]
+[ext_resource type="Texture2D" uid="uid://rv2mljn287w8" path="res://sprites/phone_verification/call_ui.png" id="6_l6b7c"]
+
+[sub_resource type="Animation" id="Animation_puh8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ringingUi:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/accept:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.4428797]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/accept:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(237.00002, 369.36374)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/accept:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.33333334, 0.8509804, 0.3882353, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("callUi:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dosju"]
+resource_name = "answered"
+length = 1.316
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ringingUi:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/accept:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33552945),
+"transitions": PackedFloat32Array(0.34151018, 1),
+"update": 0,
+"values": [-2.4428797, 0.008726646]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/accept:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33552945),
+"transitions": PackedFloat32Array(0.34151018, 1),
+"update": 0,
+"values": [Vector2(237.00002, 369.36374), Vector2(150.88, 369.364)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/accept:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.33786833),
+"transitions": PackedFloat32Array(0.34151018, 1),
+"update": 0,
+"values": [Color(0.33333334, 0.8509804, 0.3882353, 1), Color(1, 0.2990509, 0.24573994, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("callUi:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.10109446),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.80100006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rwuo"]
+_data = {
+&"RESET": SubResource("Animation_puh8p"),
+&"answered": SubResource("Animation_dosju")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxse2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 750
+corner_radius_top_right = 750
+corner_radius_bottom_right = 750
+corner_radius_bottom_left = 750
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dosju"]
+bg_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
+corner_radius_top_left = 750
+corner_radius_top_right = 750
+corner_radius_bottom_right = 750
+corner_radius_bottom_left = 750
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmvoj"]
+bg_color = Color(0.82606, 0.82606006, 0.82606, 1)
+corner_radius_top_left = 750
+corner_radius_top_right = 750
+corner_radius_bottom_right = 750
+corner_radius_bottom_left = 750
+
+[sub_resource type="Theme" id="Theme_4rwuo"]
+Button/styles/hover = SubResource("StyleBoxFlat_xxse2")
+Button/styles/normal = SubResource("StyleBoxFlat_dosju")
+Button/styles/pressed = SubResource("StyleBoxFlat_rmvoj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5sd"]
+bg_color = Color(0.8392157, 0.09019608, 0.1882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc6lx"]
+bg_color = Color(0.9098039, 0.06666667, 0.13725491, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8thrs"]
+bg_color = Color(0.9471994, 0.9471994, 0.9471994, 1)
+
+[sub_resource type="Theme" id="Theme_xc6lx"]
+Button/colors/font_color = Color(0.7288213, 0.7288222, 0.7288216, 1)
+Button/colors/icon_normal_color = Color(0.42652702, 0.4141485, 0.5109032, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_7a5sd")
+Button/styles/hover = SubResource("StyleBoxFlat_xc6lx")
+Button/styles/normal = SubResource("StyleBoxFlat_8thrs")
+Button/styles/pressed = SubResource("StyleBoxFlat_7a5sd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u1fw"]
+bg_color = Color(0.9714822, 0.3976053, 0.24866962, 1)
+corner_radius_top_left = 750
+corner_radius_top_right = 750
+corner_radius_bottom_right = 750
+corner_radius_bottom_left = 750
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wku30"]
+bg_color = Color(0.972549, 0.2509804, 0.2, 1)
+corner_radius_top_left = 750
+corner_radius_top_right = 750
+corner_radius_bottom_right = 750
+corner_radius_bottom_left = 750
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rwuo"]
+bg_color = Color(0.9104862, 0.107405566, 0.32124108, 1)
+corner_radius_top_left = 750
+corner_radius_top_right = 750
+corner_radius_bottom_right = 750
+corner_radius_bottom_left = 750
+
+[sub_resource type="Theme" id="Theme_8thrs"]
+Button/icons/icon = ExtResource("4_1qoe3")
+Button/styles/hover = SubResource("StyleBoxFlat_8u1fw")
+Button/styles/normal = SubResource("StyleBoxFlat_wku30")
+Button/styles/pressed = SubResource("StyleBoxFlat_4rwuo")
+
+[node name="phoneCallWindow" type="Control"]
+z_index = 7
+layout_mode = 3
+anchors_preset = 0
+offset_left = 24.0
+offset_top = -218.73499
+offset_right = 393.0
+offset_bottom = 372.265
+pivot_offset = Vector2(188, 298)
+script = ExtResource("1_puh8p")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4rwuo")
+}
+
+[node name="window" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+
+[node name="TextureRect" type="TextureRect" parent="window"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -58.0
+offset_right = 43.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_usair")
+
+[node name="Label" type="Label" parent="window"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 368.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0.7372549, 0.7372549, 0.7372549, 1)
+theme_override_font_sizes/font_size = 14
+text = "Phone"
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 368.0
+offset_bottom = 590.0
+texture = ExtResource("3_ih10t")
+expand_mode = 1
+
+[node name="accept" type="Button" parent="ColorRect"]
+self_modulate = Color(0.33333334, 0.8509804, 0.3882353, 1)
+layout_mode = 0
+offset_left = 237.00002
+offset_top = 369.36374
+offset_right = 311.9993
+offset_bottom = 444.36374
+rotation = -2.4428797
+pivot_offset = Vector2(38, 39)
+focus_mode = 0
+theme = SubResource("Theme_4rwuo")
+
+[node name="icon" type="TextureRect" parent="ColorRect/accept"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_1qoe3")
+
+[node name="x" type="Button" parent="."]
+layout_mode = 0
+offset_left = 324.0
+offset_right = 369.0
+offset_bottom = 31.0
+focus_mode = 0
+theme = SubResource("Theme_xc6lx")
+text = "✕"
+
+[node name="ringingUi" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="incoming" type="Label" parent="ringingUi"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 96.0
+offset_right = 368.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("5_em8dk")
+theme_override_font_sizes/font_size = 18
+text = "Incoming Phone Call"
+horizontal_alignment = 1
+
+[node name="decline" type="Button" parent="ringingUi"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 404.36386
+offset_right = 131.0
+offset_bottom = 479.36386
+focus_mode = 0
+theme = SubResource("Theme_8thrs")
+
+[node name="text" type="Label" parent="ringingUi/decline"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 79.0
+offset_right = 61.0
+offset_bottom = 102.0
+scale = Vector2(1.21, 1)
+theme_override_fonts/font = ExtResource("5_em8dk")
+theme_override_font_sizes/font_size = 14
+text = "Decline"
+
+[node name="text" type="Label" parent="ringingUi"]
+layout_mode = 0
+offset_left = 249.00003
+offset_top = 483.36383
+offset_right = 300.00003
+offset_bottom = 506.36383
+scale = Vector2(1.21, 1)
+theme_override_fonts/font = ExtResource("5_em8dk")
+theme_override_font_sizes/font_size = 14
+text = "Accept"
+
+[node name="callUi" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 69.0
+offset_top = 199.0
+offset_right = 299.23572
+offset_bottom = 373.0
+texture = ExtResource("6_l6b7c")
+expand_mode = 1
+
+[node name="PhoneNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 118.0
+offset_right = 368.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("5_em8dk")
+theme_override_font_sizes/font_size = 41
+text = "+1 (111) 111-1111"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ColorRect/accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="x" to="." method="_on_decline_pressed"]
+[connection signal="pressed" from="ringingUi/decline" to="." method="_on_decline_pressed"]

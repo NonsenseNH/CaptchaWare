@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=44 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="PackedScene" uid="uid://bnyk2f5trja0r" path="res://instances/phoneVerification/phone_call_window.tscn" id="10_8thrs"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
@@ -127,23 +128,6 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("2_xqagn")
-
-[node name="phoneCallWindow" type="Control" parent="MicrogameGameplay"]
-z_index = 5
-layout_mode = 3
-anchors_preset = 0
-offset_left = 430.0
-offset_top = 97.0
-offset_right = 799.0
-offset_bottom = 688.0
-
-[node name="ColorRect" type="ColorRect" parent="MicrogameGameplay/phoneCallWindow"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)
@@ -307,6 +291,39 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("8_wxqbu")
+expand_mode = 1
+
+[node name="verifyButton" type="Button" parent="MicrogameGameplay/window/captcha_window/lowbar"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -63.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("9_0la4d")
+text = "VERIFY"
+
 [node name="curGame" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
 clip_children = 1
 z_index = 6
@@ -372,38 +389,9 @@ Please answer this number to verify
 your phone"
 horizontal_alignment = 1
 
-[node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
-use_parent_material = true
+[node name="phoneCallWindow" parent="MicrogameGameplay/window/captcha_window/curGame" instance=ExtResource("10_8thrs")]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = 73.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-texture = ExtResource("8_wxqbu")
-expand_mode = 1
-
-[node name="verifyButton" type="Button" parent="MicrogameGameplay/window/captcha_window/lowbar"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -63.0
-offset_right = -12.0
-offset_bottom = -12.0
-grow_horizontal = 0
-grow_vertical = 0
-focus_mode = 0
-mouse_default_cursor_shape = 2
-theme = ExtResource("9_0la4d")
-text = "VERIFY"
+pivot_offset = Vector2(185, 294)
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)

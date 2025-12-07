@@ -2615,24 +2615,6 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="curGame" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
-visible = false
-clip_children = 1
-z_index = 6
-z_as_relative = false
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 146.0
-offset_right = -8.0
-offset_bottom = -9.165039
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 use_parent_material = true
 layout_mode = 1
@@ -2665,6 +2647,24 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("8_dg70y")
 text = "VERIFY"
+
+[node name="curGame" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
+visible = false
+clip_children = 1
+z_index = 6
+z_as_relative = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 146.0
+offset_right = -8.0
+offset_bottom = -9.165039
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
