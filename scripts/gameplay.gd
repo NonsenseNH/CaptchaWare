@@ -162,7 +162,7 @@ func set_up_window_size(tween_window: bool = false) -> void:
 	ui_captcha_window.set_up_ui_data({
 		"windowSize" : Vector2(cur_microgame_data.Width, cur_microgame_data.Length),
 		"windowTween" : tween_window,
-		"tweenSpeed" : minf(cur_speed * 0.8, 3.0)
+		"tweenSpeed" : minf(cur_speed * 0.8, 2.3)
 	})
 
 func _on_timer_timeout() -> void:
