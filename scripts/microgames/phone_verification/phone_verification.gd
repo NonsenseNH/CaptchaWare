@@ -1,6 +1,6 @@
 extends Microgame
 
-const PHONE_CALL_WINDOW = preload("res://instances/PhoneVerification/phone_call_window.tscn")
+const PHONE_CALL_WINDOW = preload("uid://bnyk2f5trja0r")
 @onready var phonenumber_label: Label = $phonenumber
 var phone_number: int = 0
 

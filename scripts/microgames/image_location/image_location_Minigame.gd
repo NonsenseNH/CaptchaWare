@@ -3,7 +3,7 @@ extends Microgame
 @export var cur_image: Texture2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-const IMAGE_LOCATE_BUTTON = preload("res://instances/ImageLocate/ImageLocate_button.tscn")
+const IMAGE_LOCATE_BUTTON = preload("uid://f17y4s6cfnf4")
 const FILE_PATH: String = "res://sprites/locate_images/"
 
 var min_points := 0

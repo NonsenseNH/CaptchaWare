@@ -2,7 +2,7 @@ extends Microgame
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-const BUTTON = preload("res://instances/ImageWith/button.tscn")
+const BUTTON = preload("uid://cvj5co1i86i5s")
 const IMAGE_DIRECTORY : String = "res://sprites/images_with/"
 var image_data: Dictionary = {}
 var cur_object:String = ""
