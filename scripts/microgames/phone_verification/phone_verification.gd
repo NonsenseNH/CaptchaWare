@@ -24,6 +24,8 @@ var fake_number_type : PackedStringArray = [
 	"zac"
 ]
 
+@onready var popup: AudioStreamPlayer = $popup
+
 func _ready() -> void:
 	phonenumber_label.text = generate_number()
 
@@ -40,6 +42,9 @@ func pop_up_window() -> void: #spawn window
 	phone_call_window.call_declined.connect(on_call_declined)
 	
 	add_child(phone_call_window)
+
+	set_camera_shake.emit(10, 0.5)
+	popup.play()
 
 	if correct_one:
 		phone_call_window.phone_number_node.text = phonenumber_label.text
@@ -81,18 +86,22 @@ func get_phone_format(i: int) -> String:
 			return ""
 
 func canSkip() -> bool:
-	return has_answered
+	return false
 
 func isWinning() -> bool:
 	return has_answered && real_number_calling
 
-
 func on_call_answered() -> void:
 	has_answered = true
 
+	await get_tree().create_timer(0.5).timeout
+
+	force_end_mircogame()
+
 func on_call_declined() -> void:
 	if real_number_calling:
-		print_debug("FAILED")
+		await get_tree().create_timer(0.5).timeout
+		force_end_mircogame()
 		return
 	
 	await get_tree().create_timer(1.5).timeout

@@ -2451,7 +2451,6 @@ autowrap_mode = 2
 
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("1_36rkl")
-set_intro_sequence = true
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)

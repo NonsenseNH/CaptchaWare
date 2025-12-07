@@ -4,8 +4,8 @@
 [ext_resource type="Shader" uid="uid://b35lp3yhltbmw" path="res://shaders/puzzle_piece.gdshader" id="2_d267s"]
 [ext_resource type="Texture2D" uid="uid://bcaqtmiap4pqd" path="res://sprites/puzzle_piece/1.png" id="3_d267s"]
 [ext_resource type="Texture2D" uid="uid://5kji2wxrajwj" path="res://sprites/captcha_check.png" id="4_i5awx"]
-[ext_resource type="AudioStream" uid="uid://bvw7ba3b35gjc" path="res://sounds/microgames/tap.mp3" id="5_j8fln"]
-[ext_resource type="AudioStream" uid="uid://cnak3oxxs5acy" path="res://sounds/microgames/slide.mp3" id="6_i4x3w"]
+[ext_resource type="AudioStream" uid="uid://d0ky5ae1vh01" path="res://sounds/tap.mp3" id="5_j8fln"]
+[ext_resource type="AudioStream" uid="uid://fd2y4h703au4" path="res://sounds/slide.mp3" id="6_i4x3w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d267s"]
 resource_local_to_scene = true

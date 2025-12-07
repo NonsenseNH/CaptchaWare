@@ -8,7 +8,8 @@
 			"Length": 573.835,
 			"Width": 430.0,
 			"BonusTime": 0.0,
-			"slowGame": false
+			"slowGame": false,
+			"noTimer" : false
 		},
 		"imagesCategory":{
 			"instructionsBig" : "",
@@ -18,7 +19,8 @@
 			"Length": 573.835,
 			"Width": 430.0,
 			"BonusTime": 0.0,
-			"slowGame": false
+			"slowGame": false,
+			"noTimer" : false
 		},
 		"puzzlePiece":{
 			"instructionsBig" : "puzzle piece",
@@ -28,7 +30,8 @@
 			"Length": 691.835,
 			"Width": 430.0,
 			"BonusTime": 1.5,
-			"slowGame": false
+			"slowGame": false,
+			"noTimer" : false
 		},
 		"typeCaptcha":{
 			"instructionsBig" : "",
@@ -38,7 +41,8 @@
 			"Length": 294.835,
 			"Width": 430.0,
 			"BonusTime": 0.0,
-			"slowGame": false
+			"slowGame": false,
+			"noTimer" : false
 		},
 		"mathCaptcha":{
 			"instructionsBig" : "",
@@ -48,7 +52,8 @@
 			"Length": 294.835,
 			"Width": 430.0,
 			"BonusTime": 0.0,
-			"slowGame": true
+			"slowGame": true,
+			"noTimer" : false
 		},
 		"doNothing":{
 			"instructionsBig" : "cool image",
@@ -59,7 +64,8 @@
 			"Width": 430.0,
 			"BonusTime": 0.0,
 			"slowGame": true,
-			"staticTimer" : true
+			"staticTimer" : true,
+			"noTimer" : false
 		},
 		"touchGrass":{
 			"instructionsBig" : "touch grass",
@@ -69,7 +75,8 @@
 			"Length": 609.835,
 			"Width": 430.0,
 			"BonusTime": 2,
-			"slowGame": false
+			"slowGame": false,
+			"noTimer" : false
 		},
 		"howManyFingers":{
 			"instructionsBig" : "Watch closely",
@@ -79,7 +86,8 @@
 			"Length": 573.835,
 			"Width": 430.0,
 			"BonusTime": 1.5,
-			"slowGame": true
+			"slowGame": true,
+			"noTimer" : false
 		},
 		"termsOfService":{
 			"instructionsBig" : "Terms of Conditions",
@@ -90,7 +98,8 @@
 			"Width": 430.0,
 			"BonusTime": 4.0,
 			"slowGame": false,
-			"staticTimer" : true
+			"staticTimer" : true,
+			"noTimer" : false
 		},
 		"phoneVerification":{
 			"instructionsBig" : "Phone Verification",
@@ -101,7 +110,8 @@
 			"Width": 430.0,
 			"BonusTime": 0,
 			"slowGame": true,
-			"staticTimer" : false
+			"staticTimer" : false,
+			"noTimer" : true
 		}
 	},
 	"microgame_pool" :{

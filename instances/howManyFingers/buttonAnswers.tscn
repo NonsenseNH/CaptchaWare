@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dj2h1l8ocylfg"]
 
 [ext_resource type="Script" uid="uid://dg66bocy5iyxy" path="res://scripts/microgames/how_many_fingers/number_buttons.gd" id="1_sf6kk"]
-[ext_resource type="AudioStream" uid="uid://bvw7ba3b35gjc" path="res://sounds/microgames/tap.mp3" id="2_nbiba"]
+[ext_resource type="AudioStream" uid="uid://d0ky5ae1vh01" path="res://sounds/tap.mp3" id="2_nbiba"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbiba"]
 bg_color = Color(0.849556, 0.846118, 0.851236, 1)

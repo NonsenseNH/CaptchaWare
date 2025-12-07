@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnyk2f5trja0r"]
+[gd_scene load_steps=28 format=3 uid="uid://bnyk2f5trja0r"]
 
 [ext_resource type="Script" uid="uid://l14gvnb5l88v" path="res://scripts/microgames/phone_verification/phone_call_window.gd" id="1_puh8p"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="2_usair"]
@@ -7,6 +7,9 @@
 [ext_resource type="FontFile" uid="uid://bd7pih6s4pa1l" path="res://font/iphone.ttf" id="5_em8dk"]
 [ext_resource type="Texture2D" uid="uid://rv2mljn287w8" path="res://sprites/phone_verification/call_ui.png" id="6_l6b7c"]
 [ext_resource type="AudioStream" uid="uid://c5f75df5d7r7b" path="res://sounds/microgames/phone_verification/automated_message.mp3" id="7_puh8p"]
+[ext_resource type="AudioStream" uid="uid://cq0jm5pduko5e" path="res://sounds/microgames/phone_verification/button_dial.mp3" id="8_1qoe3"]
+[ext_resource type="AudioStream" uid="uid://w7knifljorvp" path="res://sounds/microgames/phone_verification/end_call.mp3" id="8_ih10t"]
+[ext_resource type="AudioStream" uid="uid://cbvr8tean0h3r" path="res://sounds/microgames/phone_verification/ringing.mp3" id="8_usair"]
 
 [sub_resource type="Animation" id="Animation_puh8p"]
 length = 0.001
@@ -94,6 +97,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect/accept:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ringingUi/decline:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_dosju"]
 resource_name = "answered"
@@ -157,34 +184,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.80100006)]
-}
-
-[sub_resource type="Animation" id="Animation_usair"]
-resource_name = "ignored"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ringingUi/decline:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.536)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/accept:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.536)]
 }
 
 [sub_resource type="Animation" id="Animation_ih10t"]
@@ -262,6 +261,82 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0.453)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ringingUi/decline:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect/accept:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_usair"]
+resource_name = "ignored"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ringingUi/decline:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.536)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/accept:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.536)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/accept:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ringingUi/decline:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4rwuo"]
 _data = {
@@ -271,15 +346,15 @@ _data = {
 &"ignored": SubResource("Animation_usair")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxse2"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dosju"]
+bg_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
 corner_radius_top_left = 750
 corner_radius_top_right = 750
 corner_radius_bottom_right = 750
 corner_radius_bottom_left = 750
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dosju"]
-bg_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxse2"]
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 750
 corner_radius_top_right = 750
 corner_radius_bottom_right = 750
@@ -293,6 +368,9 @@ corner_radius_bottom_right = 750
 corner_radius_bottom_left = 750
 
 [sub_resource type="Theme" id="Theme_4rwuo"]
+Button/colors/font_disabled_color = Color(0.8750814, 0.8750814, 0.8750814, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_dosju")
 Button/styles/hover = SubResource("StyleBoxFlat_xxse2")
 Button/styles/normal = SubResource("StyleBoxFlat_dosju")
 Button/styles/pressed = SubResource("StyleBoxFlat_rmvoj")
@@ -314,15 +392,15 @@ Button/styles/hover = SubResource("StyleBoxFlat_xc6lx")
 Button/styles/normal = SubResource("StyleBoxFlat_8thrs")
 Button/styles/pressed = SubResource("StyleBoxFlat_7a5sd")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u1fw"]
-bg_color = Color(0.9714822, 0.3976053, 0.24866962, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wku30"]
+bg_color = Color(0.972549, 0.2509804, 0.2, 1)
 corner_radius_top_left = 750
 corner_radius_top_right = 750
 corner_radius_bottom_right = 750
 corner_radius_bottom_left = 750
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wku30"]
-bg_color = Color(0.972549, 0.2509804, 0.2, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u1fw"]
+bg_color = Color(0.9714822, 0.3976053, 0.24866962, 1)
 corner_radius_top_left = 750
 corner_radius_top_right = 750
 corner_radius_bottom_right = 750
@@ -336,7 +414,10 @@ corner_radius_bottom_right = 750
 corner_radius_bottom_left = 750
 
 [sub_resource type="Theme" id="Theme_8thrs"]
+Button/colors/font_disabled_color = Color(0.8750814, 0.8750814, 0.8750814, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
 Button/icons/icon = ExtResource("4_1qoe3")
+Button/styles/disabled = SubResource("StyleBoxFlat_wku30")
 Button/styles/hover = SubResource("StyleBoxFlat_8u1fw")
 Button/styles/normal = SubResource("StyleBoxFlat_wku30")
 Button/styles/pressed = SubResource("StyleBoxFlat_4rwuo")
@@ -496,7 +577,7 @@ horizontal_alignment = 1
 
 [node name="phoneAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_puh8p")
-volume_db = 10.0
+volume_db = 6.5
 bus = &"Sounds"
 
 [node name="ring_time" type="Timer" parent="."]
@@ -504,8 +585,26 @@ wait_time = 2.5
 one_shot = true
 autostart = true
 
+[node name="sounds" type="Node" parent="."]
+
+[node name="answer" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_1qoe3")
+volume_db = -1.815
+bus = &"Sounds"
+
+[node name="decline" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_ih10t")
+volume_db = -2.746
+bus = &"Sounds"
+
+[node name="ringing" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_usair")
+volume_db = -1.7
+autoplay = true
+bus = &"Sounds"
+
 [connection signal="pressed" from="ColorRect/accept" to="." method="_on_accept_pressed"]
-[connection signal="pressed" from="x" to="." method="_on_decline_pressed"]
+[connection signal="pressed" from="x" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="ringingUi/decline" to="." method="_on_decline_pressed"]
 [connection signal="finished" from="phoneAudio" to="." method="_on_phone_audio_finished"]
 [connection signal="timeout" from="ring_time" to="." method="_on_ring_time_timeout"]

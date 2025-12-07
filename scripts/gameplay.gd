@@ -10,8 +10,7 @@ const JUDGEMENT_TEXT_LOCATION : String = "res://scripts/"
 
 @export var games_left_to_speed_up : = 5
 @export var games_on_intro := 3
-@export var set_intro_sequence : = false
-var intro_sequence := set_intro_sequence
+var intro_sequence := true
 
 @onready var bg: TextureRect = $bg
 
@@ -44,7 +43,7 @@ var cur_window_size : Vector2 = Vector2.ZERO
 var cur_microgame : Node = null
 var transitioning : bool = false
 
-var cur_microgame_pool_array : Array = []
+var cur_microgame_pool_array : PackedStringArray = []
 
 var games_played : int = 0
 
@@ -90,11 +89,10 @@ func _ready() -> void:
 		resource_preloader.add_resource(game, load("res://microgames/" + game + ".tscn"))
 
 func start_game() -> void:
-	cur_microgame_pool_array.clear()
+	intro_sequence = true
 	
 	var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 	AudioServer.set_bus_volume_db(bus_index, -80)
-	intro_sequence = set_intro_sequence
 	
 	fails = 0
 	win_streak = 0
@@ -107,9 +105,9 @@ func start_game() -> void:
 		cur_microgame_pool_array = get_game_pool()
 	
 	error_message.visible = false
-	
+
 	get_microgame_data("imageLocation")
-	
+
 	set_up_window_size()
 	set_game_speed()
 	change_game()
@@ -169,7 +167,6 @@ func set_up_window_size(tween_window: bool = false) -> void:
 
 func _on_timer_timeout() -> void:
 	transition_game()
-	pass
 
 func transition_game() -> void:
 	var did_fail : bool = prev_microgame != null && !prev_microgame.isWinning()
@@ -313,10 +310,13 @@ func change_game():
 		prev_microgame.override_instruction_text.disconnect(override_instructions)
 		prev_microgame.set_camera_shake.disconnect(camera_shake)
 		prev_microgame.skip_timer.disconnect(skip_timer)
+		prev_microgame.end_microgame.disconnect(transition_game)
 	
 	cur_microgame.override_instruction_text.connect(override_instructions)
 	cur_microgame.set_camera_shake.connect(camera_shake)
 	cur_microgame.skip_timer.connect(skip_timer)
+	cur_microgame.end_microgame.connect(transition_game)
+	
 	cur_microgame.current_game_speed = cur_speed
 	cur_microgame.difficulty = difficulty
 	cur_microgame.is_intro = intro_sequence
@@ -329,7 +329,7 @@ func change_game():
 	
 	prev_microgame = cur_microgame
 	
-	if !intro_sequence:
+	if !intro_sequence && !cur_microgame_data.noTimer:
 		if cur_microgame_data.has("staticTimer") && cur_microgame_data.staticTimer:
 			total_wait_time = og_wait_time + cur_microgame_data.BonusTime
 		else:
@@ -376,7 +376,7 @@ func get_microgame(force_game : String = "") -> Node:
 		cur_microgame_pool_array = get_game_pool()
 	
 	while (true):
-		cur_game_name = cur_microgame_pool_array.pick_random()
+		cur_game_name = cur_microgame_pool_array[randi_range(0, cur_microgame_pool_array.size() - 1)]
 		if (cur_game_name == null || !(prev_microgame == null || cur_game_name != prev_microgame.name) && cur_microgame_pool_array.size() != 1): continue
 		break
 	

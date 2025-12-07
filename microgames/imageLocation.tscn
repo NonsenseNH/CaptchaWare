@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://iv7i0dkhamly"]
 
 [ext_resource type="Script" uid="uid://diplvo8ugfegc" path="res://scripts/microgames/image_location/image_location_Minigame.gd" id="1_j8lrv"]
-[ext_resource type="AudioStream" uid="uid://bvw7ba3b35gjc" path="res://sounds/microgames/tap.mp3" id="2_egmva"]
+[ext_resource type="AudioStream" uid="uid://d0ky5ae1vh01" path="res://sounds/tap.mp3" id="2_egmva"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uwq5s"]
 random_pitch = 1.1
