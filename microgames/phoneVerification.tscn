@@ -23,39 +23,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9035985, 0.9035982, 0.9035982, 1)
 
 [node name="phonenumber" type="Label" parent="."]
 layout_mode = 0
-offset_top = 68.26503
+offset_top = 49.0
 offset_right = 414.0
-offset_bottom = 125.26503
-theme_override_colors/font_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(1, 0.6997026, 0.22131926, 1)
 theme_override_colors/font_shadow_color = Color(0.47772512, 0.47772512, 0.47772512, 0.69100004)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.4496525, 0.21542805, 1.4439226e-07, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 11
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 31
 text = "+1 (111) 111-1111"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 16.0
+offset_right = 414.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(1, 0.9411765, 0.94509804, 1)
+theme_override_colors/font_shadow_color = Color(0.38928655, 0.38928664, 0.38928658, 0.53333336)
+theme_override_colors/font_outline_color = Color(0.32941177, 0.32941177, 0.32941177, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 21
+text = "THIS NUMBER WILL CALL YOU:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 102.0
+offset_right = 414.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.563)
+theme_override_colors/font_outline_color = Color(0.32941177, 0.32941177, 0.32941177, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 19
+text = "!!! MAKE SURE IT'S THE RIGHT NUMBER !!!"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 42.26503
+offset_top = 134.0
 offset_right = 413.0
-offset_bottom = 171.26501
+offset_bottom = 263.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.38928655, 0.38928664, 0.38928658, 0.53333336)
+theme_override_constants/line_spacing = -3
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 2
-text = "This phone number will call you:
-
-
+text = "This phone number will call you.
 Please answer this number to verify
-your phone"
+your phone in order to proceed"
 horizontal_alignment = 1
 
 [node name="popup" type="AudioStreamPlayer" parent="."]

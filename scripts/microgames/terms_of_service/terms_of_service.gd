@@ -16,25 +16,27 @@ const FONT_SEPARATION := 23
 var scroll_velocity := 0.0
 var full_tos_text : PackedStringArray
 
-var scroll_length : Array = [
-	20792.0,
-	20792.0,
-	32338.0,
-	40917.0
+var scroll_length : Array[int] = [
+	20792,
+	20792,
+	27127,
+	32338,
 ]
-var article_amount_set : Array = [
+var article_amount_set : Array[int] = [
 	35,
 	35,
-	65,
-	100
+	50,
+	65
 ]
 
-@onready var article_limit : int = article_amount_set[difficulty - 1] - 3
+var article_limit : int = 0
 var cur_article : int = 0
 var cur_article_pos_check : float = 0
 var cur_article_pos_offset : float = 0
 
 func _ready() -> void:
+	difficulty = 3
+	article_limit = article_amount_set[difficulty - 1] - 3
 	full_tos_text = get_tos_text(article_amount_set[difficulty - 1])
 	
 	v_scroll_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -101,6 +103,7 @@ func finished_scrolling() -> void:
 
 func tos_scrolling_system(scrolling_value : int) -> void:
 	if cur_article_pos_check >= scrolling_value || cur_article > article_limit: return
+	print_debug(scrolling_value)
 	update_tos_text(cur_article)
 	cur_article += 1
 

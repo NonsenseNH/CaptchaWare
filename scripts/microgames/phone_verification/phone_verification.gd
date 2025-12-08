@@ -21,7 +21,8 @@ var fake_number_type : PackedStringArray = [
 	"mystery",
 	"nonsense",
 	"puppet",
-	"zac"
+	"zac",
+	"lopil"
 ]
 
 @onready var popup: AudioStreamPlayer = $popup
@@ -29,7 +30,7 @@ var fake_number_type : PackedStringArray = [
 func _ready() -> void:
 	phonenumber_label.text = generate_number()
 
-	await get_tree().create_timer(randf_range(2.0, 4.0)).timeout
+	await get_tree().create_timer(randf_range(3.0, 4.5)).timeout
 
 	pop_up_window()
 

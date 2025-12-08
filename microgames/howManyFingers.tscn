@@ -349,7 +349,7 @@ layout_mode = 1
 offset_right = 414.0
 offset_bottom = 420.0
 mouse_filter = 2
-color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+color = Color(0.9515795, 0.95157963, 0.9515794, 1)
 
 [node name="hand_group" type="Node2D" parent="."]
 position = Vector2(0, -7)

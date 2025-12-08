@@ -14,7 +14,7 @@ stream_0/stream = ExtResource("4_tfbiu")
 offset_right = 413.0
 offset_bottom = 376.0
 mouse_filter = 2
-color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+color = Color(0.9471993, 0.9471994, 0.9471993, 1)
 script = ExtResource("1_wfjr7")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

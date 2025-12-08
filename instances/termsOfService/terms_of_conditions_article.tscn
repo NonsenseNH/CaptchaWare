@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://crtt7u65hd032"]
-
-[node name="TermsOfConditionsArticle" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -406.0
-offset_right = 6.0
-offset_bottom = 377.0
