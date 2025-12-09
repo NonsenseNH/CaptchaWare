@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq7mw3o203kvc"]
+[gd_scene load_steps=13 format=3 uid="uid://bq7mw3o203kvc"]
 
 [ext_resource type="Script" uid="uid://c0pcuc8a1djrb" path="res://scripts/microgames/align_circle/align_circle.gd" id="1_fh35l"]
 [ext_resource type="Texture2D" uid="uid://1nqrgf4kij3m" path="res://sprites/align_circle/circle_1.png" id="2_2bpb4"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="4_3pv4r"]
 [ext_resource type="Texture2D" uid="uid://bjldfewvkoa88" path="res://sprites/align_circle/grab_button.png" id="5_q5ggo"]
 [ext_resource type="Texture2D" uid="uid://b3y6dcr8oov3o" path="res://sprites/align_circle/grab_button_hover.png" id="6_xywhr"]
+[ext_resource type="AudioStream" uid="uid://bvm00fgkndd3p" path="res://sounds/microgames/align_circle/slide_circle_loop.mp3" id="7_vnu7j"]
+[ext_resource type="AudioStream" uid="uid://dxapi6hr1rjvg" path="res://sounds/microgames/align_circle/slide_in.mp3" id="8_3pv4r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5sd"]
 bg_color = Color(0.9059797, 0.8911085, 0.89109176, 1)
@@ -34,6 +36,11 @@ HSlider/icons/grabber_highlight = ExtResource("6_xywhr")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_7a5sd")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_7a5sd")
 HSlider/styles/slider = SubResource("StyleBoxFlat_xc6lx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vnu7j"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_3pv4r")
 
 [node name="alignCircle" type="Control"]
 layout_mode = 3
@@ -93,6 +100,14 @@ theme_override_colors/font_color = Color(0.6460293, 0.6460289, 0.646029, 1)
 theme_override_font_sizes/font_size = 14
 text = "Drag the puzzle piece into place"
 horizontal_alignment = 1
+
+[node name="sliding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vnu7j")
+autoplay = true
+
+[node name="slideIn" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_vnu7j")
+volume_db = -5.0
 
 [connection signal="drag_started" from="slider" to="." method="_on_slider_drag_started"]
 [connection signal="value_changed" from="slider" to="." method="_on_slider_value_changed"]

@@ -29,18 +29,21 @@ func _on_decline_pressed() -> void:
 	end_call()
 
 func _on_accept_pressed() -> void:
+	if answered:
+		end_call()
+		return
+
+	answered = true
+	
 	ring_time.stop()
 	ringing.stop()
 
-	if !answered || anim.current_animation != "answered":
-		anim.play("answered")
-		answer.play()
+	anim.play("answered")
+	answer.play()
 
-		await get_tree().create_timer(0.5).timeout
-		phone_audio.play()
-	else:
-		end_call()
-	answered = true
+	await get_tree().create_timer(0.5).timeout
+
+	phone_audio.play()
 
 
 func _on_phone_audio_finished() -> void:

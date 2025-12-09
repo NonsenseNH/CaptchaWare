@@ -50,6 +50,8 @@ var games_played : int = 0
 var microgame_json : Dictionary = {}
 var cur_microgame_data : Dictionary = {}
 
+var prev_window_size : Vector2 = Vector2.ZERO
+
 var judgement_text : Dictionary = {
 	"win_dialogue": {},
 	"lose_dialogue": {}
@@ -108,6 +110,8 @@ func start_game() -> void:
 
 	get_microgame_data("imageLocation")
 
+	prev_window_size = Vector2(cur_microgame_data.Width, cur_microgame_data.Length)
+
 	set_up_window_size()
 	set_game_speed()
 	change_game()
@@ -156,7 +160,7 @@ func set_game_speed(speed: float = 0) -> void:
 		difficulty += 1
 	
 	var captcha_bg_tween : Tween = create_tween()
-	captcha_bg_tween.tween_property(bg.material, "shader_parameter/scroll_speed", speed * 0.01, 3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).as_relative()
+	captcha_bg_tween.tween_property(bg.material, "shader_parameter/scroll_speed", speed, 3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).as_relative()
 
 func set_up_window_size(tween_window: bool = false) -> void:
 	ui_captcha_window.set_up_ui_data({
@@ -164,6 +168,13 @@ func set_up_window_size(tween_window: bool = false) -> void:
 		"windowTween" : tween_window,
 		"tweenSpeed" : minf(cur_speed * 0.8, 2.3)
 	})
+
+	if prev_window_size == Vector2(cur_microgame_data.Width, cur_microgame_data.Length):
+		return
+	
+	prev_window_size = Vector2(cur_microgame_data.Width, cur_microgame_data.Length)
+
+	sounds.get_node("stretch resize").play()
 
 func _on_timer_timeout() -> void:
 	transition_game()
@@ -184,6 +195,9 @@ func transition_game() -> void:
 		music_handler(did_fail)
 	
 	get_microgame_data()
+
+	if !did_fail:
+		sounds.get_node("ding").play()
 	
 	if intro_sequence: 
 		judgement_text_intro.text = "Good!" if !did_fail else "Try Again!"

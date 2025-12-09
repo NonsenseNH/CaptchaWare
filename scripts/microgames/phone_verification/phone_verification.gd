@@ -6,6 +6,9 @@ var phone_number: int = 0
 
 var real_number_calling : bool = false
 var has_answered: bool = false
+
+var number_of_calls : int = 0
+var how_many_fake_calls : int = 1
 # Called when the node enters the scene tree for the first time.
 
 var fake_number_type : PackedStringArray = [
@@ -31,6 +34,8 @@ var fake_number_type : PackedStringArray = [
 func _ready() -> void:
 	phonenumber_label.text = generate_number()
 
+	how_many_fake_calls = randi_range(1, 3)
+
 	await get_tree().create_timer(randf_range(2.0, 4.0)).timeout
 
 	pop_up_window()
@@ -38,7 +43,6 @@ func _ready() -> void:
 
 func pop_up_window() -> void: #spawn window
 	var phone_call_window : Control = PHONE_CALL_WINDOW.instantiate()
-	var correct_one = bool(randi_range(0, 1))
 	
 	phone_call_window.call_answered.connect(on_call_answered)
 	phone_call_window.call_declined.connect(on_call_declined)
@@ -48,12 +52,13 @@ func pop_up_window() -> void: #spawn window
 	set_camera_shake.emit(10, 0.5)
 	popup.play()
 
-	if correct_one:
+	if how_many_fake_calls < number_of_calls:
 		phone_call_window.phone_number_node.text = phonenumber_label.text
 		real_number_calling = true
 	else:
 		phone_call_window.phone_number_node.text = generate_number()
 		phone_call_window.phone_audio.stream = get_phone_call_audio()
+	number_of_calls += 1
 
 func get_phone_call_audio() -> AudioStream:
 	var path : String = "res://sounds/microgames/phone_verification/"

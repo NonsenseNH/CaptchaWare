@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://bfsemdv668ekw"]
+[gd_scene load_steps=106 format=3 uid="uid://bfsemdv668ekw"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_8cp6k"]
 [ext_resource type="Script" uid="uid://bnjqqa2nf5s2f" path="res://scripts/gameplay.gd" id="1_36rkl"]
@@ -41,6 +41,11 @@
 [ext_resource type="AudioStream" uid="uid://b05mv75765lnm" path="res://sounds/keyboard_10.mp3" id="24_oa6sj"]
 [ext_resource type="AudioStream" uid="uid://d4biwfnyykclm" path="res://sounds/pc_hum.mp3" id="25_0f1tp"]
 [ext_resource type="AudioStream" uid="uid://bb34cufoy5udg" path="res://sounds/pc_overheat.mp3" id="26_0qimb"]
+[ext_resource type="AudioStream" uid="uid://bfsu5f1fv5ewn" path="res://sounds/stretch_0.mp3" id="42_t70y2"]
+[ext_resource type="AudioStream" uid="uid://cgqrganc8einb" path="res://sounds/stretch_1.mp3" id="43_8gny2"]
+[ext_resource type="AudioStream" uid="uid://bujx0i5eanjqs" path="res://sounds/stretch_2.mp3" id="44_s3wmy"]
+[ext_resource type="AudioStream" uid="uid://dcgkv3f7alrih" path="res://sounds/stretch_3.mp3" id="45_gdcyb"]
+[ext_resource type="AudioStream" uid="uid://7rlhx6afqt07" path="res://sounds/win.mp3" id="46_8gny2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma7h6"]
 bg_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
@@ -111,7 +116,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_gsxep")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qpfo2"]
 shader = ExtResource("2_fs0b5")
-shader_parameter/scroll_speed = 0.01
+shader_parameter/scroll_speed = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq6as"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -2389,6 +2394,17 @@ Vector2i(-1, -1): {
 }
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oa6sj"]
+streams_count = 4
+stream_0/stream = ExtResource("42_t70y2")
+stream_1/stream = ExtResource("43_8gny2")
+stream_2/stream = ExtResource("44_s3wmy")
+stream_3/stream = ExtResource("45_gdcyb")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s3wmy"]
+streams_count = 1
+stream_0/stream = ExtResource("46_8gny2")
+
 [node name="Game" type="Node2D"]
 z_index = 2
 metadata/_edit_horizontal_guides_ = [399.0]
@@ -2915,6 +2931,17 @@ bus = &"Sounds"
 stream = SubResource("AudioStreamInteractive_rhq6j")
 volume_db = 6.701
 autoplay = true
+bus = &"Sounds"
+
+[node name="stretch resize" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_oa6sj")
+volume_db = -8.0
+bus = &"Microgame Sounds"
+
+[node name="ding" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = SubResource("AudioStreamRandomizer_s3wmy")
+volume_db = -15.0
+pitch_scale = 1.5
 bus = &"Sounds"
 
 [connection signal="pressed" from="MainMenu/captchabox/captchaSprite/Button" to="MicrogameGameplay" method="checkbox_pressed"]
