@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bfsemdv668ekw"]
+[gd_scene load_steps=107 format=3 uid="uid://bfsemdv668ekw"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_8cp6k"]
 [ext_resource type="Script" uid="uid://bnjqqa2nf5s2f" path="res://scripts/gameplay.gd" id="1_36rkl"]
@@ -46,6 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://bujx0i5eanjqs" path="res://sounds/stretch_2.mp3" id="44_s3wmy"]
 [ext_resource type="AudioStream" uid="uid://dcgkv3f7alrih" path="res://sounds/stretch_3.mp3" id="45_gdcyb"]
 [ext_resource type="AudioStream" uid="uid://7rlhx6afqt07" path="res://sounds/win.mp3" id="46_8gny2"]
+[ext_resource type="AudioStream" uid="uid://c2gjkp2lhdqhr" path="res://sounds/increase_speed.mp3" id="47_s3wmy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma7h6"]
 bg_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
@@ -554,6 +555,30 @@ tracks/21/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../sounds/ding:playing")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("../sounds/increase speed:playing")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_v0vrg"]
@@ -1572,6 +1597,18 @@ tracks/15/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../sounds/ding:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(-0.06666667, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_8b871"]
 resource_name = "gametransition_intro_beginning"
@@ -1779,6 +1816,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../sounds/ding:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(-0.06666668, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_2c4at"]
@@ -1992,6 +2041,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../sounds/increase speed:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_pdwbg"]
@@ -2208,6 +2269,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../sounds/increase speed:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gsxep"]
@@ -2941,7 +3014,11 @@ bus = &"Microgame Sounds"
 [node name="ding" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
 stream = SubResource("AudioStreamRandomizer_s3wmy")
 volume_db = -15.0
-pitch_scale = 1.5
+bus = &"Sounds"
+
+[node name="increase speed" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+stream = ExtResource("47_s3wmy")
+volume_db = -13.0
 bus = &"Sounds"
 
 [connection signal="pressed" from="MainMenu/captchabox/captchaSprite/Button" to="MicrogameGameplay" method="checkbox_pressed"]

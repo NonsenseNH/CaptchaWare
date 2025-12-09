@@ -52,7 +52,7 @@ func pop_up_window() -> void: #spawn window
 	set_camera_shake.emit(10, 0.5)
 	popup.play()
 
-	if how_many_fake_calls < number_of_calls:
+	if how_many_fake_calls <= number_of_calls:
 		phone_call_window.phone_number_node.text = phonenumber_label.text
 		real_number_calling = true
 	else:

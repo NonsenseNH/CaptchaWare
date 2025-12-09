@@ -103,11 +103,14 @@ horizontal_alignment = 1
 
 [node name="sliding" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vnu7j")
+volume_db = -80.0
 autoplay = true
+bus = &"Microgame Sounds"
 
 [node name="slideIn" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_vnu7j")
-volume_db = -5.0
+volume_db = -10.0
+bus = &"Microgame Sounds"
 
 [connection signal="drag_started" from="slider" to="." method="_on_slider_drag_started"]
 [connection signal="value_changed" from="slider" to="." method="_on_slider_value_changed"]

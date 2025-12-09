@@ -44,10 +44,10 @@ func _on_slider_drag_started() -> void:
 
 func _physics_process(delta: float) -> void:
 	value_velocity = lerp(value_velocity, 0.0, delta * 8)
-	
+
 	if !inserted:
 		value_velocity = abs(prev_value_slider - slider.value)
-		sliding_sound.volume_db = lerpf(-10.0, 1.0, minf(value_velocity * 10, 1.0)) if value_velocity > 0.01 else -80.0
+		sliding_sound.volume_db = lerpf(-5.0, 3.0, minf(value_velocity * 10, 1.0)) if value_velocity > 0.01 else -80.0
 	else:
 		sliding_sound.volume_db = -80.0
 	

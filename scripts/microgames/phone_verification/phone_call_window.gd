@@ -15,6 +15,8 @@ var cur_number_text: String = ""
 
 @onready var ring_time: Timer = $ring_time
 
+var declined : bool = false
+
 signal call_answered()
 signal call_declined()
 
@@ -34,7 +36,7 @@ func _on_accept_pressed() -> void:
 		return
 
 	answered = true
-	
+
 	ring_time.stop()
 	ringing.stop()
 
@@ -43,6 +45,7 @@ func _on_accept_pressed() -> void:
 
 	await get_tree().create_timer(0.5).timeout
 
+	if declined: return
 	phone_audio.play()
 
 
@@ -50,6 +53,8 @@ func _on_phone_audio_finished() -> void:
 	end_call()
 
 func end_call() -> void:
+	declined = true
+	
 	phone_audio.stop()
 	decline.play()
 	
