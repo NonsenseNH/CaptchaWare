@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq7mw3o203kvc"]
+
+[ext_resource type="Script" uid="uid://c0pcuc8a1djrb" path="res://scripts/microgames/align_circle/align_circle.gd" id="1_fh35l"]
+[ext_resource type="Texture2D" uid="uid://1nqrgf4kij3m" path="res://sprites/align_circle/circle_1.png" id="2_2bpb4"]
+[ext_resource type="Texture2D" uid="uid://hbaxg7brte0p" path="res://sprites/touch_grass/grass_images/grass1.png" id="3_vnu7j"]
+[ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="4_3pv4r"]
+[ext_resource type="Texture2D" uid="uid://bjldfewvkoa88" path="res://sprites/align_circle/grab_button.png" id="5_q5ggo"]
+[ext_resource type="Texture2D" uid="uid://b3y6dcr8oov3o" path="res://sprites/align_circle/grab_button_hover.png" id="6_xywhr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5sd"]
+bg_color = Color(0.9059797, 0.8911085, 0.89109176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc6lx"]
+bg_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
+border_width_top = 16
+border_width_bottom = 16
+border_color = Color(0.796243, 0.796243, 0.79624313, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+shadow_color = Color(0, 0, 0, 0.094000004)
+shadow_size = 4
+
+[sub_resource type="Theme" id="Theme_7a5sd"]
+HSlider/icons/grabber = ExtResource("5_q5ggo")
+HSlider/icons/grabber_highlight = ExtResource("6_xywhr")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_7a5sd")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_7a5sd")
+HSlider/styles/slider = SubResource("StyleBoxFlat_xc6lx")
+
+[node name="alignCircle" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 414.0
+offset_bottom = 277.265
+script = ExtResource("1_fh35l")
+
+[node name="circle1" type="Sprite2D" parent="."]
+modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)
+clip_children = 1
+z_index = -2
+position = Vector2(203, 110.360016)
+scale = Vector2(0.515, 0.515)
+texture = ExtResource("2_2bpb4")
+
+[node name="image" type="TextureRect" parent="circle1"]
+offset_left = -174.75732
+offset_top = -172.81555
+offset_right = 172.81549
+offset_bottom = 174.75726
+texture = ExtResource("3_vnu7j")
+
+[node name="circle2" type="Sprite2D" parent="."]
+clip_children = 1
+z_index = -2
+position = Vector2(203, 110.360016)
+scale = Vector2(0.515, 0.515)
+texture = ExtResource("4_3pv4r")
+
+[node name="image" type="TextureRect" parent="circle2"]
+offset_left = -174.75732
+offset_top = -172.81555
+offset_right = 172.81549
+offset_bottom = 174.75726
+texture = ExtResource("3_vnu7j")
+
+[node name="slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 209.26501
+offset_right = 394.0
+offset_bottom = 250.26501
+focus_mode = 0
+theme = SubResource("Theme_7a5sd")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="text" type="Label" parent="slider"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 43.0
+offset_right = 368.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0.6460293, 0.6460289, 0.646029, 1)
+theme_override_font_sizes/font_size = 14
+text = "Drag the puzzle piece into place"
+horizontal_alignment = 1
+
+[connection signal="drag_started" from="slider" to="." method="_on_slider_drag_started"]
+[connection signal="value_changed" from="slider" to="." method="_on_slider_value_changed"]

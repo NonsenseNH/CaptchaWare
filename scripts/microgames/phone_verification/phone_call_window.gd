@@ -32,7 +32,7 @@ func _on_accept_pressed() -> void:
 	ring_time.stop()
 	ringing.stop()
 
-	if !answered:
+	if !answered || anim.current_animation != "answered":
 		anim.play("answered")
 		answer.play()
 

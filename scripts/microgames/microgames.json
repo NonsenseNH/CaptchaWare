@@ -72,14 +72,14 @@
 			"InstructionsSmall" : "Click the grass image to--Fill up the bar.",
 			"referenceImage" : "res://sprites/touch_grass/grass_images/grass1.png",
 			"errorMessage" : "Please fill up the bar",
-			"Length": 609.835,
+			"Length": 573.835,
 			"Width": 430.0,
 			"BonusTime": 2,
 			"slowGame": false,
 			"noTimer" : false
 		},
 		"howManyFingers":{
-			"instructionsBig" : "Watch closely",
+			"instructionsBig" : "watch closely",
 			"InstructionsSmall" : "--Watch the hand.",
 			"referenceImage" : "",
 			"errorMessage" : "Please choose an answer",
@@ -90,7 +90,7 @@
 			"noTimer" : false
 		},
 		"termsOfService":{
-			"instructionsBig" : "Terms of Conditions",
+			"instructionsBig" : "terms of conditions",
 			"InstructionsSmall" : "Please Agree to the--Click verify when done.",
 			"referenceImage" : "",
 			"errorMessage" : "Please read the terms of conditions.",
@@ -102,7 +102,7 @@
 			"noTimer" : false
 		},
 		"phoneVerification":{
-			"instructionsBig" : "Phone Verification",
+			"instructionsBig" : "phone verification",
 			"InstructionsSmall" : "--Click verify when done.",
 			"referenceImage" : "",
 			"errorMessage" : "Please verify your phone before continuing.",
@@ -112,6 +112,18 @@
 			"slowGame": true,
 			"staticTimer" : false,
 			"noTimer" : true
+		},
+		"alignCircle":{
+			"instructionsBig" : "align the image",
+			"InstructionsSmall" : "Move the slider to--Click verify when done.",
+			"referenceImage" : "",
+			"errorMessage" : "Please align the image first.",
+			"Length": 431.265,
+			"Width": 430.0,
+			"BonusTime": 0,
+			"slowGame": false,
+			"staticTimer" : false,
+			"noTimer" : false
 		}
 	},
 	"microgame_pool" :{
@@ -129,7 +141,8 @@
 			"touchGrass",
             "howManyFingers",
 			"termsOfService",
-			"phoneVerification"
+			"phoneVerification",
+			"alignCircle"
 		]
 	}
 }

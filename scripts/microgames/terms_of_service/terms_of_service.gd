@@ -35,7 +35,6 @@ var cur_article_pos_check : float = 0
 var cur_article_pos_offset : float = 0
 
 func _ready() -> void:
-	difficulty = 3
 	article_limit = article_amount_set[difficulty - 1] - 3
 	full_tos_text = get_tos_text(article_amount_set[difficulty - 1])
 	
@@ -103,7 +102,6 @@ func finished_scrolling() -> void:
 
 func tos_scrolling_system(scrolling_value : int) -> void:
 	if cur_article_pos_check >= scrolling_value || cur_article > article_limit: return
-	print_debug(scrolling_value)
 	update_tos_text(cur_article)
 	cur_article += 1
 

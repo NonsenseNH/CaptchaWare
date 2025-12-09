@@ -287,7 +287,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -119.0
+offset_bottom = -155.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_4gcub")
@@ -330,7 +330,7 @@ position = Vector2(415, 664)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = 423.0
+offset_top = 386.0
 offset_right = 414.0
-offset_bottom = 450.0
+offset_bottom = 413.0
 theme = ExtResource("6_q0dx4")

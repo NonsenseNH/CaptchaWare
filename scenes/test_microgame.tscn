@@ -126,7 +126,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("2_xqagn")
-force_microgame = "termsOfService"
+force_microgame = "alignCircle"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)
@@ -184,9 +184,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = 132.73497
+offset_top = 31.73497
 offset_right = 410.0
-offset_bottom = 504.0
+offset_bottom = 605.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(216, 333)
@@ -335,7 +335,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 146.0
 offset_right = -8.0
-offset_bottom = -9.165039
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
