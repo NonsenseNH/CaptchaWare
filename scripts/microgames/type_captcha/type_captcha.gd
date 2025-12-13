@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func isWinning() -> bool:
 	super.isWinning()
-	return line_edit.text == cur_text
+	return line_edit.text.to_lower() == cur_text.to_lower()
 
 func canSkip() -> bool:
 	return line_edit.text.strip_edges() != ""

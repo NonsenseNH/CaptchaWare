@@ -35,7 +35,7 @@
 		},
 		"typeCaptcha":{
 			"instructionsBig" : "",
-			"InstructionsSmall" : "Type the word below (case sensitive)--Click verify when done.",
+			"InstructionsSmall" : "Type the word below--Click verify when done.",
 			"referenceImage" : "",
 			"errorMessage" : "Please type the words in the box.",
 			"Length": 294.835,

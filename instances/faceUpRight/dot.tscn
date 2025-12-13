@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8uvoii87gg65"]
+
+[ext_resource type="Texture2D" uid="uid://caoydq5rit3we" path="res://sprites/face_right_up/dot.png" id="1_pr2vs"]
+
+[node name="dot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="dot_sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.173243, 0.173243)
+texture = ExtResource("1_pr2vs")
+hframes = 2

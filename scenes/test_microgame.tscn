@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=49 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -8,12 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="Script" uid="uid://b0udp8rrup8p2" path="res://scripts/microgames/face_right_up/face_right_up.gd" id="9_dosju"]
 [ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="9_so1f2"]
 [ext_resource type="Texture2D" uid="uid://djylc50xgdxpv" path="res://sprites/align_circle/images/1.png" id="10_8thrs"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
+[ext_resource type="Texture2D" uid="uid://dyfer6us63g25" path="res://sprites/face_right_up/arrow.png" id="11_xc6lx"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
+[ext_resource type="Texture2D" uid="uid://bgvq1m36tqono" path="res://sprites/face_right_up/Screenshot_1.png" id="12_7a5sd"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
+[ext_resource type="Texture2D" uid="uid://cca2x3w2xa5df" path="res://sprites/face_right_up/arrow_select.png" id="13_8u1fw"]
+[ext_resource type="Texture2D" uid="uid://bjv0kkys0ofp3" path="res://sprites/face_right_up/arrow_hover.png" id="14_dosju"]
 [ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="23_cwhth"]
 [ext_resource type="AudioStream" uid="uid://5qixynf18hwv" path="res://sounds/mouse_click_up.mp3" id="24_5eq45"]
 [ext_resource type="AudioStream" uid="uid://timh0mbrw21y" path="res://sounds/mouse_click_down.mp3" id="25_hejar"]
@@ -128,7 +133,6 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("2_xqagn")
-force_microgame = "alignCircle"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)
@@ -346,21 +350,82 @@ mouse_filter = 2
 anchors_preset = 0
 offset_right = 411.0
 offset_bottom = 277.265
+script = ExtResource("9_dosju")
 
-[node name="circle" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp"]
+[node name="Circle" type="Node2D" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp"]
+position = Vector2(204, 122.265015)
+
+[node name="cir" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp/Circle"]
+modulate = Color(0.2784314, 0.2784314, 0.2784314, 1)
+z_index = 1
+offset_left = -131.0
+offset_top = -130.73499
+offset_right = 215.0
+offset_bottom = 215.26501
+scale = Vector2(0.7566984, 0.7566984)
+texture = ExtResource("9_so1f2")
+
+[node name="circle" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp/Circle"]
 clip_children = 1
 z_index = 1
-position = Vector2(204, 141.26501)
 scale = Vector2(0.7172565, 0.7172565)
 texture = ExtResource("9_so1f2")
 
-[node name="image" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp/circle"]
+[node name="image" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp/Circle/circle"]
 offset_left = -107.0
 offset_top = -107.0
 offset_right = 107.0
 offset_bottom = 107.0
 texture = ExtResource("10_8thrs")
 expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp"]
+visible = false
+layout_mode = 0
+offset_left = -6.21521
+offset_top = -92.734985
+offset_right = 401.561
+offset_bottom = 301.265
+texture = ExtResource("12_7a5sd")
+
+[node name="arrowLeft" type="TextureButton" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 112.265015
+offset_right = 137.30705
+offset_bottom = 195.10468
+scale = Vector2(0.49638206, 0.49638206)
+focus_mode = 0
+texture_normal = ExtResource("11_xc6lx")
+texture_pressed = ExtResource("13_8u1fw")
+texture_hover = ExtResource("14_dosju")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="arrowRight" type="TextureButton" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp"]
+layout_mode = 0
+offset_left = 317.00003
+offset_top = 112.265015
+offset_right = 409.30707
+offset_bottom = 195.10468
+scale = Vector2(0.49638206, 0.49638206)
+focus_mode = 0
+texture_normal = ExtResource("11_xc6lx")
+texture_pressed = ExtResource("13_8u1fw")
+texture_hover = ExtResource("14_dosju")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp"]
+modulate = Color(1, 1, 1, 0.674)
+layout_mode = 0
+offset_left = -3.0
+offset_top = 225.26501
+offset_right = 410.0
+offset_bottom = 225.26501
+theme_override_constants/separation = 20
+alignment = 1
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
