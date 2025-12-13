@@ -10,8 +10,6 @@ signal end_microgame
 var is_intro := false
 var skipped := false
 
-var is_Playing := true
-
 var difficulty : int = 1
 
 var current_game_speed : = 0.0
@@ -24,7 +22,6 @@ func stop_microgame() -> void:
 	force_stopped = true
 
 func force_end_mircogame() -> void:
-	is_Playing = false
 	end_microgame.emit()
 
 func get_file_list(path : String, file_type : String = ".png") -> Array:
@@ -50,5 +47,4 @@ func canSkip() -> bool:
 	return isWinning()
 
 func isWinning() -> bool:
-	is_Playing = false
 	return finished

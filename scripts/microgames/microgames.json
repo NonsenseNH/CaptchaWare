@@ -132,7 +132,7 @@
 			"errorMessage" : "Please align the image first.",
 			"Length": 431.265,
 			"Width": 430.0,
-			"BonusTime": 0,
+			"BonusTime": 4.0,
 			"slowGame": false,
 			"staticTimer" : false,
 			"noTimer" : false
@@ -154,7 +154,8 @@
             "howManyFingers",
 			"termsOfService",
 			"phoneVerification",
-			"alignCircle"
+			"alignCircle",
+			"faceRightUp"
 		]
 	}
 }

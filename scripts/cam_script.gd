@@ -16,9 +16,10 @@ func pause_game(paused : bool) -> void: #use this function to prevent hitstop fr
 	force_pause = paused
 	get_tree().paused = paused
 
-func shake_camera(intensity:float, duration:float) -> void:
+func shake_camera(intensity:float, duration:float = 0) -> void:
 	if duration == 0:
 		shake_amount = intensity
+		return
 	var shake_amount_tween : Tween = create_tween()
 	shake_amount_tween.tween_property(self, "shake_amount", 0, duration).from(shake_amount + intensity).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 

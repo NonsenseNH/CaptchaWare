@@ -1,0 +1,216 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2nugc81w1os7"]
+
+[ext_resource type="Script" uid="uid://b0udp8rrup8p2" path="res://scripts/microgames/face_right_up/face_right_up.gd" id="1_c51v0"]
+[ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="2_watw4"]
+[ext_resource type="Texture2D" uid="uid://djylc50xgdxpv" path="res://sprites/align_circle/images/1.png" id="3_a8obs"]
+[ext_resource type="Texture2D" uid="uid://dyfer6us63g25" path="res://sprites/face_right_up/arrow.png" id="4_d4j1q"]
+[ext_resource type="Texture2D" uid="uid://cca2x3w2xa5df" path="res://sprites/face_right_up/arrow_select.png" id="5_o52s0"]
+[ext_resource type="Texture2D" uid="uid://bjv0kkys0ofp3" path="res://sprites/face_right_up/arrow_hover.png" id="6_qkwia"]
+
+[sub_resource type="Animation" id="Animation_4rwuo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(204, 122.265015)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dosju"]
+resource_name = "bounce"
+length = 0.2035
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.27739248, 2.4622896, 1),
+"update": 0,
+"values": [Vector2(204, 122.265015), Vector2(204, 97.475), Vector2(204, 122.265015)]
+}
+
+[sub_resource type="Animation" id="Animation_8u1fw"]
+resource_name = "finish"
+
+[sub_resource type="Animation" id="Animation_xxse2"]
+resource_name = "switch"
+length = 0.44
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.13333334, 0.43333334),
+"transitions": PackedFloat32Array(1, 0, 0.2332583, 1),
+"update": 0,
+"values": [Vector2(204, 122.265015), Vector2(68.35, 122.265), Vector2(344.384, 122.265), Vector2(204, 122.265015)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.13333334, 0.43333337),
+"transitions": PackedFloat32Array(1, 0, 0.2332583, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.13333334, 0.43333337),
+"transitions": PackedFloat32Array(1, 1, 0.25881627, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"switch_image"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxse2"]
+_data = {
+&"RESET": SubResource("Animation_4rwuo"),
+&"bounce": SubResource("Animation_dosju"),
+&"finish": SubResource("Animation_8u1fw"),
+&"switch": SubResource("Animation_xxse2")
+}
+
+[node name="faceRightUp" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 411.0
+offset_bottom = 277.265
+script = ExtResource("1_c51v0")
+
+[node name="Circle" type="Node2D" parent="."]
+position = Vector2(204, 122.265015)
+
+[node name="cir" type="TextureRect" parent="Circle"]
+modulate = Color(0.2784314, 0.2784314, 0.2784314, 1)
+z_index = 1
+offset_left = -131.0
+offset_top = -130.73499
+offset_right = 215.0
+offset_bottom = 215.26501
+scale = Vector2(0.7566984, 0.7566984)
+texture = ExtResource("2_watw4")
+
+[node name="circle" type="Sprite2D" parent="Circle"]
+clip_children = 1
+z_index = 1
+scale = Vector2(0.7172565, 0.7172565)
+texture = ExtResource("2_watw4")
+
+[node name="image" type="TextureRect" parent="Circle/circle"]
+offset_left = -107.0
+offset_top = -107.0
+offset_right = 107.0
+offset_bottom = 107.0
+texture = ExtResource("3_a8obs")
+expand_mode = 1
+
+[node name="arrowLeft" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 105.265015
+offset_right = 132.30705
+offset_bottom = 188.10468
+scale = Vector2(0.61638206, 0.61638206)
+focus_mode = 0
+texture_normal = ExtResource("4_d4j1q")
+texture_pressed = ExtResource("5_o52s0")
+texture_hover = ExtResource("6_qkwia")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="arrowRight" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 105.265015
+offset_right = 404.30704
+offset_bottom = 188.10468
+scale = Vector2(0.61638206, 0.61638206)
+focus_mode = 0
+texture_normal = ExtResource("4_d4j1q")
+texture_pressed = ExtResource("5_o52s0")
+texture_hover = ExtResource("6_qkwia")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0.674)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 239.26501
+offset_right = 247.93
+offset_bottom = 239.26501
+scale = Vector2(1.65, 1.65)
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="anims" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xxse2")
+}
+
+[node name="alignTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="pressed" from="arrowLeft" to="." method="_on_arrow_left_pressed"]
+[connection signal="pressed" from="arrowRight" to="." method="_on_arrow_right_pressed"]
+[connection signal="animation_finished" from="anims" to="." method="_on_anims_animation_finished"]
+[connection signal="timeout" from="alignTimer" to="." method="_on_align_timer_timeout"]

@@ -288,7 +288,7 @@ states/transition_intro/position = Vector2(207, -16.682358)
 states/transition_speedup/node = SubResource("AnimationNodeBlendTree_kxyth")
 states/transition_speedup/position = Vector2(535, -118)
 transitions = ["Start", "transition_intro", SubResource("AnimationNodeStateMachineTransition_pdwbg"), "transition_intro", "transition_fail", SubResource("AnimationNodeStateMachineTransition_5grtr"), "transition_fail", "transition_end", SubResource("AnimationNodeStateMachineTransition_vua0o"), "transition_end", "End", SubResource("AnimationNodeStateMachineTransition_t70y2"), "transition_intro", "transition_end", SubResource("AnimationNodeStateMachineTransition_8gny2"), "transition_fail", "gametransition_gameover", SubResource("AnimationNodeStateMachineTransition_g6wdg"), "gametransition_gameover", "End", SubResource("AnimationNodeStateMachineTransition_hq6as"), "transition_fail", "transition_speedup", SubResource("AnimationNodeStateMachineTransition_cobve"), "transition_speedup", "End", SubResource("AnimationNodeStateMachineTransition_cmqll"), "transition_intro", "transition_speedup", SubResource("AnimationNodeStateMachineTransition_2c4at"), "Start", "gametransition_intro_beginning", SubResource("AnimationNodeStateMachineTransition_s3wmy"), "gametransition_intro_beginning", "transition_end", SubResource("AnimationNodeStateMachineTransition_gdcyb"), "gametransition_intro_beginning", "gametransition_speedup_beginning", SubResource("AnimationNodeStateMachineTransition_oa6sj"), "gametransition_speedup_beginning", "End", SubResource("AnimationNodeStateMachineTransition_8b871")]
-graph_offset = Vector2(0, -140.52617)
+graph_offset = Vector2(0, -167.7989)
 
 [sub_resource type="Animation" id="Animation_gsxep"]
 length = 0.001
@@ -2788,6 +2788,16 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.85098, 0.188235, 0.145098, 1)
 text = "Try Again."
 
+[node name="blocker" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="intermissionText" type="Control" parent="MicrogameGameplay/window"]
 modulate = Color(1, 1, 1, 0)
 z_index = 2
@@ -2971,7 +2981,7 @@ bus = &"Microgame Sounds"
 stream = SubResource("AudioStreamInteractive_vua0o")
 bus = &"Music"
 
-[node name="camera" type="Camera2D" parent="MicrogameGameplay"]
+[node name="camera" type="Camera2D" parent="MicrogameGameplay" groups=["camera"]]
 position = Vector2(608.96, 399.22)
 zoom = Vector2(1.43, 1.43)
 script = ExtResource("12_gsxep")
@@ -3023,4 +3033,5 @@ bus = &"Sounds"
 
 [connection signal="pressed" from="MainMenu/captchabox/captchaSprite/Button" to="MicrogameGameplay" method="checkbox_pressed"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
+[connection signal="animation_finished" from="MicrogameGameplay/captchaTransition" to="MicrogameGameplay" method="_on_captcha_animation_player_animation_finished"]
 [connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]
