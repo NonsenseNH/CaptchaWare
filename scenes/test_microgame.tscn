@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=44 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="9_so1f2"]
+[ext_resource type="Texture2D" uid="uid://djylc50xgdxpv" path="res://sprites/align_circle/images/1.png" id="10_8thrs"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
@@ -184,9 +186,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = 31.73497
+offset_top = 102.73497
 offset_right = 410.0
-offset_bottom = 605.0
+offset_bottom = 534.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(216, 333)
@@ -334,11 +336,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 146.0
-offset_right = -8.0
+offset_right = -11.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="faceRightUp" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame"]
+anchors_preset = 0
+offset_right = 411.0
+offset_bottom = 277.265
+
+[node name="circle" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp"]
+clip_children = 1
+z_index = 1
+position = Vector2(204, 141.26501)
+scale = Vector2(0.7172565, 0.7172565)
+texture = ExtResource("9_so1f2")
+
+[node name="image" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/faceRightUp/circle"]
+offset_left = -107.0
+offset_top = -107.0
+offset_right = 107.0
+offset_bottom = 107.0
+texture = ExtResource("10_8thrs")
+expand_mode = 1
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)

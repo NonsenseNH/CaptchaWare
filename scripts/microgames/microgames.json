@@ -124,6 +124,18 @@
 			"slowGame": false,
 			"staticTimer" : false,
 			"noTimer" : false
+		},
+		"faceRightUp":{
+			"instructionsBig" : "correct way up",
+			"InstructionsSmall" : "Rotate the circle the--Click verify when all circles are aligned.",
+			"referenceImage" : "",
+			"errorMessage" : "Please align the image first.",
+			"Length": 431.265,
+			"Width": 430.0,
+			"BonusTime": 0,
+			"slowGame": false,
+			"staticTimer" : false,
+			"noTimer" : false
 		}
 	},
 	"microgame_pool" :{
