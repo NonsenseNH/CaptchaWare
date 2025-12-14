@@ -2538,7 +2538,7 @@ theme_override_font_sizes/font_size = 37
 text = "Verification Failed. Please try again."
 autowrap_mode = 2
 
-[node name="MicrogameGameplay" type="Node2D" parent="."]
+[node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("1_36rkl")
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]

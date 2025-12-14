@@ -125,12 +125,12 @@ mouse_filter = 2
 texture = ExtResource("1_rmvoj")
 metadata/_edit_lock_ = true
 
-[node name="MicrogameGameplay" type="Node2D" parent="."]
+[node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
 force_microgame = "faceRightUp"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.8901961, 0.8901961, 0.8901961, 0.3529412)
 z_index = -1
 material = SubResource("ShaderMaterial_qpfo2")
 anchors_preset = 15

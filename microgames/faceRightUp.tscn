@@ -406,7 +406,7 @@ bus = &"Sounds"
 
 [node name="victory" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("10_sjvoe")
-volume_db = -1.17
+volume_db = -10.0
 bus = &"Sounds"
 
 [connection signal="pressed" from="arrowLeft" to="." method="_on_arrow_left_pressed"]

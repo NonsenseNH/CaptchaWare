@@ -43,6 +43,8 @@ var ui_data : Dictionary = {
 	"tweenSpeed" : 1
 }
 
+signal on_transition_complete
+
 func _ready() -> void:
 	var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 	AudioServer.set_bus_volume_db(bus_index, 0)
@@ -84,6 +86,8 @@ func change_game():
 	ui_captcha_window.cur_game.add_child(cur_microgame)
 	
 	cur_microgame.global_position = ui_captcha_window.cur_game.global_position
+
+	on_transition_complete.emit()
 
 func override_instructions(big:String = "..n",small:String = "..n",ref:String = "..n") -> void:
 	var txt : Array = [big,small,ref]

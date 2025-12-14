@@ -78,6 +78,8 @@ var win_streak : int = 0
 
 var fails : int = 0
 
+signal on_transition_complete
+
 func _ready() -> void:
 	var file := FileAccess.open(JUDGEMENT_TEXT_LOCATION + "win_judgement_text.txt", FileAccess.READ)
 	judgement_text.win_dialogue = file.get_as_text().split(",", false)
@@ -424,6 +426,7 @@ func checkbox_pressed() -> void:
 
 
 func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> void:
-	if ["gametransition_end", "transition_speedup", "gametransition_gameover"].has(anim_name): return
-
+	if !["gametransition_end", "transition_speedup", "gametransition_gameover"].has(anim_name): return
+	print_debug('yes')
+	on_transition_complete.emit()
 	captcha_input_disabler.mouse_filter = Control.MOUSE_FILTER_IGNORE

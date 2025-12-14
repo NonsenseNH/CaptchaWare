@@ -7,7 +7,7 @@ resource_name = "Limiter"
 resource_name = "PitchShift"
 
 [resource]
-bus/0/volume_db = -12.461078
+bus/0/volume_db = -0.32825565
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_j3pel")
 bus/0/effect/0/enabled = true
 bus/1/name = &"Music"
