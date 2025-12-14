@@ -108,6 +108,7 @@ Vector2i(-1, -1): {
 
 [node name="Game" type="Node2D"]
 z_index = 2
+position = Vector2(-1, 0)
 metadata/_edit_horizontal_guides_ = [399.0]
 metadata/_edit_vertical_guides_ = [609.0]
 
@@ -126,7 +127,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="."]
 script = ExtResource("2_xqagn")
-force_microgame = "termsOfService"
+force_microgame = "faceRightUp"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)
@@ -526,7 +527,7 @@ self_modulate = Color(0, 0, 0, 0.384)
 scale = Vector2(0.89999783, 0.8686306)
 texture = ExtResource("13_6cmcy")
 
-[node name="camera" type="Camera2D" parent="MicrogameGameplay"]
+[node name="camera" type="Camera2D" parent="MicrogameGameplay" groups=["camera"]]
 position = Vector2(608.96, 399.22)
 zoom = Vector2(1.43, 1.43)
 script = ExtResource("23_cwhth")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2nugc81w1os7"]
+[gd_scene load_steps=18 format=3 uid="uid://b2nugc81w1os7"]
 
 [ext_resource type="Script" uid="uid://b0udp8rrup8p2" path="res://scripts/microgames/face_right_up/face_right_up.gd" id="1_c51v0"]
 [ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="2_watw4"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dyfer6us63g25" path="res://sprites/face_right_up/arrow.png" id="4_d4j1q"]
 [ext_resource type="Texture2D" uid="uid://cca2x3w2xa5df" path="res://sprites/face_right_up/arrow_select.png" id="5_o52s0"]
 [ext_resource type="Texture2D" uid="uid://bjv0kkys0ofp3" path="res://sprites/face_right_up/arrow_hover.png" id="6_qkwia"]
+[ext_resource type="Texture2D" uid="uid://qginox5djjuo" path="res://sprites/face_right_up/star.png" id="7_watw4"]
+[ext_resource type="AudioStream" uid="uid://cagxs8jnr0i6s" path="res://sounds/microgames/face_right_up/push.mp3" id="8_o52s0"]
+[ext_resource type="AudioStream" uid="uid://dkn1rohotoafi" path="res://sounds/microgames/face_right_up/switch.mp3" id="9_qkwia"]
+[ext_resource type="AudioStream" uid="uid://ekv488s6a4pk" path="res://sounds/microgames/face_right_up/win.mp3" id="10_sjvoe"]
 
 [sub_resource type="Animation" id="Animation_4rwuo"]
 length = 0.001
@@ -45,6 +49,78 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bg:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0009999999),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("star:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("star:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.406, 0.406)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sounds/victory:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sounds/rotate:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sounds/switch:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_dosju"]
 resource_name = "bounce"
@@ -61,9 +137,70 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(204, 122.265015), Vector2(204, 97.475), Vector2(204, 122.265015)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sounds/rotate:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_8u1fw"]
 resource_name = "finish"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("star:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.63529855),
+"transitions": PackedFloat32Array(0.39229214, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.63529855),
+"transitions": PackedFloat32Array(0.39229214, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.63600004)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("star:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6333334),
+"transitions": PackedFloat32Array(0.39229214, 1),
+"update": 0,
+"values": [Vector2(0.306, 0.306), Vector2(0.406, 0.406)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sounds/victory:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_xxse2"]
 resource_name = "switch"
@@ -118,6 +255,18 @@ tracks/3/keys = {
 "method": &"switch_image"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sounds/switch:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxse2"]
 _data = {
@@ -126,6 +275,16 @@ _data = {
 &"finish": SubResource("Animation_8u1fw"),
 &"switch": SubResource("Animation_xxse2")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_34mw6"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_o52s0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hco0n"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("9_qkwia")
 
 [node name="faceRightUp" type="Control"]
 layout_mode = 3
@@ -207,8 +366,48 @@ libraries = {
 }
 
 [node name="alignTimer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
+
+[node name="bg" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="star" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 0
+offset_left = -199.0
+offset_top = -126.999985
+offset_right = 601.0
+offset_bottom = 409.0
+scale = Vector2(0.406, 0.406)
+pivot_offset = Vector2(403.31458, 265.28616)
+mouse_filter = 2
+texture = ExtResource("7_watw4")
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="rotate" type="AudioStreamPlayer" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_34mw6")
+bus = &"Sounds"
+
+[node name="switch" type="AudioStreamPlayer" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_hco0n")
+volume_db = -3.0
+bus = &"Sounds"
+
+[node name="victory" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("10_sjvoe")
+volume_db = -1.17
+bus = &"Sounds"
 
 [connection signal="pressed" from="arrowLeft" to="." method="_on_arrow_left_pressed"]
 [connection signal="pressed" from="arrowRight" to="." method="_on_arrow_right_pressed"]

@@ -12,10 +12,9 @@ const DIFFICULTY_AMOUNT = [1, 1, 2, 3]
 @onready var the_ball: Node2D = $Circle
 @onready var anims: AnimationPlayer = $anims
 @onready var align_timer: Timer = $alignTimer
+@onready var ball_image: TextureRect = $Circle/circle/image
 
-var image_pool : PackedStringArray = [
-	"test"
-]
+var image_pool : PackedStringArray = []
 
 var how_many_balls : int = 1
 var current_ball : int = 1
@@ -28,7 +27,9 @@ var can_spin : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	how_many_balls = DIFFICULTY_AMOUNT[difficulty]
+	how_many_balls = DIFFICULTY_AMOUNT[difficulty - 1]
+
+	get_all_images()
 
 	the_ball.rotation_degrees = set_random_rotation()
 	cur_degrees = the_ball.rotation_degrees
@@ -46,7 +47,18 @@ func set_random_rotation() -> float:
 	return target_rotation
 
 func get_all_images() -> void:
-	image_pool = get_file_list(IMAGES_FOLDER)
+	var list := get_file_list(IMAGES_FOLDER)
+	list.shuffle()
+
+	for i in range(how_many_balls):
+		image_pool.append(list[i])
+
+	print_debug(image_pool)
+
+	set_ball_image()
+
+func set_ball_image() -> void:
+	ball_image.texture = load(IMAGES_FOLDER + image_pool[current_ball - 1])
 
 func push_ball() -> void:
 	if !can_spin:
@@ -75,6 +87,15 @@ func done_check() -> void:
 func switch_image() -> void:
 	the_ball.rotation_degrees = set_random_rotation()
 	cur_degrees = the_ball.rotation_degrees
+
+	set_ball_image()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("right"):
+			_on_arrow_right_pressed()
+		if Input.is_action_just_pressed("left"):
+			_on_arrow_left_pressed()
 
 func _on_arrow_right_pressed() -> void:
 	ball_spin_dir = -1
