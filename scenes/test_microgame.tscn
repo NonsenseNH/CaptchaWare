@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=47 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -8,10 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="Texture2D" uid="uid://cwgs48sqvthrx" path="res://sprites/card_swipe/bg.png" id="9_so1f2"]
+[ext_resource type="Texture2D" uid="uid://dcpi661dmimp8" path="res://sprites/card_swipe/card.png" id="10_7a5sd"]
+[ext_resource type="Texture2D" uid="uid://cafxg7cpjvwea" path="res://sprites/card_swipe/wallet.png" id="10_8thrs"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
+[ext_resource type="Texture2D" uid="uid://di2frd8pbivek" path="res://sprites/card_swipe/top_part.png" id="11_xc6lx"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
+[ext_resource type="FontFile" uid="uid://bfjlytybpopdv" path="res://font/digital-7.ttf" id="13_wku30"]
 [ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="23_cwhth"]
 [ext_resource type="AudioStream" uid="uid://5qixynf18hwv" path="res://sounds/mouse_click_up.mp3" id="24_5eq45"]
 [ext_resource type="AudioStream" uid="uid://timh0mbrw21y" path="res://sounds/mouse_click_down.mp3" id="25_hejar"]
@@ -127,7 +132,6 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "faceRightUp"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(0.8901961, 0.8901961, 0.8901961, 0.3529412)
@@ -185,9 +189,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = 102.73497
+offset_top = 31.73497
 offset_right = 410.0
-offset_bottom = 534.0
+offset_bottom = 605.57
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(216, 333)
@@ -339,6 +343,62 @@ offset_right = -11.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="cardSwipe" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame"]
+anchors_preset = 0
+offset_right = 411.0
+offset_bottom = 420.265
+
+[node name="bg" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/cardSwipe"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_so1f2")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="card" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/cardSwipe"]
+layout_mode = 0
+offset_left = 41.36447
+offset_top = 324.265
+offset_right = 180.8166
+offset_bottom = 409.53003
+mouse_filter = 0
+texture = ExtResource("10_7a5sd")
+expand_mode = 1
+
+[node name="walletmask" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/cardSwipe"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 350.265
+offset_right = 218.0
+offset_bottom = 420.265
+mouse_filter = 0
+texture = ExtResource("10_8thrs")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="topPart" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/cardSwipe"]
+layout_mode = 0
+offset_right = 411.0
+offset_bottom = 140.26503
+mouse_filter = 0
+texture = ExtResource("11_xc6lx")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="MicrogameGameplay/window/captcha_window/curGame/cardSwipe/topPart"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 14.26503
+offset_right = 226.0
+offset_bottom = 40.26503
+theme_override_fonts/font = ExtResource("13_wku30")
+theme_override_font_sizes/font_size = 24
+text = "PLEASE INSERT CARD"
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
