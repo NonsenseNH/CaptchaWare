@@ -95,7 +95,7 @@ func _ready() -> void:
 func start_game() -> void:
 	intro_sequence = true
 
-	captcha_input_disabler.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	captcha_input_disabler.visible = false
 	
 	var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 	AudioServer.set_bus_volume_db(bus_index, -80)
@@ -184,7 +184,7 @@ func _on_timer_timeout() -> void:
 	transition_game()
 
 func transition_game() -> void:
-	captcha_input_disabler.mouse_filter = Control.MOUSE_FILTER_STOP
+	captcha_input_disabler.visible = true
 
 	var did_fail : bool = prev_microgame != null && !prev_microgame.isWinning()
 	
@@ -426,7 +426,7 @@ func checkbox_pressed() -> void:
 
 
 func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> void:
-	if !["gametransition_end", "transition_speedup", "gametransition_gameover"].has(anim_name): return
+	if !["gametransition_end", "gametransition_speedup", "gametransition_gameover"].has(anim_name): return
 	print_debug('yes')
 	on_transition_complete.emit()
-	captcha_input_disabler.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	captcha_input_disabler.visible = false
