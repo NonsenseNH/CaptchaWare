@@ -80,6 +80,7 @@ func change_game():
 	
 	override_instructions(cur_microgame_data.instructionsBig, cur_microgame_data.InstructionsSmall, cur_microgame_data.referenceImage)
 	
+	on_transition_complete.connect(cur_microgame.on_transition_complete)
 	cur_microgame.override_instruction_text.connect(override_instructions)
 	cur_microgame.set_camera_shake.connect(camera_shake)
 	

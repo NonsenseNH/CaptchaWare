@@ -48,3 +48,6 @@ func canSkip() -> bool:
 
 func isWinning() -> bool:
 	return finished
+
+func on_transition_complete() -> void:
+	pass

@@ -326,11 +326,13 @@ func change_game():
 	cur_microgame.z_index += 1
 	
 	if prev_microgame != null:
+		on_transition_complete.disconnect(prev_microgame.on_transition_complete)
 		prev_microgame.override_instruction_text.disconnect(override_instructions)
 		prev_microgame.set_camera_shake.disconnect(camera_shake)
 		prev_microgame.skip_timer.disconnect(skip_timer)
 		prev_microgame.end_microgame.disconnect(transition_game)
 	
+	on_transition_complete.connect(cur_microgame.on_transition_complete)
 	cur_microgame.override_instruction_text.connect(override_instructions)
 	cur_microgame.set_camera_shake.connect(camera_shake)
 	cur_microgame.skip_timer.connect(skip_timer)
@@ -426,7 +428,7 @@ func checkbox_pressed() -> void:
 
 
 func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> void:
-	if !["gametransition_end", "gametransition_speedup", "gametransition_gameover"].has(anim_name): return
-	print_debug('yes')
+	print_debug(anim_name)
+	if !["gametransition_end", "gametransition_speedup", "gametransition_gameover", "gametransition_speedup_beginning"].has(anim_name): return
 	on_transition_complete.emit()
 	captcha_input_disabler.visible = false

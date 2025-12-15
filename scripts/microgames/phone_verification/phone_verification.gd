@@ -3,7 +3,6 @@ extends Microgame
 const PHONE_CALL_WINDOW = preload("uid://bnyk2f5trja0r")
 
 @onready var camera = get_tree().get_first_node_in_group("camera")
-@onready var main_game = get_tree().get_first_node_in_group("main_game")
 @onready var phonenumber_label: Label = $phonenumber
 
 var phone_number: int = 0
@@ -13,6 +12,7 @@ var has_answered: bool = false
 
 var number_of_calls : int = 0
 var how_many_fake_calls : int = 1
+
 # Called when the node enters the scene tree for the first time.
 
 var fake_number_type : PackedStringArray = [
@@ -36,7 +36,6 @@ var fake_number_type : PackedStringArray = [
 @onready var popup: AudioStreamPlayer = $popup
 
 func _ready() -> void:
-	main_game.on_transition_complete.connect(on_complete_transition)
 	phonenumber_label.text = generate_number()
 
 	how_many_fake_calls = randi_range(1, 3)
@@ -106,8 +105,7 @@ func on_call_answered() -> void:
 
 	force_end_mircogame()
 
-func on_complete_transition() -> void:
-	print_debug("yes")
+func on_transition_complete() -> void:
 	var cam_tween := create_tween()
 	cam_tween.tween_property(camera, "zoom", Vector2.ONE * 1.80, 4.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC)
 
