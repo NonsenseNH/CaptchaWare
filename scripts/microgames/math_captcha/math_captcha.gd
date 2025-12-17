@@ -30,6 +30,9 @@ func generate_equation() -> Array:
 			second_num = randi_range(0, 7)
 		set_answer = first_num - second_num
 	else:
+		while first_num == 0 && second_num == 0:
+			first_num = randi_range(0, 7)
+			second_num = randi_range(0, 7)
 		set_answer = first_num + second_num
 	
 	return [first_num, second_num, cur_math_signs, set_answer]

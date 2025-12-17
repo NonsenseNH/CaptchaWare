@@ -187,12 +187,12 @@ bus = &"Sounds"
 
 [node name="accept" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("10_g0wvl")
-volume_db = -10.0
+volume_db = -12.0
 bus = &"Sounds"
 
 [node name="denied" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("11_a3lng")
-volume_db = -10.0
+volume_db = -15.0
 bus = &"Sounds"
 
 [node name="swipe" type="AudioStreamPlayer" parent="sounds"]
