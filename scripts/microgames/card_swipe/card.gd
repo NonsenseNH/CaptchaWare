@@ -1,6 +1,6 @@
 extends Node2D
 
-const FAST_CAP = 0.36
+const FAST_CAP = 0.35
 const SLOW_CAP = 0.7
 
 @onready var reader_text: Label = $'../topPart/Label'
