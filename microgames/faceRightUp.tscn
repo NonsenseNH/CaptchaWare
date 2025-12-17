@@ -397,17 +397,17 @@ texture = ExtResource("7_watw4")
 
 [node name="rotate" type="AudioStreamPlayer" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_34mw6")
-volume_db = -10.0
+volume_db = -5.0
 bus = &"Sounds"
 
 [node name="switch" type="AudioStreamPlayer" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_hco0n")
-volume_db = -15.0
+volume_db = -12.0
 bus = &"Sounds"
 
 [node name="victory" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("10_sjvoe")
-volume_db = -20.0
+volume_db = -10.0
 bus = &"Sounds"
 
 [connection signal="pressed" from="arrowLeft" to="." method="_on_arrow_left_pressed"]

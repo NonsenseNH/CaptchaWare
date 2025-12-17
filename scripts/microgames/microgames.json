@@ -136,6 +136,18 @@
 			"slowGame": false,
 			"staticTimer" : false,
 			"noTimer" : false
+		},
+		"cardSwipe":{
+			"instructionsBig" : "swipe card",
+			"InstructionsSmall" : "Complete the task--Click verify when the card is accepted.",
+			"referenceImage" : "",
+			"errorMessage" : "Please complete the task.",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 1.5,
+			"slowGame": false,
+			"staticTimer" : false,
+			"noTimer" : false
 		}
 	},
 	"microgame_pool" :{
@@ -155,7 +167,8 @@
 			"termsOfService",
 			"phoneVerification",
 			"alignCircle",
-			"faceRightUp"
+			"faceRightUp",
+			"cardSwipe"
 		]
 	}
 }
