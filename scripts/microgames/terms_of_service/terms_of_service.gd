@@ -13,6 +13,8 @@ const FONT_SEPARATION := 23
 @onready var scroll_fast_sound: AudioStreamPlayer = $scroll_fast
 @onready var scroll_impact_sound: AudioStreamPlayer = $scroll_impact
 
+var process_delta := 0.0
+
 var scroll_velocity := 0.0
 var full_tos_text : PackedStringArray
 
@@ -68,9 +70,11 @@ func _input(event: InputEvent) -> void:
 	if force_stopped: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			scroll_velocity += 20
+			scroll_velocity += (30 * 100) * process_delta
 
 func _process(delta: float) -> void:
+	process_delta = delta
+
 	scroll_container.scroll_vertical += int(scroll_velocity * minf(delta * 20.0, 1.0))
 	scroll_velocity = lerpf(scroll_velocity, 0, minf(delta, 1))
 
