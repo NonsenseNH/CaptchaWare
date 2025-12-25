@@ -127,7 +127,8 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "termsOfService"
+force_microgame = "fishingGame"
+cur_difficulty_test = 4
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(0.8901961, 0.8901961, 0.8901961, 0.3529412)
@@ -162,9 +163,8 @@ offset_right = 438.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("6_0qi3o")
-testing = true
 main_code = NodePath("..")
 timer_node = NodePath("../Timer")
 instructions = NodePath("captcha_window/blueBorder/instructions")
@@ -185,9 +185,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = 31.73497
+offset_top = -18.695023
 offset_right = 410.0
-offset_bottom = 605.57
+offset_bottom = 673.14
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(216, 333)
@@ -232,7 +232,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_hq6as")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kxyth")
-value = 100.0
+value = 66.6
 show_percentage = false
 
 [node name="type" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
@@ -339,6 +339,7 @@ offset_right = -11.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
@@ -561,8 +562,6 @@ stream = SubResource("AudioStreamInteractive_rhq6j")
 volume_db = 6.701
 autoplay = true
 bus = &"Sounds"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
 [connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]

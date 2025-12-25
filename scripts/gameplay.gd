@@ -130,7 +130,11 @@ func start_game() -> void:
 
 func get_game_pool(_pool_override : String = "") -> Array:
 	if cur_microgame_pool.to_lower() == "all" && _pool_override == "":
-		return microgame_json.microgames.keys()
+		var cur_array := []
+		for i in microgame_json.microgame_pool:
+			cur_array.append_array(microgame_json.microgame_pool[i])
+			
+		return cur_array
 	else:
 		return microgame_json.microgame_pool[cur_microgame_pool if _pool_override == "" else _pool_override]
 
@@ -436,7 +440,7 @@ func checkbox_pressed() -> void:
 
 
 func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> void:
-	print_debug(anim_name)
-	if !["gametransition_end", "gametransition_speedup", "gametransition_speedup_beginning"].has(anim_name): return
-	on_transition_complete.emit()
+	if !["gametransition_end", "gametransition_speedup", "gametransition_gameover", "gametransition_speedup_beginning"].has(anim_name): return
+	if anim_name != "gametransition_gameover":
+		on_transition_complete.emit()
 	captcha_input_disabler.visible = false

@@ -96,7 +96,7 @@
 			"errorMessage" : "Please read the terms of conditions.",
 			"Length": 573.835,
 			"Width": 430.0,
-			"BonusTime": 4.0,
+			"BonusTime": 2.5,
 			"slowGame": false,
 			"staticTimer" : false,
 			"noTimer" : false
@@ -132,8 +132,8 @@
 			"errorMessage" : "Please align the image first.",
 			"Length": 431.265,
 			"Width": 430.0,
-			"BonusTime": 4.0,
-			"slowGame": false,
+			"BonusTime": 3.0,
+			"slowGame": true,
 			"staticTimer" : false,
 			"noTimer" : false
 		},
@@ -148,6 +148,30 @@
 			"slowGame": false,
 			"staticTimer" : false,
 			"noTimer" : false
+		},
+		"reactionTime":{
+			"instructionsBig" : "reaction time test",
+			"InstructionsSmall" : "Complete this--Click verify when the test is completed.",
+			"referenceImage" : "",
+			"errorMessage" : "Please complete the test.",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 1.5,
+			"slowGame": false,
+			"staticTimer" : false,
+			"noTimer" : false
+		},
+		"fishingGame":{
+			"instructionsBig" : "collect fishes",
+			"InstructionsSmall" : "Click on the fish to--Be sure to avoid sharks.",
+			"referenceImage" : "",
+			"errorMessage" : "Please collect enough fishes.",
+			"Length": 691.835,
+			"Width": 430.0,
+			"BonusTime": 4.0,
+			"slowGame": false,
+			"staticTimer" : true,
+			"noTimer" : false
 		}
 	},
 	"microgame_pool" :{
@@ -158,8 +182,6 @@
 			"typeCaptcha",
             "mathCaptcha"
 		],
-		"all" : [
-		],
 		"absurd" :[
 			"doNothing",
 			"touchGrass",
@@ -168,7 +190,10 @@
 			"phoneVerification",
 			"alignCircle",
 			"faceRightUp",
-			"cardSwipe"
+			"cardSwipe",
+			"fishingGame"
+		],
+		"all" : [
 		]
 	}
 }

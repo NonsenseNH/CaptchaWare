@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://rebue6f2d3vi"]
+
+[ext_resource type="Script" uid="uid://dcrdjtq0e6use" path="res://scripts/microgames/fishing_game/fish.gd" id="1_5morj"]
+[ext_resource type="Texture2D" uid="uid://bpn6pbp4feuk" path="res://sprites/fishing_game/fish/fish_0.png" id="2_pccw8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rwuo"]
+radius = 42.0
+height = 159.99998
+
+[node name="fish" type="CharacterBody2D"]
+input_pickable = true
+motion_mode = 1
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("1_5morj")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.50143623, 0.50143623)
+texture = ExtResource("2_pccw8")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+z_index = 20
+rotation = -1.5707941
+shape = SubResource("CapsuleShape2D_4rwuo")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

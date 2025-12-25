@@ -3,6 +3,7 @@ extends Node2D
 const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 
 @export var force_microgame : String = ""
+@export_range(1, 4, 1) var cur_difficulty_test : int = 0 
 
 @onready var bg: TextureRect = $bg
 
@@ -83,12 +84,22 @@ func change_game():
 	on_transition_complete.connect(cur_microgame.on_transition_complete)
 	cur_microgame.override_instruction_text.connect(override_instructions)
 	cur_microgame.set_camera_shake.connect(camera_shake)
+	cur_microgame.skip_timer.connect(skip_timer)
+	cur_microgame.difficulty = cur_difficulty_test
 	
 	ui_captcha_window.cur_game.add_child(cur_microgame)
 	
 	cur_microgame.global_position = ui_captcha_window.cur_game.global_position
 
 	on_transition_complete.emit()
+
+	if  !cur_microgame_data.noTimer:
+		if cur_microgame_data.has("staticTimer") && cur_microgame_data.staticTimer:
+			total_wait_time = og_wait_time + cur_microgame_data.BonusTime
+		else:
+			total_wait_time = cur_wait_time + cur_microgame_data.BonusTime
+		timer.wait_time = total_wait_time
+		timer.start()
 
 func override_instructions(big:String = "..n",small:String = "..n",ref:String = "..n") -> void:
 	var txt : Array = [big,small,ref]
@@ -110,10 +121,21 @@ func _input(event: InputEvent) -> void:
 
 func skip_game() -> void:
 	if cur_microgame == null: return
+	if cur_microgame.isWinning():
+		print_debug("has won")
+	else:
+		print_debug("has lost")
 	if cur_microgame.canSkip():
 		print_debug("CanSkipGame")
 	else:
 		ui_captcha_window._display_error_text(microgame_json.microgames[cur_microgame.name].errorMessage)
+
+func skip_timer() -> void:
+	var skip_time_to : int = 1
+	
+	if timer.time_left < skip_time_to: return
+	timer.wait_time = skip_time_to
+	timer.start()
 
 func get_microgame(force_game : String) -> Node:
 	var cur_game : Node

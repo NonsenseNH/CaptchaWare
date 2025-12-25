@@ -1,0 +1,164 @@
+[gd_scene load_steps=15 format=3 uid="uid://05mkerdmgsks"]
+
+[ext_resource type="Script" uid="uid://dh5khsmhmx0cf" path="res://scripts/microgames/fishing_game/fishing_game.gd" id="1_141ru"]
+[ext_resource type="Texture2D" uid="uid://blc3etk1tj6cn" path="res://sprites/fishing_game/bg.png" id="2_quheh"]
+[ext_resource type="Script" uid="uid://c2iycx54m3u46" path="res://scripts/microgames/fishing_game/boat.gd" id="3_ogolv"]
+[ext_resource type="Texture2D" uid="uid://cwigknt7xqp6t" path="res://sprites/fishing_game/boat.png" id="4_wllv6"]
+[ext_resource type="Texture2D" uid="uid://b1a5w075lxxac" path="res://sprites/fishing_game/hook.png" id="5_ypxt3"]
+[ext_resource type="Texture2D" uid="uid://dgtxsbv14dker" path="res://sprites/fishing_game/mask.png" id="6_sgk76"]
+[ext_resource type="AudioStream" uid="uid://cpc5knmk1ka3" path="res://sounds/microgames/fishing_game/fishing_rod.mp3" id="7_quheh"]
+[ext_resource type="AudioStream" uid="uid://dhuyk7mp84rar" path="res://sounds/microgames/fishing_game/bite_shark.mp3" id="8_wllv6"]
+[ext_resource type="AudioStream" uid="uid://cgp6f5m0pook3" path="res://sounds/microgames/fishing_game/hooked.mp3" id="9_ypxt3"]
+[ext_resource type="AudioStream" uid="uid://chgvoxfbdxypl" path="res://sounds/microgames/fishing_game/collect.mp3" id="10_sgk76"]
+[ext_resource type="AudioStream" uid="uid://cfs2js34cki63" path="res://sounds/microgames/fishing_game/win.mp3" id="11_pbios"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rwuo"]
+size = Vector2(576, 552.695)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v48nj"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("9_ypxt3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_isc22"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_sgk76")
+
+[node name="fishingGame" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 412.0
+offset_bottom = 520.695
+mouse_filter = 2
+script = ExtResource("1_141ru")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_quheh")
+expand_mode = 5
+
+[node name="fishes" type="Node2D" parent="."]
+position = Vector2(6.1035156e-05, -28.05249)
+scale = Vector2(0.99999994, 1)
+
+[node name="boat" type="Node2D" parent="."]
+position = Vector2(209, 92.69502)
+script = ExtResource("3_ogolv")
+
+[node name="boat_sprite" type="Sprite2D" parent="boat"]
+position = Vector2(0, -50)
+scale = Vector2(0.30188674, 0.30188677)
+texture = ExtResource("4_wllv6")
+
+[node name="Line2D" type="Line2D" parent="boat/boat_sprite"]
+scale = Vector2(0.99999994, 1)
+points = PackedVector2Array(-341.18762, -238.50006, -341.1875, 496.87506)
+width = 3.0
+default_color = Color(0.28060427, 0.28060427, 0.28060427, 1)
+antialiased = true
+
+[node name="mouse_pos" type="Marker2D" parent="boat/boat_sprite"]
+gizmo_extents = 57.6
+
+[node name="hook" type="Sprite2D" parent="boat/boat_sprite/mouse_pos"]
+rotation = -0.04534006
+scale = Vector2(0.24371117, 0.24371117)
+texture = ExtResource("5_ypxt3")
+offset = Vector2(-109.3125, 182.1875)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.24300002)
+z_index = 3
+layout_mode = 0
+offset_top = 109.69502
+offset_right = 411.0
+offset_bottom = 539.695
+mouse_filter = 2
+color = Color(0, 0.4366271, 0.7327163, 1)
+
+[node name="mask" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_top = 92.69502
+offset_right = 411.0
+offset_bottom = 120.69502
+mouse_filter = 2
+texture = ExtResource("6_sgk76")
+expand_mode = 1
+
+[node name="visible_area" type="Area2D" parent="."]
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visible_area"]
+visible = false
+position = Vector2(212, 266.34747)
+shape = SubResource("RectangleShape2D_4rwuo")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="FishingRod" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("7_quheh")
+volume_db = 0.703
+autoplay = true
+bus = &"Sounds"
+
+[node name="SharkBite" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_wllv6")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="FishHooked" type="AudioStreamPlayer" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_v48nj")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="CollectedFish" type="AudioStreamPlayer" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_isc22")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="Win" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("11_pbios")
+volume_db = 5.0
+pitch_scale = 1.3
+bus = &"Sounds"
+
+[node name="score" type="Label" parent="."]
+z_index = 3
+layout_mode = 0
+offset_top = 146.695
+offset_right = 410.0
+offset_bottom = 178.695
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 23
+text = "0/5 FISHES"
+horizontal_alignment = 1
+
+[node name="tutorial" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 412.0
+offset_bottom = 96.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 21
+text = "DRAG THE FISHES TO THE SURFACE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="get_fish" from="boat" to="." method="_on_boat_get_fish"]
+[connection signal="body_exited" from="visible_area" to="." method="_on_visible_area_body_exited"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

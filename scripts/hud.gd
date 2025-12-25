@@ -1,6 +1,7 @@
 extends Control
 
 const INSTRUCTIONS_FILE_PATH := "res://scripts/instructions/"
+const ERROR_OFFSET := 25
 
 @export var testing : bool = false
 @export var main_code : Node2D
@@ -57,13 +58,15 @@ func _set_instructions(text_override_big: String = "..n", text_override_small: S
 func _display_error_text(errortxt:String = "", reset_error : bool = false) -> void:
 	var error_displayed : bool = error_label.visible
 	
-	if reset_error && error_displayed: 
-		set_captcha_window_size(captcha_window.size + (Vector2.UP * 25), false)
+	if reset_error && error_displayed:
+		cur_game.size += Vector2.DOWN * ERROR_OFFSET
+		set_captcha_window_size(captcha_window.size + (Vector2.UP * ERROR_OFFSET), false)
 		error_label.visible = false
 		return
 	
 	if !error_displayed && errortxt != "":
-		set_captcha_window_size(captcha_window.size + (Vector2.DOWN * 25), false)
+		cur_game.size += Vector2.UP * ERROR_OFFSET
+		set_captcha_window_size(captcha_window.size + (Vector2.DOWN * ERROR_OFFSET), false)
 		error_label.visible = true
 		error_label.text = errortxt
 

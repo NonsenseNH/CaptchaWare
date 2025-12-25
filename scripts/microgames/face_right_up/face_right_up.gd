@@ -4,7 +4,7 @@ const IMAGES_FOLDER = "res://sprites/face_right_up/images/"
 
 const DOT_INSTANCE = "res://instances/faceUpRight/dot.tscn"
 
-const ROTATE_INTERVAL = 22.5
+const ROTATE_INTERVAL = 45
 
 const DIFFICULTY_AMOUNT = [1, 1, 2, 3]
 
@@ -123,7 +123,10 @@ func _on_align_timer_timeout() -> void:
 	skip_timer.emit()
 	finished = true
 	anims.play("finish")
-	
+
+func isWinning() -> bool:
+	return current_ball >= how_many_balls && (!align_timer.is_stopped() || finished)
+
 func _on_anims_animation_finished(anim_name: StringName) -> void:
 	if anim_name != "switch":
 		return

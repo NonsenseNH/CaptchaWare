@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://8jnviul8fcqk"]
+
+[ext_resource type="Script" uid="uid://dcrdjtq0e6use" path="res://scripts/microgames/fishing_game/fish.gd" id="1_0l0qt"]
+[ext_resource type="Texture2D" uid="uid://w7410njp288j" path="res://sprites/fishing_game/shark/shark_0.png" id="2_u7u5w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rwuo"]
+radius = 21.999998
+height = 194.0
+
+[node name="shark" type="CharacterBody2D"]
+input_pickable = true
+motion_mode = 1
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("1_0l0qt")
+fish_type = "shark"
+speed = 100.0
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.50143623, 0.50143623)
+texture = ExtResource("2_u7u5w")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+z_index = 20
+rotation = -1.5707941
+shape = SubResource("CapsuleShape2D_4rwuo")
+debug_color = Color(0.9950033, 0, 0.22040468, 0.41960785)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
