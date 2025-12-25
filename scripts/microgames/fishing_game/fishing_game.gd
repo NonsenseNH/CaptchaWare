@@ -62,6 +62,9 @@ func _on_visible_area_body_exited(body: Node2D) -> void:
 func _on_fish_failed_microgame() -> void:
 	if boat.win || boat.failed: return
 
+	tutorial.text = "AVOID THE SHARKS"
+	tutorial.visible = true
+
 	skip_timer.emit()
 	scare_fishes.emit()
 	boat.failed = true
