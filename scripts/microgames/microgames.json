@@ -168,8 +168,20 @@
 			"errorMessage" : "Please collect enough fishes.",
 			"Length": 691.835,
 			"Width": 430.0,
-			"BonusTime": 4.0,
+			"BonusTime": 3.0,
 			"slowGame": false,
+			"staticTimer" : true,
+			"noTimer" : false
+		},
+		"impossibleQuiz":{
+			"instructionsBig" : "impossible quiz",
+			"InstructionsSmall" : "Solve the--Click verify once you're done.",
+			"referenceImage" : "",
+			"errorMessage" : "Please finish the quiz.",
+			"Length": 573.835,
+			"Width": 430.0,
+			"BonusTime": 8.0,
+			"slowGame": true,
 			"staticTimer" : true,
 			"noTimer" : false
 		}
@@ -191,7 +203,9 @@
 			"alignCircle",
 			"faceRightUp",
 			"cardSwipe",
-			"fishingGame"
+			"fishingGame",
+			"reactionTime",
+			"impossibleQuiz"
 		],
 		"all" : [
 		]

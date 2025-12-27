@@ -18,6 +18,7 @@ fish_type = "shark"
 speed = 100.0
 
 [node name="sprite" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.50143623, 0.50143623)
 texture = ExtResource("2_u7u5w")
 

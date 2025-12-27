@@ -1,0 +1,797 @@
+[gd_scene load_steps=27 format=3 uid="uid://bv5q1gs3k68sr"]
+
+[ext_resource type="Script" uid="uid://bstc0h8tbairl" path="res://scripts/microgames/impossible_quiz/impossible_quiz.gd" id="1_ti0gt"]
+[ext_resource type="Texture2D" uid="uid://d367k8wqsyrwt" path="res://sprites/impossible_quiz/bg.png" id="2_t4cwc"]
+[ext_resource type="Texture2D" uid="uid://bvf2nx7g2a1wk" path="res://sprites/impossible_quiz/hover.png" id="3_pg183"]
+[ext_resource type="Texture2D" uid="uid://cpys3gheg3nmh" path="res://sprites/impossible_quiz/select.png" id="4_y8ele"]
+[ext_resource type="Texture2D" uid="uid://bckwedmtsf54p" path="res://sprites/impossible_quiz/questions/q10--4.png" id="5_gqnc5"]
+[ext_resource type="Texture2D" uid="uid://b6koelyvw3r14" path="res://sprites/impossible_quiz/question_numbers.png" id="6_e6pbm"]
+[ext_resource type="AudioStream" uid="uid://xt7w8ioalfv5" path="res://sounds/microgames/impossible_quiz/correct.mp3" id="7_sniit"]
+[ext_resource type="AudioStream" uid="uid://bsa7x51bhqa27" path="res://sounds/microgames/impossible_quiz/wrong.mp3" id="8_2fhj7"]
+[ext_resource type="AudioStream" uid="uid://dku2jbxwnangk" path="res://sounds/microgames/impossible_quiz/cheer.mp3" id="9_j4muu"]
+[ext_resource type="AudioStream" uid="uid://bytwg4o72lcf4" path="res://sounds/microgames/impossible_quiz/gameover.mp3" id="10_52yq3"]
+[ext_resource type="Texture2D" uid="uid://bqwm7chmcj651" path="res://sprites/impossible_quiz/wrong.png" id="11_8giav"]
+[ext_resource type="Texture2D" uid="uid://c3cv3v6encgbg" path="res://sprites/impossible_quiz/black_flash.png" id="12_4opi7"]
+[ext_resource type="Texture2D" uid="uid://cw1y004efjor1" path="res://sprites/impossible_quiz/gameover.png" id="13_h5fb1"]
+[ext_resource type="Texture2D" uid="uid://dgy1gtggvby03" path="res://sprites/impossible_quiz/2 life.png" id="14_ut76s"]
+[ext_resource type="Texture2D" uid="uid://bsginnqjg4lk2" path="res://sprites/impossible_quiz/1 life.png" id="15_h6s1h"]
+[ext_resource type="Texture2D" uid="uid://b3kpxqfjfcyib" path="res://sprites/impossible_quiz/ur_win.png" id="16_cklr7"]
+[ext_resource type="Texture2D" uid="uid://nql2wiucguyu" path="res://sprites/impossible_quiz/conglaturate.png" id="17_mobx7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8u1fw"]
+texture = ExtResource("3_pg183")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8thrs"]
+bg_color = Color(0.96862745, 0.7882353, 0.99607843, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dosju"]
+texture = ExtResource("4_y8ele")
+
+[sub_resource type="Theme" id="Theme_8thrs"]
+Button/styles/hover = SubResource("StyleBoxTexture_8u1fw")
+Button/styles/normal = SubResource("StyleBoxFlat_8thrs")
+Button/styles/pressed = SubResource("StyleBoxTexture_dosju")
+
+[sub_resource type="Animation" id="Animation_4rwuo"]
+resource_name = "- 1 life"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lives_number2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(2.9281714, 1),
+"update": 0,
+"values": [0.0, -0.82992804]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lives_number2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(2.9281714, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20.481928, 119.2771)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("lives_number2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("lives_number1:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(0.2332585, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("lives_number1:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("lives_number1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../-1Life:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.52, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2h35w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lives_number2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lives_number2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("lives_number2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("lives_number1:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("lives_number1:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("lives_number1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../-1Life:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("lives_number2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../gameover:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../gameover/text:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../gameover/splash:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../gameover/text:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../gameover/text:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../win:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../win/flash:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../win/star:self_modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../win/star:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.245, 0.245)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../win/bg:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../win/text:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_budfu"]
+resource_name = "gameover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lives_number1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(3.2490087, 1),
+"update": 0,
+"values": [0.0, 0.54803336]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lives_number1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(3.2490087, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1.9073486e-06, 119.2771)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("lives_number1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("lives_number2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../gameover:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../gameover/text:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../gameover/splash:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(6.08, 6.08)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../gameover/text:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(0.40612623, 1),
+"update": 0,
+"values": [-2.7838001, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../gameover/text:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.43333337),
+"transitions": PackedFloat32Array(0.40612623, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h8wee"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../win:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../win/flash:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../win/star:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5833333),
+"transitions": PackedFloat32Array(0.4204483, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../win/star:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5833333),
+"transitions": PackedFloat32Array(0.4204483, 1),
+"update": 0,
+"values": [Vector2(0.245, 0.245), Vector2(0.395, 0.395)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../win/bg:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../win/text:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxse2"]
+_data = {
+&"- 1 life": SubResource("Animation_4rwuo"),
+&"RESET": SubResource("Animation_2h35w"),
+&"gameover": SubResource("Animation_budfu"),
+&"win": SubResource("Animation_h8wee")
+}
+
+[node name="impossibleQuiz" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 414.0
+offset_bottom = 418.555
+script = ExtResource("1_ti0gt")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_t4cwc")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="buttons" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 405.0
+offset_bottom = 69.0
+mouse_filter = 2
+theme_override_constants/h_separation = 189
+theme_override_constants/v_separation = 69
+columns = 2
+
+[node name="button1" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="buttons/button1"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 179.55501
+offset_right = 198.0
+offset_bottom = 234.55501
+focus_mode = 0
+theme = SubResource("Theme_8thrs")
+
+[node name="button2" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="buttons/button2"]
+layout_mode = 0
+offset_left = 27.000002
+offset_top = 179.555
+offset_right = 197.0
+offset_bottom = 234.555
+focus_mode = 0
+theme = SubResource("Theme_8thrs")
+
+[node name="button3" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="buttons/button3"]
+layout_mode = 0
+offset_left = 28.000002
+offset_top = 179.555
+offset_right = 197.0
+offset_bottom = 233.555
+focus_mode = 0
+theme = SubResource("Theme_8thrs")
+
+[node name="button4" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="buttons/button4"]
+layout_mode = 0
+offset_left = 27.999971
+offset_top = 179.55498
+offset_right = 197.99997
+offset_bottom = 233.55498
+focus_mode = 0
+theme = SubResource("Theme_8thrs")
+
+[node name="questions" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_gqnc5")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="QuestionNumber" type="Sprite2D" parent="."]
+position = Vector2(35, 95.55501)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("6_e6pbm")
+hframes = 5
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="ding" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("7_sniit")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="fail" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_2fhj7")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="win" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("9_j4muu")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="gameover" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("10_52yq3")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="LivesNumberAnim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../lives")
+libraries = {
+&"": SubResource("AnimationLibrary_xxse2")
+}
+
+[node name="-1Life" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 97.0
+offset_top = 114.55502
+offset_right = 373.0
+offset_bottom = 406.55502
+scale = Vector2(0.795, 0.795)
+mouse_filter = 2
+texture = ExtResource("11_8giav")
+
+[node name="gameover" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="gameover"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8946914, 0.11661934, 0, 1)
+
+[node name="splash" type="TextureRect" parent="gameover"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 111.55501
+offset_right = 294.0
+offset_bottom = 285.555
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(89, 91)
+mouse_filter = 2
+texture = ExtResource("12_4opi7")
+
+[node name="text" type="TextureRect" parent="gameover"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 97.55501
+offset_right = 409.0
+offset_bottom = 354.11
+pivot_offset = Vector2(205, 132)
+mouse_filter = 2
+texture = ExtResource("13_h5fb1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="lives" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 134.0
+offset_top = 338.555
+offset_right = 174.0
+offset_bottom = 378.555
+scale = Vector2(0.83, 0.83)
+mouse_filter = 2
+
+[node name="lives_number2" type="Sprite2D" parent="lives"]
+texture = ExtResource("14_ut76s")
+
+[node name="lives_number1" type="Sprite2D" parent="lives"]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_h6s1h")
+
+[node name="win" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="win"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.74)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47837514, 0.38091108, 0.3409178, 1)
+
+[node name="star" type="TextureRect" parent="win"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -145.99997
+offset_top = -65.44499
+offset_right = 582.0
+offset_bottom = 546.555
+scale = Vector2(0.245, 0.245)
+pivot_offset = Vector2(354, 288)
+texture = ExtResource("16_cklr7")
+
+[node name="text" type="TextureRect" parent="win"]
+visible = false
+layout_mode = 0
+offset_left = -290.0
+offset_top = 5.555007
+offset_right = 704.5065
+offset_bottom = 136.59297
+scale = Vector2(0.495, 0.495)
+pivot_offset = Vector2(493.2406, 62.683533)
+texture = ExtResource("17_mobx7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="flash" type="ColorRect" parent="win"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="buttons/button1/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="buttons/button2/Button" to="." method="_on_button2_pressed"]
+[connection signal="pressed" from="buttons/button3/Button" to="." method="_on_button3_pressed"]
+[connection signal="pressed" from="buttons/button4/Button" to="." method="_on_button4_pressed"]

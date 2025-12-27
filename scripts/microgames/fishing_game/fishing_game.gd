@@ -7,7 +7,7 @@ const INSTANCES_ARRAY = [FISH_INSTANCE, SHARK_INSTANCE]
 const SPAWN_DIR = [530.0, -140.0]
 
 const DIFFICULTY_ARRAY ={
-	"fishes_to_collect" : [5, 6 ,7 ,8],
+	"fishes_to_collect" : [3, 4, 5, 6],
 	"shark_chance" : [12, 14, 16, 20],
 	"spawn_rate" : [0.5, .45, .3, .2]
 }

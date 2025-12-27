@@ -44,6 +44,7 @@ func get_fish_sprite() -> Texture2D:
 func run_away() -> void:
 	if fish_type == "shark": 
 		speed = 0
+		sprite.modulate = Color.WHITE
 		return
 	if grabbed:
 		queue_free()

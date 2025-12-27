@@ -70,12 +70,10 @@ func _input(event: InputEvent) -> void:
 	if force_stopped: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			scroll_velocity += (30 * 100) * process_delta
+			scroll_velocity += 30
 
-func _process(delta: float) -> void:
-	process_delta = delta
-
-	scroll_container.scroll_vertical += int(scroll_velocity * minf(delta * 20.0, 1.0))
+func _physics_process(delta: float) -> void:
+	scroll_container.scroll_vertical += int((scroll_velocity) * minf(delta * 20, 1.0))
 	scroll_velocity = lerpf(scroll_velocity, 0, minf(delta, 1))
 
 var prev_value : int = 0
