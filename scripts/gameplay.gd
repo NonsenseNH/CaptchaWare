@@ -188,6 +188,7 @@ func _on_timer_timeout() -> void:
 	transition_game()
 
 func transition_game() -> void:
+	if prev_microgame != null && prev_microgame.skipped: return
 	captcha_input_disabler.visible = true
 
 	var did_fail : bool = prev_microgame != null && !prev_microgame.isWinning()

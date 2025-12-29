@@ -21,7 +21,7 @@ var cur_question := 0
 
 var correct_answer_index := 3
 
-var lives := 2
+var lives := 3
 
 var can_answer := true
 var won := false
@@ -47,7 +47,7 @@ func change_question() -> void:
 		won = true
 		lives_number_anim.play("win")
 
-		skip_timer.emit()
+		finish_quiz()
 		return
 	
 	var png_split_file := question_array[cur_question].split("--", false)
@@ -83,10 +83,10 @@ func answer_check(button : int) -> void:
 		gameover_sound.play()
 		lives_number_anim.play("gameover")
 
-		skip_timer.emit()
+		finish_quiz()
 	else:
 		fail_sound.play()
-		lives_number_anim.play("- 1 life")
+		lives_number_anim.play("- " + str(lives) + " life")
 
 	set_camera_shake.emit(5, 0.7)
 
@@ -95,6 +95,11 @@ func answer_check(button : int) -> void:
 	await get_tree().create_timer(2).timeout
 
 	can_answer = true
+
+func finish_quiz() -> void:
+	await get_tree().create_timer(1.5).timeout
+
+	force_end_mircogame()
 
 func canSkip() -> bool:
 	return won || lives <= 0

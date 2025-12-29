@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyit6b5ep6cp"]
+
+[ext_resource type="Script" uid="uid://b2j0e75yrngk8" path="res://scripts/microgames/simon_say/simon_says.gd" id="1_vvm8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b17g0"]
+bg_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_so1f2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id="Theme_so1f2"]
+Button/styles/disabled = SubResource("StyleBoxFlat_b17g0")
+Button/styles/hover = SubResource("StyleBoxFlat_b17g0")
+Button/styles/normal = SubResource("StyleBoxFlat_b17g0")
+Button/styles/pressed = SubResource("StyleBoxFlat_so1f2")
+
+[node name="simonSays" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 413.0
+offset_bottom = 418.555
+script = ExtResource("1_vvm8l")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09905144, 0.1381532, 0.23060083, 1)
+
+[node name="buttons" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.555008
+offset_right = 213.0
+offset_bottom = 215.55501
+theme_override_constants/h_separation = 204
+theme_override_constants/v_separation = 204
+columns = 2
+
+[node name="buttons" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="red" type="Button" parent="buttons/buttons"]
+modulate = Color(0.92, 0.15640002, 0.24548675, 1)
+self_modulate = Color(0.6955032, 0.6955031, 0.6955031, 1)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+focus_mode = 0
+theme = SubResource("Theme_so1f2")
+disabled = true
+
+[node name="buttons2" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="yellow" type="Button" parent="buttons/buttons2"]
+modulate = Color(0.92307127, 0.71271396, 7.70092e-07, 1)
+self_modulate = Color(0.69411767, 0.69411767, 0.69411767, 1)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+focus_mode = 0
+theme = SubResource("Theme_so1f2")
+disabled = true
+
+[node name="buttons3" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="blue" type="Button" parent="buttons/buttons3"]
+modulate = Color(0.288504, 0.45257193, 1, 1)
+self_modulate = Color(0.69411767, 0.69411767, 0.69411767, 1)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+focus_mode = 0
+theme = SubResource("Theme_so1f2")
+disabled = true
+
+[node name="buttons4" type="Control" parent="buttons"]
+layout_mode = 2
+
+[node name="green" type="Button" parent="buttons/buttons4"]
+modulate = Color(0, 0.8738234, 0.25402677, 1)
+self_modulate = Color(0.69411767, 0.69411767, 0.69411767, 1)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+focus_mode = 0
+theme = SubResource("Theme_so1f2")
+disabled = true
+
+[connection signal="pressed" from="buttons/buttons/red" to="." method="_on_red_pressed"]
+[connection signal="pressed" from="buttons/buttons2/yellow" to="." method="_on_yellow_pressed"]
+[connection signal="pressed" from="buttons/buttons3/blue" to="." method="_on_blue_pressed"]
+[connection signal="pressed" from="buttons/buttons4/green" to="." method="_on_green_pressed"]
