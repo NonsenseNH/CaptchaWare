@@ -25,6 +25,7 @@ var difficulty_window = [1, .8, .6, .4]
 var minimum_time := 0.0
 
 var success := false
+var done := false
 
 func _ready() -> void:
 	minimum_time = difficulty_window[difficulty - 1]
@@ -71,8 +72,10 @@ func result() -> void:
 	if reaction_time_start_time <= minimum_time && click_now:
 		anim.play("win")
 		success = true
+		done = true
 		result_text.text = "Nice Shot!"
 	else:
+		done = true
 		anim.play("lose")
 		if reaction_time_start_time > minimum_time:
 			result_text.text = "Too Late!"
@@ -98,6 +101,9 @@ func _on_reaction_timer_timeout() -> void:
 
 func isWinning() -> bool:
 	return success
+
+func canSkip() -> bool:
+	return done
 
 func _on_anim_animation_finished(_anim_name: StringName) -> void:
 	skip_timer.emit()

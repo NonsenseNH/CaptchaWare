@@ -70,7 +70,7 @@ func _input(event: InputEvent) -> void:
 	if force_stopped: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			scroll_velocity += 30
+			scroll_velocity += 50
 
 func _physics_process(delta: float) -> void:
 	scroll_container.scroll_vertical += int((scroll_velocity) * minf(delta * 20, 1.0))

@@ -111,6 +111,7 @@ z_index = 2
 position = Vector2(-1, 0)
 metadata/_edit_horizontal_guides_ = [399.0]
 metadata/_edit_vertical_guides_ = [609.0]
+metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
