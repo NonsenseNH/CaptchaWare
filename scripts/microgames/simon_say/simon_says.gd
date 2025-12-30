@@ -33,6 +33,10 @@ var cur_button_index := 0
 
 @onready var buttons: GridContainer = $buttons
 
+@onready var press_sound: AudioStreamPlayer = $press
+@onready var win_sound: AudioStreamPlayer = $win
+@onready var lose_sound: AudioStreamPlayer = $lose
+
 var finished_game := false
 
 # Called when the node enters the scene tree for the first time.
@@ -68,6 +72,7 @@ func press_buttons_simon(button_index : int) -> void:
 	var cur_button := buttons.get_child(button_index).get_child(0)
 
 	cur_button.self_modulate = Color.WHITE
+	buttons.get_child(button_index).get_child(1).play()
 
 	await get_tree().create_timer(.15).timeout
 
@@ -75,21 +80,25 @@ func press_buttons_simon(button_index : int) -> void:
 
 func button_check(button_index : int) -> void:
 	if cur_button_index >= how_many_presses: return
+
+	buttons.get_child(button_index).get_child(1).play()
 	
 	if simon_says_sequence[cur_button_index] != button_index:
 		results(true)
 		return
 	
-	if (how_many_presses - 1) > cur_button_index:
-		cur_button_index += 1
-	else:
+	cur_button_index += 1
+	
+	if cur_button_index >= how_many_presses:
 		results()
 
 func results(failed := false) -> void:
 	if failed:
+		lose_sound.play()
 		set_camera_shake.emit(5, .5)
 		color_each_button(Color("ea2840"))
 	else:
+		win_sound.play()
 		color_each_button(Color("00df41"))
 	skip_timer.emit()
 	finished_game = true
@@ -117,7 +126,10 @@ func _on_red_pressed() -> void:
 	button_check(RED)
 
 func isWinning() -> bool:
-	return finished_game && how_many_presses <= cur_button_index
+	return finished_game && cur_button_index >= how_many_presses
 
 func canSkip() -> bool:
 	return finished_game
+
+func _on_button_down() -> void:
+	press_sound.play()

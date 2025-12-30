@@ -22,7 +22,6 @@ func stop_microgame() -> void:
 	force_stopped = true
 
 func force_end_mircogame() -> void:
-	skipped = true
 	end_microgame.emit()
 
 func get_file_list(path : String, file_type : String = ".png") -> Array:

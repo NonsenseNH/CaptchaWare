@@ -129,7 +129,7 @@ func reveal_buttons_func() -> void:
 	reveal_buttons.emit()
 
 func canSkip() -> bool:
-	return answered
+	return answered >= how_many_should_answer
 
 func isWinning() -> bool:
 	super.isWinning()

@@ -30,6 +30,11 @@ var done := false
 func _ready() -> void:
 	minimum_time = difficulty_window[difficulty - 1]
 
+	await get_tree().create_timer(1).timeout
+
+	_on_reaction_time_button_pressed()
+	reaction_time_button.disabled = false
+
 func _process(delta: float) -> void:
 	if !click_now: return
 

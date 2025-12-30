@@ -122,6 +122,8 @@ func _on_align_timer_timeout() -> void:
 	
 	skip_timer.emit()
 	finished = true
+
+	if skipped: return
 	anims.play("finish")
 
 func isWinning() -> bool:

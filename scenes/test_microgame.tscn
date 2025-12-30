@@ -128,7 +128,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "simonSays"
+force_microgame = "phoneVerification"
 cur_difficulty_test = 1
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
@@ -564,5 +564,6 @@ volume_db = 6.701
 autoplay = true
 bus = &"Sounds"
 
+[connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay" method="_on_verify_button_pressed"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
 [connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]

@@ -637,6 +637,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_wku30")
+disabled = true
 
 [node name="intro" type="TextureRect" parent="reactionTimeButton"]
 layout_mode = 1

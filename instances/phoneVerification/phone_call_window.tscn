@@ -606,7 +606,7 @@ bus = &"Sounds"
 
 [node name="decline" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("8_ih10t")
-volume_db = -3.616
+volume_db = -4.2
 bus = &"Sounds"
 
 [node name="ringing" type="AudioStreamPlayer" parent="sounds"]

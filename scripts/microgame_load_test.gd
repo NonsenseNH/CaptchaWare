@@ -85,6 +85,7 @@ func change_game():
 	cur_microgame.override_instruction_text.connect(override_instructions)
 	cur_microgame.set_camera_shake.connect(camera_shake)
 	cur_microgame.skip_timer.connect(skip_timer)
+	cur_microgame.end_microgame.connect(results)
 	cur_microgame.difficulty = cur_difficulty_test
 	
 	ui_captcha_window.cur_game.add_child(cur_microgame)
@@ -121,12 +122,10 @@ func _input(event: InputEvent) -> void:
 
 func skip_game() -> void:
 	if cur_microgame == null: return
-	if cur_microgame.isWinning():
-		print_debug("has won")
-	else:
-		print_debug("has lost")
 	if cur_microgame.canSkip():
-		print_debug("CanSkipGame")
+		timer.stop()
+
+		results()
 	else:
 		ui_captcha_window._display_error_text(microgame_json.microgames[cur_microgame.name].errorMessage)
 
@@ -143,3 +142,20 @@ func get_microgame(force_game : String) -> Node:
 	if force_microgame == "": return null
 	cur_game = load("res://microgames/" + force_game + ".tscn").instantiate()
 	return cur_game
+
+
+func _on_timer_timeout() -> void:
+	results()
+
+func results() -> void:
+	if cur_microgame == null || cur_microgame.skipped: return
+
+	cur_microgame.skipped = true
+
+	if cur_microgame.isWinning():
+		print_debug("has won")
+	else:
+		print_debug("has lost")
+
+func _on_verify_button_pressed() -> void:
+	skip_game()

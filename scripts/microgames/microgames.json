@@ -150,8 +150,8 @@
 			"noTimer" : false
 		},
 		"reactionTime":{
-			"instructionsBig" : "click to start the test",
-			"InstructionsSmall" : "--Click verify when the test is completed.",
+			"instructionsBig" : "reaction time test",
+			"InstructionsSmall" : "Complete the--Click verify when the test is completed.",
 			"referenceImage" : "",
 			"errorMessage" : "Please complete the test.",
 			"Length": 573.835,
@@ -186,14 +186,14 @@
 			"noTimer" : true
 		},
 		"simonSays":{
-			"instructionsBig" : "Complete the",
-			"InstructionsSmall" : "simon says--Click verify once you're done.",
+			"instructionsBig" : "simon says",
+			"InstructionsSmall" : "Complete the--Click verify once you're done.",
 			"referenceImage" : "",
 			"errorMessage" : "Please be nice to simon.",
 			"Length": 573.835,
 			"Width": 430.0,
 			"BonusTime": 3.0,
-			"slowGame": false,
+			"slowGame": true,
 			"staticTimer" : true,
 			"noTimer" : false
 		}

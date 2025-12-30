@@ -100,6 +100,9 @@ func finish_quiz() -> void:
 	await get_tree().create_timer(1.5).timeout
 
 	force_end_mircogame()
+	
+	var vol_tween := create_tween()
+	vol_tween.tween_property(win_sound, "volume_db", -80, 1)
 
 func canSkip() -> bool:
 	return won || lives <= 0

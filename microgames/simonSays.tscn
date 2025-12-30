@@ -1,6 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyit6b5ep6cp"]
+[gd_scene load_steps=12 format=3 uid="uid://cyit6b5ep6cp"]
 
 [ext_resource type="Script" uid="uid://b2j0e75yrngk8" path="res://scripts/microgames/simon_say/simon_says.gd" id="1_vvm8l"]
+[ext_resource type="AudioStream" uid="uid://coi3y4urjggxl" path="res://sounds/microgames/simonSays/red.mp3" id="2_ashlu"]
+[ext_resource type="AudioStream" uid="uid://8y4ep27whk1" path="res://sounds/microgames/simonSays/yellow.mp3" id="3_jnkmf"]
+[ext_resource type="AudioStream" uid="uid://c2gvitjhs4mah" path="res://sounds/microgames/simonSays/blue.mp3" id="4_j48af"]
+[ext_resource type="AudioStream" uid="uid://bgbbgd18bgwdh" path="res://sounds/microgames/simonSays/green.mp3" id="5_raokq"]
+[ext_resource type="AudioStream" uid="uid://dx8a42bn3vk2" path="res://sounds/microgames/simonSays/press.mp3" id="6_raokq"]
+[ext_resource type="AudioStream" uid="uid://cfs2js34cki63" path="res://sounds/microgames/fishing_game/win.mp3" id="7_j48af"]
+[ext_resource type="AudioStream" uid="uid://b8prtotky50i4" path="res://sounds/microgames/simonSays/wrong.mp3" id="8_nxb36"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b17g0"]
 bg_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
@@ -61,6 +68,11 @@ focus_mode = 0
 theme = SubResource("Theme_so1f2")
 disabled = true
 
+[node name="hit" type="AudioStreamPlayer" parent="buttons/buttons"]
+stream = ExtResource("2_ashlu")
+volume_db = -5.0
+bus = &"Sounds"
+
 [node name="buttons2" type="Control" parent="buttons"]
 layout_mode = 2
 
@@ -73,6 +85,11 @@ offset_bottom = 200.0
 focus_mode = 0
 theme = SubResource("Theme_so1f2")
 disabled = true
+
+[node name="hit" type="AudioStreamPlayer" parent="buttons/buttons2"]
+stream = ExtResource("3_jnkmf")
+volume_db = -5.0
+bus = &"Sounds"
 
 [node name="buttons3" type="Control" parent="buttons"]
 layout_mode = 2
@@ -87,6 +104,11 @@ focus_mode = 0
 theme = SubResource("Theme_so1f2")
 disabled = true
 
+[node name="hit" type="AudioStreamPlayer" parent="buttons/buttons3"]
+stream = ExtResource("4_j48af")
+volume_db = -5.0
+bus = &"Sounds"
+
 [node name="buttons4" type="Control" parent="buttons"]
 layout_mode = 2
 
@@ -100,7 +122,31 @@ focus_mode = 0
 theme = SubResource("Theme_so1f2")
 disabled = true
 
+[node name="hit" type="AudioStreamPlayer" parent="buttons/buttons4"]
+stream = ExtResource("5_raokq")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_raokq")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_j48af")
+volume_db = 3.0
+bus = &"Sounds"
+
+[node name="lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nxb36")
+volume_db = -10.0
+bus = &"Sounds"
+
+[connection signal="button_down" from="buttons/buttons/red" to="." method="_on_button_down"]
 [connection signal="pressed" from="buttons/buttons/red" to="." method="_on_red_pressed"]
+[connection signal="button_down" from="buttons/buttons2/yellow" to="." method="_on_button_down"]
 [connection signal="pressed" from="buttons/buttons2/yellow" to="." method="_on_yellow_pressed"]
+[connection signal="button_down" from="buttons/buttons3/blue" to="." method="_on_button_down"]
 [connection signal="pressed" from="buttons/buttons3/blue" to="." method="_on_blue_pressed"]
+[connection signal="button_down" from="buttons/buttons4/green" to="." method="_on_button_down"]
 [connection signal="pressed" from="buttons/buttons4/green" to="." method="_on_green_pressed"]
