@@ -151,8 +151,9 @@ horizontal_alignment = 1
 [node name="tutorial" type="Label" parent="."]
 visible = false
 layout_mode = 0
+offset_top = 151.0
 offset_right = 412.0
-offset_bottom = 96.0
+offset_bottom = 247.0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 21
 text = "DRAG THE FISHES TO THE SURFACE"
