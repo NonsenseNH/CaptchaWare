@@ -1,13 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyit6b5ep6cp"]
+[gd_scene load_steps=14 format=3 uid="uid://cyit6b5ep6cp"]
 
 [ext_resource type="Script" uid="uid://b2j0e75yrngk8" path="res://scripts/microgames/simon_say/simon_says.gd" id="1_vvm8l"]
 [ext_resource type="AudioStream" uid="uid://coi3y4urjggxl" path="res://sounds/microgames/simonSays/red.mp3" id="2_ashlu"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_nxb36"]
 [ext_resource type="AudioStream" uid="uid://8y4ep27whk1" path="res://sounds/microgames/simonSays/yellow.mp3" id="3_jnkmf"]
 [ext_resource type="AudioStream" uid="uid://c2gvitjhs4mah" path="res://sounds/microgames/simonSays/blue.mp3" id="4_j48af"]
 [ext_resource type="AudioStream" uid="uid://bgbbgd18bgwdh" path="res://sounds/microgames/simonSays/green.mp3" id="5_raokq"]
 [ext_resource type="AudioStream" uid="uid://dx8a42bn3vk2" path="res://sounds/microgames/simonSays/press.mp3" id="6_raokq"]
 [ext_resource type="AudioStream" uid="uid://cfs2js34cki63" path="res://sounds/microgames/fishing_game/win.mp3" id="7_j48af"]
 [ext_resource type="AudioStream" uid="uid://b8prtotky50i4" path="res://sounds/microgames/simonSays/wrong.mp3" id="8_nxb36"]
+
+[sub_resource type="Resource" id="Resource_37nhk"]
+script = ExtResource("2_nxb36")
+instructionsBig = "simon says"
+instructionSmall1 = "Complete the"
+instructionSmall2 = "Click verify once you're done."
+errorMessage = "Please be nice to simon."
+set_size = Vector2(430, 573.835)
+bonusTime = 3.0
+slowGame = true
+staticTimer = true
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b17g0"]
 bg_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
@@ -35,6 +48,7 @@ anchors_preset = 0
 offset_right = 413.0
 offset_bottom = 418.555
 script = ExtResource("1_vvm8l")
+microgame_data = SubResource("Resource_37nhk")
 
 [node name="bg" type="ColorRect" parent="."]
 layout_mode = 1

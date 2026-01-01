@@ -1,9 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl36pjasx6rub"]
+[gd_scene load_steps=8 format=3 uid="uid://bl36pjasx6rub"]
 
 [ext_resource type="Script" uid="uid://3v73d1wdwjpe" path="res://scripts/microgames/terms_of_service/terms_of_service.gd" id="1_wfjr7"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_tfbiu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="2_ualve"]
 [ext_resource type="AudioStream" uid="uid://beuockrq2qvf8" path="res://sounds/microgames/terms_of_service/fast_scroll.wav" id="3_yjdjo"]
 [ext_resource type="AudioStream" uid="uid://bvdeeo6qk6ibt" path="res://sounds/microgames/terms_of_service/scroll_impact.mp3" id="4_tfbiu"]
+
+[sub_resource type="Resource" id="Resource_rq1yt"]
+script = ExtResource("2_tfbiu")
+instructionsBig = "terms of conditions"
+instructionSmall1 = "Please Agree to the"
+instructionSmall2 = "Click verify when done."
+errorMessage = "Please read the terms of conditions."
+set_size = Vector2(430, 573.835)
+bonusTime = 2.5
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rq1yt"]
 random_pitch = 1.15
@@ -16,6 +27,7 @@ offset_bottom = 376.0
 mouse_filter = 2
 color = Color(0.9471993, 0.9471994, 0.9471993, 1)
 script = ExtResource("1_wfjr7")
+microgame_data = SubResource("Resource_rq1yt")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1

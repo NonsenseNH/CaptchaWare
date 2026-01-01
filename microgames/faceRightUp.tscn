@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2nugc81w1os7"]
+[gd_scene load_steps=20 format=3 uid="uid://b2nugc81w1os7"]
 
 [ext_resource type="Script" uid="uid://b0udp8rrup8p2" path="res://scripts/microgames/face_right_up/face_right_up.gd" id="1_c51v0"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_qkwia"]
 [ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="2_watw4"]
 [ext_resource type="Texture2D" uid="uid://djylc50xgdxpv" path="res://sprites/align_circle/images/1.png" id="3_a8obs"]
 [ext_resource type="Texture2D" uid="uid://dyfer6us63g25" path="res://sprites/face_right_up/arrow.png" id="4_d4j1q"]
@@ -10,6 +11,17 @@
 [ext_resource type="AudioStream" uid="uid://cagxs8jnr0i6s" path="res://sounds/microgames/face_right_up/push.mp3" id="8_o52s0"]
 [ext_resource type="AudioStream" uid="uid://dkn1rohotoafi" path="res://sounds/microgames/face_right_up/switch.mp3" id="9_qkwia"]
 [ext_resource type="AudioStream" uid="uid://ekv488s6a4pk" path="res://sounds/microgames/face_right_up/win.mp3" id="10_sjvoe"]
+
+[sub_resource type="Resource" id="Resource_qkwia"]
+script = ExtResource("2_qkwia")
+instructionsBig = "correct way up"
+instructionSmall1 = "Rotate the circle the"
+instructionSmall2 = "Click verify when all circles are aligned."
+errorMessage = "Please align the image first."
+set_size = Vector2(430, 431.265)
+bonusTime = 3.0
+slowGame = true
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="Animation" id="Animation_4rwuo"]
 length = 0.001
@@ -292,6 +304,7 @@ anchors_preset = 0
 offset_right = 411.0
 offset_bottom = 277.265
 script = ExtResource("1_c51v0")
+microgame_data = SubResource("Resource_qkwia")
 
 [node name="Circle" type="Node2D" parent="."]
 position = Vector2(204, 122.265015)

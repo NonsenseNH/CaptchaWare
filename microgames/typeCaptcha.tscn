@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq0gqjrsoabbl"]
+[gd_scene load_steps=5 format=3 uid="uid://cq0gqjrsoabbl"]
 
 [ext_resource type="Script" uid="uid://shdh67xy4pom" path="res://scripts/microgames/type_captcha/type_captcha.gd" id="1_lf2gx"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="2_7oitm"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_gma7h"]
+
+[sub_resource type="Resource" id="Resource_jacen"]
+script = ExtResource("2_gma7h")
+instructionSmall1 = "Type the word below"
+instructionSmall2 = "Click verify when done."
+errorMessage = "Please type the words in the box."
+set_size = Vector2(430, 294.835)
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [node name="typeCaptcha" type="Control"]
 layout_mode = 3
@@ -9,6 +18,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_lf2gx")
+microgame_data = SubResource("Resource_jacen")
 
 [node name="LineEdit" type="LineEdit" parent="."]
 light_mask = 0

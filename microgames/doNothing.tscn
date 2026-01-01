@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://vcca0bja7bvi"]
+[gd_scene load_steps=4 format=3 uid="uid://vcca0bja7bvi"]
 
 [ext_resource type="Script" uid="uid://dy7x4jh4v1xjy" path="res://scripts/microgames/do_nothing/image.gd" id="1_3kc7x"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_uso34"]
+
+[sub_resource type="Resource" id="Resource_d0rja"]
+script = ExtResource("2_uso34")
+instructionsBig = "cool image"
+instructionSmall1 = "Look at this"
+instructionSmall2 = "Take the time to appreciate this image."
+set_size = Vector2(430, 573.835)
+slowGame = true
+staticTimer = true
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [node name="doNothing" type="Control"]
 layout_mode = 3
@@ -8,6 +19,7 @@ anchors_preset = 0
 offset_right = 413.0
 offset_bottom = 413.0
 script = ExtResource("1_3kc7x")
+microgame_data = SubResource("Resource_d0rja")
 
 [node name="image" type="TextureRect" parent="."]
 layout_mode = 1

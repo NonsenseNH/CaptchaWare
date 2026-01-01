@@ -1,10 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddv4qb5wkwi1m"]
+[gd_scene load_steps=14 format=3 uid="uid://ddv4qb5wkwi1m"]
 
 [ext_resource type="Script" uid="uid://5tbpaivwvlrc" path="res://scripts/microgames/how_many_fingers/how_many_fingers.gd" id="1_o7y65"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_y7ptt"]
 [ext_resource type="Texture2D" uid="uid://ddfumbwpio1hq" path="res://sprites/how_many_fingers/hands_0.png" id="2_yo7k4"]
 [ext_resource type="AudioStream" uid="uid://52d705sr61ys" path="res://sounds/microgames/how_many_fingers/hand_open.mp3" id="3_mg175"]
 [ext_resource type="Texture2D" uid="uid://bc1vhybn3l5pt" path="res://sprites/how_many_fingers/thumbs.png" id="3_yo7k4"]
 [ext_resource type="AudioStream" uid="uid://dnhfeke4dnrjj" path="res://sounds/microgames/how_many_fingers/hand_close.mp3" id="4_y7ptt"]
+
+[sub_resource type="Resource" id="Resource_0ccle"]
+script = ExtResource("2_y7ptt")
+instructionsBig = "watch closely"
+instructionSmall2 = "Watch the hand."
+errorMessage = "Please choose an answer."
+set_size = Vector2(430, 573.835)
+bonusTime = 1.5
+slowGame = true
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="Animation" id="Animation_f2qkf"]
 length = 0.001
@@ -343,6 +354,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_o7y65")
+microgame_data = SubResource("Resource_0ccle")
 
 [node name="bg" type="ColorRect" parent="."]
 layout_mode = 1

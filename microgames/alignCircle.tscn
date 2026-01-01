@@ -1,13 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://bq7mw3o203kvc"]
+[gd_scene load_steps=15 format=3 uid="uid://bq7mw3o203kvc"]
 
 [ext_resource type="Script" uid="uid://c0pcuc8a1djrb" path="res://scripts/microgames/align_circle/align_circle.gd" id="1_fh35l"]
 [ext_resource type="Texture2D" uid="uid://1nqrgf4kij3m" path="res://sprites/align_circle/circle_1.png" id="2_2bpb4"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_3pv4r"]
 [ext_resource type="Texture2D" uid="uid://hbaxg7brte0p" path="res://sprites/touch_grass/grass_images/grass1.png" id="3_vnu7j"]
 [ext_resource type="Texture2D" uid="uid://bn2snna3q6d1c" path="res://sprites/align_circle/circle_2.png" id="4_3pv4r"]
 [ext_resource type="Texture2D" uid="uid://bjldfewvkoa88" path="res://sprites/align_circle/grab_button.png" id="5_q5ggo"]
 [ext_resource type="Texture2D" uid="uid://b3y6dcr8oov3o" path="res://sprites/align_circle/grab_button_hover.png" id="6_xywhr"]
 [ext_resource type="AudioStream" uid="uid://bvm00fgkndd3p" path="res://sounds/microgames/align_circle/slide_circle_loop.mp3" id="7_vnu7j"]
 [ext_resource type="AudioStream" uid="uid://dxapi6hr1rjvg" path="res://sounds/microgames/align_circle/slide_in.mp3" id="8_3pv4r"]
+
+[sub_resource type="Resource" id="Resource_q5ggo"]
+script = ExtResource("2_3pv4r")
+instructionsBig = "align the image"
+instructionSmall1 = "Move the slider to"
+instructionSmall2 = "Click verify when done."
+errorMessage = "Please align the image first."
+set_size = Vector2(430, 431.265)
+slowGame = true
+noTimer = true
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5sd"]
 bg_color = Color(0.9059797, 0.8911085, 0.89109176, 1)
@@ -48,6 +60,7 @@ anchors_preset = 0
 offset_right = 414.0
 offset_bottom = 277.265
 script = ExtResource("1_fh35l")
+microgame_data = SubResource("Resource_q5ggo")
 
 [node name="circle1" type="Sprite2D" parent="."]
 modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)

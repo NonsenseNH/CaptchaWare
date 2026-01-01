@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0ajjx7k2scr7"]
+[gd_scene load_steps=22 format=3 uid="uid://c0ajjx7k2scr7"]
 
 [ext_resource type="Script" uid="uid://c0xnetqwa0amn" path="res://scripts/microgames/card_swipe/card_swipe.gd" id="1_b6tth"]
 [ext_resource type="Texture2D" uid="uid://cwgs48sqvthrx" path="res://sprites/card_swipe/bg.png" id="2_6100c"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_g0wvl"]
 [ext_resource type="Script" uid="uid://b47soc1odd8j3" path="res://scripts/microgames/card_swipe/card.gd" id="3_rclkn"]
 [ext_resource type="Texture2D" uid="uid://dcpi661dmimp8" path="res://sprites/card_swipe/card.png" id="4_hctok"]
 [ext_resource type="Texture2D" uid="uid://cafxg7cpjvwea" path="res://sprites/card_swipe/wallet.png" id="5_50sj2"]
@@ -14,6 +15,16 @@
 [ext_resource type="AudioStream" uid="uid://c36sx2ey4brcb" path="res://sounds/microgames/card_swipe/card_swipe_0.mp3" id="12_0ell8"]
 [ext_resource type="AudioStream" uid="uid://dcb0er5n0qqmo" path="res://sounds/microgames/card_swipe/card_swipe_1.mp3" id="13_dsq4f"]
 [ext_resource type="AudioStream" uid="uid://c1al1t38iy5f2" path="res://sounds/microgames/card_swipe/card_swipe_2.mp3" id="14_mmbfs"]
+
+[sub_resource type="Resource" id="Resource_a3lng"]
+script = ExtResource("2_g0wvl")
+instructionsBig = "swipe card"
+instructionSmall1 = "Complete the task"
+instructionSmall2 = "Click verify when the card is accepted."
+errorMessage = "Please complete the task."
+set_size = Vector2(430, 573.835)
+bonusTime = 1.5
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="Animation" id="Animation_dosju"]
 length = 0.001
@@ -95,6 +106,7 @@ anchors_preset = 0
 offset_right = 411.0
 offset_bottom = 420.265
 script = ExtResource("1_b6tth")
+microgame_data = SubResource("Resource_a3lng")
 
 [node name="bg" type="TextureRect" parent="."]
 layout_mode = 1

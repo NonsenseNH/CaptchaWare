@@ -47,8 +47,20 @@ var cur_microgame_pool_array : PackedStringArray = []
 
 var games_played : int = 0
 
-var microgame_json : Dictionary = {}
-var cur_microgame_data : Dictionary = {}
+var microgame_pool_json : Dictionary = {}
+
+var cur_microgame_data : Dictionary = {
+	"instructionsBig" : "",
+	"InstructionsSmall" : "",
+	"referenceImage" : null,
+	"errorMessage" : "",
+	"Length": 0,
+	"Width": 0,
+	"bonusTime": 0,
+	"slowGame": false,
+	"staticTimer" : false,
+	"noTimer" : false
+}
 
 var prev_window_size : Vector2 = Vector2.ZERO
 
@@ -87,10 +99,14 @@ func _ready() -> void:
 	file = FileAccess.open(JUDGEMENT_TEXT_LOCATION + "lose_judgement_text.txt", FileAccess.READ)
 	judgement_text.lose_dialogue = file.get_as_text().split(",", false)
 	
-	microgame_json = JSON.parse_string(FileAccess.open(JSON_FILE_LOCATION, FileAccess.READ).get_as_text())
+	microgame_pool_json = JSON.parse_string(FileAccess.open(JSON_FILE_LOCATION, FileAccess.READ).get_as_text())
 	
-	for game in microgame_json.microgames.keys():
-		resource_preloader.add_resource(game, load("res://microgames/" + game + ".tscn"))
+	var game_name_list := ResourceLoader.list_directory("res://microgames/")
+
+	for game in game_name_list:
+		resource_preloader.add_resource(game.replace(".tscn", ""), load("res://microgames/" + game))
+	
+	print_debug(resource_preloader.get_resource_list())
 
 func start_game() -> void:
 	intro_sequence = true
@@ -131,12 +147,12 @@ func start_game() -> void:
 func get_game_pool(_pool_override : String = "") -> Array:
 	if cur_microgame_pool.to_lower() == "all" && _pool_override == "":
 		var cur_array := []
-		for i in microgame_json.microgame_pool:
-			cur_array.append_array(microgame_json.microgame_pool[i])
+		for i in microgame_pool_json:
+			cur_array.append_array(microgame_pool_json[i])
 			
 		return cur_array
 	else:
-		return microgame_json.microgame_pool[cur_microgame_pool if _pool_override == "" else _pool_override]
+		return microgame_pool_json[cur_microgame_pool if _pool_override == "" else _pool_override]
 
 func set_game_speed(speed: float = 0) -> void:
 	var anim_speed := maxf(speed * 1.15, 3.0)
@@ -366,17 +382,17 @@ func change_game():
 	
 	if !intro_sequence && !cur_microgame_data.noTimer:
 		if cur_microgame_data.has("staticTimer") && cur_microgame_data.staticTimer:
-			total_wait_time = og_wait_time + cur_microgame_data.BonusTime
+			total_wait_time = og_wait_time + cur_microgame_data.bonusTime
 		else:
-			total_wait_time = cur_wait_time + cur_microgame_data.BonusTime
+			total_wait_time = cur_wait_time + cur_microgame_data.bonusTime
 		timer.wait_time = total_wait_time
 		timer.start()
 	transitioning = false
 #endregion
 
 #region MICROGAME SIGNAL FUNCTIONS
-func override_instructions(big:String = "..n",small:String = "..n",ref:String = "..n") -> void:
-	var txt : Array = [big,small,ref]
+func override_instructions(big:String = "..n",small:String = "..n",ref:Texture2D = null) -> void:
+	var txt : Array = [big,small]
 	for text_index in range(txt.size()):
 		if txt[text_index] == "":
 			txt[text_index] = "..n"
@@ -384,7 +400,7 @@ func override_instructions(big:String = "..n",small:String = "..n",ref:String = 
 	ui_data = {
 		"instructionsBig" : txt[0],
 		"InstructionsSmall" : txt[1],
-		"referenceImage" : txt[2],
+		"referenceImage" : ref,
 	}
 	ui_captcha_window.set_up_ui_data(ui_data)
 
@@ -424,7 +440,16 @@ func get_microgame(force_game : String = "") -> Node:
 func get_microgame_data(force_game: String = "") -> void:
 	cur_microgame = get_microgame(force_game)
 	
-	cur_microgame_data = microgame_json.microgames[cur_microgame.name]
+	for i in cur_microgame_data:
+		if ["InstructionsSmall", "set_size"].has(i): continue
+
+		cur_microgame_data[i] = cur_microgame.microgame_data.get(i)
+	
+	cur_microgame_data.instructionsSmall = cur_microgame.microgame_data.instructionSmall1 + "--" + cur_microgame.microgame_data.instructionSmall2
+
+	cur_microgame_data.Length = cur_microgame.microgame_data.set_size.y
+	cur_microgame_data.Width = cur_microgame.microgame_data.set_size.x
+	
 	cur_window_size = Vector2(cur_microgame_data.Width, cur_microgame_data.Length)
 
 func skip_game() -> void:
@@ -434,7 +459,7 @@ func skip_game() -> void:
 		timer.stop()
 		transition_game()
 	else:
-		ui_captcha_window._display_error_text(microgame_json.microgames[cur_microgame.name].errorMessage)
+		ui_captcha_window._display_error_text(microgame_pool_json.microgames[cur_microgame.name].errorMessage)
 
 
 func checkbox_pressed() -> void:

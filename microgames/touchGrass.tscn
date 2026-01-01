@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://ceavec6yp3k7y"]
+[gd_scene load_steps=23 format=3 uid="uid://ceavec6yp3k7y"]
 
 [ext_resource type="Script" uid="uid://c33tf7db1ih2y" path="res://scripts/microgames/touch_grass/touch_grass.gd" id="1_f6ok3"]
 [ext_resource type="Texture2D" uid="uid://hbaxg7brte0p" path="res://sprites/touch_grass/grass_images/grass1.png" id="2_4gcub"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_qrep6"]
 [ext_resource type="Script" uid="uid://b3dufowj6wkr7" path="res://scripts/microgames/touch_grass/hand.gd" id="3_2tcok"]
 [ext_resource type="Texture2D" uid="uid://uvx2iptbv40j" path="res://sprites/touch_grass/hand_open.png" id="4_667yt"]
 [ext_resource type="Texture2D" uid="uid://c4isjifihfhrl" path="res://sprites/touch_grass/hand_close.png" id="5_i301x"]
@@ -11,6 +12,17 @@
 [ext_resource type="AudioStream" uid="uid://c0cu2rq7uruvh" path="res://sounds/microgames/touch_grass/grass_2.mp3" id="8_q0dx4"]
 [ext_resource type="AudioStream" uid="uid://dstblkxeciiy4" path="res://sounds/microgames/touch_grass/grass_3.mp3" id="9_qrep6"]
 [ext_resource type="AudioStream" uid="uid://cd8vjih1cse40" path="res://sounds/microgames/touch_grass/whip.mp3" id="10_q0dx4"]
+
+[sub_resource type="Resource" id="Resource_hihd0"]
+script = ExtResource("2_qrep6")
+instructionsBig = "touch grass"
+instructionSmall1 = "Click the grass image to"
+instructionSmall2 = "Fill up the bar."
+referenceImage = ExtResource("2_4gcub")
+errorMessage = "Please fill up the bar"
+set_size = Vector2(430, 573.835)
+bonusTime = 2.0
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="Animation" id="Animation_0qy5o"]
 length = 0.001
@@ -279,6 +291,7 @@ z_index = 2
 offset_right = 414.0
 offset_bottom = 533.0
 script = ExtResource("1_f6ok3")
+microgame_data = SubResource("Resource_hihd0")
 
 [node name="grass" type="TextureRect" parent="."]
 clip_children = 2

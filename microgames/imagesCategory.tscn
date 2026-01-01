@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://x2f5xosob6pt"]
+[gd_scene load_steps=6 format=3 uid="uid://x2f5xosob6pt"]
 
 [ext_resource type="Script" uid="uid://daen1l4x5i3wq" path="res://scripts/microgames/images_with/image_category_Minigame.gd" id="1_ocsy8"]
 [ext_resource type="AudioStream" uid="uid://d0ky5ae1vh01" path="res://sounds/tap.mp3" id="2_6687q"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_ms6k8"]
+
+[sub_resource type="Resource" id="Resource_xkddc"]
+script = ExtResource("2_ms6k8")
+instructionSmall1 = "Select all squares with"
+instructionSmall2 = "Click verify once all are selected."
+errorMessage = "Please select all matching images."
+set_size = Vector2(430, 573.835)
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ms6k8"]
 random_pitch = 1.1
@@ -16,6 +25,7 @@ theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
 columns = 3
 script = ExtResource("1_ocsy8")
+microgame_data = SubResource("Resource_xkddc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ms6k8")

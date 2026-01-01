@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MicrogameData" load_steps=2 format=3 uid="uid://0poq7wr1nij7"]
 
-[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data.gd" id="1_5i0c0"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="1_5i0c0"]
 
 [resource]
 script = ExtResource("1_5i0c0")

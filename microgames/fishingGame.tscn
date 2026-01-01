@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://05mkerdmgsks"]
+[gd_scene load_steps=17 format=3 uid="uid://05mkerdmgsks"]
 
 [ext_resource type="Script" uid="uid://dh5khsmhmx0cf" path="res://scripts/microgames/fishing_game/fishing_game.gd" id="1_141ru"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_pbios"]
 [ext_resource type="Texture2D" uid="uid://blc3etk1tj6cn" path="res://sprites/fishing_game/bg.png" id="2_quheh"]
 [ext_resource type="Script" uid="uid://c2iycx54m3u46" path="res://scripts/microgames/fishing_game/boat.gd" id="3_ogolv"]
 [ext_resource type="Texture2D" uid="uid://cwigknt7xqp6t" path="res://sprites/fishing_game/boat.png" id="4_wllv6"]
@@ -11,6 +12,17 @@
 [ext_resource type="AudioStream" uid="uid://cgp6f5m0pook3" path="res://sounds/microgames/fishing_game/hooked.mp3" id="9_ypxt3"]
 [ext_resource type="AudioStream" uid="uid://chgvoxfbdxypl" path="res://sounds/microgames/fishing_game/collect.mp3" id="10_sgk76"]
 [ext_resource type="AudioStream" uid="uid://cfs2js34cki63" path="res://sounds/microgames/fishing_game/win.mp3" id="11_pbios"]
+
+[sub_resource type="Resource" id="Resource_v48nj"]
+script = ExtResource("2_pbios")
+instructionsBig = "collect fishes"
+instructionSmall1 = "Click on the fish to"
+instructionSmall2 = "Be sure to avoid sharks."
+errorMessage = "Please collect enough fishes."
+set_size = Vector2(430, 691.835)
+bonusTime = 3.0
+staticTimer = true
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rwuo"]
 size = Vector2(576, 552.695)
@@ -33,6 +45,7 @@ offset_right = 412.0
 offset_bottom = 520.695
 mouse_filter = 2
 script = ExtResource("1_141ru")
+microgame_data = SubResource("Resource_v48nj")
 
 [node name="bg" type="TextureRect" parent="."]
 layout_mode = 1

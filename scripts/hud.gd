@@ -26,7 +26,7 @@ func set_up_ui_data(data:Dictionary) -> void:
 	if (data.has("windowSize")):
 		set_captcha_window_size(data.windowSize, data.windowTween, data.tweenSpeed)
 
-func _set_instructions(text_override_big: String = "..n", text_override_small: String = "..n", ref_image : String = "..n") -> void:
+func _set_instructions(text_override_big: String = "..n", text_override_small: String = "..n", ref_image : Texture2D = null) -> void:
 	var instructions_2nd : Label = instructions.get_node("instructions2")
 	
 	if big_image.texture != null: big_image.texture = null
@@ -36,8 +36,8 @@ func _set_instructions(text_override_big: String = "..n", text_override_small: S
 	if reference_image.texture != null: 
 		reference_image.texture = null
 	
-	if ref_image != "..n":
-		reference_image.texture = load(ref_image)
+	if ref_image != null:
+		reference_image.texture = ref_image
 		reference_image.visible = true
 	
 	if text_override_small != "..n":
