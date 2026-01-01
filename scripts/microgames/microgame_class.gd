@@ -2,6 +2,8 @@ extends Node
 
 class_name Microgame
 
+@export var microgame_data : MicrogameData = null
+
 signal override_instruction_text(big:String, small:String)
 signal set_camera_shake(intensity : float, duration : float)
 signal skip_timer

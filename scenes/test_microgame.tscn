@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=44 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="Script" uid="uid://crsxod7bwc171" path="res://scripts/microgames/burger_game/burger_game.gd" id="9_xc6lx"]
+[ext_resource type="PackedScene" uid="uid://ciwbi38tanbmb" path="res://instances/burgerGame/ingredient.tscn" id="10_8thrs"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
@@ -185,9 +187,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = 40.444992
+offset_top = -18.274979
 offset_right = 410.0
-offset_bottom = 614.28
+offset_bottom = 673.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(216, 333)
@@ -344,7 +346,36 @@ mouse_filter = 2
 [node name="burgerGame" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame"]
 anchors_preset = 0
 offset_right = 414.0
-offset_bottom = 419.555
+offset_bottom = 536.27496
+script = ExtResource("9_xc6lx")
+
+[node name="bg" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.9515795, 0.95157963, 0.9515794, 1)
+
+[node name="burger_pos" type="Marker2D" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame"]
+position = Vector2(207, 306.27496)
+
+[node name="ingredient" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame/burger_pos" instance=ExtResource("10_8thrs")]
+
+[node name="ingredients tab" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 362.27496
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.85606724, 0.85606736, 0.85606664, 1)
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
