@@ -11,6 +11,8 @@ instructionsBig = "phone verification"
 instructionSmall2 = "Click verify when done."
 errorMessage = "Please verify your phone before continuing."
 set_size = Vector2(430, 371.265)
+slowGame = true
+noTimer = true
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l57om"]

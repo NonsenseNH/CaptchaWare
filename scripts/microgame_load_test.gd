@@ -25,12 +25,26 @@ const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 
 @onready var verify_button: Button = $window/captcha_window/lowbar/verifyButton
 
+@onready var cur_game: ColorRect = $window/captcha_window/curGame
+
 var cur_microgame : Node = null
 
 var cur_microgame_pool_array : Array = []
 
 var microgame_json : Dictionary = {}
-var cur_microgame_data : Dictionary = {}
+
+var cur_microgame_data : Dictionary = {
+	"instructionsBig" : "",
+	"InstructionsSmall" : "",
+	"referenceImage" : null,
+	"errorMessage" : "",
+	"Length": 0,
+	"Width": 0,
+	"bonusTime": 0,
+	"slowGame": false,
+	"staticTimer" : false,
+	"noTimer" : false
+}
 
 var cur_window_size : Vector2 = Vector2.ZERO
 
@@ -60,12 +74,26 @@ func camera_shake(intensity : float, duration : float) -> void:
 	camera.shake_camera(intensity, duration)
 
 func get_microgame_data(force_game: String = "") -> void:
-	cur_microgame = get_microgame(force_game)
+	if force_game == "":
+		cur_microgame = cur_game.get_child(0)
+	else:
+		cur_microgame = get_microgame(force_game)
 	
-	if cur_microgame == null: return
+	var local_game_data : MicrogameData = cur_microgame.microgame_data
 	
-	cur_microgame_data = microgame_json.microgames[cur_microgame.name]
+	for i in cur_microgame_data:
+		if ["instructionsSmall", "set_size"].has(i): continue
+
+		cur_microgame_data[i] = local_game_data.get(i)
+	
+	cur_microgame_data.instructionsSmall = local_game_data.instructionSmall1 + "--" + local_game_data.instructionSmall2
+
+	cur_microgame_data.Length = local_game_data.set_size.y
+	cur_microgame_data.Width = local_game_data.set_size.x
+	
 	cur_window_size = Vector2(cur_microgame_data.Width, cur_microgame_data.Length)
+
+	print_debug(cur_microgame_data.keys())
 
 func set_up_window_size(tween_window: bool = false) -> void:
 	if cur_microgame == null: return
@@ -79,7 +107,7 @@ func change_game():
 	if cur_microgame == null: return
 	cur_microgame.z_index += 1
 	
-	override_instructions(cur_microgame_data.instructionsBig, cur_microgame_data.InstructionsSmall, cur_microgame_data.referenceImage)
+	override_instructions(cur_microgame_data.instructionsBig, cur_microgame_data.instructionsSmall, cur_microgame_data.referenceImage)
 	
 	on_transition_complete.connect(cur_microgame.on_transition_complete)
 	cur_microgame.override_instruction_text.connect(override_instructions)
@@ -88,7 +116,8 @@ func change_game():
 	cur_microgame.end_microgame.connect(results)
 	cur_microgame.difficulty = cur_difficulty_test
 	
-	ui_captcha_window.cur_game.add_child(cur_microgame)
+	if force_microgame != "":
+		ui_captcha_window.cur_game.add_child(cur_microgame)
 	
 	cur_microgame.global_position = ui_captcha_window.cur_game.global_position
 
@@ -96,14 +125,14 @@ func change_game():
 
 	if  !cur_microgame_data.noTimer:
 		if cur_microgame_data.has("staticTimer") && cur_microgame_data.staticTimer:
-			total_wait_time = og_wait_time + cur_microgame_data.BonusTime
+			total_wait_time = og_wait_time + cur_microgame_data.bonusTime
 		else:
-			total_wait_time = cur_wait_time + cur_microgame_data.BonusTime
+			total_wait_time = cur_wait_time + cur_microgame_data.bonusTime
 		timer.wait_time = total_wait_time
 		timer.start()
 
-func override_instructions(big:String = "..n",small:String = "..n",ref:String = "..n") -> void:
-	var txt : Array = [big,small,ref]
+func override_instructions(big:String = "..n",small:String = "..n",ref:Texture2D = null) -> void:
+	var txt : Array = [big,small]
 	for text_index in range(txt.size()):
 		if txt[text_index] == "":
 			txt[text_index] = "..n"
@@ -111,7 +140,7 @@ func override_instructions(big:String = "..n",small:String = "..n",ref:String = 
 	ui_data = {
 		"instructionsBig" : txt[0],
 		"InstructionsSmall" : txt[1],
-		"referenceImage" : txt[2],
+		"referenceImage" : ref,
 	}
 	ui_captcha_window.set_up_ui_data(ui_data)
 

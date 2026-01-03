@@ -20,7 +20,8 @@ func _ready() -> void:
 	load_buttons()
 
 func load_buttons() -> void:
-	override_instruction_text.emit(cur_object.replace("_"," "), "", "res://sprites/images_with/images/1_" + cur_object + ".png")
+	var cur_image : Texture2D = load("res://sprites/images_with/images/1_" + cur_object + ".png")
+	override_instruction_text.emit(cur_object.replace("_"," "), "", cur_image)
 	
 	var cur_categ_button : Array[String] = get_categories(3)
 	

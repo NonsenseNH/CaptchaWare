@@ -372,7 +372,7 @@ func change_game():
 	cur_microgame.difficulty = difficulty
 	cur_microgame.is_intro = intro_sequence
 	
-	override_instructions(cur_microgame_data.instructionsBig, cur_microgame_data.InstructionsSmall, cur_microgame_data.referenceImage)
+	override_instructions(cur_microgame_data.instructionsBig, cur_microgame_data.instructionsSmall, cur_microgame_data.referenceImage)
 	
 	ui_captcha_window.cur_game.add_child(cur_microgame)
 	
@@ -439,16 +439,17 @@ func get_microgame(force_game : String = "") -> Node:
 
 func get_microgame_data(force_game: String = "") -> void:
 	cur_microgame = get_microgame(force_game)
+	var local_game_data : MicrogameData = cur_microgame.microgame_data
 	
 	for i in cur_microgame_data:
-		if ["InstructionsSmall", "set_size"].has(i): continue
+		if ["instructionsSmall", "set_size"].has(i): continue
 
-		cur_microgame_data[i] = cur_microgame.microgame_data.get(i)
+		cur_microgame_data[i] = local_game_data.get(i)
 	
-	cur_microgame_data.instructionsSmall = cur_microgame.microgame_data.instructionSmall1 + "--" + cur_microgame.microgame_data.instructionSmall2
+	cur_microgame_data.instructionsSmall = local_game_data.instructionSmall1 + "--" + local_game_data.instructionSmall2
 
-	cur_microgame_data.Length = cur_microgame.microgame_data.set_size.y
-	cur_microgame_data.Width = cur_microgame.microgame_data.set_size.x
+	cur_microgame_data.Length = local_game_data.set_size.y
+	cur_microgame_data.Width = local_game_data.set_size.x
 	
 	cur_window_size = Vector2(cur_microgame_data.Width, cur_microgame_data.Length)
 
@@ -459,7 +460,7 @@ func skip_game() -> void:
 		timer.stop()
 		transition_game()
 	else:
-		ui_captcha_window._display_error_text(microgame_pool_json.microgames[cur_microgame.name].errorMessage)
+		ui_captcha_window._display_error_text(cur_microgame_data.errorMessage)
 
 
 func checkbox_pressed() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=45 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
 [ext_resource type="Script" uid="uid://crsxod7bwc171" path="res://scripts/microgames/burger_game/burger_game.gd" id="9_xc6lx"]
-[ext_resource type="PackedScene" uid="uid://ciwbi38tanbmb" path="res://instances/burgerGame/ingredient.tscn" id="10_8thrs"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="10_xc6lx"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
@@ -43,6 +43,16 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxyth"]
 bg_color = Color(0, 0, 0, 0.133333)
+
+[sub_resource type="Resource" id="Resource_7a5sd"]
+script = ExtResource("10_xc6lx")
+instructionsBig = "finish the order"
+instructionSmall1 = "Please click the ingredients to"
+instructionSmall2 = "Click verify when the order is completed"
+errorMessage = "Please finish the order"
+set_size = Vector2(430, 691.835)
+bonusTime = 3.0
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
 bg_color = Color(0.7962427, 0.7962432, 0.7962428, 1)
@@ -129,7 +139,6 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "simonSays"
 cur_difficulty_test = 4
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
@@ -348,6 +357,7 @@ anchors_preset = 0
 offset_right = 414.0
 offset_bottom = 536.27496
 script = ExtResource("9_xc6lx")
+microgame_data = SubResource("Resource_7a5sd")
 
 [node name="bg" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame"]
 layout_mode = 1
@@ -362,8 +372,6 @@ color = Color(0.9515795, 0.95157963, 0.9515794, 1)
 
 [node name="burger_pos" type="Marker2D" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame"]
 position = Vector2(207, 306.27496)
-
-[node name="ingredient" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame/burger_pos" instance=ExtResource("10_8thrs")]
 
 [node name="ingredients tab" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/burgerGame"]
 layout_mode = 1
