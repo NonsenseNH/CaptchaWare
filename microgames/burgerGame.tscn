@@ -1,0 +1,357 @@
+[gd_scene load_steps=20 format=3 uid="uid://bfaa6ff8240hq"]
+
+[ext_resource type="Script" uid="uid://crsxod7bwc171" path="res://scripts/microgames/burger_game/burger_game.gd" id="1_p6c3f"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_wfoii"]
+[ext_resource type="Texture2D" uid="uid://cjrhi1cfmnocs" path="res://sprites/burger_game/plate.png" id="3_yhqx6"]
+[ext_resource type="Texture2D" uid="uid://4h774pflh20u" path="res://sprites/burger_game/bottom_bun.png" id="4_r73wq"]
+[ext_resource type="Script" uid="uid://c4mlrpxbljuth" path="res://scripts/microgames/burger_game/buttons.gd" id="5_nhw6e"]
+[ext_resource type="Texture2D" uid="uid://dyi7cw1wmbx6g" path="res://sprites/burger_game/top_bun.png" id="6_uxjr7"]
+[ext_resource type="Texture2D" uid="uid://bd2xfrkkd1m5x" path="res://sprites/burger_game/onion.png" id="7_77qjh"]
+[ext_resource type="Texture2D" uid="uid://oiort30ia0n1" path="res://sprites/burger_game/lettuce.png" id="8_wx8mm"]
+[ext_resource type="Texture2D" uid="uid://cbb8ewetl13iv" path="res://sprites/burger_game/tomato.png" id="9_ub72g"]
+[ext_resource type="Texture2D" uid="uid://dxwa13voxs2w7" path="res://sprites/burger_game/cheese.png" id="10_ixie1"]
+[ext_resource type="Texture2D" uid="uid://cyr6b7bru1uwj" path="res://sprites/burger_game/burger.png" id="11_u2nfb"]
+[ext_resource type="Texture2D" uid="uid://7tbve0p5okt6" path="res://sprites/burger_game/order_notepad.png" id="12_1p5fd"]
+[ext_resource type="FontFile" uid="uid://cdnchjeq4dvv2" path="res://font/comic.ttf" id="13_54dvj"]
+
+[sub_resource type="Resource" id="Resource_7a5sd"]
+script = ExtResource("2_wfoii")
+instructionsBig = "finish the order"
+instructionSmall1 = "Please click the ingredients to"
+instructionSmall2 = "Click verify when the order is completed"
+errorMessage = "Please finish the order"
+set_size = Vector2(430, 691.835)
+bonusTime = 3.0
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmvoj"]
+bg_color = Color(0.54, 0.54, 0.54, 0.54509807)
+border_color = Color(0.52906674, 0.52906674, 0.52906656, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 11.0
+expand_margin_right = 11.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxse2"]
+bg_color = Color(0.70796674, 0.7079664, 0.7079665, 1)
+border_width_bottom = 9
+border_color = Color(0.62967473, 0.62967485, 0.62967455, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 11.0
+expand_margin_top = 2.0
+expand_margin_right = 11.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wku30"]
+bg_color = Color(0.6378422, 0.6378437, 0.6378422, 1)
+border_width_bottom = 7
+border_color = Color(0.52906674, 0.52906674, 0.52906656, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 11.0
+expand_margin_right = 11.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lnet"]
+bg_color = Color(0.6378422, 0.6378437, 0.6378422, 1)
+border_width_top = 7
+border_color = Color(0.52906674, 0.52906674, 0.52906656, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 11.0
+expand_margin_right = 11.0
+
+[sub_resource type="Theme" id="Theme_8u1fw"]
+Button/colors/font_color = Color(0.3741387, 0.37413958, 0.37413895, 1)
+Button/colors/font_disabled_color = Color(0.23, 0.23, 0.23, 0.5647059)
+Button/colors/font_outline_color = Color(0.8431839, 0.8431839, 0.84318376, 1)
+Button/colors/font_pressed_color = Color(0.47788018, 0.47788018, 0.47788, 1)
+Button/constants/icon_max_width = 41
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 28
+Button/icons/icon = null
+Button/styles/disabled = SubResource("StyleBoxFlat_rmvoj")
+Button/styles/hover = SubResource("StyleBoxFlat_xxse2")
+Button/styles/normal = SubResource("StyleBoxFlat_wku30")
+Button/styles/pressed = SubResource("StyleBoxFlat_5lnet")
+Label/colors/font_outline_color = Color(0.37254903, 0.37254903, 0.37254903, 1)
+Label/colors/font_shadow_color = Color(0.5254902, 0.5254902, 0.5254902, 1)
+Label/constants/outline_size = 11
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 8
+
+[node name="burgerGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 414.0
+offset_bottom = 536.27496
+script = ExtResource("1_p6c3f")
+microgame_data = SubResource("Resource_7a5sd")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.9515795, 0.95157963, 0.9515794, 1)
+
+[node name="plate" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 261.275
+offset_right = 476.0
+offset_bottom = 364.275
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("3_yhqx6")
+
+[node name="burger_pos" type="Marker2D" parent="."]
+position = Vector2(207, 290.27496)
+
+[node name="ingredients" type="Sprite2D" parent="burger_pos"]
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("4_r73wq")
+
+[node name="ingredients tab" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 362.27496
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.85606724, 0.85606736, 0.85606664, 1)
+
+[node name="ButtonGrid" type="GridContainer" parent="ingredients tab"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 13.0
+offset_right = 377.0
+offset_bottom = 169.0
+theme_override_constants/h_separation = 124
+theme_override_constants/v_separation = 84
+columns = 3
+
+[node name="top_bun" type="Control" parent="ingredients tab/ButtonGrid"]
+layout_mode = 2
+script = ExtResource("5_nhw6e")
+
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/top_bun"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 84.0
+offset_bottom = 48.0
+focus_mode = 0
+theme = SubResource("Theme_8u1fw")
+text = "B"
+icon = ExtResource("6_uxjr7")
+expand_icon = true
+
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/top_bun"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = 95.0
+offset_bottom = 68.0
+theme = SubResource("Theme_8u1fw")
+text = "Bun"
+horizontal_alignment = 1
+
+[node name="button5" type="Control" parent="ingredients tab/ButtonGrid"]
+layout_mode = 2
+script = ExtResource("5_nhw6e")
+
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button5"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 84.0
+offset_bottom = 48.0
+focus_mode = 0
+theme = SubResource("Theme_8u1fw")
+text = "O"
+icon = ExtResource("7_77qjh")
+expand_icon = true
+
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button5"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = 95.0
+offset_bottom = 68.0
+theme = SubResource("Theme_8u1fw")
+text = "Onion"
+horizontal_alignment = 1
+
+[node name="button4" type="Control" parent="ingredients tab/ButtonGrid"]
+layout_mode = 2
+script = ExtResource("5_nhw6e")
+
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button4"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 84.0
+offset_bottom = 48.0
+focus_mode = 0
+theme = SubResource("Theme_8u1fw")
+text = "L"
+icon = ExtResource("8_wx8mm")
+expand_icon = true
+
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button4"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = 95.0
+offset_bottom = 68.0
+theme = SubResource("Theme_8u1fw")
+text = "Lettuce"
+horizontal_alignment = 1
+
+[node name="button6" type="Control" parent="ingredients tab/ButtonGrid"]
+layout_mode = 2
+script = ExtResource("5_nhw6e")
+
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button6"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 84.0
+offset_bottom = 48.0
+focus_mode = 0
+theme = SubResource("Theme_8u1fw")
+text = "T"
+icon = ExtResource("9_ub72g")
+expand_icon = true
+
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button6"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = 95.0
+offset_bottom = 68.0
+theme = SubResource("Theme_8u1fw")
+text = "Tomato"
+horizontal_alignment = 1
+
+[node name="button3" type="Control" parent="ingredients tab/ButtonGrid"]
+layout_mode = 2
+script = ExtResource("5_nhw6e")
+
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button3"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 84.0
+offset_bottom = 48.0
+focus_mode = 0
+theme = SubResource("Theme_8u1fw")
+text = "C"
+icon = ExtResource("10_ixie1")
+expand_icon = true
+
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button3"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = 95.0
+offset_bottom = 68.0
+theme = SubResource("Theme_8u1fw")
+text = "Cheese"
+horizontal_alignment = 1
+
+[node name="button2" type="Control" parent="ingredients tab/ButtonGrid"]
+layout_mode = 2
+script = ExtResource("5_nhw6e")
+
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button2"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 84.0
+offset_bottom = 48.0
+focus_mode = 0
+theme = SubResource("Theme_8u1fw")
+text = "P"
+icon = ExtResource("11_u2nfb")
+expand_icon = true
+
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = 95.0
+offset_bottom = 68.0
+theme = SubResource("Theme_8u1fw")
+text = "Patty"
+horizontal_alignment = 1
+
+[node name="notepad" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 3.0
+offset_right = 409.0
+offset_bottom = 172.27498
+texture = ExtResource("12_1p5fd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="notepad"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.274979
+offset_right = 100.0
+offset_bottom = 192.27498
+theme_override_colors/default_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+theme_override_fonts/normal_font = ExtResource("13_54dvj")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=00000075][s]LETTUCE[/s][/color]
+ONION
+TOMATO
+CHEESE"
+horizontal_alignment = 1
+
+[node name="Fail text" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 88.0
+offset_top = 113.27498
+offset_right = 320.0
+offset_bottom = 162.54994
+theme_override_colors/font_color = Color(0.95881146, 0.24505788, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 31
+text = "WRONG ORDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/top_bun" to="." method="_on_ingredient_button_pressed"]
+[connection signal="button_up" from="ingredients tab/ButtonGrid/top_bun/Button" to="ingredients tab/ButtonGrid/top_bun" method="_on_button_button_up"]
+[connection signal="pressed" from="ingredients tab/ButtonGrid/top_bun/Button" to="ingredients tab/ButtonGrid/top_bun" method="_on_button_pressed"]
+[connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/button5" to="." method="_on_ingredient_button_pressed"]
+[connection signal="button_up" from="ingredients tab/ButtonGrid/button5/Button" to="ingredients tab/ButtonGrid/button5" method="_on_button_button_up"]
+[connection signal="pressed" from="ingredients tab/ButtonGrid/button5/Button" to="ingredients tab/ButtonGrid/button5" method="_on_button_pressed"]
+[connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/button4" to="." method="_on_ingredient_button_pressed"]
+[connection signal="button_up" from="ingredients tab/ButtonGrid/button4/Button" to="ingredients tab/ButtonGrid/button4" method="_on_button_button_up"]
+[connection signal="pressed" from="ingredients tab/ButtonGrid/button4/Button" to="ingredients tab/ButtonGrid/button4" method="_on_button_pressed"]
+[connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/button6" to="." method="_on_ingredient_button_pressed"]
+[connection signal="button_up" from="ingredients tab/ButtonGrid/button6/Button" to="ingredients tab/ButtonGrid/button6" method="_on_button_button_up"]
+[connection signal="pressed" from="ingredients tab/ButtonGrid/button6/Button" to="ingredients tab/ButtonGrid/button6" method="_on_button_pressed"]
+[connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/button3" to="." method="_on_ingredient_button_pressed"]
+[connection signal="button_up" from="ingredients tab/ButtonGrid/button3/Button" to="ingredients tab/ButtonGrid/button3" method="_on_button_button_up"]
+[connection signal="pressed" from="ingredients tab/ButtonGrid/button3/Button" to="ingredients tab/ButtonGrid/button3" method="_on_button_pressed"]
+[connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/button2" to="." method="_on_ingredient_button_pressed"]
+[connection signal="button_up" from="ingredients tab/ButtonGrid/button2/Button" to="ingredients tab/ButtonGrid/button2" method="_on_button_button_up"]
+[connection signal="pressed" from="ingredients tab/ButtonGrid/button2/Button" to="ingredients tab/ButtonGrid/button2" method="_on_button_pressed"]
