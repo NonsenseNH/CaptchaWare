@@ -1,10 +1,7 @@
 {
 	"normal" : [
 		"imagesCategory",
-		"imageLocation",
-		"puzzlePiece",
-		"typeCaptcha",
-		"mathCaptcha"
+		"imageLocation"
 	],
 	"absurd" :[
 		"doNothing",

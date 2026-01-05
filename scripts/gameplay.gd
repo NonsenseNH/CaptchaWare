@@ -105,8 +105,6 @@ func _ready() -> void:
 
 	for game in game_name_list:
 		resource_preloader.add_resource(game.replace(".tscn", ""), load("res://microgames/" + game))
-	
-	print_debug(resource_preloader.get_resource_list())
 
 func start_game() -> void:
 	intro_sequence = true
@@ -147,9 +145,10 @@ func start_game() -> void:
 func get_game_pool(_pool_override : String = "") -> Array:
 	if cur_microgame_pool.to_lower() == "all" && _pool_override == "":
 		var cur_array := []
-		for i in microgame_pool_json:
-			cur_array.append_array(microgame_pool_json[i])
-			
+		
+		cur_array.append_array(resource_preloader.get_resource_list())
+		
+		cur_array.shuffle()
 		return cur_array
 	else:
 		return microgame_pool_json[cur_microgame_pool if _pool_override == "" else _pool_override]
@@ -261,7 +260,7 @@ func game_over() -> void:
 	game_started = false
 
 func disconnect_prev_microgame_signals() -> void:
-	if prev_microgame == null: return
+	if prev_microgame == null || on_transition_complete.is_connected(prev_microgame.on_transition_complete): return
 	on_transition_complete.disconnect(prev_microgame.on_transition_complete)
 	prev_microgame.override_instruction_text.disconnect(override_instructions)
 	prev_microgame.set_camera_shake.disconnect(camera_shake)
@@ -426,16 +425,18 @@ func get_microgame(force_game : String = "") -> Node:
 	if cur_microgame_pool_array.is_empty():
 		cur_microgame_pool_array = get_game_pool()
 	
-	while (true):
-		cur_game_name = cur_microgame_pool_array[randi_range(0, cur_microgame_pool_array.size() - 1)]
-		if (cur_game_name == null || !(prev_microgame == null || cur_game_name != prev_microgame.name) && cur_microgame_pool_array.size() != 1): continue
-		break
+	cur_game_name = cur_microgame_pool_array[0]
 	
 	cur_game = resource_preloader.get_resource(cur_game_name).instantiate()
 	
 	cur_microgame_pool_array.erase(cur_game_name)
-	
+
+	print_debug("Current Microgame Pool: " + str(cur_microgame_pool_array))
+	print_debug("Selected Microgame: " + cur_game_name)
+
 	return cur_game
+
+	
 
 func get_microgame_data(force_game: String = "") -> void:
 	cur_microgame = get_microgame(force_game)
