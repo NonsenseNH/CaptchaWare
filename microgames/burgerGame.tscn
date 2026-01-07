@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfaa6ff8240hq"]
+[gd_scene load_steps=27 format=3 uid="uid://bfaa6ff8240hq"]
 
 [ext_resource type="Script" uid="uid://crsxod7bwc171" path="res://scripts/microgames/burger_game/burger_game.gd" id="1_p6c3f"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_wfoii"]
@@ -13,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cyr6b7bru1uwj" path="res://sprites/burger_game/burger.png" id="11_u2nfb"]
 [ext_resource type="Texture2D" uid="uid://7tbve0p5okt6" path="res://sprites/burger_game/order_notepad.png" id="12_1p5fd"]
 [ext_resource type="FontFile" uid="uid://cdnchjeq4dvv2" path="res://font/comic.ttf" id="13_54dvj"]
+[ext_resource type="AudioStream" uid="uid://bdtgb61teneds" path="res://sounds/microgames/burger_game/ingredient_1.mp3" id="14_nhw6e"]
+[ext_resource type="AudioStream" uid="uid://dmf1f5m065xih" path="res://sounds/microgames/burger_game/ingredient_2.mp3" id="15_uxjr7"]
+[ext_resource type="AudioStream" uid="uid://db1rdcxeq6mqj" path="res://sounds/microgames/burger_game/ingredient_3.mp3" id="16_77qjh"]
+[ext_resource type="AudioStream" uid="uid://1j83homfy7sh" path="res://sounds/microgames/burger_game/ingredient_4.mp3" id="17_wx8mm"]
+[ext_resource type="AudioStream" uid="uid://b6ela1xw6kt3e" path="res://sounds/microgames/burger_game/ding.mp3" id="18_uxjr7"]
+[ext_resource type="AudioStream" uid="uid://b8prtotky50i4" path="res://sounds/microgames/simonSays/wrong.mp3" id="19_77qjh"]
 
 [sub_resource type="Resource" id="Resource_7a5sd"]
 script = ExtResource("2_wfoii")
@@ -87,6 +93,14 @@ Label/constants/outline_size = 11
 Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 8
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ub72g"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("14_nhw6e")
+stream_1/stream = ExtResource("15_uxjr7")
+stream_2/stream = ExtResource("16_77qjh")
+stream_3/stream = ExtResource("17_wx8mm")
 
 [node name="burgerGame" type="Control"]
 layout_mode = 3
@@ -336,6 +350,21 @@ theme_override_font_sizes/font_size = 31
 text = "WRONG ORDER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="SlapIngredientSound" type="AudioStreamPlayer" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_ub72g")
+volume_db = 2.0
+bus = &"Sounds"
+
+[node name="DingSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("18_uxjr7")
+volume_db = 6.0
+
+[node name="BuzzerSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("19_77qjh")
+volume_db = -5.0
 
 [connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/top_bun" to="." method="_on_ingredient_button_pressed"]
 [connection signal="button_up" from="ingredients tab/ButtonGrid/top_bun/Button" to="ingredients tab/ButtonGrid/top_bun" method="_on_button_button_up"]

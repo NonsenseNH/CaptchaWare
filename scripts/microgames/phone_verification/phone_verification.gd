@@ -107,7 +107,7 @@ func on_call_answered() -> void:
 
 func on_transition_complete() -> void:
 	var cam_tween := create_tween()
-	cam_tween.tween_property(camera, "zoom", Vector2.ONE * 1.80, 4.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC)
+	cam_tween.tween_property(camera, "zoom", Vector2.ONE * 1.80, 4.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CIRC)	
 
 	await get_tree().create_timer(randf_range(2.0, 4.0)).timeout
 

@@ -71,6 +71,10 @@ var finished_burger : bool = false
 
 var stop_game : bool = false
 
+@onready var slap_ingredient_sound: AudioStreamPlayer = $sounds/SlapIngredientSound
+@onready var ding_sound: AudioStreamPlayer = $sounds/DingSound
+@onready var buzzer_sound: AudioStreamPlayer = $sounds/BuzzerSound
+
 func _ready() -> void:
 	set_random_order()
 
@@ -102,6 +106,9 @@ func update_ingredients_list(setting_up_text := false, cur_ingredient : Ingredie
 		if cur_order_array[cur_order] != cur_ingredient: #when you fail
 			set_camera_shake.emit(5, .5)
 			complete_microgame()
+
+			buzzer_sound.play()
+			
 			fail_text.visible = true
 			return
 		
@@ -141,7 +148,11 @@ func place_ingredient(ingredient_type: Ingredients) -> void:
 
 	update_ingredients_list(false, ingredient_type)
 
+	slap_ingredient_sound.play()
+
 	if cur_order_array[cur_order - 1] != ingredient_type || ingredient_type != 0: return
+
+	ding_sound.play()
 	
 	finished_burger = true
 	complete_microgame()

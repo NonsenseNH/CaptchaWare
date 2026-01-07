@@ -260,7 +260,7 @@ func game_over() -> void:
 	game_started = false
 
 func disconnect_prev_microgame_signals() -> void:
-	if prev_microgame == null || on_transition_complete.is_connected(prev_microgame.on_transition_complete): return
+	if prev_microgame == null || !on_transition_complete.is_connected(prev_microgame.on_transition_complete): return
 	on_transition_complete.disconnect(prev_microgame.on_transition_complete)
 	prev_microgame.override_instruction_text.disconnect(override_instructions)
 	prev_microgame.set_camera_shake.disconnect(camera_shake)
