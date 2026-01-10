@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=46 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -8,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="Script" uid="uid://dide8kbk8k6xk" path="res://scripts/microgames/close_popups/close_popups.gd" id="9_8thrs"]
+[ext_resource type="Texture2D" uid="uid://j10rlx4ehilp" path="res://sprites/close_popups/ads/SKATEBOARD.png" id="9_so1f2"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="10_xc6lx"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
@@ -41,6 +44,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxyth"]
 bg_color = Color(0, 0, 0, 0.133333)
+
+[sub_resource type="Resource" id="Resource_7a5sd"]
+script = ExtResource("10_xc6lx")
+instructionsBig = "ad break"
+instructionSmall1 = "Enjoy this"
+instructionSmall2 = "Click verify after a few seconds"
+set_size = Vector2(430, 573.835)
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
 bg_color = Color(0.7962427, 0.7962432, 0.7962428, 1)
@@ -127,7 +138,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "burgerGame"
+force_microgame = "alignCircle"
 cur_difficulty_test = 3
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
@@ -185,9 +196,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -18.274979
+offset_top = 48.0
 offset_right = 410.0
-offset_bottom = 673.0
+offset_bottom = 621.835
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(216, 333)
@@ -340,6 +351,26 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="closePopups" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame"]
+anchors_preset = 0
+offset_right = 414.0
+offset_bottom = 420.0
+script = ExtResource("9_8thrs")
+microgame_data = SubResource("Resource_7a5sd")
+
+[node name="ad" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 420.0
+texture = ExtResource("9_so1f2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="popUps" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)

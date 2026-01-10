@@ -1,0 +1,166 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfin0va87eit7"]
+
+[ext_resource type="Script" uid="uid://dt3sx3d3uugr6" path="res://scripts/microgames/close_popups/popup.gd" id="1_74a3x"]
+[ext_resource type="Texture2D" uid="uid://derfkwva3n5yu" path="res://sprites/do_nothing/Screenshot_3.png" id="2_e8qt0"]
+[ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="3_uw63d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5sd"]
+bg_color = Color(0.8392157, 0.09019608, 0.1882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc6lx"]
+bg_color = Color(0.9098039, 0.06666667, 0.13725491, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8thrs"]
+bg_color = Color(0.9471994, 0.9471994, 0.9471994, 1)
+
+[sub_resource type="Theme" id="Theme_xc6lx"]
+Button/colors/font_color = Color(0.7288213, 0.7288222, 0.7288216, 1)
+Button/colors/icon_normal_color = Color(0.42652702, 0.4141485, 0.5109032, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_7a5sd")
+Button/styles/hover = SubResource("StyleBoxFlat_xc6lx")
+Button/styles/normal = SubResource("StyleBoxFlat_8thrs")
+Button/styles/pressed = SubResource("StyleBoxFlat_7a5sd")
+
+[sub_resource type="Animation" id="Animation_7a5sd"]
+resource_name = "popup"
+length = 0.151
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(0.34151006, 1),
+"update": 0,
+"values": [Vector2(0.91, 0.91), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wku30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wku30"]
+_data = {
+&"RESET": SubResource("Animation_wku30"),
+&"popup": SubResource("Animation_7a5sd")
+}
+
+[node name="popup" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -231.0
+offset_top = 52.0
+offset_right = -191.0
+offset_bottom = 92.0
+script = ExtResource("1_74a3x")
+
+[node name="ad" type="TextureRect" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -184.0
+offset_right = 127.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e8qt0")
+
+[node name="window" type="ColorRect" parent="ad"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -31.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+
+[node name="shadow" type="TextureRect" parent="ad/window"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -58.0
+offset_right = 43.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_uw63d")
+
+[node name="windowText" type="Label" parent="ad/window"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 368.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0.7372549, 0.7372549, 0.7372549, 1)
+theme_override_font_sizes/font_size = 14
+text = "Annoying Popup"
+
+[node name="x" type="Button" parent="ad"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -43.0
+offset_top = -31.0
+offset_right = 2.0
+grow_horizontal = 0
+focus_mode = 0
+theme = SubResource("Theme_xc6lx")
+text = "x"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wku30")
+}
+autoplay = "popup"

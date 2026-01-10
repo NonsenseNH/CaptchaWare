@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2tf1ed020ki"
-path="res://.godot/imported/captcha_bar.png-e60bb32447a546e479a52c3f8d83ae6d.ctex"
+uid="uid://j10rlx4ehilp"
+path="res://.godot/imported/SKATEBOARD.png-dbe9a295874dde7357ab8eab52d07c95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/captcha_bar.png"
-dest_files=["res://.godot/imported/captcha_bar.png-e60bb32447a546e479a52c3f8d83ae6d.ctex"]
+source_file="res://sprites/close_popups/ads/SKATEBOARD.png"
+dest_files=["res://.godot/imported/SKATEBOARD.png-dbe9a295874dde7357ab8eab52d07c95.ctex"]
 
 [params]
 

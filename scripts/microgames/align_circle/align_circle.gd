@@ -14,7 +14,10 @@ var prev_value_slider : float = 0.0
 
 var inserted : bool = false
 
-var rotation_range : Array[float] = [0.0, 0.0] 
+var rotation_range : Array[float] = [0.0, 0.0]
+
+var cur_rand_rotation_set : float = 0.0
+
 const ROTATION_THRESHHOLD = 7.5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,12 +35,14 @@ func set_up_circles() -> void:
 	texture_rect2.texture = load(image_file_path)
 
 	var rand_rotation : float = 0.0
-
 	while abs(rand_rotation) < 15.0:
 		rand_rotation = randf_range(-90.0, 90.0)
 	
-	circle_1_sprite.rotation_degrees = rand_rotation
-	rotation_range = [rand_rotation - ROTATION_THRESHHOLD, rand_rotation + ROTATION_THRESHHOLD]
+	cur_rand_rotation_set = rand_rotation
+	
+	circle_1_sprite.rotation_degrees = -rand_rotation
+	circle_2_sprite.rotation_degrees = rand_rotation
+	rotation_range = [-ROTATION_THRESHHOLD, ROTATION_THRESHHOLD]
 
 func _on_slider_drag_started() -> void:
 	text_slider.visible = false
@@ -54,10 +59,11 @@ func _physics_process(delta: float) -> void:
 	prev_value_slider = slider.value
 
 func _on_slider_value_changed(value: float) -> void:
-	var value_to_degrees := lerpf(90.0, -90.0, value)
+	var value_to_degrees := lerpf(cur_rand_rotation_set + 90.0,cur_rand_rotation_set - 90.0, value)
 
 	if value_to_degrees >= rotation_range[0] && value_to_degrees <= rotation_range[1]:
-		circle_2_sprite.rotation_degrees = circle_1_sprite.rotation_degrees
+		circle_2_sprite.rotation_degrees = 0.0
+		circle_1_sprite.rotation_degrees = 0.0
 		if !inserted:
 			slide_in_sound.play()
 			inserted = true
@@ -66,6 +72,7 @@ func _on_slider_value_changed(value: float) -> void:
 	inserted = false
 
 	circle_2_sprite.rotation_degrees = value_to_degrees
+	circle_1_sprite.rotation_degrees = -value_to_degrees
 
 func canSkip() -> bool:
 	return !text_slider.visible
