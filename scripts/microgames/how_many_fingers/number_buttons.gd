@@ -17,10 +17,10 @@ func disable_buttons(answer : int, correct : bool) -> void:
 	
 	button.disabled = true
 
-func _on_button_pressed() -> void:
-	button_answered.emit(button)
-	audio_stream_player.play()
-
 func reaveal_numbers() -> void:
 	button.disabled = false
 	button.text = str(cur_numbers)
+
+func _on_button_button_down() -> void:
+	button_answered.emit(button)
+	audio_stream_player.play()

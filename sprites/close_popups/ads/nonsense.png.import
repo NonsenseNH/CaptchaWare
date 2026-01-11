@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nql2wiucguyu"
-path="res://.godot/imported/conglaturate.png-c479d3796a074ead699a07c1eae8d49c.ctex"
+uid="uid://c66cs74ywbp2t"
+path="res://.godot/imported/nonsense.png-30fb1ca0e8cc7b1ba6d809a90b699e60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/impossible_quiz/conglaturate.png"
-dest_files=["res://.godot/imported/conglaturate.png-c479d3796a074ead699a07c1eae8d49c.ctex"]
+source_file="res://sprites/close_popups/ads/nonsense.png"
+dest_files=["res://.godot/imported/nonsense.png-30fb1ca0e8cc7b1ba6d809a90b699e60.ctex"]
 
 [params]
 
