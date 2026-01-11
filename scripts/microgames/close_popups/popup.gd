@@ -28,3 +28,6 @@ func _on_window_tab_button_up() -> void:
 func _on_window_tab_button_down() -> void:
 	grab_offset = global_position - get_global_mouse_position()
 	grabbed = true
+	
+	var parent := get_parent()
+	parent.move_child(self, parent.get_child_count() - 1)
