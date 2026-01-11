@@ -149,13 +149,11 @@ text = "Annoying Popup"
 [node name="windowTab" type="Button" parent="ad/window"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_right = -45.0
-offset_bottom = -164.0
+offset_bottom = 29.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="x" type="Button" parent="ad"]
 layout_mode = 1
