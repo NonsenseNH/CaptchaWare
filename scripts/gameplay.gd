@@ -200,7 +200,7 @@ func set_up_window_size(tween_window: bool = false) -> void:
 	sounds.get_node("stretch resize").play()
 
 func _on_timer_timeout() -> void:
-	transition_game()
+	cur_microgame.end_microgame.emit()
 
 func transition_game() -> void:
 	if prev_microgame != null && prev_microgame.skipped: return
@@ -459,7 +459,7 @@ func skip_game() -> void:
 	
 	if cur_microgame.canSkip():
 		timer.stop()
-		transition_game()
+		cur_microgame.end_microgame.emit()
 	else:
 		ui_captcha_window._display_error_text(cur_microgame_data.errorMessage)
 

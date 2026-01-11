@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
 [ext_resource type="Script" uid="uid://dide8kbk8k6xk" path="res://scripts/microgames/close_popups/close_popups.gd" id="9_8thrs"]
-[ext_resource type="Texture2D" uid="uid://j10rlx4ehilp" path="res://sprites/close_popups/ads/SKATEBOARD.png" id="9_so1f2"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="10_xc6lx"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
+[ext_resource type="Texture2D" uid="uid://cfm7adi5uax0w" path="res://sprites/close_popups/circle.png" id="11_xc6lx"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
 [ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="23_cwhth"]
@@ -51,6 +51,7 @@ instructionsBig = "ad break"
 instructionSmall1 = "Enjoy this"
 instructionSmall2 = "Click verify after a few seconds"
 set_size = Vector2(430, 573.835)
+bonusTime = 24.29
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
@@ -138,7 +139,6 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "alignCircle"
 cur_difficulty_test = 3
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
@@ -359,18 +359,59 @@ offset_bottom = 420.0
 script = ExtResource("9_8thrs")
 microgame_data = SubResource("Resource_7a5sd")
 
-[node name="ad" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
+[node name="ad" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
 layout_mode = 0
 offset_right = 413.0
 offset_bottom = 420.0
-texture = ExtResource("9_so1f2")
-expand_mode = 1
-stretch_mode = 6
+color = Color(0.90794176, 0.90794164, 0.9079419, 1)
+
+[node name="Label" type="Label" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups/ad"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 412.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.40784314)
+theme_override_constants/line_spacing = -17
+theme_override_font_sizes/font_size = 36
+text = "An ad will
+appear in.."
+horizontal_alignment = 1
+
+[node name="timer" type="TextureProgressBar" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups/ad"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 118.99999
+offset_right = 435.0
+offset_bottom = 465.0
+scale = Vector2(0.676, 0.676)
+max_value = 2.0
+step = 0.01
+value = 2.0
+fill_mode = 5
+texture_progress = ExtResource("11_xc6lx")
+tint_progress = Color(0, 0, 0, 0.28627452)
+
+[node name="CountDown" type="Label" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups/ad"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 118.0
+offset_right = 323.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.46666667)
+theme_override_font_sizes/font_size = 126
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="popUps" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="PopUpTimer" type="Timer" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
@@ -596,4 +637,6 @@ bus = &"Sounds"
 
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay" method="_on_verify_button_pressed"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
+[connection signal="value_changed" from="MicrogameGameplay/window/captcha_window/curGame/closePopups/ad/timer" to="MicrogameGameplay/window/captcha_window/curGame/closePopups" method="_on_timer_value_changed"]
+[connection signal="timeout" from="MicrogameGameplay/window/captcha_window/curGame/closePopups/PopUpTimer" to="MicrogameGameplay/window/captcha_window/curGame/closePopups" method="_on_pop_up_timer_timeout"]
 [connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]

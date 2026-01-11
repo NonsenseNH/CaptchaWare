@@ -154,7 +154,7 @@ func skip_game() -> void:
 	if cur_microgame.canSkip():
 		timer.stop()
 
-		results()
+		cur_microgame.end_microgame.emit()
 	else:
 		ui_captcha_window._display_error_text(microgame_json.microgames[cur_microgame.name].errorMessage)
 
@@ -174,7 +174,7 @@ func get_microgame(force_game : String) -> Node:
 
 
 func _on_timer_timeout() -> void:
-	results()
+	cur_microgame.end_microgame.emit()
 
 func results() -> void:
 	if cur_microgame == null || cur_microgame.skipped: return

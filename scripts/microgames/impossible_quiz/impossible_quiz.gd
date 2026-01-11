@@ -92,7 +92,7 @@ func answer_check(button : int) -> void:
 
 	can_answer = false
 
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 
 	can_answer = true
 

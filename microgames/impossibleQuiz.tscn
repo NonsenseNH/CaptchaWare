@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bv5q1gs3k68sr"]
+[gd_scene load_steps=30 format=3 uid="uid://bv5q1gs3k68sr"]
 
 [ext_resource type="Script" uid="uid://bstc0h8tbairl" path="res://scripts/microgames/impossible_quiz/impossible_quiz.gd" id="1_ti0gt"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_pg183"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://dgy1gtggvby03" path="res://sprites/impossible_quiz/2 life.png" id="14_ut76s"]
 [ext_resource type="Texture2D" uid="uid://bsginnqjg4lk2" path="res://sprites/impossible_quiz/1 life.png" id="15_h6s1h"]
 [ext_resource type="Texture2D" uid="uid://b3kpxqfjfcyib" path="res://sprites/impossible_quiz/ur_win.png" id="16_cklr7"]
-[ext_resource type="Texture2D" uid="uid://nql2wiucguyu" path="res://sprites/impossible_quiz/conglaturate.png" id="17_mobx7"]
 
 [sub_resource type="Resource" id="Resource_y8ele"]
 script = ExtResource("2_pg183")
@@ -488,34 +487,22 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("../win/text:visible")
+tracks/18/path = NodePath("lives_number2:texture")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [ExtResource("11_ti0gt")]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("lives_number2:texture")
+tracks/19/path = NodePath("lives_number1:texture")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("11_ti0gt")]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("lives_number1:texture")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -666,7 +653,7 @@ tracks/2/path = NodePath("../win/star:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.16666667, 0.5833333),
+"times": PackedFloat32Array(0.16666667, 0.6),
 "transitions": PackedFloat32Array(0.4204483, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -678,7 +665,7 @@ tracks/3/path = NodePath("../win/star:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.16666667, 0.5833333),
+"times": PackedFloat32Array(0.16666667, 0.6),
 "transitions": PackedFloat32Array(0.4204483, 1),
 "update": 0,
 "values": [Vector2(0.245, 0.245), Vector2(0.395, 0.395)]
@@ -690,18 +677,6 @@ tracks/4/path = NodePath("../win/bg:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../win/text:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -923,38 +898,24 @@ grow_vertical = 2
 
 [node name="bg" type="ColorRect" parent="win"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.74)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.47837514, 0.38091108, 0.3409178, 1)
 
 [node name="star" type="TextureRect" parent="win"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -145.99997
-offset_top = -65.44499
-offset_right = 582.0
-offset_bottom = 546.555
+offset_left = -281.0
+offset_top = -169.0
+offset_right = 681.0658
+offset_bottom = 491.75946
 scale = Vector2(0.245, 0.245)
-pivot_offset = Vector2(354, 288)
+pivot_offset = Vector2(489.18356, 389.8734)
 texture = ExtResource("16_cklr7")
-
-[node name="text" type="TextureRect" parent="win"]
-visible = false
-layout_mode = 0
-offset_left = -290.0
-offset_top = 5.555007
-offset_right = 704.5065
-offset_bottom = 136.59297
-scale = Vector2(0.495, 0.495)
-pivot_offset = Vector2(493.2406, 62.683533)
-texture = ExtResource("17_mobx7")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="flash" type="ColorRect" parent="win"]
 self_modulate = Color(1, 1, 1, 0)

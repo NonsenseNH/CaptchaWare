@@ -1,11 +1,30 @@
 extends Control
 
+const AD_IMAGES_PATH := "res://sprites/close_popups/ads/"
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var ad_sprite: TextureRect = $ad
 
+var grabbed := false
+var grab_offset := Vector2.ZERO
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+signal popup_closed
+
+func set_popup_image(file_name : String) -> void:
+	var popup_texture : Texture2D = load(AD_IMAGES_PATH + file_name)
+
+	ad_sprite.texture = popup_texture
+
+func _on_x_pressed() -> void:
+	popup_closed.emit()
+	queue_free()
+
+func _process(_delta: float) -> void:
+	if grabbed:
+		global_position = get_global_mouse_position() + grab_offset
+
+func _on_window_tab_button_up() -> void:
+	grabbed = false
+
+func _on_window_tab_button_down() -> void:
+	grab_offset = global_position - get_global_mouse_position()
+	grabbed = true
