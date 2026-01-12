@@ -1,13 +1,22 @@
 extends Control
 
-const AD_IMAGES_PATH := "res://sprites/close_popups/ads/"
+const AD_IMAGES_PATH := "res://sprites/close_popups/"
 
 @onready var ad_sprite: TextureRect = $ad
+
+var is_blocker := false
 
 var grabbed := false
 var grab_offset := Vector2.ZERO
 
+var focused := false
+
+signal block_popups
 signal popup_closed
+
+func _ready():
+	if !is_blocker: return
+	ad_sprite.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 func set_popup_image(file_name : String) -> void:
 	var popup_texture : Texture2D = load(AD_IMAGES_PATH + file_name)
@@ -29,5 +38,25 @@ func _on_window_tab_button_down() -> void:
 	grab_offset = global_position - get_global_mouse_position()
 	grabbed = true
 	
+	push_to_front()
+
+func push_to_front() -> void:
 	var parent := get_parent()
 	parent.move_child(self, parent.get_child_count() - 1)
+
+func _input(event: InputEvent) -> void:
+	if !focused: return
+
+	if event is InputEventMouseButton:
+		if event.double_click:
+			block_popups.emit()
+
+func _on_ad_mouse_exited() -> void:
+	if is_blocker:
+		focused = false
+
+func _on_ad_mouse_entered() -> void:
+	focused = is_blocker
+	
+func _on_window_focus_entered() -> void:
+	push_to_front()

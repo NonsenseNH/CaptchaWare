@@ -8,6 +8,7 @@ signal override_instruction_text(big:String, small:String)
 signal set_camera_shake(intensity : float, duration : float)
 signal skip_timer
 signal end_microgame
+signal freeze_timer_signal
 
 var is_intro := false
 var skipped := false
@@ -25,6 +26,9 @@ func stop_microgame() -> void:
 
 func force_end_mircogame() -> void:
 	end_microgame.emit()
+
+func freeze_timer() -> void:
+	freeze_timer_signal.emit()
 
 func get_file_list(path : String, file_type : String = ".png") -> Array:
 	var dir := ResourceLoader.list_directory(path)

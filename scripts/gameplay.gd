@@ -266,6 +266,10 @@ func disconnect_prev_microgame_signals() -> void:
 	prev_microgame.set_camera_shake.disconnect(camera_shake)
 	prev_microgame.skip_timer.disconnect(skip_timer)
 	prev_microgame.end_microgame.disconnect(transition_game)
+	prev_microgame.freeze_timer_signal.disconnect(freeze_timer)
+
+func freeze_timer() -> void:
+	timer.paused = true
 
 func music_handler(has_failed : bool) -> void:
 	if !music.playing:
@@ -366,6 +370,7 @@ func change_game():
 	cur_microgame.set_camera_shake.connect(camera_shake)
 	cur_microgame.skip_timer.connect(skip_timer)
 	cur_microgame.end_microgame.connect(transition_game)
+	cur_microgame.freeze_timer_signal.connect(freeze_timer)
 	
 	cur_microgame.current_game_speed = cur_speed
 	cur_microgame.difficulty = difficulty

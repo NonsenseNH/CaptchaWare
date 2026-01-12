@@ -51,7 +51,7 @@ instructionsBig = "ad break"
 instructionSmall1 = "Enjoy this"
 instructionSmall2 = "Click verify after a few seconds"
 set_size = Vector2(430, 573.835)
-bonusTime = 24.29
+bonusTime = 44.265
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
@@ -409,9 +409,20 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PopUpTimer" type="Timer" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="sounds" type="Node" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups"]
+
+[node name="popup" type="AudioStreamPlayer" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups/sounds"]
+bus = &"Sounds"
+
+[node name="reload" type="AudioStreamPlayer" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups/sounds"]
+bus = &"Sounds"
+
+[node name="riflesounds" type="AudioStreamPlayer" parent="MicrogameGameplay/window/captcha_window/curGame/closePopups/sounds"]
+bus = &"Sounds"
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
