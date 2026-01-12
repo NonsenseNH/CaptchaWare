@@ -68,11 +68,13 @@ func on_popup_closed() -> void:
 func popup_blocker_clicked() -> void:
 	freeze_timer()
 
+	await get_tree().create_timer(.5).timeout
+
 	close_all_popups()
+
+	await get_tree().create_timer(.5).timeout
+	
 	win()
-
-	await get_tree().create_timer(1).timeout
-
 	end_microgame.emit()
 
 func win() -> void:

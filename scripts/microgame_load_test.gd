@@ -103,6 +103,9 @@ func set_up_window_size(tween_window: bool = false) -> void:
 		"tweenSpeed" :  0,
 	})
 
+func freeze_timer() -> void:
+	timer.paused = true
+
 func change_game():
 	if cur_microgame == null: return
 	cur_microgame.z_index += 1
@@ -114,6 +117,7 @@ func change_game():
 	cur_microgame.set_camera_shake.connect(camera_shake)
 	cur_microgame.skip_timer.connect(skip_timer)
 	cur_microgame.end_microgame.connect(results)
+	cur_microgame.freeze_timer_signal.connect(freeze_timer)
 	cur_microgame.difficulty = cur_difficulty_test
 	
 	if force_microgame != "":

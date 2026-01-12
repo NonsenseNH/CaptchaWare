@@ -10,6 +10,7 @@ var grabbed := false
 var grab_offset := Vector2.ZERO
 
 var focused := false
+var clicked := false
 
 signal block_popups
 signal popup_closed
@@ -45,10 +46,11 @@ func push_to_front() -> void:
 	parent.move_child(self, parent.get_child_count() - 1)
 
 func _input(event: InputEvent) -> void:
-	if !focused: return
+	if !focused || clicked: return
 
 	if event is InputEventMouseButton:
 		if event.double_click:
+			clicked = true
 			block_popups.emit()
 
 func _on_ad_mouse_exited() -> void:
