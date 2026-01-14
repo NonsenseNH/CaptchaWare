@@ -4,6 +4,8 @@ const AD_IMAGES_PATH := "res://sprites/close_popups/"
 
 @onready var ad_sprite: TextureRect = $ad
 
+@onready var bang_particles: CPUParticles2D = $bang
+
 var is_blocker := false
 
 var grabbed := false
@@ -27,6 +29,10 @@ func set_popup_image(file_name : String) -> void:
 func _on_x_pressed() -> void:
 	popup_closed.emit()
 	queue_free()
+
+func destroyed() -> void:
+	bang_particles.restart()
+	ad_sprite.visible = false
 
 func _process(_delta: float) -> void:
 	if grabbed:
@@ -62,3 +68,6 @@ func _on_ad_mouse_entered() -> void:
 	
 func _on_window_focus_entered() -> void:
 	push_to_front()
+
+func _on_bang_finished() -> void:
+	queue_free()

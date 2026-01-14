@@ -898,6 +898,7 @@ grow_vertical = 2
 
 [node name="bg" type="ColorRect" parent="win"]
 visible = false
+self_modulate = Color(1, 1, 1, 0.8666667)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

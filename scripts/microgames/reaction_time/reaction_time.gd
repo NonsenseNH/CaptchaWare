@@ -70,6 +70,7 @@ func finish_test() -> void:
 	click_now = false
 
 func result() -> void:
+	freeze_timer()
 	cowboy.visible = true
 
 	set_camera_shake.emit(10, 0.5)
@@ -111,4 +112,4 @@ func canSkip() -> bool:
 	return done
 
 func _on_anim_animation_finished(_anim_name: StringName) -> void:
-	skip_timer.emit()
+	end_microgame.emit()

@@ -5,10 +5,19 @@ const BLOCKER_IMAGE_FILENAME := "blocker.png"
 
 const AD_IMAGES_PATH := "res://sprites/close_popups/ads/"
 
+@onready var camera = get_tree().get_first_node_in_group("camera")
+
 @onready var pop_ups: Control = $popUps
 @onready var count_down: Label = $ad/CountDown
 @onready var timer: TextureProgressBar = $ad/timer
 @onready var pop_up_timer: Timer = $PopUpTimer
+@onready var crosshair_sprite: Sprite2D = $crosshair
+
+@onready var ticking_sound: AudioStreamPlayer = $sounds/tickingSound
+@onready var riflesounds_sound: AudioStreamPlayer = $sounds/riflesounds
+@onready var reload_sound: AudioStreamPlayer = $sounds/reload
+@onready var popup_close_sound: AudioStreamPlayer = $sounds/popupClose
+@onready var popup_sound: AudioStreamPlayer = $sounds/popup
 
 var ad_images : Array = []
 var cleared := false
@@ -16,11 +25,14 @@ var cleared := false
 const rand_pos_clamp = [Vector2(-246.0, 100.0), Vector2(611.0, 340.0)]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	end_microgame.connect(close_all_popups)
+	end_microgame.connect(times_up)
 	timer.max_value = pop_up_timer.wait_time
 
 	ad_images = ResourceLoader.list_directory(AD_IMAGES_PATH)
 	ad_images.shuffle()
+
+func times_up() -> void:
+	close_all_popups()
 
 func spawn_popup(image : String, is_blocker : bool = false) -> void:
 	var popup_instance = POPUP_INSTANCE.instantiate()
@@ -43,16 +55,35 @@ func spawn_popup(image : String, is_blocker : bool = false) -> void:
 func _process(_delta: float) -> void:
 	timer.value = pop_up_timer.time_left
 
-func close_all_popups() -> void:
+func close_all_popups(destroyed : = false) -> void:
+	if cleared: return
+	var popup_closing_sound := riflesounds_sound if destroyed else popup_close_sound
+
 	for popup in pop_ups.get_children():
 		if popup != null:
-			popup.queue_free()
+			if destroyed:
+				crosshair_sprite.position = popup.position
+				set_camera_shake.emit(3, .2)
+				popup.destroyed()
+			else:
+				popup.queue_free()
+			
+			popup_closing_sound.play()
 		await get_tree().create_timer(.025).timeout
 
 func _on_pop_up_timer_timeout() -> void:
+	ticking_sound.stop()
+
+	var cam_tween := create_tween()
+	cam_tween.tween_property(camera, "zoom", Vector2.ONE * 1.43, .05)
+
+	set_camera_shake.emit(5, .5)
+
 	var pop_up_blocker_chance := randi_range(3,8)
 
 	for i in range(mini(ad_images.size(), 10)):
+		popup_sound.play()
+
 		if i == pop_up_blocker_chance:
 			spawn_popup(BLOCKER_IMAGE_FILENAME, true)
 		else:
@@ -66,11 +97,17 @@ func on_popup_closed() -> void:
 		win()
 
 func popup_blocker_clicked() -> void:
+	crosshair_sprite.visible = true
+	
+	var crosshair_tween := create_tween()
+	crosshair_tween.tween_property(crosshair_sprite , "position", pop_ups.get_child(pop_ups.get_child_count() -1).position, .5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+
+	reload_sound.play()
 	freeze_timer()
 
 	await get_tree().create_timer(.5).timeout
 
-	close_all_popups()
+	close_all_popups(true)
 
 	await get_tree().create_timer(.5).timeout
 	
@@ -80,6 +117,12 @@ func popup_blocker_clicked() -> void:
 func win() -> void:
 	cleared = true
 	skip_timer.emit()
+
+func on_transition_complete() -> void:
+	ticking_sound.play()
+
+	var cam_tween := create_tween()
+	cam_tween.tween_property(camera, "zoom", Vector2.ONE * 1.80, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)	
 
 func _on_timer_value_changed(value: float) -> void:
 	count_down.text = str(int(ceil(value)))

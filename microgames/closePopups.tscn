@@ -1,0 +1,132 @@
+[gd_scene load_steps=15 format=3 uid="uid://df8hwigslhyia"]
+
+[ext_resource type="Script" uid="uid://dide8kbk8k6xk" path="res://scripts/microgames/close_popups/close_popups.gd" id="1_s7cn4"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_ary7l"]
+[ext_resource type="Texture2D" uid="uid://cfm7adi5uax0w" path="res://sprites/close_popups/circle.png" id="3_bw2m1"]
+[ext_resource type="AudioStream" uid="uid://cix2qrfnwl4vq" path="res://sounds/microgames/close_popups/popup_1.mp3" id="4_wy2lr"]
+[ext_resource type="AudioStream" uid="uid://crglv7oksrj6n" path="res://sounds/microgames/close_popups/popup_2.mp3" id="5_gk5a5"]
+[ext_resource type="AudioStream" uid="uid://badbgujus4r7i" path="res://sounds/microgames/close_popups/popup_3.mp3" id="6_s74fy"]
+[ext_resource type="AudioStream" uid="uid://d1oqqchpabdyv" path="res://sounds/microgames/close_popups/popup_4.mp3" id="7_kp0ch"]
+[ext_resource type="AudioStream" uid="uid://bpvqcajf5m0d6" path="res://sounds/microgames/close_popups/window_force_close.mp3" id="8_hc56t"]
+[ext_resource type="AudioStream" uid="uid://dcexpntntxb6y" path="res://sounds/microgames/close_popups/gun_aim.mp3" id="9_rn2nn"]
+[ext_resource type="AudioStream" uid="uid://cpq5s02wldhq5" path="res://sounds/microgames/close_popups/gun_shoot.mp3" id="10_hn6nl"]
+[ext_resource type="AudioStream" uid="uid://cgqf6vjjn57lj" path="res://sounds/microgames/reaction_time/ticking.mp3" id="11_c31rj"]
+[ext_resource type="Texture2D" uid="uid://cnris8rdtkdsw" path="res://sprites/close_popups/crosshair.png" id="12_3a084"]
+
+[sub_resource type="Resource" id="Resource_7a5sd"]
+script = ExtResource("2_ary7l")
+instructionsBig = "ad break"
+instructionSmall1 = "Enjoy this"
+instructionSmall2 = "Click verify after a few seconds"
+set_size = Vector2(430, 573.835)
+bonusTime = 5.0
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5lnet"]
+random_pitch = 1.02
+streams_count = 4
+stream_0/stream = ExtResource("4_wy2lr")
+stream_1/stream = ExtResource("5_gk5a5")
+stream_2/stream = ExtResource("6_s74fy")
+stream_3/stream = ExtResource("7_kp0ch")
+
+[node name="closePopups" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 414.0
+offset_bottom = 420.0
+script = ExtResource("1_s7cn4")
+microgame_data = SubResource("Resource_7a5sd")
+
+[node name="ad" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 420.0
+color = Color(0.90794176, 0.90794164, 0.9079419, 1)
+
+[node name="Label" type="Label" parent="ad"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 412.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.40784314)
+theme_override_constants/line_spacing = -17
+theme_override_font_sizes/font_size = 36
+text = "An ad will
+appear in.."
+horizontal_alignment = 1
+
+[node name="timer" type="TextureProgressBar" parent="ad"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 118.99999
+offset_right = 435.0
+offset_bottom = 465.0
+scale = Vector2(0.676, 0.676)
+max_value = 2.0
+step = 0.01
+value = 2.0
+fill_mode = 5
+texture_progress = ExtResource("3_bw2m1")
+tint_progress = Color(0, 0, 0, 0.28627452)
+
+[node name="CountDown" type="Label" parent="ad"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 118.0
+offset_right = 323.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.46666667)
+theme_override_font_sizes/font_size = 126
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="popUps" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PopUpTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="popup" type="AudioStreamPlayer" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_5lnet")
+volume_db = -3.0
+max_polyphony = 10
+bus = &"Sounds"
+
+[node name="popupClose" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_hc56t")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="reload" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("9_rn2nn")
+volume_db = 3.0
+bus = &"Sounds"
+
+[node name="riflesounds" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("10_hn6nl")
+volume_db = -5.0
+bus = &"Sounds"
+
+[node name="tickingSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("11_c31rj")
+volume_db = -7.0
+bus = &"Sounds"
+
+[node name="crosshair" type="Sprite2D" parent="."]
+modulate = Color(0.71528774, 0, 0.22399902, 1)
+self_modulate = Color(1, 1, 1, 0.7137255)
+z_index = 3
+position = Vector2(1049, 165)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("12_3a084")
+
+[connection signal="value_changed" from="ad/timer" to="." method="_on_timer_value_changed"]
+[connection signal="timeout" from="PopUpTimer" to="." method="_on_pop_up_timer_timeout"]
