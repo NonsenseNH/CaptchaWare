@@ -1,24 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfin0va87eit7"]
+[gd_scene load_steps=8 format=3 uid="uid://bfin0va87eit7"]
 
 [ext_resource type="Script" uid="uid://dt3sx3d3uugr6" path="res://scripts/microgames/close_popups/popup.gd" id="1_74a3x"]
+[ext_resource type="Theme" uid="uid://cn7x031lcia8r" path="res://themes/popup.tres" id="3_74a3x"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="3_uw63d"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5sd"]
-bg_color = Color(0.8392157, 0.09019608, 0.1882353, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc6lx"]
-bg_color = Color(0.9098039, 0.06666667, 0.13725491, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8thrs"]
-bg_color = Color(0.9471994, 0.9471994, 0.9471994, 1)
-
-[sub_resource type="Theme" id="Theme_xc6lx"]
-Button/colors/font_color = Color(0.7288213, 0.7288222, 0.7288216, 1)
-Button/colors/icon_normal_color = Color(0.42652702, 0.4141485, 0.5109032, 1)
-Button/styles/focus = SubResource("StyleBoxFlat_7a5sd")
-Button/styles/hover = SubResource("StyleBoxFlat_xc6lx")
-Button/styles/normal = SubResource("StyleBoxFlat_8thrs")
-Button/styles/pressed = SubResource("StyleBoxFlat_7a5sd")
 
 [sub_resource type="Animation" id="Animation_wku30"]
 length = 0.001
@@ -150,7 +134,7 @@ offset_left = 9.0
 offset_top = 4.0
 offset_right = 368.0
 offset_bottom = 35.0
-theme_override_colors/font_color = Color(0.7372549, 0.7372549, 0.7372549, 1)
+theme = ExtResource("3_74a3x")
 theme_override_font_sizes/font_size = 14
 text = "Annoying Popup"
 
@@ -173,7 +157,7 @@ offset_top = -31.0
 offset_bottom = -2.0
 grow_horizontal = 0
 focus_mode = 0
-theme = SubResource("Theme_xc6lx")
+theme = ExtResource("3_74a3x")
 text = "x"
 
 [node name="anim" type="AnimationPlayer" parent="."]

@@ -3,6 +3,7 @@ extends Control
 const AD_IMAGES_PATH := "res://sprites/close_popups/"
 
 @onready var ad_sprite: TextureRect = $ad
+@onready var window_texture: ColorRect = $ad/window
 
 @onready var bang_particles: CPUParticles2D = $bang
 

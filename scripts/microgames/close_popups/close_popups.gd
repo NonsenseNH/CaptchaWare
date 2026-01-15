@@ -3,6 +3,8 @@ extends Microgame
 const POPUP_INSTANCE = preload("uid://bfin0va87eit7")
 const BLOCKER_IMAGE_FILENAME := "blocker.png"
 
+const DIFFICULTY_POPUP_COUNT := [5, 6, 7, 8]
+
 const AD_IMAGES_PATH := "res://sprites/close_popups/ads/"
 
 @onready var camera = get_tree().get_first_node_in_group("camera")
@@ -19,12 +21,15 @@ const AD_IMAGES_PATH := "res://sprites/close_popups/ads/"
 @onready var popup_close_sound: AudioStreamPlayer = $sounds/popupClose
 @onready var popup_sound: AudioStreamPlayer = $sounds/popup
 
+var popup_amount := 5
+
 var ad_images : Array = []
 var cleared := false
 
 const rand_pos_clamp = [Vector2(-246.0, 100.0), Vector2(611.0, 340.0)]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	popup_amount = DIFFICULTY_POPUP_COUNT[difficulty - 1]
 	end_microgame.connect(times_up)
 	timer.max_value = pop_up_timer.wait_time
 
@@ -79,9 +84,9 @@ func _on_pop_up_timer_timeout() -> void:
 
 	set_camera_shake.emit(5, .5)
 
-	var pop_up_blocker_chance := randi_range(3,8)
+	var pop_up_blocker_chance := randi_range(3,popup_amount - 2)
 
-	for i in range(mini(ad_images.size(), 10)):
+	for i in range(mini(ad_images.size(), popup_amount)):
 		popup_sound.play()
 
 		if i == pop_up_blocker_chance:

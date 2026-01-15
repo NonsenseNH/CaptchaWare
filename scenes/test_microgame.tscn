@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=53 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -8,8 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
+[ext_resource type="Script" uid="uid://dtcijp2n81x1w" path="res://scripts/microgames/dinosaur_game/dinosaur_game.gd" id="9_so1f2"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="10_8thrs"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
+[ext_resource type="Texture2D" uid="uid://bhui5gyn18x7o" path="res://sprites/dinosaur_game/dino.png" id="11_7a5sd"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
+[ext_resource type="Script" uid="uid://cfh3l6tcunebw" path="res://scripts/microgames/dinosaur_game/dino.gd" id="11_wku30"]
+[ext_resource type="Texture2D" uid="uid://icslug766esd" path="res://sprites/dinosaur_game/Chromium_T-Rex-horizon.png" id="11_xc6lx"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
 [ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="23_cwhth"]
@@ -41,6 +46,59 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxyth"]
 bg_color = Color(0, 0, 0, 0.133333)
+
+[sub_resource type="Resource" id="Resource_xc6lx"]
+script = ExtResource("10_8thrs")
+instructionsBig = "Dinosaur Game"
+instructionSmall1 = "Survive the"
+instructionSmall2 = "Survive as long as you can"
+errorMessage = "Please enjoy the game"
+set_size = Vector2(430, 573.835)
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a5sd"]
+size = Vector2(758, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wku30"]
+size = Vector2(57, 71)
+
+[sub_resource type="Animation" id="Animation_7a5sd"]
+resource_name = "run"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dino:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_wku30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dino:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u1fw"]
+_data = {
+&"RESET": SubResource("Animation_wku30"),
+&"run": SubResource("Animation_7a5sd")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
 bg_color = Color(0.7962427, 0.7962432, 0.7962428, 1)
@@ -127,8 +185,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "closePopups"
-cur_difficulty_test = 3
+cur_difficulty_test = 4
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(0.8901961, 0.8901961, 0.8901961, 0.3529412)
@@ -340,6 +397,60 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="dinosaurGame" type="Control" parent="MicrogameGameplay/window/captcha_window/curGame"]
+anchors_preset = 0
+offset_right = 414.0
+offset_bottom = 420.0
+script = ExtResource("9_so1f2")
+microgame_data = SubResource("Resource_xc6lx")
+
+[node name="GroundHitbox" type="StaticBody2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/GroundHitbox"]
+position = Vector2(203, 377)
+shape = SubResource("RectangleShape2D_7a5sd")
+
+[node name="the_dino" type="CharacterBody2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+position = Vector2(0, 1)
+collision_mask = 6
+platform_floor_layers = 4294967042
+script = ExtResource("11_wku30")
+
+[node name="white" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
+offset_left = 66.0
+offset_top = 269.0
+offset_right = 110.0
+offset_bottom = 309.0
+
+[node name="dino" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
+texture_filter = 1
+position = Vector2(94, 261)
+texture = ExtResource("11_7a5sd")
+hframes = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
+position = Vector2(90.5, 267.5)
+shape = SubResource("RectangleShape2D_wku30")
+
+[node name="anim" type="AnimationPlayer" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
+libraries = {
+&"": SubResource("AnimationLibrary_8u1fw")
+}
+autoplay = "run"
+
+[node name="dinosaurgameBG" type="Parallax2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+repeat_size = Vector2(2400.015, 0)
+autoscroll = Vector2(-1000, 0)
+
+[node name="ground" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/dinosaurgameBG"]
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(304, 292)
+texture = ExtResource("11_xc6lx")
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
