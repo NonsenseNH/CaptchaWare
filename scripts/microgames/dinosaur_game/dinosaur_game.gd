@@ -13,7 +13,7 @@ const SPEED_DIFFICULTY_SCALE = [700, 750, 800, 900]
 
 var died := false
 
-var cur_speed := 0.0
+@export var cur_speed := 0.0
 
 func _ready() -> void:
 	set_speed(SPEED_DIFFICULTY_SCALE[difficulty - 1])

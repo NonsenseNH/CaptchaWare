@@ -127,8 +127,8 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "cardSwipe"
-cur_difficulty_test = 4
+force_microgame = "dinosaurGame"
+cur_difficulty_test = 1
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(0.8901961, 0.8901961, 0.8901961, 0.3529412)

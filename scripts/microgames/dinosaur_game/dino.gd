@@ -12,6 +12,9 @@ signal killed
 
 var is_dead := false
 
+@onready var jump_sound: AudioStreamPlayer = $sounds/jump
+@onready var hit_sound: AudioStreamPlayer = $sounds/hit
+
 func timers(delta : float) -> void:
 	if buffer_jump_timer >= 0:
 		buffer_jump_timer -= delta
@@ -29,6 +32,8 @@ func _physics_process(delta: float) -> void:
 		buffer_jump_timer = .5
 	
 	if is_on_floor() && buffer_jump_timer > 0:
+		jump_sound.play()
+
 		buffer_jump_timer = 0
 		velocity.y = JUMP_VELOCITY
 
@@ -40,6 +45,8 @@ func _on_cactus_detector_area_entered(area: Area2D) -> void:
 	dead()
 
 func dead() -> void:
+	hit_sound.play()
+	
 	is_dead = true
 	anim.play("dead")
 	killed.emit()
