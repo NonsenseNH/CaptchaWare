@@ -29,10 +29,6 @@ const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 
 var cur_microgame : Node = null
 
-var cur_microgame_pool_array : Array = []
-
-var microgame_json : Dictionary = {}
-
 var cur_microgame_data : Dictionary = {
 	"instructionsBig" : "",
 	"InstructionsSmall" : "",
@@ -63,8 +59,6 @@ signal on_transition_complete
 func _ready() -> void:
 	var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 	AudioServer.set_bus_volume_db(bus_index, 0)
-	
-	microgame_json = JSON.parse_string(FileAccess.open(JSON_FILE_LOCATION, FileAccess.READ).get_as_text())
 	
 	get_microgame_data(force_microgame)
 	set_up_window_size()
@@ -160,7 +154,7 @@ func skip_game() -> void:
 
 		cur_microgame.end_microgame.emit()
 	else:
-		ui_captcha_window._display_error_text(microgame_json.microgames[cur_microgame.name].errorMessage)
+		ui_captcha_window._display_error_text(cur_microgame_data.errorMessage)
 
 func skip_timer() -> void:
 	var skip_time_to : int = 1

@@ -3,6 +3,8 @@ extends Microgame
 const CACTUS_SMALL_INSTANCE = preload("uid://rnbce2tcv4cw")
 const CACTUS_BIG_INSTANCE = preload("uid://81qgltjkv3h8")
 
+const SPEED_DIFFICULTY_SCALE = [700, 750, 800, 900]
+
 @onready var dinosaurgame_bg: Parallax2D = $dinosaurgameBG
 @onready var clouds: CPUParticles2D = $clouds
 
@@ -14,7 +16,7 @@ var died := false
 var cur_speed := 0.0
 
 func _ready() -> void:
-	set_speed(800)
+	set_speed(SPEED_DIFFICULTY_SCALE[difficulty - 1])
 
 func canSkip() -> bool:
 	return died

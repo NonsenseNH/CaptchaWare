@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -1300.0
 
 var buffer_jump_timer := 0.0
 
+@onready var anim: AnimationPlayer = $anim
+
 signal killed
 
 var is_dead := false
@@ -23,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		velocity += (get_gravity() * 6)* delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") || Input.is_action_just_pressed("Left Click"):
 		buffer_jump_timer = .5
 	
 	if is_on_floor() && buffer_jump_timer > 0:
@@ -39,4 +41,5 @@ func _on_cactus_detector_area_entered(area: Area2D) -> void:
 
 func dead() -> void:
 	is_dead = true
+	anim.play("dead")
 	killed.emit()

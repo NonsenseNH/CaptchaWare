@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhui5gyn18x7o"
-path="res://.godot/imported/dino.png-b4e4dbf594e1a386c72ed98b62f4073d.ctex"
+uid="uid://b5v77si8kl7dd"
+path="res://.godot/imported/dino-sheet.png-cb0acacbf7175ab69989494c4dec6fc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/dinosaur_game/dino.png"
-dest_files=["res://.godot/imported/dino.png-b4e4dbf594e1a386c72ed98b62f4073d.ctex"]
+source_file="res://sprites/dinosaur_game/dino-sheet.png"
+dest_files=["res://.godot/imported/dino-sheet.png-cb0acacbf7175ab69989494c4dec6fc6.ctex"]
 
 [params]
 
