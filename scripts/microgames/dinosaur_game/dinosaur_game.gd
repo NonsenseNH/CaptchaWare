@@ -45,6 +45,8 @@ func _on_the_dino_killed() -> void:
 
 	skip_timer.emit()
 
+func on_transition_complete() -> void:
+	cactus_spawn_rate.start()
 
 func _on_cactus_spawn_rate_timeout() -> void:
 	spawn_cactus()

@@ -208,7 +208,6 @@ initial_velocity_max = 150.0
 position = Vector2(456, 304)
 
 [node name="CactusSpawnRate" type="Timer" parent="."]
-autostart = true
 
 [node name="GameoverText" type="TextureRect" parent="."]
 visible = false

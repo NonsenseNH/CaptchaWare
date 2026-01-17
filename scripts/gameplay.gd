@@ -224,6 +224,8 @@ func transition_game() -> void:
 	get_microgame_data()
 
 	sounds.get_node("ding").volume_db = -19.0 if !did_fail else -80.0
+
+	timer.stop()
 	
 	if intro_sequence: 
 		judgement_text_intro.text = "Good!" if !did_fail else "Try Again!"
