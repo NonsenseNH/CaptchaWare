@@ -385,6 +385,7 @@ func change_game():
 	prev_microgame = cur_microgame
 	
 	if !intro_sequence && !cur_microgame_data.noTimer:
+		timer.paused = false
 		if cur_microgame_data.has("staticTimer") && cur_microgame_data.staticTimer:
 			total_wait_time = og_wait_time + cur_microgame_data.bonusTime
 		else:

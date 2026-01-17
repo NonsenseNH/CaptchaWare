@@ -360,11 +360,11 @@ bus = &"Sounds"
 
 [node name="DingSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("18_uxjr7")
-volume_db = 4.0
+volume_db = 1.0
 
 [node name="BuzzerSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("19_77qjh")
-volume_db = -7.0
+volume_db = -8.0
 
 [connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/top_bun" to="." method="_on_ingredient_button_pressed"]
 [connection signal="button_up" from="ingredients tab/ButtonGrid/top_bun/Button" to="ingredients tab/ButtonGrid/top_bun" method="_on_button_button_up"]

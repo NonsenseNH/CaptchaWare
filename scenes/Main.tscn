@@ -3023,7 +3023,7 @@ bus = &"Microgame Sounds"
 [node name="ding" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
 stream = SubResource("AudioStreamRandomizer_s3wmy")
 volume_db = -15.0
-bus = &"Sounds"
+bus = &"Microgame Sounds"
 
 [node name="increase speed" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
 stream = ExtResource("47_s3wmy")

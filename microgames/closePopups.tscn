@@ -107,7 +107,7 @@ bus = &"Sounds"
 
 [node name="reload" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("9_rn2nn")
-volume_db = 3.0
+volume_db = 1.0
 bus = &"Sounds"
 
 [node name="riflesounds" type="AudioStreamPlayer" parent="sounds"]

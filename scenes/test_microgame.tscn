@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=49 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -21,11 +21,17 @@
 [ext_resource type="AudioStream" uid="uid://d132lytm3563a" path="res://sounds/keyboard_12.mp3" id="29_gg2ri"]
 [ext_resource type="AudioStream" uid="uid://dwmc65m6g871f" path="res://sounds/keyboard_13.mp3" id="30_gxlto"]
 [ext_resource type="AudioStream" uid="uid://t8ktayia0fk3" path="res://sounds/keyboard_14.mp3" id="31_dr2h3"]
+[ext_resource type="AudioStream" uid="uid://c63bawohehh32" path="res://music/Captchaware_intro.wav" id="32_8u1fw"]
 [ext_resource type="AudioStream" uid="uid://d0vxmdlg3tncn" path="res://sounds/keyboard_3.mp3" id="32_e5p0k"]
+[ext_resource type="AudioStream" uid="uid://b1ba6vvqxxs7l" path="res://music/Captchaware_game.wav" id="33_dosju"]
 [ext_resource type="AudioStream" uid="uid://deac4fvuy15f" path="res://sounds/keyboard_4.mp3" id="33_jfy48"]
+[ext_resource type="AudioStream" uid="uid://qggusdfydv62" path="res://music/Captchaware_game_slow.wav" id="34_4rwuo"]
 [ext_resource type="AudioStream" uid="uid://7dqrcpj0v2lv" path="res://sounds/keyboard_5.mp3" id="34_bmr66"]
 [ext_resource type="AudioStream" uid="uid://bp48pvfs8foo" path="res://sounds/keyboard_6.mp3" id="35_2jhcn"]
+[ext_resource type="AudioStream" uid="uid://bmk0ks343vtwe" path="res://music/Captchaware_win.wav" id="35_xxse2"]
 [ext_resource type="AudioStream" uid="uid://ducwyc62p8fsq" path="res://sounds/keyboard_7.mp3" id="36_dvc8x"]
+[ext_resource type="AudioStream" uid="uid://hhirjx6d23vq" path="res://music/Captchaware_failed.wav" id="36_rmvoj"]
+[ext_resource type="AudioStream" uid="uid://bs1n8hx8gd8eb" path="res://music/Captchaware_gameover.wav" id="37_5lnet"]
 [ext_resource type="AudioStream" uid="uid://cf85fvbr2fni" path="res://sounds/keyboard_8.mp3" id="37_gk1s0"]
 [ext_resource type="AudioStream" uid="uid://dnowamxgnw2ho" path="res://sounds/keyboard_9.mp3" id="38_mop1g"]
 [ext_resource type="AudioStream" uid="uid://b05mv75765lnm" path="res://sounds/keyboard_10.mp3" id="39_wsihr"]
@@ -106,6 +112,132 @@ Vector2i(-1, -1): {
 }
 }
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2h35w"]
+clip_count = 6
+clip_0/name = &"Captchaware Intro"
+clip_0/stream = ExtResource("32_8u1fw")
+clip_0/auto_advance = 0
+clip_1/name = &"Captchaware Game"
+clip_1/stream = ExtResource("33_dosju")
+clip_1/auto_advance = 0
+clip_2/name = &"Captchaware Game Slow"
+clip_2/stream = ExtResource("34_4rwuo")
+clip_2/auto_advance = 0
+clip_3/name = &"Captchaware Win"
+clip_3/stream = ExtResource("35_xxse2")
+clip_3/auto_advance = 0
+clip_4/name = &"Captchaware Failed"
+clip_4/stream = ExtResource("36_rmvoj")
+clip_4/auto_advance = 0
+clip_5/name = &"Captchaware Gameover"
+clip_5/stream = ExtResource("37_5lnet")
+clip_5/auto_advance = 0
+initial_clip = 1
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 0.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(0, 2): {
+"fade_beats": 0.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(1, 1): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(1, 3): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(1, 4): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(2, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(2, 2): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(2, 3): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(2, 4): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(3, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(3, 2): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(3, 3): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(3, 4): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(4, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(4, 2): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(4, 5): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+}
+}
+
 [node name="Game" type="Node2D"]
 z_index = 2
 position = Vector2(-1, 0)
@@ -127,7 +259,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "dinosaurGame"
+force_microgame = "closePopups"
 cur_difficulty_test = 1
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
@@ -562,6 +694,11 @@ stream = SubResource("AudioStreamInteractive_rhq6j")
 volume_db = 6.701
 autoplay = true
 bus = &"Sounds"
+
+[node name="Mosik" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_2h35w")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay" method="_on_verify_button_pressed"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]

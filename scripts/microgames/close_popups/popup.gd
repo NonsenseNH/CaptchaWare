@@ -22,10 +22,8 @@ func _ready():
 	if !is_blocker: return
 	ad_sprite.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
-func set_popup_image(file_name : String) -> void:
-	var popup_texture : Texture2D = load(AD_IMAGES_PATH + file_name)
-
-	ad_sprite.texture = popup_texture
+func set_popup_image(texture_file : Texture2D) -> void:
+	ad_sprite.texture = texture_file
 
 func _on_x_pressed() -> void:
 	popup_closed.emit()

@@ -162,7 +162,7 @@ shape = SubResource("RectangleShape2D_wku30")
 
 [node name="jump" type="AudioStreamPlayer" parent="the_dino/sounds"]
 stream = ExtResource("5_ltpk3")
-volume_db = -8.0
+volume_db = -12.0
 bus = &"Sounds"
 
 [node name="hit" type="AudioStreamPlayer" parent="the_dino/sounds"]
