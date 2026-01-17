@@ -240,9 +240,9 @@ Vector2i(4, 5): {
 
 [node name="Game" type="Node2D"]
 z_index = 2
-position = Vector2(-1, 0)
 metadata/_edit_horizontal_guides_ = [399.0]
 metadata/_edit_vertical_guides_ = [609.0]
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -259,7 +259,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "closePopups"
+force_microgame = "dinosaurGame"
 cur_difficulty_test = 1
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
@@ -697,7 +697,6 @@ bus = &"Sounds"
 
 [node name="Mosik" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_2h35w")
-autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay" method="_on_verify_button_pressed"]

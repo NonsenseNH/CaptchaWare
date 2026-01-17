@@ -11,6 +11,8 @@ const SPEED_DIFFICULTY_SCALE = [700, 750, 800, 900]
 @onready var cactus_spawn: Marker2D = $CactusSpawn
 @onready var cactus_spawn_rate: Timer = $CactusSpawnRate
 
+@onready var sounds: Node = $the_dino/sounds
+
 var died := false
 
 @export var cur_speed := 0.0
@@ -22,6 +24,9 @@ func canSkip() -> bool:
 	return died
 
 func isWinning() -> bool:
+	for i in sounds.get_children():
+		i.volume_db = -80
+	
 	return !died
 
 func set_speed(speed : float) -> void:
