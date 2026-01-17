@@ -3,7 +3,7 @@ extends SaveSystem
 const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 const JUDGEMENT_TEXT_LOCATION : String = "res://scripts/"
 
-@export_enum("normal", "absurd", "all") var cur_microgame_pool : String = "all"
+@export_enum("normal", "absurd", "all", "campaign") var cur_microgame_pool : String = "all"
 
 @export var cur_speed : float = 1
 @onready var original_speed := cur_speed
@@ -37,10 +37,10 @@ var intro_sequence := true
 
 @onready var verify_button: Button = $window/captcha_window/lowbar/verifyButton
 
-var prev_microgame : Node = null
+var prev_microgame : Microgame = null
 var cur_window_size : Vector2 = Vector2.ZERO
 
-var cur_microgame : Node = null
+var cur_microgame : Microgame = null
 var transitioning : bool = false
 
 var cur_microgame_pool_array : PackedStringArray = []
@@ -122,7 +122,7 @@ func start_game() -> void:
 		captcha_transition.set("parameters/conditions/intro", true)
 		cur_microgame_pool_array = get_game_pool("normal")
 	else:
-		cur_microgame_pool_array = get_game_pool()
+		cur_microgame_pool_array = get_game_pool(cur_microgame_pool)
 	
 	error_message.visible = false
 
@@ -142,16 +142,20 @@ func start_game() -> void:
 	captcha_transition.set("parameters/conditions/no lives", false)
 	game_started = true
 
-func get_game_pool(_pool_override : String = "") -> Array:
-	if cur_microgame_pool.to_lower() == "all" && _pool_override == "":
+func get_game_pool(pool_override : String) -> Array:
+	if pool_override.to_lower() == "all":
 		var cur_array := []
 		
 		cur_array.append_array(resource_preloader.get_resource_list())
+
+		while true:
+			cur_array.shuffle()
+
+			if cur_array[0] != prev_microgame.name: break
 		
-		cur_array.shuffle()
 		return cur_array
 	else:
-		return microgame_pool_json[cur_microgame_pool if _pool_override == "" else _pool_override]
+		return microgame_pool_json[pool_override]
 
 func set_game_speed(speed: float = 0) -> void:
 	var anim_speed := maxf(speed * 1.15, 3.0)
@@ -431,7 +435,7 @@ func get_microgame(force_game : String = "") -> Node:
 		return cur_game
 	
 	if cur_microgame_pool_array.is_empty():
-		cur_microgame_pool_array = get_game_pool()
+		cur_microgame_pool_array = get_game_pool(cur_microgame_pool)
 	
 	cur_game_name = cur_microgame_pool_array[0]
 	
