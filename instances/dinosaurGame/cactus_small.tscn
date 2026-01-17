@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://rnbce2tcv4cw"]
+
+[ext_resource type="Texture2D" uid="uid://cl6eniygws8k7" path="res://sprites/dinosaur_game/Chromium_T-Rex-obstacle-small-sprite.png" id="1_juba7"]
+[ext_resource type="Script" uid="uid://lrjn07iaacv8" path="res://scripts/microgames/dinosaur_game/cactus_small.gd" id="2_6ovxw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dosju"]
+size = Vector2(24, 62)
+
+[node name="CactusSmall" type="Sprite2D"]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("1_juba7")
+offset = Vector2(0, -33.005)
+hframes = 6
+script = ExtResource("2_6ovxw")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -33)
+collision_layer = 4
+monitoring = false
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_dosju")
+debug_color = Color(0.90370864, 0.28348446, 0.31615454, 0.41960785)

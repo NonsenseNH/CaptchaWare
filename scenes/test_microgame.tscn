@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://djaw8hlxwksmc"]
+[gd_scene load_steps=55 format=3 uid="uid://djaw8hlxwksmc"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_rmvoj"]
 [ext_resource type="Script" uid="uid://bx67vbghdkuo4" path="res://scripts/microgame_load_test.gd" id="2_xqagn"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://icslug766esd" path="res://sprites/dinosaur_game/Chromium_T-Rex-horizon.png" id="11_xc6lx"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
+[ext_resource type="Texture2D" uid="uid://j2hf8us7o1qf" path="res://sprites/dinosaur_game/cloud.png" id="14_8u1fw"]
 [ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="23_cwhth"]
 [ext_resource type="AudioStream" uid="uid://5qixynf18hwv" path="res://sounds/mouse_click_up.mp3" id="24_5eq45"]
 [ext_resource type="AudioStream" uid="uid://timh0mbrw21y" path="res://sounds/mouse_click_down.mp3" id="25_hejar"]
@@ -56,11 +57,20 @@ errorMessage = "Please enjoy the game"
 set_size = Vector2(430, 573.835)
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a5sd"]
-size = Vector2(758, 146)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wku30"]
-size = Vector2(57, 71)
+[sub_resource type="Animation" id="Animation_wku30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dino:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_7a5sd"]
 resource_name = "run"
@@ -79,26 +89,20 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_wku30"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("dino:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8u1fw"]
 _data = {
 &"RESET": SubResource("Animation_wku30"),
 &"run": SubResource("Animation_7a5sd")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rwuo"]
+size = Vector2(61, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wku30"]
+size = Vector2(57, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a5sd"]
+size = Vector2(424, 120)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
 bg_color = Color(0.7962427, 0.7962432, 0.7962428, 1)
@@ -405,25 +409,21 @@ offset_bottom = 420.0
 script = ExtResource("9_so1f2")
 microgame_data = SubResource("Resource_xc6lx")
 
-[node name="GroundHitbox" type="StaticBody2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/GroundHitbox"]
-position = Vector2(203, 377)
-shape = SubResource("RectangleShape2D_7a5sd")
+[node name="BGColor" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.96862745, 0.96862745, 0.96862745, 1)
 
 [node name="the_dino" type="CharacterBody2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 collision_mask = 6
 platform_floor_layers = 4294967042
 script = ExtResource("11_wku30")
-
-[node name="white" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
-offset_left = 66.0
-offset_top = 269.0
-offset_right = 110.0
-offset_bottom = 309.0
 
 [node name="dino" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
 texture_filter = 1
@@ -431,19 +431,37 @@ position = Vector2(94, 261)
 texture = ExtResource("11_7a5sd")
 hframes = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
-position = Vector2(90.5, 267.5)
-shape = SubResource("RectangleShape2D_wku30")
-
 [node name="anim" type="AnimationPlayer" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
 libraries = {
 &"": SubResource("AnimationLibrary_8u1fw")
 }
 autoplay = "run"
 
+[node name="CactusDetector" type="Area2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
+collision_mask = 4
+monitorable = false
+
+[node name="Hitbox" type="CollisionShape2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino/CactusDetector"]
+position = Vector2(88.5, 262.5)
+shape = SubResource("RectangleShape2D_4rwuo")
+debug_color = Color(0.8807375, 0.338418, 0, 0.41960785)
+
+[node name="Hitbox" type="CollisionShape2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino"]
+position = Vector2(90.5, 267.5)
+shape = SubResource("RectangleShape2D_wku30")
+
+[node name="GroundHitbox" type="StaticBody2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+position = Vector2(0, 1)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/GroundHitbox"]
+position = Vector2(208, 364)
+shape = SubResource("RectangleShape2D_7a5sd")
+
 [node name="dinosaurgameBG" type="Parallax2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
 repeat_size = Vector2(2400.015, 0)
-autoscroll = Vector2(-1000, 0)
+autoscroll = Vector2(-800, 0)
 
 [node name="ground" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/dinosaurgameBG"]
 z_index = -1
@@ -451,6 +469,26 @@ texture_filter = 1
 texture_repeat = 2
 position = Vector2(304, 292)
 texture = ExtResource("11_xc6lx")
+
+[node name="clouds" type="CPUParticles2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+z_index = -1
+position = Vector2(465, 108)
+amount = 2
+texture = ExtResource("14_8u1fw")
+lifetime = 6.0
+emission_shape = 3
+emission_rect_extents = Vector2(0, 61.875)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+
+[node name="CactusSpawn" type="Marker2D" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+position = Vector2(456, 304)
+
+[node name="CactusSpawnRate" type="Timer" parent="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame"]
+autostart = true
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
 self_modulate = Color(0, 0, 0, 0.2509804)
@@ -676,4 +714,7 @@ bus = &"Sounds"
 
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay" method="_on_verify_button_pressed"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
+[connection signal="killed" from="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino" to="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame" method="_on_the_dino_killed"]
+[connection signal="area_entered" from="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino/CactusDetector" to="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/the_dino" method="_on_cactus_detector_area_entered"]
+[connection signal="timeout" from="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame/CactusSpawnRate" to="MicrogameGameplay/window/captcha_window/curGame/dinosaurGame" method="_on_cactus_spawn_rate_timeout"]
 [connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]
