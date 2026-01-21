@@ -217,7 +217,7 @@ func transition_game() -> void:
 	play_captcha_anim_tree()
 	
 	transitioning = true
-	
+
 	games_played += 1
 	
 	ui_captcha_window._display_error_text("", true)
@@ -243,6 +243,7 @@ func transition_game() -> void:
 			AudioServer.set_bus_volume_db(bus_index, 0)
 		return
 	
+	ui_captcha_window.set_score_num(games_played)
 	set_judgement_text(did_fail)
 	
 	if did_fail:
@@ -481,7 +482,12 @@ func checkbox_pressed() -> void:
 
 
 func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> void:
-	if !["gametransition_end", "gametransition_speedup", "gametransition_gameover", "gametransition_speedup_beginning"].has(anim_name): return
+	if !["gametransition_end", 
+	"gametransition_end_beginning", 
+	"gametransition_speedup", 
+	"gametransition_gameover", 
+	"gametransition_speedup_beginning"].has(anim_name): return
+
 	if anim_name != "gametransition_gameover":
 		on_transition_complete.emit()
 	captcha_input_disabler.visible = false

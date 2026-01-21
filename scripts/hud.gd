@@ -13,6 +13,8 @@ const ERROR_OFFSET := 25
 @export var error_label : Label
 @export var captcha_window : TextureRect
 
+@onready var captcha_count: Label = $captcha_window/lowbar/captchaCount
+
 @onready var cur_game: ColorRect = $captcha_window/curGame
 @onready var progress_bar: ProgressBar = $captcha_window/blueBorder/instructions/ProgressBar
 var time_ui : float = 0.0
@@ -25,6 +27,9 @@ func set_up_ui_data(data:Dictionary) -> void:
 	
 	if (data.has("windowSize")):
 		set_captcha_window_size(data.windowSize, data.windowTween, data.tweenSpeed)
+
+func set_score_num(score_num:int) -> void:
+	captcha_count.text = str(score_num) + " CAPTCHAS"
 
 func _set_instructions(text_override_big: String = "..n", text_override_small: String = "..n", ref_image : Texture2D = null) -> void:
 	var instructions_2nd : Label = instructions.get_node("instructions2")

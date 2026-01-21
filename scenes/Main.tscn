@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://bfsemdv668ekw"]
+[gd_scene load_steps=110 format=3 uid="uid://bfsemdv668ekw"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_8cp6k"]
 [ext_resource type="Script" uid="uid://bnjqqa2nf5s2f" path="res://scripts/gameplay.gd" id="1_36rkl"]
@@ -144,6 +144,9 @@ border_color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_eyf67")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_1stys")
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s3wmy"]
+animation = &"gametransition_end_beginning"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2c4at"]
 animation = &"gametransition_gameover"
 
@@ -257,11 +260,6 @@ advance_condition = &"speed up"
 advance_mode = 2
 advance_condition = &"intro"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdcyb"]
-priority = 2
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oa6sj"]
 switch_mode = 2
 advance_mode = 2
@@ -271,8 +269,20 @@ advance_condition = &"speed up"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdcyb"]
+priority = 2
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"intro"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0f1tp"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dg70y"]
 states/Start/position = Vector2(207, 100)
+states/gametransition_end_beginning/node = SubResource("AnimationNodeAnimation_s3wmy")
+states/gametransition_end_beginning/position = Vector2(900, 210.47383)
 states/gametransition_gameover/node = SubResource("AnimationNodeAnimation_2c4at")
 states/gametransition_gameover/position = Vector2(900, -16.682358)
 states/gametransition_intro_beginning/node = SubResource("AnimationNodeAnimation_8b871")
@@ -280,14 +290,14 @@ states/gametransition_intro_beginning/position = Vector2(207, 210.47383)
 states/gametransition_speedup_beginning/node = SubResource("AnimationNodeAnimation_pdwbg")
 states/gametransition_speedup_beginning/position = Vector2(535, 166.47382)
 states/transition_end/node = SubResource("AnimationNodeBlendTree_g6wdg")
-states/transition_end/position = Vector2(900, 210.47383)
+states/transition_end/position = Vector2(1093, 100)
 states/transition_fail/node = SubResource("AnimationNodeBlendTree_cobve")
 states/transition_fail/position = Vector2(535, -16.682358)
 states/transition_intro/node = SubResource("AnimationNodeBlendTree_8b871")
 states/transition_intro/position = Vector2(207, -16.682358)
 states/transition_speedup/node = SubResource("AnimationNodeBlendTree_kxyth")
 states/transition_speedup/position = Vector2(535, -118)
-transitions = ["Start", "transition_intro", SubResource("AnimationNodeStateMachineTransition_pdwbg"), "transition_intro", "transition_fail", SubResource("AnimationNodeStateMachineTransition_5grtr"), "transition_fail", "transition_end", SubResource("AnimationNodeStateMachineTransition_vua0o"), "transition_end", "End", SubResource("AnimationNodeStateMachineTransition_t70y2"), "transition_intro", "transition_end", SubResource("AnimationNodeStateMachineTransition_8gny2"), "transition_fail", "gametransition_gameover", SubResource("AnimationNodeStateMachineTransition_g6wdg"), "gametransition_gameover", "End", SubResource("AnimationNodeStateMachineTransition_hq6as"), "transition_fail", "transition_speedup", SubResource("AnimationNodeStateMachineTransition_cobve"), "transition_speedup", "End", SubResource("AnimationNodeStateMachineTransition_cmqll"), "transition_intro", "transition_speedup", SubResource("AnimationNodeStateMachineTransition_2c4at"), "Start", "gametransition_intro_beginning", SubResource("AnimationNodeStateMachineTransition_s3wmy"), "gametransition_intro_beginning", "transition_end", SubResource("AnimationNodeStateMachineTransition_gdcyb"), "gametransition_intro_beginning", "gametransition_speedup_beginning", SubResource("AnimationNodeStateMachineTransition_oa6sj"), "gametransition_speedup_beginning", "End", SubResource("AnimationNodeStateMachineTransition_8b871")]
+transitions = ["Start", "transition_intro", SubResource("AnimationNodeStateMachineTransition_pdwbg"), "transition_intro", "transition_fail", SubResource("AnimationNodeStateMachineTransition_5grtr"), "transition_fail", "transition_end", SubResource("AnimationNodeStateMachineTransition_vua0o"), "transition_end", "End", SubResource("AnimationNodeStateMachineTransition_t70y2"), "transition_intro", "transition_end", SubResource("AnimationNodeStateMachineTransition_8gny2"), "transition_fail", "gametransition_gameover", SubResource("AnimationNodeStateMachineTransition_g6wdg"), "gametransition_gameover", "End", SubResource("AnimationNodeStateMachineTransition_hq6as"), "transition_fail", "transition_speedup", SubResource("AnimationNodeStateMachineTransition_cobve"), "transition_speedup", "End", SubResource("AnimationNodeStateMachineTransition_cmqll"), "transition_intro", "transition_speedup", SubResource("AnimationNodeStateMachineTransition_2c4at"), "Start", "gametransition_intro_beginning", SubResource("AnimationNodeStateMachineTransition_s3wmy"), "gametransition_intro_beginning", "gametransition_speedup_beginning", SubResource("AnimationNodeStateMachineTransition_oa6sj"), "gametransition_speedup_beginning", "End", SubResource("AnimationNodeStateMachineTransition_8b871"), "gametransition_intro_beginning", "gametransition_end_beginning", SubResource("AnimationNodeStateMachineTransition_gdcyb"), "gametransition_end_beginning", "End", SubResource("AnimationNodeStateMachineTransition_0f1tp")]
 graph_offset = Vector2(0, -167.7989)
 
 [sub_resource type="Animation" id="Animation_gsxep"]
@@ -580,6 +590,18 @@ tracks/23/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_v0vrg"]
 resource_name = "gameIntro"
@@ -739,6 +761,18 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pnhog"]
@@ -1029,6 +1063,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.832719, 1.0678074),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.9909091), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hq6as"]
 resource_name = "gametransition_fail"
@@ -1190,6 +1236,18 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cobve"]
@@ -1608,6 +1666,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8b871"]
@@ -2054,6 +2124,18 @@ tracks/17/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.9909091)]
+}
 
 [sub_resource type="Animation" id="Animation_pdwbg"]
 resource_name = "gametransition_speedup_beginning"
@@ -2283,12 +2365,190 @@ tracks/17/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_s3wmy"]
+resource_name = "gametransition_end_beginning"
+length = 1.191
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.69675976, 1.1662132),
+"transitions": PackedFloat32Array(1, -4.000002, 1),
+"update": 0,
+"values": [Vector2(1.225, 1.225), Vector2(1.225, 1.225), Vector2(1.43, 1.43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../MainMenu/captchabox/captchaSprite/Button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../window:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../window/intermissionText:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.83731264, 1.0728014),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../window/captcha_window/curGame:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.83731264, 1.0728014),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("captchaAnimationPlayer/Sounds:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.839468),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_g6wdg")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("captchaAnimationPlayer/Sounds:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.839468),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6728014),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"set_up_game"
+}, {
+"args": [],
+"method": &"change_game"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../camera:parallax_offset_amount")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.6934118, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.3, 1.3, 1.7]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../window/captcha_window/blueBorder/instructions:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.8333333, 1.068208),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../window/intermissionText/judgement:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../window/captcha_window/curGame:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.83946806),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../window/captcha_window/lowbar/verifyButton:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.191),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gsxep"]
 _data = {
 &"RESET": SubResource("Animation_gsxep"),
 &"gameIntro": SubResource("Animation_v0vrg"),
 &"gamecaptchaidle": SubResource("Animation_pnhog"),
 &"gametransition_end": SubResource("Animation_kxyth"),
+&"gametransition_end_beginning": SubResource("Animation_s3wmy"),
 &"gametransition_fail": SubResource("Animation_hq6as"),
 &"gametransition_gameover": SubResource("Animation_cobve"),
 &"gametransition_intro": SubResource("Animation_dg70y"),
@@ -2736,6 +2996,21 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("8_dg70y")
 text = "VERIFY"
 
+[node name="captchaCount" type="Label" parent="MicrogameGameplay/window/captcha_window/lowbar"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.41960785)
+layout_mode = 0
+offset_left = 51.0
+offset_right = 291.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0.41597995, 0.4159808, 0.4159798, 1)
+theme_override_colors/font_outline_color = Color(0.41568628, 0.41568628, 0.41568628, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_g6wdg")
+theme_override_font_sizes/font_size = 21
+text = "0 CAPTCHAS"
+vertical_alignment = 1
+
 [node name="curGame" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
 visible = false
 clip_children = 1
@@ -2959,9 +3234,9 @@ callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeStateMachine_dg70y")
 anim_player = NodePath("captchaAnimationPlayer")
 parameters/conditions/failed = false
-parameters/conditions/intro = false
+parameters/conditions/intro = true
 "parameters/conditions/no lives" = false
-"parameters/conditions/speed up" = false
+"parameters/conditions/speed up" = true
 parameters/transition_end/TimeScale/scale = 1.0
 parameters/transition_fail/TimeScale/scale = 1.0
 parameters/transition_intro/TimeScale/scale = 1.0
