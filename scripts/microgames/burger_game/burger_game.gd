@@ -163,6 +163,9 @@ func complete_microgame() -> void:
 	skip_timer.emit()
 	stop_all_buttons()
 
+func canSkip() -> bool:
+	return stop_game
+
 func isWinning() -> bool:
 	return finished_burger
 

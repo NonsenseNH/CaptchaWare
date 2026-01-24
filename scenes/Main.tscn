@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://bfsemdv668ekw"]
+[gd_scene load_steps=113 format=3 uid="uid://bfsemdv668ekw"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_8cp6k"]
 [ext_resource type="Script" uid="uid://bnjqqa2nf5s2f" path="res://scripts/gameplay.gd" id="1_36rkl"]
@@ -25,21 +25,24 @@
 [ext_resource type="AudioStream" uid="uid://dp20bq53li1b7" path="res://sounds/cam_move_in.mp3" id="14_g6wdg"]
 [ext_resource type="AudioStream" uid="uid://dwmc65m6g871f" path="res://sounds/keyboard_13.mp3" id="15_8cp6k"]
 [ext_resource type="AudioStream" uid="uid://t8ktayia0fk3" path="res://sounds/keyboard_14.mp3" id="16_8b871"]
-[ext_resource type="AudioStream" uid="uid://c63bawohehh32" path="res://music/Captchaware_intro.wav" id="17_8b871"]
+[ext_resource type="AudioStream" uid="uid://i1phya6t7ltg" path="res://music/Captchaware_intro.ogg" id="17_0f1tp"]
 [ext_resource type="AudioStream" uid="uid://d0vxmdlg3tncn" path="res://sounds/keyboard_3.mp3" id="17_pdwbg"]
+[ext_resource type="AudioStream" uid="uid://b6fjbwga28048" path="res://music/Captchaware_game.ogg" id="18_0qimb"]
 [ext_resource type="AudioStream" uid="uid://deac4fvuy15f" path="res://sounds/keyboard_4.mp3" id="18_5grtr"]
-[ext_resource type="AudioStream" uid="uid://b1ba6vvqxxs7l" path="res://music/Captchaware_game.wav" id="18_pdwbg"]
-[ext_resource type="AudioStream" uid="uid://qggusdfydv62" path="res://music/Captchaware_game_slow.wav" id="19_8b871"]
+[ext_resource type="AudioStream" uid="uid://dj5qh4b7arq6s" path="res://music/Captchaware_game_slow.ogg" id="19_in2eo"]
 [ext_resource type="AudioStream" uid="uid://7dqrcpj0v2lv" path="res://sounds/keyboard_5.mp3" id="19_vua0o"]
+[ext_resource type="AudioStream" uid="uid://clok1hgwjnol1" path="res://music/Captchaware_win.ogg" id="20_dyyw8"]
 [ext_resource type="AudioStream" uid="uid://bp48pvfs8foo" path="res://sounds/keyboard_6.mp3" id="20_t70y2"]
-[ext_resource type="AudioStream" uid="uid://bmk0ks343vtwe" path="res://music/Captchaware_win.wav" id="20_vua0o"]
 [ext_resource type="AudioStream" uid="uid://ducwyc62p8fsq" path="res://sounds/keyboard_7.mp3" id="21_8gny2"]
-[ext_resource type="AudioStream" uid="uid://hhirjx6d23vq" path="res://music/Captchaware_failed.wav" id="21_pdwbg"]
-[ext_resource type="AudioStream" uid="uid://bs1n8hx8gd8eb" path="res://music/Captchaware_gameover.wav" id="22_5grtr"]
+[ext_resource type="AudioStream" uid="uid://dp10m8orkcafo" path="res://music/Captchaware_failed.ogg" id="21_gjpm3"]
+[ext_resource type="AudioStream" uid="uid://v60cn2wi5f7" path="res://music/Captchaware_gameover.ogg" id="22_knagv"]
 [ext_resource type="AudioStream" uid="uid://cf85fvbr2fni" path="res://sounds/keyboard_8.mp3" id="22_s3wmy"]
 [ext_resource type="AudioStream" uid="uid://dnowamxgnw2ho" path="res://sounds/keyboard_9.mp3" id="23_gdcyb"]
+[ext_resource type="AudioStream" uid="uid://f2q125g3ag5t" path="res://music/Captchaware_boss_transition.ogg" id="23_siyqs"]
 [ext_resource type="AudioStream" uid="uid://b05mv75765lnm" path="res://sounds/keyboard_10.mp3" id="24_oa6sj"]
+[ext_resource type="AudioStream" uid="uid://ub8emugukhf5" path="res://music/Captchaware_boss.ogg" id="24_pb578"]
 [ext_resource type="AudioStream" uid="uid://d4biwfnyykclm" path="res://sounds/pc_hum.mp3" id="25_0f1tp"]
+[ext_resource type="AudioStream" uid="uid://dgxvxx2mbivnx" path="res://music/Captchaware_ending.ogg" id="25_vshs7"]
 [ext_resource type="AudioStream" uid="uid://bb34cufoy5udg" path="res://sounds/pc_overheat.mp3" id="26_0qimb"]
 [ext_resource type="AudioStream" uid="uid://bfsu5f1fv5ewn" path="res://sounds/stretch_0.mp3" id="42_t70y2"]
 [ext_resource type="AudioStream" uid="uid://cgqrganc8einb" path="res://sounds/stretch_1.mp3" id="43_8gny2"]
@@ -1074,6 +1077,183 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.9909091), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s3wmy"]
+resource_name = "gametransition_end_beginning"
+length = 1.191
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.69675976, 1.1662132),
+"transitions": PackedFloat32Array(1, -4.000002, 1),
+"update": 0,
+"values": [Vector2(1.225, 1.225), Vector2(1.225, 1.225), Vector2(1.43, 1.43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../MainMenu/captchabox/captchaSprite/Button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../window:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../window/intermissionText:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.83731264, 1.0728014),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../window/captcha_window/curGame:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.83731264, 1.0728014),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("captchaAnimationPlayer/Sounds:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.839468),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_g6wdg")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("captchaAnimationPlayer/Sounds:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.839468),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6728014),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"set_up_game"
+}, {
+"args": [],
+"method": &"change_game"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../camera:parallax_offset_amount")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.6934118, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.3, 1.3, 1.7]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../window/captcha_window/blueBorder/instructions:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.8333333, 1.068208),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../window/intermissionText/judgement:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../window/captcha_window/curGame:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.83946806),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../window/captcha_window/lowbar/verifyButton:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.191),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_hq6as"]
@@ -2131,10 +2311,10 @@ tracks/18/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.11, 2.33),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.9909091)]
+"values": [Color(1, 1, 1, 0.9909091), Color(1, 1, 1, 0.9909091), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pdwbg"]
@@ -2365,183 +2545,6 @@ tracks/17/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_s3wmy"]
-resource_name = "gametransition_end_beginning"
-length = 1.191
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../camera:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.69675976, 1.1662132),
-"transitions": PackedFloat32Array(1, -4.000002, 1),
-"update": 0,
-"values": [Vector2(1.225, 1.225), Vector2(1.225, 1.225), Vector2(1.43, 1.43)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../MainMenu/captchabox/captchaSprite/Button:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../window:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../window:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../window/intermissionText:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.83731264, 1.0728014),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../window/captcha_window/curGame:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.83731264, 1.0728014),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("captchaAnimationPlayer/Sounds:stream")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.839468),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("14_g6wdg")]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("captchaAnimationPlayer/Sounds:playing")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.839468),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("..")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.6728014),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"set_up_game"
-}, {
-"args": [],
-"method": &"change_game"
-}]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../camera:parallax_offset_amount")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.6934118, 1.1666666),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [1.3, 1.3, 1.7]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../window/captcha_window/blueBorder/instructions:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.8333333, 1.068208),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../window/intermissionText/judgement:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../window/captcha_window/curGame:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.83946806),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("../window/captcha_window/lowbar/verifyButton:disabled")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 1.191),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gsxep"]
 _data = {
 &"RESET": SubResource("Animation_gsxep"),
@@ -2558,25 +2561,35 @@ _data = {
 }
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_vua0o"]
-clip_count = 6
+clip_count = 9
 clip_0/name = &"Captchaware Intro"
-clip_0/stream = ExtResource("17_8b871")
+clip_0/stream = ExtResource("17_0f1tp")
 clip_0/auto_advance = 0
 clip_1/name = &"Captchaware Game"
-clip_1/stream = ExtResource("18_pdwbg")
+clip_1/stream = ExtResource("18_0qimb")
 clip_1/auto_advance = 0
 clip_2/name = &"Captchaware Game Slow"
-clip_2/stream = ExtResource("19_8b871")
+clip_2/stream = ExtResource("19_in2eo")
 clip_2/auto_advance = 0
 clip_3/name = &"Captchaware Win"
-clip_3/stream = ExtResource("20_vua0o")
+clip_3/stream = ExtResource("20_dyyw8")
 clip_3/auto_advance = 0
 clip_4/name = &"Captchaware Failed"
-clip_4/stream = ExtResource("21_pdwbg")
+clip_4/stream = ExtResource("21_gjpm3")
 clip_4/auto_advance = 0
 clip_5/name = &"Captchaware Gameover"
-clip_5/stream = ExtResource("22_5grtr")
+clip_5/stream = ExtResource("22_knagv")
 clip_5/auto_advance = 0
+clip_6/name = &"Captchaware Boss Transition"
+clip_6/stream = ExtResource("23_siyqs")
+clip_6/auto_advance = 1
+clip_6/next_clip = 7
+clip_7/name = &"Captchaware Boss"
+clip_7/stream = ExtResource("24_pb578")
+clip_7/auto_advance = 0
+clip_8/name = &"Captchaware Ending"
+clip_8/stream = ExtResource("25_vshs7")
+clip_8/auto_advance = 0
 _transitions = {
 Vector2i(0, 1): {
 "fade_beats": 0.0,
@@ -2614,6 +2627,12 @@ Vector2i(1, 4): {
 "from_time": 0,
 "to_time": 0
 },
+Vector2i(1, 6): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 1,
+"to_time": 1
+},
 Vector2i(2, 1): {
 "fade_beats": 1.0,
 "fade_mode": 4,
@@ -2637,6 +2656,12 @@ Vector2i(2, 4): {
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 0
+},
+Vector2i(2, 6): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 1,
+"to_time": 1
 },
 Vector2i(3, 1): {
 "fade_beats": 1.0,
@@ -2662,6 +2687,12 @@ Vector2i(3, 4): {
 "from_time": 0,
 "to_time": 0
 },
+Vector2i(3, 6): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 1,
+"to_time": 1
+},
 Vector2i(4, 1): {
 "fade_beats": 1.0,
 "fade_mode": 4,
@@ -2669,6 +2700,12 @@ Vector2i(4, 1): {
 "to_time": 0
 },
 Vector2i(4, 2): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(4, 3): {
 "fade_beats": 1.0,
 "fade_mode": 4,
 "from_time": 0,
