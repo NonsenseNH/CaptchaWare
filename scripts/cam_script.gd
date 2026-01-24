@@ -3,8 +3,8 @@ extends Camera2D
 class_name cam_effects
 
 @export var parallax_offset_amount : float = 0
+@export var shake_amount : float = 0
 
-var shake_amount : float = 0
 var shake_vector : Vector2 = Vector2.ZERO
 var parallax_offset := Vector2.ZERO
 @onready var default_zoom :Vector2 = zoom

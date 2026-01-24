@@ -185,11 +185,11 @@ func set_game_speed(speed: float = 0) -> void:
 	
 	if difficulty < 4:
 		difficulty += 1
-	
-	var captcha_bg_tween : Tween = create_tween()
-	captcha_bg_tween.tween_property(bg.material, "shader_parameter/scroll_speed", speed, 3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).as_relative()
 
-func set_up_window_size(tween_window: bool = false) -> void:
+func get_boss_game() -> void:
+	captcha_transition.set("parameters/conditions/boss", true)
+
+func set_up_window_size(tween_window: bool = false, play_sound := true) -> void:
 	ui_captcha_window.set_up_ui_data({
 		"windowSize" : Vector2(cur_microgame_data.Width, cur_microgame_data.Length),
 		"windowTween" : tween_window,
@@ -201,7 +201,7 @@ func set_up_window_size(tween_window: bool = false) -> void:
 	
 	prev_window_size = Vector2(cur_microgame_data.Width, cur_microgame_data.Length)
 
-	sounds.get_node("stretch resize").play()
+	if play_sound: sounds.get_node("stretch resize").play()
 
 func _on_timer_timeout() -> void:
 	cur_microgame.end_microgame.emit()
@@ -357,17 +357,20 @@ func reset_fail_count() -> void:
 	for slot in cur_slot:
 		slot.get_child(0).self_modulate = Color(0,0,0,0.384)
 
-func set_up_game() -> void:
+func set_up_game(play_sound := true) -> void:
 	remove_game()
 	
-	set_up_window_size(true)
+	set_up_window_size(true, play_sound)
 
 func remove_game() -> void:
 	if prev_microgame != null:
 		ui_captcha_window.cur_game.remove_child(prev_microgame)
 
-func change_game():
-	if music.playing:
+func change_game(is_boss := false) -> void:
+	if cur_microgame == null: 
+		print_debug("Current microgame is null!")
+		return
+	if music.playing && !is_boss:
 		music.get_stream_playback().switch_to_clip_by_name("Captchaware Game Slow" if cur_microgame_data.slowGame else musicState)
 	
 	cur_microgame.z_index += 1
@@ -488,7 +491,8 @@ func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> v
 	"gametransition_end_beginning", 
 	"gametransition_speedup", 
 	"gametransition_gameover", 
-	"gametransition_speedup_beginning"].has(anim_name): return
+	"gametransition_speedup_beginning",
+	"gametransition_boss"].has(anim_name): return
 
 	if anim_name != "gametransition_gameover":
 		on_transition_complete.emit()

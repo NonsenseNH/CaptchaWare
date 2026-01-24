@@ -1,7 +1,8 @@
 shader_type canvas_item;
 
-uniform float scroll_speed = 0.01;
+uniform float scroll_speed = 0.0;
+uniform float set_speed = 0.03;
 
 void vertex() {
-	UV.y += (TIME * 0.05) + scroll_speed;
+	UV.y += (TIME * set_speed) + scroll_speed;
 }
