@@ -237,7 +237,9 @@ func transition_game() -> void:
 			intro_sequence = false
 			games_played = 0
 			captcha_transition.set("parameters/conditions/speed up", true)
+
 			cur_microgame_pool_array.clear()
+			get_microgame_data() #this is to actually get the data from the updated pool
 			
 			var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 			AudioServer.set_bus_volume_db(bus_index, 0)

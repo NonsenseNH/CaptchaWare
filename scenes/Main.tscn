@@ -2630,7 +2630,7 @@ Vector2i(1, 4): {
 Vector2i(1, 6): {
 "fade_beats": 1.0,
 "fade_mode": 0,
-"from_time": 1,
+"from_time": 0,
 "to_time": 1
 },
 Vector2i(2, 1): {
@@ -2660,7 +2660,7 @@ Vector2i(2, 4): {
 Vector2i(2, 6): {
 "fade_beats": 1.0,
 "fade_mode": 0,
-"from_time": 1,
+"from_time": 0,
 "to_time": 1
 },
 Vector2i(3, 1): {
@@ -2690,7 +2690,7 @@ Vector2i(3, 4): {
 Vector2i(3, 6): {
 "fade_beats": 1.0,
 "fade_mode": 0,
-"from_time": 1,
+"from_time": 0,
 "to_time": 1
 },
 Vector2i(4, 1): {
@@ -2837,6 +2837,7 @@ autowrap_mode = 2
 
 [node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
 script = ExtResource("1_36rkl")
+cur_microgame_pool = "campaign"
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay"]
 self_modulate = Color(1, 1, 1, 0)

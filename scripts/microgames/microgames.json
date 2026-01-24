@@ -20,9 +20,9 @@
 	"all" : [
 	],
 	"campaign":[
+		"puzzlePiece",
 		"imagesCategory",
 		"imageLocation",
-		"puzzlePiece",
 		"typeCaptcha",
 		"mathCaptcha",
 		"alignCircle",
@@ -33,8 +33,12 @@
 		"doNothing",
 		"fishingGame",
 		"reactionTime",
+		"touchGrass",
 		"cardSwipe",
 		"impossibleQuiz",
-		"simonSays"
+		"simonSays",
+		"burgerGame",
+		"closePopups",
+		"dinosaurGame"
 	]
 }
