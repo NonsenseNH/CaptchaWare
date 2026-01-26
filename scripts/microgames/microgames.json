@@ -17,7 +17,30 @@
 		"impossibleQuiz",
 		"simonSays"
 	],
+	"bosses" : [
+		"scaryMazeGame"
+	],
 	"all" : [
+		"puzzlePiece",
+		"imagesCategory",
+		"imageLocation",
+		"typeCaptcha",
+		"mathCaptcha",
+		"alignCircle",
+		"faceRightUp",
+		"termsOfService",
+		"phoneVerification",
+		"howManyFingers",
+		"doNothing",
+		"fishingGame",
+		"reactionTime",
+		"touchGrass",
+		"cardSwipe",
+		"impossibleQuiz",
+		"simonSays",
+		"burgerGame",
+		"closePopups",
+		"dinosaurGame"
 	],
 	"campaign":[
 		"puzzlePiece",

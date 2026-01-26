@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name SaveSystem
 
 const _SAVE_PATH := "user://"
@@ -12,9 +12,12 @@ func save(file_name : String, data_dictionary : Dictionary) -> void:
 	if !save_paths.has(file_name):
 		save_paths[file_name] = data_dictionary
 
-func load_data(file_name : String, data_dictionary : Dictionary) -> Dictionary:
+func load_data(file_name : String, data_dictionary : Dictionary = {}) -> Dictionary:
 	var file : FileAccess
 	if !FileAccess.file_exists(_SAVE_PATH + file_name):
+		if data_dictionary.is_empty():
+			return {}
+		
 		file = FileAccess.open(_SAVE_PATH + file_name, FileAccess.WRITE)
 		file.store_var(data_dictionary)
 		return data_dictionary

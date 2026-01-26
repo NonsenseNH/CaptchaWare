@@ -1,14 +1,19 @@
-extends SaveSystem
+extends Node2D
 
 const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 const JUDGEMENT_TEXT_LOCATION : String = "res://scripts/"
+
+const GAME_SAVE_NAME := "save_data"
+const SETTINGS_FILE_NAME := "settings_data"
+
+const TOTAL_CAPTCHAS := 20
 
 @export_enum("normal", "absurd", "all", "campaign") var cur_microgame_pool : String = "all"
 
 @export var cur_speed : float = 1
 @onready var original_speed := cur_speed
 
-@export var games_left_to_speed_up : = 5
+@export var games_left_to_speed_up : int = 5
 @export var games_on_intro := 3
 var intro_sequence := true
 
@@ -90,9 +95,27 @@ var win_streak : int = 0
 
 var fails : int = 0
 
+var save_file := {
+	"highscore" : 0,
+	"upcoming_boss" : "",
+	"played_intro" : false,
+	"beaten_full_game" : false,
+}
+
+var settings := {
+	"master_volume" : 0.0,
+	"music_volume" : 0.0,
+	"sfx_volume" : 0.0,
+	"fullscreen" : false,
+	"bg_scroll_speed" : 0.03,
+}
+
 signal on_transition_complete
 
 func _ready() -> void:
+	save_file = SaveHandler.load_data(GAME_SAVE_NAME, save_file)
+	settings = SaveHandler.load_data(SETTINGS_FILE_NAME, settings)
+
 	var file := FileAccess.open(JUDGEMENT_TEXT_LOCATION + "win_judgement_text.txt", FileAccess.READ)
 	judgement_text.win_dialogue = file.get_as_text().split(",", false)
 	
@@ -146,7 +169,7 @@ func get_game_pool(pool_override : String) -> Array:
 	if pool_override.to_lower() == "all":
 		var cur_array := []
 		
-		cur_array.append_array(resource_preloader.get_resource_list())
+		cur_array = microgame_pool_json[pool_override]
 
 		while true:
 			cur_array.shuffle()
@@ -165,8 +188,6 @@ func set_game_speed(speed: float = 0) -> void:
 		cur_speed = original_speed
 		cur_wait_time = og_wait_time
 		difficulty = 1
-		
-		bg.material.set("shader_parameter/scroll_speed", 0.01)
 		
 		for anim in captcha_animation_player.get_animation_list():
 			if anim == "RESET": continue
@@ -188,6 +209,7 @@ func set_game_speed(speed: float = 0) -> void:
 
 func get_boss_game() -> void:
 	captcha_transition.set("parameters/conditions/boss", true)
+	get_microgame_data(microgame_pool_json["bosses"][randi_range(0, microgame_pool_json["bosses"].size() - 1)])
 
 func set_up_window_size(tween_window: bool = false, play_sound := true) -> void:
 	ui_captcha_window.set_up_ui_data({
@@ -206,8 +228,16 @@ func set_up_window_size(tween_window: bool = false, play_sound := true) -> void:
 func _on_timer_timeout() -> void:
 	cur_microgame.end_microgame.emit()
 
+func win() -> void:
+	end_game()
+
 func transition_game() -> void:
+	if cur_microgame_pool == "campaign" && games_played > TOTAL_CAPTCHAS:
+		win()
+		return
+
 	if prev_microgame != null && prev_microgame.skipped: return
+
 	captcha_input_disabler.visible = true
 	prev_microgame.skipped = true
 
@@ -225,7 +255,10 @@ func transition_game() -> void:
 	if !intro_sequence:
 		music_handler(did_fail)
 	
-	get_microgame_data()
+	if cur_microgame_pool == "campaign" && games_played == TOTAL_CAPTCHAS:
+		get_boss_game()
+	else:
+		get_microgame_data()
 
 	sounds.get_node("ding").volume_db = -19.0 if !did_fail else -80.0
 
@@ -245,7 +278,7 @@ func transition_game() -> void:
 			AudioServer.set_bus_volume_db(bus_index, 0)
 		return
 	
-	ui_captcha_window.set_score_num(games_played)
+	ui_captcha_window.set_score_num(games_played, cur_microgame_pool == "campaign")
 	set_judgement_text(did_fail)
 	
 	if did_fail:
@@ -262,11 +295,19 @@ func transition_game() -> void:
 	captcha_transition.set("parameters/conditions/failed", did_fail)
 
 func game_over() -> void:
-	disconnect_prev_microgame_signals()
+	end_game()
 
 	captcha_transition.set("parameters/conditions/no lives", true)
 	error_message.visible = true
+	
+	
+func end_game() -> void:
+	disconnect_prev_microgame_signals()
 	game_started = false
+
+	if games_played > save_file.highscore:
+		save_file.highscore = games_played
+		SaveHandler.save(GAME_SAVE_NAME, save_file)
 
 func disconnect_prev_microgame_signals() -> void:
 	if prev_microgame == null || !on_transition_complete.is_connected(prev_microgame.on_transition_complete): return
@@ -454,8 +495,6 @@ func get_microgame(force_game : String = "") -> Node:
 
 	return cur_game
 
-	
-
 func get_microgame_data(force_game: String = "") -> void:
 	cur_microgame = get_microgame(force_game)
 	var local_game_data : MicrogameData = cur_microgame.microgame_data
@@ -481,10 +520,8 @@ func skip_game() -> void:
 	else:
 		ui_captcha_window._display_error_text(cur_microgame_data.errorMessage)
 
-
 func checkbox_pressed() -> void:
 	start_game()
-
 
 func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> void:
 	if !["gametransition_end", 

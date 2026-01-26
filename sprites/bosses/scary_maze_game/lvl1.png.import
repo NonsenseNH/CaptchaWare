@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mb55dplwjbgg"
-path="res://.godot/imported/lvl2.png-6ca6d3c6c0fa538d6700b585c58c6462.ctex"
+uid="uid://dvy64s1iwjotg"
+path="res://.godot/imported/lvl1.png-d87e18a5b57f47142ed5492d61edb44f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/scary_maze_game/lvl2.png"
-dest_files=["res://.godot/imported/lvl2.png-6ca6d3c6c0fa538d6700b585c58c6462.ctex"]
+source_file="res://sprites/bosses/scary_maze_game/lvl1.png"
+dest_files=["res://.godot/imported/lvl1.png-d87e18a5b57f47142ed5492d61edb44f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drep10fwh54lo"
-path="res://.godot/imported/mouse.png-b8b2b95401f52ed94965e71c9f95b9a7.ctex"
+uid="uid://b3ccd8i64l8nn"
+path="res://.godot/imported/start.png-2975f9a8d6a7b5566ebb9ea6d36aaa96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/scary_maze_game/mouse.png"
-dest_files=["res://.godot/imported/mouse.png-b8b2b95401f52ed94965e71c9f95b9a7.ctex"]
+source_file="res://sprites/bosses/scary_maze_game/start.png"
+dest_files=["res://.godot/imported/start.png-2975f9a8d6a7b5566ebb9ea6d36aaa96.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgtvk6ue0sl1d"
-path="res://.godot/imported/lvl3.png-d5aa5e4779a2e598f3296fe1bd05ef80.ctex"
+uid="uid://cpyoer88w32w6"
+path="res://.godot/imported/jumpscare.png-8981e52660100e9dde9b04f1689cced2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/scary_maze_game/lvl3.png"
-dest_files=["res://.godot/imported/lvl3.png-d5aa5e4779a2e598f3296fe1bd05ef80.ctex"]
+source_file="res://sprites/bosses/scary_maze_game/jumpscare.png"
+dest_files=["res://.godot/imported/jumpscare.png-8981e52660100e9dde9b04f1689cced2.ctex"]
 
 [params]
 

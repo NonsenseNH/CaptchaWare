@@ -2,6 +2,8 @@ extends Microgame
 
 @onready var levels: Control = $levels
 @onready var mouse: Sprite2D = $levels/mouse
+@onready var jumpscare_texture: TextureRect = $Jumpscare
+@onready var jumpscare_sound: AudioStreamPlayer = $"jumpscare sound"
 
 var cur_level := 0
 
@@ -49,3 +51,9 @@ func _on_victory_zone_area_entered(_area: Area2D) -> void:
 func jumpscare(_area: Area2D) -> void:
 	reset_levels()
 	beaten_game = true
+	jumpscare_texture.visible = true
+	jumpscare_sound.play()
+
+	await get_tree().create_timer(2.0).timeout
+
+	end_microgame.emit()
