@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://bfsemdv668ekw"]
+[gd_scene format=3 uid="uid://bfsemdv668ekw"]
 
 [ext_resource type="Texture2D" uid="uid://cuhshrlwv3sdj" path="res://sprites/Vignette.png" id="1_8cp6k"]
 [ext_resource type="Script" uid="uid://bnjqqa2nf5s2f" path="res://scripts/gameplay.gd" id="1_36rkl"]
@@ -3193,14 +3193,14 @@ stream_0/volume = 0.0
 stream_1/stream = ExtResource("51_0qimb")
 stream_1/volume = -60.0
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1759993202]
 z_index = 2
 metadata/_edit_horizontal_guides_ = [399.0]
 metadata/_edit_vertical_guides_ = [609.0]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=692974661]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=383613968]
 modulate = Color(1, 1, 1, 0.238)
 anchors_preset = 15
 anchor_right = 1.0
@@ -3211,9 +3211,9 @@ mouse_filter = 2
 texture = ExtResource("1_8cp6k")
 metadata/_edit_lock_ = true
 
-[node name="MainMenu" type="Node2D" parent="."]
+[node name="MainMenu" type="Node2D" parent="." unique_id=1809105125]
 
-[node name="captchabox" type="Control" parent="MainMenu"]
+[node name="captchabox" type="Control" parent="MainMenu" unique_id=830033388]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -3227,11 +3227,11 @@ offset_bottom = 439.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="captchaSprite" type="Sprite2D" parent="MainMenu/captchabox"]
+[node name="captchaSprite" type="Sprite2D" parent="MainMenu/captchabox" unique_id=1584491136]
 scale = Vector2(0.41356257, 0.41356257)
 texture = ExtResource("1_fs0b5")
 
-[node name="Button" type="Button" parent="MainMenu/captchabox/captchaSprite"]
+[node name="Button" type="Button" parent="MainMenu/captchabox/captchaSprite" unique_id=1192182686]
 offset_left = -417.5704
 offset_top = -37.83295
 offset_right = -343.358
@@ -3241,7 +3241,7 @@ mouse_default_cursor_shape = 2
 theme = SubResource("Theme_ma7h6")
 disabled = true
 
-[node name="ErrorMessage" type="Label" parent="MainMenu/captchabox/captchaSprite"]
+[node name="ErrorMessage" type="Label" parent="MainMenu/captchabox/captchaSprite" unique_id=621543771]
 visible = false
 offset_left = -444.91458
 offset_top = -101.556564
@@ -3253,11 +3253,11 @@ theme_override_font_sizes/font_size = 37
 text = "Verification Failed. Please try again."
 autowrap_mode = 2
 
-[node name="MicrogameGameplay" type="Node2D" parent="." groups=["main_game"]]
+[node name="MicrogameGameplay" type="Node2D" parent="." unique_id=1477501503 groups=["main_game"]]
 script = ExtResource("1_36rkl")
 cur_microgame_pool = "campaign"
 
-[node name="bg" type="TextureRect" parent="MicrogameGameplay"]
+[node name="bg" type="TextureRect" parent="MicrogameGameplay" unique_id=658983152]
 self_modulate = Color(1, 1, 1, 0)
 z_index = -1
 material = SubResource("ShaderMaterial_qpfo2")
@@ -3277,7 +3277,7 @@ expand_mode = 1
 stretch_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="window" type="Control" parent="MicrogameGameplay" node_paths=PackedStringArray("main_code", "timer_node", "instructions", "big_text", "big_image", "reference_image", "error_label", "captcha_window")]
+[node name="window" type="Control" parent="MicrogameGameplay" unique_id=550039800 node_paths=PackedStringArray("main_code", "timer_node", "instructions", "big_text", "big_image", "reference_image", "error_label", "captcha_window")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 8
@@ -3303,7 +3303,7 @@ error_label = NodePath("captcha_window/errorText")
 captcha_window = NodePath("captcha_window")
 metadata/_edit_use_anchors_ = true
 
-[node name="captcha_window" type="TextureRect" parent="MicrogameGameplay/window"]
+[node name="captcha_window" type="TextureRect" parent="MicrogameGameplay/window" unique_id=380992240]
 use_parent_material = true
 layout_direction = 1
 layout_mode = 1
@@ -3323,7 +3323,7 @@ mouse_filter = 2
 texture = ExtResource("6_gsxep")
 expand_mode = 1
 
-[node name="blueBorder" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
+[node name="blueBorder" type="ColorRect" parent="MicrogameGameplay/window/captcha_window" unique_id=1544620731]
 use_parent_material = true
 layout_direction = 1
 layout_mode = 1
@@ -3337,7 +3337,7 @@ grow_horizontal = 2
 mouse_filter = 2
 color = Color(0.184314, 0.501961, 0.917647, 1)
 
-[node name="instructions" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder"]
+[node name="instructions" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder" unique_id=1332893281]
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
@@ -3352,7 +3352,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 14
 text = "Select all squares with"
 
-[node name="ProgressBar" type="ProgressBar" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+[node name="ProgressBar" type="ProgressBar" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions" unique_id=354782690]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3368,7 +3368,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_kxyth")
 value = 100.0
 show_percentage = false
 
-[node name="type" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+[node name="type" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions" unique_id=1237097705]
 use_parent_material = true
 layout_mode = 0
 offset_top = 12.0
@@ -3380,14 +3380,14 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 36
 text = "traffic lights"
 
-[node name="typepic" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+[node name="typepic" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions" unique_id=490837546]
 layout_mode = 0
 offset_top = 19.0
 offset_right = 265.0
 offset_bottom = 62.0
 expand_mode = 1
 
-[node name="instructions2" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+[node name="instructions2" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions" unique_id=2139801340]
 z_index = 1
 use_parent_material = true
 layout_mode = 0
@@ -3398,7 +3398,7 @@ offset_bottom = 134.0
 theme_override_font_sizes/font_size = 15
 text = "Click verify once you're done"
 
-[node name="reference" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions"]
+[node name="reference" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions" unique_id=259749775]
 z_index = 2
 layout_mode = 1
 anchors_preset = 1
@@ -3411,7 +3411,7 @@ offset_bottom = 88.0
 grow_horizontal = 0
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions/reference"]
+[node name="ColorRect" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/blueBorder/instructions/reference" unique_id=1299178599]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -3424,7 +3424,7 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
+[node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window" unique_id=431579401]
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 12
@@ -3439,7 +3439,7 @@ mouse_filter = 2
 texture = ExtResource("7_v0vrg")
 expand_mode = 1
 
-[node name="verifyButton" type="Button" parent="MicrogameGameplay/window/captcha_window/lowbar"]
+[node name="verifyButton" type="Button" parent="MicrogameGameplay/window/captcha_window/lowbar" unique_id=1979920368]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -3457,7 +3457,7 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("8_dg70y")
 text = "VERIFY"
 
-[node name="captchaCount" type="Label" parent="MicrogameGameplay/window/captcha_window/lowbar"]
+[node name="captchaCount" type="Label" parent="MicrogameGameplay/window/captcha_window/lowbar" unique_id=1554578453]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0.41960785)
 layout_mode = 0
@@ -3472,7 +3472,7 @@ theme_override_font_sizes/font_size = 21
 text = "0 CAPTCHAS"
 vertical_alignment = 1
 
-[node name="curGame" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
+[node name="curGame" type="ColorRect" parent="MicrogameGameplay/window/captcha_window" unique_id=375623295]
 visible = false
 clip_children = 1
 z_index = 6
@@ -3490,7 +3490,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window"]
+[node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window" unique_id=1662494651]
 self_modulate = Color(0, 0, 0, 0.2509804)
 z_index = -1
 layout_mode = 1
@@ -3507,7 +3507,7 @@ mouse_filter = 2
 texture = ExtResource("9_pnhog")
 metadata/_edit_lock_ = true
 
-[node name="errorText" type="Label" parent="MicrogameGameplay/window/captcha_window"]
+[node name="errorText" type="Label" parent="MicrogameGameplay/window/captcha_window" unique_id=1532824686]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -3524,7 +3524,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.85098, 0.188235, 0.145098, 1)
 text = "Try Again."
 
-[node name="blocker" type="ColorRect" parent="MicrogameGameplay/window/captcha_window"]
+[node name="blocker" type="ColorRect" parent="MicrogameGameplay/window/captcha_window" unique_id=43121882]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3533,7 +3533,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="intermissionText" type="Control" parent="MicrogameGameplay/window"]
+[node name="intermissionText" type="Control" parent="MicrogameGameplay/window" unique_id=1963853362]
 modulate = Color(1, 1, 1, 0)
 z_index = 2
 anchors_preset = 0
@@ -3543,7 +3543,7 @@ offset_right = 37.65
 offset_bottom = 95.0
 metadata/_edit_lock_ = true
 
-[node name="judgementTextIntro" type="Label" parent="MicrogameGameplay/window/intermissionText"]
+[node name="judgementTextIntro" type="Label" parent="MicrogameGameplay/window/intermissionText" unique_id=219806792]
 visible = false
 modulate = Color(1, 1, 1, 1.0000005)
 layout_mode = 0
@@ -3556,14 +3556,14 @@ theme_override_colors/font_color = Color(0.513726, 0.513726, 0.513726, 1)
 text = "Good!"
 horizontal_alignment = 1
 
-[node name="gamover Text" type="Control" parent="MicrogameGameplay/window/intermissionText"]
+[node name="gamover Text" type="Control" parent="MicrogameGameplay/window/intermissionText" unique_id=785922090]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="GameoverText" type="Label" parent="MicrogameGameplay/window/intermissionText/gamover Text"]
+[node name="GameoverText" type="Label" parent="MicrogameGameplay/window/intermissionText/gamover Text" unique_id=910072004]
 layout_mode = 0
 offset_left = 59.350006
 offset_top = 332.0
@@ -3575,7 +3575,7 @@ theme_override_font_sizes/font_size = 36
 text = "Verification Failed"
 horizontal_alignment = 1
 
-[node name="speedUpText" type="Control" parent="MicrogameGameplay/window/intermissionText"]
+[node name="speedUpText" type="Control" parent="MicrogameGameplay/window/intermissionText" unique_id=1182463959]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_left = 2.350006
@@ -3585,7 +3585,7 @@ offset_bottom = -15.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="Speed Text" type="Label" parent="MicrogameGameplay/window/intermissionText/speedUpText"]
+[node name="Speed Text" type="Label" parent="MicrogameGameplay/window/intermissionText/speedUpText" unique_id=101054012]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 377.0
@@ -3598,7 +3598,7 @@ text = "Increasing Speed..."
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="MicrogameGameplay/window/intermissionText/speedUpText"]
+[node name="ProgressBar" type="ProgressBar" parent="MicrogameGameplay/window/intermissionText/speedUpText" unique_id=1522706299]
 layout_mode = 0
 offset_left = 38.0
 offset_top = 426.0
@@ -3608,14 +3608,14 @@ mouse_filter = 2
 theme = SubResource("Theme_cobve")
 theme_override_colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
 
-[node name="judgement" type="Control" parent="MicrogameGameplay/window/intermissionText"]
+[node name="judgement" type="Control" parent="MicrogameGameplay/window/intermissionText" unique_id=1892517624]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_lock_ = true
 
-[node name="judgementText" type="Label" parent="MicrogameGameplay/window/intermissionText/judgement"]
+[node name="judgementText" type="Label" parent="MicrogameGameplay/window/intermissionText/judgement" unique_id=1055232741]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 301.0
@@ -3627,7 +3627,7 @@ text = "Good!"
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="attempts" type="Label" parent="MicrogameGameplay/window/intermissionText/judgement"]
+[node name="attempts" type="Label" parent="MicrogameGameplay/window/intermissionText/judgement" unique_id=2144692191]
 layout_mode = 0
 offset_left = -61.0
 offset_top = 353.0
@@ -3641,7 +3641,7 @@ text = "0 of 4 failed attempts"
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="attemptBars" type="HBoxContainer" parent="MicrogameGameplay/window/intermissionText/judgement"]
+[node name="attemptBars" type="HBoxContainer" parent="MicrogameGameplay/window/intermissionText/judgement" unique_id=2126284257]
 layout_mode = 0
 offset_left = 74.0
 offset_top = 410.0
@@ -3653,43 +3653,43 @@ alignment = 1
 script = ExtResource("10_2c4at")
 metadata/_edit_lock_ = true
 
-[node name="slot" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+[node name="slot" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars" unique_id=1744708178]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot"]
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot" unique_id=685317103]
 self_modulate = Color(0, 0, 0, 0.384)
 scale = Vector2(0.89999783, 0.8686306)
 texture = ExtResource("11_g6wdg")
 
-[node name="slot2" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+[node name="slot2" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars" unique_id=1155202322]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot2"]
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot2" unique_id=1185248568]
 self_modulate = Color(0, 0, 0, 0.384)
 scale = Vector2(0.89999783, 0.8686306)
 texture = ExtResource("11_g6wdg")
 
-[node name="slot3" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+[node name="slot3" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars" unique_id=1928167099]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot3"]
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot3" unique_id=26830681]
 self_modulate = Color(0, 0, 0, 0.384)
 scale = Vector2(0.89999783, 0.8686306)
 texture = ExtResource("11_g6wdg")
 
-[node name="slot4" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars"]
+[node name="slot4" type="Control" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars" unique_id=968943967]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot4"]
+[node name="x" type="Sprite2D" parent="MicrogameGameplay/window/intermissionText/judgement/attemptBars/slot4" unique_id=668013596]
 self_modulate = Color(0, 0, 0, 0.384)
 scale = Vector2(0.89999783, 0.8686306)
 texture = ExtResource("11_g6wdg")
 
-[node name="captchaTransition" type="AnimationTree" parent="MicrogameGameplay"]
+[node name="captchaTransition" type="AnimationTree" parent="MicrogameGameplay" unique_id=1639909708]
 active = false
 deterministic = false
 root_node = NodePath(".")
@@ -3706,65 +3706,63 @@ parameters/transition_fail/TimeScale/scale = 1.0
 parameters/transition_intro/TimeScale/scale = 1.0
 parameters/transition_speedup/TimeScale/scale = 1.0
 
-[node name="captchaAnimationPlayer" type="AnimationPlayer" parent="MicrogameGameplay/captchaTransition"]
-libraries = {
-&"": SubResource("AnimationLibrary_gsxep")
-}
-autoplay = "gamecaptchaidle"
+[node name="captchaAnimationPlayer" type="AnimationPlayer" parent="MicrogameGameplay/captchaTransition" unique_id=1642698051]
+libraries/ = SubResource("AnimationLibrary_gsxep")
+autoplay = &"gamecaptchaidle"
 
-[node name="Sounds" type="AudioStreamPlayer" parent="MicrogameGameplay/captchaTransition/captchaAnimationPlayer"]
+[node name="Sounds" type="AudioStreamPlayer" parent="MicrogameGameplay/captchaTransition/captchaAnimationPlayer" unique_id=1223594273]
 bus = &"Microgame Sounds"
 
-[node name="Mosik" type="AudioStreamPlayer" parent="MicrogameGameplay/captchaTransition/captchaAnimationPlayer"]
+[node name="Mosik" type="AudioStreamPlayer" parent="MicrogameGameplay/captchaTransition/captchaAnimationPlayer" unique_id=1690649427]
 stream = SubResource("AudioStreamInteractive_vua0o")
 bus = &"Music"
 
-[node name="camera" type="Camera2D" parent="MicrogameGameplay" groups=["camera"]]
+[node name="camera" type="Camera2D" parent="MicrogameGameplay" unique_id=1554417529 groups=["camera"]]
 position = Vector2(608.96, 399.22)
 zoom = Vector2(1.43, 1.43)
 script = ExtResource("12_gsxep")
 parallax_offset_amount = 1.7
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="MicrogameGameplay"]
+[node name="ResourcePreloader" type="ResourcePreloader" parent="MicrogameGameplay" unique_id=199258791]
 
-[node name="Timer" type="Timer" parent="MicrogameGameplay"]
+[node name="Timer" type="Timer" parent="MicrogameGameplay" unique_id=2097491171]
 wait_time = 5.0
 one_shot = true
 
-[node name="sounds" type="Node" parent="MicrogameGameplay"]
+[node name="sounds" type="Node" parent="MicrogameGameplay" unique_id=274944190]
 
-[node name="mouse click up" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+[node name="mouse click up" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=871038431]
 stream = SubResource("AudioStreamRandomizer_i3aeo")
 volume_db = -15.0
 bus = &"Sounds"
 
-[node name="mouse click down" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+[node name="mouse click down" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=1368911312]
 stream = SubResource("AudioStreamRandomizer_5wyu1")
 volume_db = -15.0
 bus = &"Sounds"
 
-[node name="keyboard typing" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+[node name="keyboard typing" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=1687315426]
 stream = SubResource("AudioStreamRandomizer_j44qy")
 volume_db = -5.0
 bus = &"Sounds"
 
-[node name="monitor cooler" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+[node name="monitor cooler" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=1511798247]
 stream = SubResource("AudioStreamInteractive_rhq6j")
 volume_db = 6.701
 autoplay = true
 bus = &"Sounds"
 
-[node name="stretch resize" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+[node name="stretch resize" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=246086150]
 stream = SubResource("AudioStreamRandomizer_oa6sj")
 volume_db = -8.0
 bus = &"Microgame Sounds"
 
-[node name="ding" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+[node name="ding" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=1783997204]
 stream = SubResource("AudioStreamRandomizer_s3wmy")
 volume_db = -15.0
 bus = &"Microgame Sounds"
 
-[node name="increase speed" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds"]
+[node name="increase speed" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=1698231358]
 stream = SubResource("AudioStreamSynchronized_in2eo")
 volume_db = -13.0
 bus = &"Sounds"
