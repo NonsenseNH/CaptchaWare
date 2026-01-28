@@ -17,7 +17,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="CaptchaWare"
 run/main_scene="uid://bfsemdv668ekw"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+config/icon="uid://brcg8hshjwq6y"
+
+[audio]
+
+buses/default_bus_layout="uid://cat0jjbtti4ij"
 
 [autoload]
 

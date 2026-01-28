@@ -211,9 +211,9 @@ func get_boss_game() -> void:
 	captcha_transition.set("parameters/conditions/boss", true)
 	get_microgame_data(microgame_pool_json["bosses"][randi_range(0, microgame_pool_json["bosses"].size() - 1)])
 
-func set_up_window_size(tween_window: bool = false, play_sound := true) -> void:
+func set_up_window_size(tween_window: bool = false, play_sound := true, size_override : Vector2 = Vector2.ZERO) -> void:
 	ui_captcha_window.set_up_ui_data({
-		"windowSize" : Vector2(cur_microgame_data.Width, cur_microgame_data.Length),
+		"windowSize" : size_override if size_override != Vector2.ZERO else Vector2(cur_microgame_data.Width, cur_microgame_data.Length),
 		"windowTween" : tween_window,
 		"tweenSpeed" : minf(cur_speed * 0.8, 2.3)
 	})
