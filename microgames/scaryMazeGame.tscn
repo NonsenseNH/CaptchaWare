@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgqe0836v1w13"]
+[gd_scene format=3 uid="uid://cgqe0836v1w13"]
 
 [ext_resource type="Script" uid="uid://b5h06a6dntegm" path="res://scripts/bosses/scary_maze_game/scary_maze_game.gd" id="1_fvd87"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_7yjbb"]
@@ -19,7 +19,7 @@ noTimer = true
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tt0xq"]
-size = Vector2(5, 5)
+size = Vector2(2, 2.0000153)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qi3o"]
 size = Vector2(52, 26.5)
@@ -30,7 +30,7 @@ size = Vector2(46, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exop1"]
 size = Vector2(34, 54)
 
-[node name="ScaryMazeGame" type="Control"]
+[node name="ScaryMazeGame" type="Control" unique_id=1314538546]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,20 +40,21 @@ grow_vertical = 2
 script = ExtResource("1_fvd87")
 microgame_data = SubResource("Resource_2h35w")
 
-[node name="mouse" type="Sprite2D" parent="."]
+[node name="mouse" type="Sprite2D" parent="." unique_id=1872233530]
 z_index = 5
 position = Vector2(741, 693.915)
 texture = ExtResource("3_vygbt")
 script = ExtResource("4_j2ak1")
 
-[node name="hitbox" type="Area2D" parent="mouse"]
+[node name="hitbox" type="Area2D" parent="mouse" unique_id=1415108406]
 input_pickable = false
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse/hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse/hitbox" unique_id=1441623798]
+position = Vector2(0, 0.08502197)
 shape = SubResource("RectangleShape2D_tt0xq")
 
-[node name="bg" type="ColorRect" parent="."]
+[node name="bg" type="ColorRect" parent="." unique_id=740090194]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +63,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="levels" type="Control" parent="."]
+[node name="levels" type="Control" parent="." unique_id=1911999528]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="menu" type="TextureRect" parent="levels"]
+[node name="menu" type="TextureRect" parent="levels" unique_id=53900963]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +84,7 @@ grow_vertical = 2
 texture = ExtResource("5_ws82h")
 stretch_mode = 3
 
-[node name="Button" type="Button" parent="levels/menu"]
+[node name="Button" type="Button" parent="levels/menu" unique_id=1787346811]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 644.0
@@ -92,7 +93,7 @@ offset_right = 752.0
 offset_bottom = 646.165
 mouse_default_cursor_shape = 2
 
-[node name="level1" type="TextureRect" parent="levels"]
+[node name="level1" type="TextureRect" parent="levels" unique_id=1424367090]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -106,24 +107,24 @@ stretch_mode = 3
 script = ExtResource("7_o7jg8")
 metadata/_edit_lock_ = true
 
-[node name="hazard" type="Area2D" parent="levels/level1"]
+[node name="hazard" type="Area2D" parent="levels/level1" unique_id=1533383243]
 input_pickable = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="levels/level1/hazard"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="levels/level1/hazard" unique_id=1111963114]
 polygon = PackedVector2Array(764, 299, 764, 643, 627, 643, 626, 271, 961, 271, 961, 299, 1096, 299, 1096, 190, 522, 177, 518, 730, 945, 742, 1142, 748, 1096, 299, 961, 299)
 
-[node name="victoryZone" type="Area2D" parent="levels/level1"]
+[node name="victoryZone" type="Area2D" parent="levels/level1" unique_id=1868286385]
 input_pickable = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="levels/level1/victoryZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels/level1/victoryZone" unique_id=864451694]
 position = Vector2(935, 284.75)
 shape = SubResource("RectangleShape2D_0qi3o")
 
-[node name="level2" type="TextureRect" parent="levels"]
+[node name="level2" type="TextureRect" parent="levels" unique_id=80222846]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -137,25 +138,25 @@ stretch_mode = 3
 script = ExtResource("7_o7jg8")
 metadata/_edit_lock_ = true
 
-[node name="hazard" type="Area2D" parent="levels/level2"]
+[node name="hazard" type="Area2D" parent="levels/level2" unique_id=228970995]
 input_pickable = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="levels/level2/hazard"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="levels/level2/hazard" unique_id=2036218424]
 polygon = PackedVector2Array(943, 265, 943, 300, 518, 300, 518, 355, 943, 355, 943, 482, 519, 482, 519, 536, 943, 536, 943, 642, 477, 642, 477, 621, 856, 621, 856, 566, 477, 566, 477, 447, 904, 447, 904, 393, 477, 393, 477, 265, 943, 265, 943, 178, 352, 181, 345.55463, 474.2647, 340, 727, 1077, 737, 1081, 435, 1089, 175, 943, 178)
 
-[node name="victoryZone" type="Area2D" parent="levels/level2"]
+[node name="victoryZone" type="Area2D" parent="levels/level2" unique_id=1160385467]
 position = Vector2(-432, 343)
 input_pickable = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="levels/level2/victoryZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels/level2/victoryZone" unique_id=1679467463]
 position = Vector2(932, 288.5)
 shape = SubResource("RectangleShape2D_0la4d")
 
-[node name="level3" type="TextureRect" parent="levels"]
+[node name="level3" type="TextureRect" parent="levels" unique_id=752018245]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -167,24 +168,24 @@ texture = ExtResource("9_w5s2b")
 stretch_mode = 3
 script = ExtResource("7_o7jg8")
 
-[node name="hazard" type="Area2D" parent="levels/level3"]
+[node name="hazard" type="Area2D" parent="levels/level3" unique_id=35472276]
 input_pickable = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="levels/level3/hazard"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="levels/level3/hazard" unique_id=1130731243]
 polygon = PackedVector2Array(703, 356, 703, 375, 683, 375, 683, 386, 703, 386, 703, 430, 687, 430, 687, 448, 508, 448, 508, 557, 879, 557, 879, 644, 477, 644, 477, 616, 855, 616, 855, 590, 477, 590, 477, 422, 694, 422, 694, 394, 675, 394, 675, 367, 694, 367, 694, 355, 417, 355, 417, 697, 950, 697, 950, 344)
 
-[node name="victoryZone" type="Area2D" parent="levels/level3"]
+[node name="victoryZone" type="Area2D" parent="levels/level3" unique_id=468544748]
 input_pickable = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="levels/level3/victoryZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels/level3/victoryZone" unique_id=600215919]
 position = Vector2(691, 367.83502)
 shape = SubResource("RectangleShape2D_exop1")
 
-[node name="Jumpscare" type="TextureRect" parent="."]
+[node name="Jumpscare" type="TextureRect" parent="." unique_id=1277445404]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -194,7 +195,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_kagbk")
 
-[node name="jumpscare sound" type="AudioStreamPlayer" parent="."]
+[node name="jumpscare sound" type="AudioStreamPlayer" parent="." unique_id=49141793]
 stream = ExtResource("11_7mc5i")
 bus = &"Sounds"
 

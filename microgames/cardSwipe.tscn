@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0ajjx7k2scr7"]
+[gd_scene format=3 uid="uid://c0ajjx7k2scr7"]
 
 [ext_resource type="Script" uid="uid://c0xnetqwa0amn" path="res://scripts/microgames/card_swipe/card_swipe.gd" id="1_b6tth"]
 [ext_resource type="Texture2D" uid="uid://cwgs48sqvthrx" path="res://sprites/card_swipe/bg.png" id="2_6100c"]
@@ -99,7 +99,7 @@ stream_0/stream = ExtResource("12_0ell8")
 stream_1/stream = ExtResource("13_dsq4f")
 stream_2/stream = ExtResource("14_mmbfs")
 
-[node name="cardSwipe" type="Control"]
+[node name="cardSwipe" type="Control" unique_id=156532741]
 z_index = -1
 layout_mode = 3
 anchors_preset = 0
@@ -108,7 +108,7 @@ offset_bottom = 420.265
 script = ExtResource("1_b6tth")
 microgame_data = SubResource("Resource_a3lng")
 
-[node name="bg" type="TextureRect" parent="."]
+[node name="bg" type="TextureRect" parent="." unique_id=282005122]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,11 +119,11 @@ texture = ExtResource("2_6100c")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="card" type="Node2D" parent="."]
+[node name="card" type="Node2D" parent="." unique_id=713175701]
 position = Vector2(109, 371.265)
 script = ExtResource("3_rclkn")
 
-[node name="cardTexture" type="TextureRect" parent="card"]
+[node name="cardTexture" type="TextureRect" parent="card" unique_id=968964855]
 offset_left = -68.36401
 offset_top = -44.0
 offset_right = 71.08812
@@ -133,7 +133,7 @@ mouse_filter = 0
 texture = ExtResource("4_hctok")
 expand_mode = 1
 
-[node name="walletmask" type="TextureRect" parent="."]
+[node name="walletmask" type="TextureRect" parent="." unique_id=992908819]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 350.265
@@ -144,7 +144,7 @@ texture = ExtResource("5_50sj2")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="topPart" type="TextureRect" parent="."]
+[node name="topPart" type="TextureRect" parent="." unique_id=1944116821]
 layout_mode = 0
 offset_right = 411.0
 offset_bottom = 140.26503
@@ -153,7 +153,7 @@ texture = ExtResource("6_kfbjp")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="topPart"]
+[node name="Label" type="Label" parent="topPart" unique_id=849163488]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 14.26503
@@ -163,7 +163,7 @@ theme_override_fonts/font = ExtResource("7_ekb0t")
 theme_override_font_sizes/font_size = 24
 text = "PLEASE INSERT CARD"
 
-[node name="lights" type="Sprite2D" parent="topPart"]
+[node name="lights" type="Sprite2D" parent="topPart" unique_id=1604472743]
 visible = false
 position = Vector2(366, 112.095)
 scale = Vector2(0.815, 0.815)
@@ -172,13 +172,11 @@ hframes = 2
 frame = 1
 metadata/_edit_lock_ = true
 
-[node name="textAnim" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4rwuo")
-}
-autoplay = "idle"
+[node name="textAnim" type="AnimationPlayer" parent="." unique_id=938980712]
+libraries/ = SubResource("AnimationLibrary_4rwuo")
+autoplay = &"idle"
 
-[node name="task completed" type="Label" parent="."]
+[node name="task completed" type="Label" parent="." unique_id=1191481719]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 418.265
@@ -190,24 +188,24 @@ theme_override_font_sizes/font_size = 28
 text = "Task Completed!"
 horizontal_alignment = 1
 
-[node name="sounds" type="Node" parent="."]
+[node name="sounds" type="Node" parent="." unique_id=2078585359]
 
-[node name="insert" type="AudioStreamPlayer" parent="sounds"]
+[node name="insert" type="AudioStreamPlayer" parent="sounds" unique_id=1175687975]
 stream = ExtResource("9_ekb0t")
 volume_db = -5.0
 bus = &"Sounds"
 
-[node name="accept" type="AudioStreamPlayer" parent="sounds"]
+[node name="accept" type="AudioStreamPlayer" parent="sounds" unique_id=945531804]
 stream = ExtResource("10_g0wvl")
 volume_db = -12.0
 bus = &"Sounds"
 
-[node name="denied" type="AudioStreamPlayer" parent="sounds"]
+[node name="denied" type="AudioStreamPlayer" parent="sounds" unique_id=2060182404]
 stream = ExtResource("11_a3lng")
 volume_db = -15.0
 bus = &"Sounds"
 
-[node name="swipe" type="AudioStreamPlayer" parent="sounds"]
+[node name="swipe" type="AudioStreamPlayer" parent="sounds" unique_id=459618800]
 stream = SubResource("AudioStreamRandomizer_s8f1f")
 volume_db = -5.0
 bus = &"Sounds"

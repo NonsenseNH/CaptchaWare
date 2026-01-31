@@ -1800,7 +1800,7 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_0qimb"]
 resource_name = "gametransition_final_ending_1"
-length = 0.828
+length = 8.619
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
