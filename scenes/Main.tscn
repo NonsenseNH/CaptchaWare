@@ -676,6 +676,18 @@ tracks/28/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("captchaAnimationPlayer/Mosik:stream_paused")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_v0vrg"]
 resource_name = "gameIntro"
@@ -1243,7 +1255,7 @@ tracks/22/keys = {
 "times": PackedFloat32Array(2.6333332, 2.8333335, 5.266667, 5.533334),
 "transitions": PackedFloat32Array(4.141059, 1, 0.37892902, 1),
 "update": 0,
-"values": [0.0, 0.3, 4.7, 5.0]
+"values": [0.0, 0.3, 19.7, 20.0]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
@@ -1800,7 +1812,7 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_0qimb"]
 resource_name = "gametransition_final_ending_1"
-length = 8.619
+length = 10.194
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1808,10 +1820,10 @@ tracks/0/path = NodePath("../camera:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
-"transitions": PackedFloat32Array(-2.8284266, 1),
+"times": PackedFloat32Array(0, 0.36666667, 0.86666673, 1.5666667, 4.3, 5.7000003, 6.733333, 7, 7.1666665, 9.033334, 9.666667),
+"transitions": PackedFloat32Array(-2.8284266, 1, 14.419997, 1, 0.10881889, 0.11662911, 3.999999, 0.28717482, 1, -4.2870927, 1),
 "update": 0,
-"values": [Vector2(1.43, 1.43), Vector2(1.225, 1.225)]
+"values": [Vector2(1.43, 1.43), Vector2(1.225, 1.225), Vector2(1.225, 1.225), Vector2(1.57, 1.57), Vector2(1.715, 1.715), Vector2(1.915, 1.915), Vector2(2.215, 2.215), Vector2(1.261, 1.261), Vector2(1.368, 1.368), Vector2(1.43, 1.43), Vector2(2.04, 2.04)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1844,10 +1856,10 @@ tracks/3/path = NodePath("../window:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 9.266666, 9.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1856,10 +1868,10 @@ tracks/4/path = NodePath("../window/intermissionText:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1979,7 +1991,7 @@ tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
@@ -1991,7 +2003,7 @@ tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -2024,11 +2036,14 @@ tracks/18/path = NodePath("..")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0.36666667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.36666667, 0.9),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [true, true, Vector2(430, 573.835)],
 "method": &"set_up_window_size"
+}, {
+"args": [],
+"method": &"remove_game"
 }]
 }
 tracks/19/type = "value"
@@ -2038,10 +2053,104 @@ tracks/19/path = NodePath("captchaAnimationPlayer/Mosik:playing")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0.033333335),
+"times": PackedFloat32Array(0.8666667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("captchaAnimationPlayer/Mosik:stream_paused")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0.06666667, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("captchaAnimationPlayer/Mosik:parameters/switch_to_clip")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0.86666673),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Captchaware Ending"]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../window/intermissionText/judgementTextIntro:self_modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("../window/intermissionText/judgementTextIntro:text")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 1.5666667, 1.9999961, 2.4333334, 2.8333335, 3.2666628, 3.7000003, 4.1333337, 4.3, 4.7, 5.1000004, 5.466667, 5.7000003, 6.1000004, 6.5000005, 6.866667, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Captcha
+Completed", "Verifying.", "Verifying..", "Verifying...", "Verifying.", "Verifying..", "Verifying...", "Verifying.", "Double
+Checking.", "Double
+Checking..", "Double
+Checking...", "Double
+Checking.", "Triple
+Checking.", "Triple
+Checking..", "Triple
+Checking...", "Triple
+Checking.", "Verification
+Complete!"]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("../camera:shake_amount")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 1.3666668, 1.5666667, 6.8333335, 7.0000005, 9.033334, 9.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, -2.0705297, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.5, 1.5, 3.0, 3.0, 0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("../bg:self_modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 9.266667, 9.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.8901961, 0.8901961, 0.8901961, 0.3529412), Color(0.8901961, 0.8901961, 0.8901961, 0.3529412), Color(0.8901186, 0.8901186, 0.8901186, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("../bg:material:shader_parameter/scroll_speed")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 6.8, 7, 9.666667),
+"transitions": PackedFloat32Array(1, 3.0314322, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.0, 25.0]
 }
 
 [sub_resource type="Animation" id="Animation_cobve"]
@@ -2937,10 +3046,10 @@ tracks/19/path = NodePath("../bg:material:shader_parameter/scroll_speed")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0.13333333, 0.76666665, 1.7666667, 2.5666666),
-"transitions": PackedFloat32Array(5.6568513, 1, 0.2871746, 1),
+"times": PackedFloat32Array(0.33333334, 0.76666665, 1.7666667, 2.5666666),
+"transitions": PackedFloat32Array(3.1383312, 1, 0.1961461, 1),
 "update": 0,
-"values": [0.0, 0.2, 1.8, 2.0]
+"values": [0.0, 2.0, 9.5, 10.0]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
@@ -2953,6 +3062,18 @@ tracks/20/keys = {
 "transitions": PackedFloat32Array(1.9318731, 1, 1, 1),
 "update": 0,
 "values": [-60.0, -5.420000000000002, -5.420000000000002, -60.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../camera:shake_amount")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0.36666667, 0.6333333, 1.7333333, 2.0666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5, 1.5, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_pdwbg"]
@@ -3801,13 +3922,14 @@ visible = false
 modulate = Color(1, 1, 1, 1.0000005)
 layout_mode = 0
 offset_left = 30.0
-offset_top = 336.0
+offset_top = 270.0
 offset_right = 400.0
-offset_bottom = 391.0
+offset_bottom = 457.0
 theme = ExtResource("8_dg70y")
 theme_override_colors/font_color = Color(0.513726, 0.513726, 0.513726, 1)
 text = "Good!"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="gamover Text" type="Control" parent="MicrogameGameplay/window/intermissionText" unique_id=785922090]
 modulate = Color(1, 1, 1, 0)

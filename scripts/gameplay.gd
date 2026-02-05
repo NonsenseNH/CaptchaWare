@@ -230,6 +230,7 @@ func _on_timer_timeout() -> void:
 	cur_microgame.end_microgame.emit()
 
 func win() -> void:
+	captcha_animation_player.play("gametransition_final_ending_1")
 	end_game()
 
 func transition_game() -> void:
