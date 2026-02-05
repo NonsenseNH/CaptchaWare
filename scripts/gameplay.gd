@@ -322,8 +322,8 @@ func disconnect_prev_microgame_signals() -> void:
 func freeze_timer() -> void:
 	timer.paused = true
 
-func music_handler(intermission : bool = false, has_failed : bool = false) -> void:
-	if !music.playing:
+func music_handler(intermission : bool = false, has_failed : bool = false, reset_music : = false) -> void:
+	if !music.playing || reset_music:
 		music.play()
 	
 	if intermission:
@@ -350,7 +350,7 @@ func _streak_music_check():
 		musicState = "Captchaware Game"
 
 func end_intro_sequence() -> void:
-	music_handler(false, false)
+	music_handler(false, false, true)
 	
 	captcha_transition.set("parameters/conditions/intro", false)
 	
