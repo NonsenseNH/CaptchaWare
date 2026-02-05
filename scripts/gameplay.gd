@@ -234,7 +234,7 @@ func win() -> void:
 	end_game()
 
 func transition_game() -> void:
-	if cur_microgame_pool == "campaign" && games_played > TOTAL_CAPTCHAS:
+	if cur_microgame_pool == "campaign" && games_played >= TOTAL_CAPTCHAS:
 		win()
 		return
 

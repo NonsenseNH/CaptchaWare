@@ -1240,10 +1240,10 @@ tracks/21/path = NodePath("../camera:shake_amount")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0.033333335, 2.6333332, 2.8333335, 5.266667, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.033333335, 2.8, 2.8333333, 2.9666667, 5.266667, 5.5),
+"transitions": PackedFloat32Array(1, 1, 0.29730183, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 3.0, 3.0, 0.0]
+"values": [0.0, 0.0, 10.0, 3.0, 3.0, 0.0]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
@@ -2123,10 +2123,10 @@ tracks/24/path = NodePath("../camera:shake_amount")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0, 1.3666668, 1.5666667, 6.8333335, 7.0000005, 9.033334, 9.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, -2.0705297, 1),
+"times": PackedFloat32Array(0, 1.5333333, 1.5666667, 2.0333333, 6.9666667, 7, 7.5),
+"transitions": PackedFloat32Array(1, 1, 0.22531268, 1, 1, 0.32987702, 1),
 "update": 0,
-"values": [0.0, 0.0, 1.5, 1.5, 3.0, 3.0, 0.0]
+"values": [0.0, 0.0, 10.0, 0.5, 0.85, 5.0, 0.0]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
@@ -2147,10 +2147,10 @@ tracks/26/path = NodePath("../bg:material:shader_parameter/scroll_speed")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0, 6.8, 7, 9.666667),
+"times": PackedFloat32Array(0, 1.3666669, 1.5666667, 7.0333333),
 "transitions": PackedFloat32Array(1, 3.0314322, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 2.0, 25.0]
+"values": [0.0, 0.0, 2.0, 100.0]
 }
 
 [sub_resource type="Animation" id="Animation_cobve"]
@@ -4083,7 +4083,7 @@ parameters/transition_speedup/TimeScale/scale = 1.0
 
 [node name="captchaAnimationPlayer" type="AnimationPlayer" parent="MicrogameGameplay/captchaTransition" unique_id=1642698051]
 libraries/ = SubResource("AnimationLibrary_gsxep")
-autoplay = &"gamecaptchaidle"
+autoplay = &"gametransition_final_ending_1"
 
 [node name="Sounds" type="AudioStreamPlayer" parent="MicrogameGameplay/captchaTransition/captchaAnimationPlayer" unique_id=1223594273]
 bus = &"Microgame Sounds"

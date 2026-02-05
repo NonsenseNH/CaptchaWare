@@ -55,4 +55,5 @@ func jumpscare(_area: Area2D) -> void:
 
 	await get_tree().create_timer(2.0).timeout
 
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	end_microgame.emit()
