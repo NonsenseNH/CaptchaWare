@@ -1,7 +1,6 @@
 extends Microgame
 
 @onready var levels: Control = $levels
-@onready var mouse: Sprite2D = $levels/mouse
 @onready var jumpscare_texture: TextureRect = $Jumpscare
 @onready var jumpscare_sound: AudioStreamPlayer = $"jumpscare sound"
 

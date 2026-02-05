@@ -161,6 +161,7 @@ func start_game() -> void:
 	
 	captcha_animation_player.play("gameIntro")
 	
+	captcha_transition.set("parameters/conditions/boss", false)
 	captcha_transition.set("parameters/conditions/speed up", false)
 	captcha_transition.set("parameters/conditions/no lives", false)
 	game_started = true
@@ -253,7 +254,7 @@ func transition_game() -> void:
 	ui_captcha_window._display_error_text("", true)
 	
 	if !intro_sequence:
-		music_handler(did_fail)
+		music_handler(true, did_fail)
 	
 	if cur_microgame_pool == "campaign" && games_played == TOTAL_CAPTCHAS:
 		get_boss_game()
@@ -321,28 +322,35 @@ func disconnect_prev_microgame_signals() -> void:
 func freeze_timer() -> void:
 	timer.paused = true
 
-func music_handler(has_failed : bool) -> void:
+func music_handler(intermission : bool = false, has_failed : bool = false) -> void:
 	if !music.playing:
 		music.play()
 	
-	if has_failed:
-		win_streak = 0
-		music.get_stream_playback().switch_to_clip_by_name("Captchaware Failed")
-		musicState = "Captchaware Game"
-		return
-	
-	win_streak += 1
-	
-	if win_streak >= 4:
-		musicState = "Captchaware Win"
+	if intermission:
+		win_streak += 1
+
+		if has_failed:
+			win_streak = 0
+			musicState = "Captchaware Failed"
+		else:
+			_streak_music_check()
+		
 	else:
-		musicState = "Captchaware Game"
+		if cur_microgame_data.slowGame:
+			musicState = "Captchaware Game Slow"
+		else:
+			_streak_music_check()
 	
 	music.get_stream_playback().switch_to_clip_by_name(musicState)
 
+func _streak_music_check():
+	if win_streak >= 3:
+		musicState = "Captchaware Win"
+	else:
+		musicState = "Captchaware Game"
+
 func end_intro_sequence() -> void:
-	music.play()
-	music.get_stream_playback().switch_to_clip_by_name("Captchaware Game Slow" if cur_microgame_data.slowGame else "Captchaware Game")
+	music_handler(false, false)
 	
 	captcha_transition.set("parameters/conditions/intro", false)
 	
@@ -412,7 +420,7 @@ func change_game(is_boss := false) -> void:
 		print_debug("Current microgame is null!")
 		return
 	if music.playing && !is_boss:
-		music.get_stream_playback().switch_to_clip_by_name("Captchaware Game Slow" if cur_microgame_data.slowGame else musicState)
+		music_handler(false, false)
 	
 	cur_microgame.z_index += 1
 	

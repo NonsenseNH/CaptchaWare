@@ -25,6 +25,9 @@ func set_image() -> void:
 		cur_image_value = image_array.pick_random()
 		if (difficulty >= 2 || !difficulty_2_images.has(cur_image_value)): break
 	
+	#debug code
+	cur_image_value = "11.png"
+	
 	if cur_image == null:
 		cur_image = load(FILE_PATH + cur_image_value)
 	
@@ -37,22 +40,22 @@ func set_image() -> void:
 	
 	cur_object = correct_answers[16].strip_edges()
 	override_instruction_text.emit(cur_object)
-	
+
 	for button in range(16):
 		var button_node : Button = IMAGE_LOCATE_BUTTON.instantiate()
+		var button_type : int = int(correct_answers[button].strip_edges())
 		button_node.cur_frame = (button)
-		
-		if ("1" == correct_answers[button].strip_edges()):
-			button_node.correct_selection = true
-			min_points += 1
+	
+		if ([1, 2].has(button_type)):
+			button_node.selection_type = button_type
+			if button_type == 1:
+				min_points += 1
 		
 		#print_debug(button)
 		add_child(button_node)
 		
 		button_node.gainPoints.connect(pointManager)
 		button_node.count_selected.connect(count_selected)
-	if min_points > 5:
-		min_points -= 2
 
 func isWinning() -> bool:
 	super.isWinning()
