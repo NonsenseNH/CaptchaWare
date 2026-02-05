@@ -26,7 +26,8 @@ func _on_toggled(toggled_on: bool) -> void:
 		else:
 			add_point = 1
 	else:
-		add_point = -1
+		if selection_type != 2:
+			add_point = -1
 	
 	gainPoints.emit(add_point)
 	count_selected.emit(1 if toggled_on else -1)

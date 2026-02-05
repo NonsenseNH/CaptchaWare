@@ -26,7 +26,7 @@ func set_image() -> void:
 		if (difficulty >= 2 || !difficulty_2_images.has(cur_image_value)): break
 	
 	#debug code
-	#cur_image_value = "11.png"
+	#cur_image_value = "5.png"
 	
 	if cur_image == null:
 		cur_image = load(FILE_PATH + cur_image_value)
