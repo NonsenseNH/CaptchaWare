@@ -4,7 +4,10 @@
 [ext_resource type="Script" uid="uid://bnjqqa2nf5s2f" path="res://scripts/gameplay.gd" id="1_36rkl"]
 [ext_resource type="Texture2D" uid="uid://d71nyi6c4e1f" path="res://sprites/captcha.png" id="1_fs0b5"]
 [ext_resource type="Shader" uid="uid://hhls21rays5e" path="res://shaders/scroll.gdshader" id="2_fs0b5"]
+[ext_resource type="Script" uid="uid://cbcibftbs8hsl" path="res://scripts/main_menu.gd" id="2_gjpm3"]
 [ext_resource type="Texture2D" uid="uid://birstl6rtmr8j" path="res://sprites/background.png" id="3_ma7h6"]
+[ext_resource type="Texture2D" uid="uid://bwx040a010su2" path="res://sprites/verify_check_mark.png" id="4_gjpm3"]
+[ext_resource type="Theme" uid="uid://cn7x031lcia8r" path="res://themes/popup.tres" id="5_dyyw8"]
 [ext_resource type="Script" uid="uid://cuc5li8gyqrv4" path="res://scripts/hud.gd" id="5_e2s0e"]
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="6_gsxep"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="7_v0vrg"]
@@ -118,6 +121,90 @@ Button/styles/focus = SubResource("StyleBoxFlat_ma7h6")
 Button/styles/hover = SubResource("StyleBoxFlat_e2s0e")
 Button/styles/normal = SubResource("StyleBoxFlat_fs0b5")
 Button/styles/pressed = SubResource("StyleBoxFlat_gsxep")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vshs7"]
+bg_color = Color(0.69411767, 0.69411767, 0.7254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56078434, 0.56078434, 0.6156863, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knagv"]
+bg_color = Color(0.8156863, 0.8156863, 0.84313726, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56078434, 0.56078434, 0.6156863, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjpm3"]
+bg_color = Color(0.9137255, 0.9137255, 0.92941177, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56078434, 0.56078434, 0.6156863, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_siyqs"]
+bg_color = Color(0.69411767, 0.69411767, 0.7254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56078434, 0.56078434, 0.6156863, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_gjpm3"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_vshs7")
+Button/styles/hover = SubResource("StyleBoxFlat_knagv")
+Button/styles/normal = SubResource("StyleBoxFlat_gjpm3")
+Button/styles/pressed = SubResource("StyleBoxFlat_siyqs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyyw8"]
+bg_color = Color(0.21568628, 0.2, 0.99215686, 1)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.42592245, 0.44901365, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qimb"]
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb578"]
+bg_color = Color(0.1340642, 5.390644e-06, 0.5976224, 1)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.3729457, 0.13217106, 0.99999994, 1)
+
+[sub_resource type="Theme" id="Theme_in2eo"]
+Button/colors/font_color = Color(0.203482, 0.15510142, 0.9999998, 1)
+Button/colors/font_hover_color = Color(0.216849, 0.19875765, 0.9938707, 1)
+Button/colors/font_pressed_color = Color(0.19876501, 1.9059777e-05, 0.78640586, 1)
+Button/icons/icon = null
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_dyyw8")
+Button/styles/normal = SubResource("StyleBoxEmpty_0qimb")
+Button/styles/pressed = SubResource("StyleBoxFlat_pb578")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qpfo2"]
 shader = ExtResource("2_fs0b5")
@@ -688,6 +775,66 @@ tracks/29/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("../../MainMenu/disable_click:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("../../MainMenu/captchabox/captchaSprite/Button:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("../../MainMenu/captchabox/captchaSprite/CheckMark:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("../../MainMenu/captchabox/submit button:disabled")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("../../MainMenu/menuStuff:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_v0vrg"]
 resource_name = "gameIntro"
@@ -859,6 +1006,18 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../../MainMenu/disable_click:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_pnhog"]
@@ -2152,6 +2311,66 @@ tracks/26/keys = {
 "update": 0,
 "values": [0.0, 0.0, 2.0, 100.0]
 }
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("../../MainMenu/disable_click:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 9.900001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("../../MainMenu/captchabox/captchaSprite/Button:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("../../MainMenu/captchabox/captchaSprite/CheckMark:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("../../MainMenu/captchabox/submit button:disabled")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("../../MainMenu/menuStuff:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cobve"]
 resource_name = "gametransition_gameover"
@@ -2361,6 +2580,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../../MainMenu/disable_click:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 4.033334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_dg70y"]
@@ -3586,6 +3817,7 @@ texture = ExtResource("1_8cp6k")
 metadata/_edit_lock_ = true
 
 [node name="MainMenu" type="Node2D" parent="." unique_id=1809105125]
+script = ExtResource("2_gjpm3")
 
 [node name="captchabox" type="Control" parent="MainMenu" unique_id=830033388]
 layout_mode = 3
@@ -3601,15 +3833,21 @@ offset_bottom = 439.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="captchaSprite" type="Sprite2D" parent="MainMenu/captchabox" unique_id=1584491136]
+[node name="captchaSprite" type="TextureRect" parent="MainMenu/captchabox" unique_id=1540106111]
+layout_mode = 1
+offset_left = -189.0
+offset_top = -48.0
+offset_right = 730.0
+offset_bottom = 171.0
 scale = Vector2(0.41356257, 0.41356257)
 texture = ExtResource("1_fs0b5")
 
 [node name="Button" type="Button" parent="MainMenu/captchabox/captchaSprite" unique_id=1192182686]
-offset_left = -417.5704
-offset_top = -37.83295
-offset_right = -343.358
-offset_bottom = 37.83282
+layout_mode = 0
+offset_left = 44.270203
+offset_top = 72.5404
+offset_right = 118.482605
+offset_bottom = 148.20618
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_ma7h6")
@@ -3617,17 +3855,206 @@ disabled = true
 
 [node name="ErrorMessage" type="Label" parent="MainMenu/captchabox/captchaSprite" unique_id=621543771]
 visible = false
-offset_left = -444.91458
-offset_top = -101.556564
-offset_right = 253.89145
-offset_bottom = 3.65596
+layout_mode = 0
+offset_left = 16.926025
+offset_top = 12.090042
+offset_right = 715.73206
+offset_bottom = 117.30257
 theme_override_colors/font_color = Color(0.8509804, 0.1882353, 0.14509805, 1)
 theme_override_constants/line_spacing = -12
 theme_override_font_sizes/font_size = 37
 text = "Verification Failed. Please try again."
 autowrap_mode = 2
 
+[node name="CheckMark" type="TextureRect" parent="MainMenu/captchabox/captchaSprite" unique_id=167650430]
+visible = false
+layout_mode = 0
+offset_left = 31.434183
+offset_top = 53.196297
+offset_right = 135.40866
+offset_bottom = 157.17078
+texture = ExtResource("4_gjpm3")
+stretch_mode = 5
+
+[node name="submit button" type="Button" parent="MainMenu/captchabox" unique_id=1732231938]
+layout_mode = 0
+offset_left = -189.0
+offset_top = 54.0
+offset_right = -119.0
+offset_bottom = 83.0
+theme = SubResource("Theme_gjpm3")
+disabled = true
+text = "Submit"
+
+[node name="menuStuff" type="Control" parent="MainMenu" unique_id=1898105036]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="windowmenustuff" type="Control" parent="MainMenu/menuStuff" unique_id=1273849817]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 296.0
+offset_top = 225.0
+offset_right = 871.0
+offset_bottom = 562.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ad" type="TextureRect" parent="MainMenu/menuStuff/windowmenustuff" unique_id=1261086539]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="window" type="ColorRect" parent="MainMenu/menuStuff/windowmenustuff/ad" unique_id=1040611813]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -31.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+mouse_filter = 1
+color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+
+[node name="shadow" type="TextureRect" parent="MainMenu/menuStuff/windowmenustuff/ad/window" unique_id=656573648]
+modulate = Color(1, 1, 1, 0.4117647)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -58.0
+offset_right = 43.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_pnhog")
+
+[node name="windowTab" type="Button" parent="MainMenu/menuStuff/windowmenustuff/ad/window" unique_id=2036191132]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -45.0
+offset_bottom = 29.0
+grow_horizontal = 2
+
+[node name="x" type="Button" parent="MainMenu/menuStuff/windowmenustuff/ad" unique_id=910406291]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -43.0
+offset_top = -31.0
+offset_bottom = -2.0
+grow_horizontal = 0
+focus_mode = 0
+theme = ExtResource("5_dyyw8")
+text = "x"
+
+[node name="menus" type="Control" parent="MainMenu/menuStuff/windowmenustuff" unique_id=1322081625]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="options" type="Control" parent="MainMenu/menuStuff/windowmenustuff/menus" unique_id=1607995605]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="windowText" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/options" unique_id=300482566]
+z_index = 1
+layout_mode = 0
+offset_left = 7.0
+offset_top = -27.0
+offset_right = 366.0
+offset_bottom = 4.0
+theme = ExtResource("5_dyyw8")
+theme_override_font_sizes/font_size = 14
+text = "Options"
+
+[node name="HSlider" type="HSlider" parent="MainMenu/menuStuff/windowmenustuff/menus/options" unique_id=2046649021]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 86.0
+offset_right = 247.0
+offset_bottom = 102.0
+
+[node name="credits" type="Control" parent="MainMenu/menuStuff/windowmenustuff/menus" unique_id=2020745755]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="windowText" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/credits" unique_id=591337048]
+z_index = 1
+layout_mode = 0
+offset_left = 7.0
+offset_top = -27.0
+offset_right = 366.0
+offset_bottom = 4.0
+theme = ExtResource("5_dyyw8")
+theme_override_font_sizes/font_size = 14
+text = "Credits"
+
+[node name="settings" type="Button" parent="MainMenu/menuStuff" unique_id=1075713628]
+layout_mode = 1
+offset_left = 646.0
+offset_top = 451.0
+offset_right = 708.0
+offset_bottom = 474.0
+focus_mode = 0
+theme = SubResource("Theme_in2eo")
+text = "Options"
+
+[node name="credits" type="Button" parent="MainMenu/menuStuff" unique_id=1554566046]
+layout_mode = 1
+offset_left = 739.0
+offset_top = 451.0
+offset_right = 794.0
+offset_bottom = 474.0
+focus_mode = 0
+theme = SubResource("Theme_in2eo")
+text = "Credits"
+
+[node name="disable_click" type="ColorRect" parent="MainMenu" unique_id=576161376]
+visible = false
+offset_left = -77.0
+offset_right = 1290.0
+offset_bottom = 788.0
+color = Color(1, 1, 1, 0)
+
 [node name="MicrogameGameplay" type="Node2D" parent="." unique_id=1477501503 groups=["main_game"]]
+visible = false
 script = ExtResource("1_36rkl")
 cur_microgame_pool = "campaign"
 
@@ -4083,7 +4510,7 @@ parameters/transition_speedup/TimeScale/scale = 1.0
 
 [node name="captchaAnimationPlayer" type="AnimationPlayer" parent="MicrogameGameplay/captchaTransition" unique_id=1642698051]
 libraries/ = SubResource("AnimationLibrary_gsxep")
-autoplay = &"gametransition_final_ending_1"
+autoplay = &"gamecaptchaidle"
 
 [node name="Sounds" type="AudioStreamPlayer" parent="MicrogameGameplay/captchaTransition/captchaAnimationPlayer" unique_id=1223594273]
 bus = &"Microgame Sounds"
@@ -4143,6 +4570,9 @@ volume_db = -13.0
 bus = &"Sounds"
 
 [connection signal="pressed" from="MainMenu/captchabox/captchaSprite/Button" to="MicrogameGameplay" method="checkbox_pressed"]
+[connection signal="pressed" from="MainMenu/menuStuff/windowmenustuff/ad/x" to="MainMenu" method="_on_close_menu_pressed"]
+[connection signal="pressed" from="MainMenu/menuStuff/settings" to="MainMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="MainMenu/menuStuff/credits" to="MainMenu" method="_on_credits_pressed"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
 [connection signal="animation_finished" from="MicrogameGameplay/captchaTransition" to="MicrogameGameplay" method="_on_captcha_animation_player_animation_finished"]
 [connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]

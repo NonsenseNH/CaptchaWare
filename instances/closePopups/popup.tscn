@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfin0va87eit7"]
+[gd_scene format=3 uid="uid://bfin0va87eit7"]
 
 [ext_resource type="Script" uid="uid://dt3sx3d3uugr6" path="res://scripts/microgames/close_popups/popup.gd" id="1_74a3x"]
 [ext_resource type="Theme" uid="uid://cn7x031lcia8r" path="res://themes/popup.tres" id="3_74a3x"]
@@ -69,7 +69,7 @@ _data = {
 _data = [Vector2(0, 1), 0.0, -0.036351513, 0, 0, Vector2(1, 0), -2.471913, 0.0, 0, 0]
 point_count = 2
 
-[node name="popup" type="Control"]
+[node name="popup" type="Control" unique_id=126635807]
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
@@ -79,7 +79,7 @@ offset_right = -191.0
 offset_bottom = 92.0
 script = ExtResource("1_74a3x")
 
-[node name="ad" type="TextureRect" parent="."]
+[node name="ad" type="TextureRect" parent="." unique_id=1559517056]
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -96,7 +96,7 @@ grow_vertical = 2
 mouse_filter = 0
 mouse_force_pass_scroll_events = false
 
-[node name="window" type="ColorRect" parent="ad"]
+[node name="window" type="ColorRect" parent="ad" unique_id=497882044]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -112,7 +112,7 @@ focus_mode = 1
 mouse_filter = 1
 color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 
-[node name="shadow" type="TextureRect" parent="ad/window"]
+[node name="shadow" type="TextureRect" parent="ad/window" unique_id=1988706909]
 modulate = Color(1, 1, 1, 0.4117647)
 show_behind_parent = true
 layout_mode = 1
@@ -128,7 +128,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_uw63d")
 
-[node name="windowText" type="Label" parent="ad/window"]
+[node name="windowText" type="Label" parent="ad/window" unique_id=957975301]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 4.0
@@ -138,7 +138,7 @@ theme = ExtResource("3_74a3x")
 theme_override_font_sizes/font_size = 14
 text = "Annoying Popup"
 
-[node name="windowTab" type="Button" parent="ad/window"]
+[node name="windowTab" type="Button" parent="ad/window" unique_id=702823187]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 10
@@ -147,7 +147,7 @@ offset_right = -45.0
 offset_bottom = 29.0
 grow_horizontal = 2
 
-[node name="x" type="Button" parent="ad"]
+[node name="x" type="Button" parent="ad" unique_id=1646597601]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -160,16 +160,14 @@ focus_mode = 0
 theme = ExtResource("3_74a3x")
 text = "x"
 
-[node name="anim" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wku30")
-}
-autoplay = "popup"
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1043390698]
+libraries/ = SubResource("AnimationLibrary_wku30")
+autoplay = &"popup"
 
-[node name="popup_sound" type="AudioStreamPlayer" parent="."]
+[node name="popup_sound" type="AudioStreamPlayer" parent="." unique_id=1997993192]
 bus = &"Sounds"
 
-[node name="bang" type="CPUParticles2D" parent="."]
+[node name="bang" type="CPUParticles2D" parent="." unique_id=1963645731]
 z_index = 1
 position = Vector2(-3, -6)
 emitting = false
