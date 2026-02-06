@@ -3923,6 +3923,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="windowmenustuff" type="Control" parent="MainMenu/menuStuff" unique_id=1273849817]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
