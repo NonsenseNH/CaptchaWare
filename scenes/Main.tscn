@@ -3923,7 +3923,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="windowmenustuff" type="Control" parent="MainMenu/menuStuff" unique_id=1273849817]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3937,7 +3936,7 @@ offset_bottom = 562.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ad" type="TextureRect" parent="MainMenu/menuStuff/windowmenustuff" unique_id=1261086539]
+[node name="bg" type="ColorRect" parent="MainMenu/menuStuff/windowmenustuff" unique_id=237842727]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -3945,10 +3944,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 mouse_force_pass_scroll_events = false
+color = Color(0.92535293, 0.9253529, 0.9253527, 1)
 
-[node name="window" type="ColorRect" parent="MainMenu/menuStuff/windowmenustuff/ad" unique_id=1040611813]
+[node name="window" type="ColorRect" parent="MainMenu/menuStuff/windowmenustuff/bg" unique_id=1040611813]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3964,7 +3963,7 @@ focus_mode = 1
 mouse_filter = 1
 color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 
-[node name="shadow" type="TextureRect" parent="MainMenu/menuStuff/windowmenustuff/ad/window" unique_id=656573648]
+[node name="shadow" type="TextureRect" parent="MainMenu/menuStuff/windowmenustuff/bg/window" unique_id=656573648]
 modulate = Color(1, 1, 1, 0.4117647)
 show_behind_parent = true
 layout_mode = 1
@@ -3981,7 +3980,7 @@ mouse_filter = 2
 texture = ExtResource("9_pnhog")
 metadata/_edit_lock_ = true
 
-[node name="windowTab" type="Button" parent="MainMenu/menuStuff/windowmenustuff/ad/window" unique_id=2036191132]
+[node name="windowTab" type="Button" parent="MainMenu/menuStuff/windowmenustuff/bg/window" unique_id=2036191132]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 10
@@ -3990,7 +3989,7 @@ offset_right = -45.0
 offset_bottom = 29.0
 grow_horizontal = 2
 
-[node name="x" type="Button" parent="MainMenu/menuStuff/windowmenustuff/ad" unique_id=910406291]
+[node name="x" type="Button" parent="MainMenu/menuStuff/windowmenustuff/bg" unique_id=910406291]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -4805,7 +4804,7 @@ volume_db = -13.0
 bus = &"Sounds"
 
 [connection signal="pressed" from="MainMenu/captchabox/captchaSprite/Button" to="MicrogameGameplay" method="checkbox_pressed"]
-[connection signal="pressed" from="MainMenu/menuStuff/windowmenustuff/ad/x" to="MainMenu" method="_on_close_menu_pressed"]
+[connection signal="pressed" from="MainMenu/menuStuff/windowmenustuff/bg/x" to="MainMenu" method="_on_close_menu_pressed"]
 [connection signal="drag_ended" from="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control2/Master Volume" to="MainMenu" method="_on_master_volume_drag_ended"]
 [connection signal="drag_ended" from="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control/Music Volume" to="MainMenu" method="_on_music_volume_drag_ended"]
 [connection signal="drag_ended" from="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control3/Sound Volume" to="MainMenu" method="_on_sound_volume_drag_ended"]
