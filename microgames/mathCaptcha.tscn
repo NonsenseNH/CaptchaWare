@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4y0qaq8fism0"]
+[gd_scene format=3 uid="uid://c4y0qaq8fism0"]
 
 [ext_resource type="Script" uid="uid://d1cdmjtboy4md" path="res://scripts/microgames/math_captcha/math_captcha.gd" id="1_l773x"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="2_iwvfa"]
@@ -10,10 +10,9 @@ instructionSmall1 = "solve this equation"
 instructionSmall2 = "Click verify when done."
 errorMessage = "Please type the answer in the box."
 set_size = Vector2(430, 294.835)
-slowGame = true
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
-[node name="mathCaptcha" type="Control"]
+[node name="mathCaptcha" type="Control" unique_id=1577642645]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -21,7 +20,7 @@ offset_bottom = 40.0
 script = ExtResource("1_l773x")
 microgame_data = SubResource("Resource_xoq4e")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LineEdit" type="LineEdit" parent="." unique_id=140526308]
 light_mask = 0
 layout_mode = 0
 offset_left = 25.0

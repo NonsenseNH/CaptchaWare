@@ -14,6 +14,10 @@ func save(file_name : String, data_dictionary : Dictionary) -> void:
 
 func load_data(file_name : String, data_dictionary : Dictionary = {}) -> Dictionary:
 	var file : FileAccess
+	
+	if !save_paths.has(file_name):
+		save_paths[file_name] = data_dictionary
+	
 	if !FileAccess.file_exists(_SAVE_PATH + file_name):
 		if data_dictionary.is_empty():
 			return {}
@@ -29,9 +33,6 @@ func load_data(file_name : String, data_dictionary : Dictionary = {}) -> Diction
 	for key in data_dictionary:
 		if loaded_save.has(key):
 			cur_save[key] = loaded_save[key]
-	
-	if !save_paths.has(file_name):
-		save_paths[file_name] = data_dictionary
 	
 	file.store_var(cur_save)
 	

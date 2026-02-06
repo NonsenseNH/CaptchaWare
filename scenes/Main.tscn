@@ -10,9 +10,12 @@
 [ext_resource type="Theme" uid="uid://cn7x031lcia8r" path="res://themes/popup.tres" id="5_dyyw8"]
 [ext_resource type="Script" uid="uid://cuc5li8gyqrv4" path="res://scripts/hud.gd" id="5_e2s0e"]
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="6_gsxep"]
+[ext_resource type="Texture2D" uid="uid://bsjtsl7byewbx" path="res://sprites/capsule.png" id="7_knagv"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="7_v0vrg"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="8_dg70y"]
+[ext_resource type="Texture2D" uid="uid://b743xpww6w1ap" path="res://sprites/capsule_pressed.png" id="8_pb578"]
 [ext_resource type="AudioStream" uid="uid://5qixynf18hwv" path="res://sounds/mouse_click_up.mp3" id="9_lhr70"]
+[ext_resource type="AudioStream" uid="uid://c2gvitjhs4mah" path="res://sounds/microgames/simonSays/blue.mp3" id="9_pb578"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="9_pnhog"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="10_2c4at"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="10_g6wdg"]
@@ -180,6 +183,33 @@ Button/styles/disabled = SubResource("StyleBoxFlat_vshs7")
 Button/styles/hover = SubResource("StyleBoxFlat_knagv")
 Button/styles/normal = SubResource("StyleBoxFlat_gjpm3")
 Button/styles/pressed = SubResource("StyleBoxFlat_siyqs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ki8c"]
+bg_color = Color(0.6190619, 0.8056793, 0.9828389, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0owt5"]
+bg_color = Color(0.21963504, 0.5699877, 0.99999994, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1tg2"]
+bg_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
+border_width_top = 12
+border_width_bottom = 11
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_knagv"]
+HSlider/constants/center_grabber = 1
+HSlider/icons/grabber = ExtResource("7_knagv")
+HSlider/icons/grabber_highlight = ExtResource("8_pb578")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_2ki8c")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0owt5")
+HSlider/styles/slider = SubResource("StyleBoxFlat_o1tg2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyyw8"]
 bg_color = Color(0.21568628, 0.2, 0.99215686, 1)
@@ -3949,6 +3979,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("9_pnhog")
+metadata/_edit_lock_ = true
 
 [node name="windowTab" type="Button" parent="MainMenu/menuStuff/windowmenustuff/ad/window" unique_id=2036191132]
 self_modulate = Color(1, 1, 1, 0)
@@ -3973,6 +4004,7 @@ theme = ExtResource("5_dyyw8")
 text = "x"
 
 [node name="menus" type="Control" parent="MainMenu/menuStuff/windowmenustuff" unique_id=1322081625]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3992,7 +4024,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="windowText" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/options" unique_id=300482566]
-z_index = 1
 layout_mode = 0
 offset_left = 7.0
 offset_top = -27.0
@@ -4002,21 +4033,119 @@ theme = ExtResource("5_dyyw8")
 theme_override_font_sizes/font_size = 14
 text = "Options"
 
-[node name="HSlider" type="HSlider" parent="MainMenu/menuStuff/windowmenustuff/menus/options" unique_id=2046649021]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/menuStuff/windowmenustuff/menus/options" unique_id=2129226397]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 86.0
-offset_right = 247.0
-offset_bottom = 102.0
+offset_left = 117.0
+offset_top = 28.0
+offset_right = 117.0
+offset_bottom = 223.0
+theme_override_constants/separation = 65
+
+[node name="Control2" type="Control" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer" unique_id=1167553235]
+layout_mode = 2
+
+[node name="Master Volume" type="HSlider" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control2" unique_id=25638779]
+layout_mode = 0
+offset_right = 331.0
+offset_bottom = 41.0
+theme = SubResource("Theme_knagv")
+min_value = -25.0
+max_value = 6.0
+
+[node name="text" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control2" unique_id=608903982]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 331.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.70980394, 0.70980394, 0.70980394, 1)
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer" unique_id=1259752594]
+layout_mode = 2
+
+[node name="Music Volume" type="HSlider" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control" unique_id=2046649021]
+layout_mode = 0
+offset_right = 331.0
+offset_bottom = 41.0
+theme = SubResource("Theme_knagv")
+min_value = -25.0
+max_value = 0.0
+
+[node name="text" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control" unique_id=2045938970]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 331.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.70980394, 0.70980394, 0.70980394, 1)
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="Control3" type="Control" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer" unique_id=211526263]
+layout_mode = 2
+
+[node name="Sound Volume" type="HSlider" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control3" unique_id=2112590909]
+layout_mode = 0
+offset_right = 331.0
+offset_bottom = 41.0
+theme = SubResource("Theme_knagv")
+min_value = -25.0
+max_value = 0.0
+
+[node name="text" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control3" unique_id=1344584297]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 331.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.70980394, 0.70980394, 0.70980394, 1)
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="Control4" type="Control" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer" unique_id=2092814993]
+layout_mode = 2
+
+[node name="Scroll Speed" type="HSlider" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control4" unique_id=1451753130]
+layout_mode = 0
+offset_right = 331.0
+offset_bottom = 41.0
+theme = SubResource("Theme_knagv")
+min_value = 0.005
+max_value = 0.03
+step = 0.0
+value = 0.03
+
+[node name="text" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control4" unique_id=1328110343]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 331.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.70980394, 0.70980394, 0.70980394, 1)
+text = "Background Scroll Speed"
+horizontal_alignment = 1
+
+[node name="reset_default" type="Button" parent="MainMenu/menuStuff/windowmenustuff/menus/options" unique_id=887006041]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 279.0
+offset_right = 351.0
+offset_bottom = 304.0
+theme = SubResource("Theme_in2eo")
+theme_override_colors/font_color = Color(0.17571506, 0.47238803, 0.76734096, 1)
+text = "Reset to Default"
+flat = true
+
+[node name="VolumeCheck" type="AudioStreamPlayer" parent="MainMenu/menuStuff/windowmenustuff/menus/options" unique_id=1755325665]
+stream = ExtResource("9_pb578")
 
 [node name="credits" type="Control" parent="MainMenu/menuStuff/windowmenustuff/menus" unique_id=2020745755]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="windowText" type="Label" parent="MainMenu/menuStuff/windowmenustuff/menus/credits" unique_id=591337048]
-z_index = 1
 layout_mode = 0
 offset_left = 7.0
 offset_top = -27.0
@@ -4025,6 +4154,109 @@ offset_bottom = 4.0
 theme = ExtResource("5_dyyw8")
 theme_override_font_sizes/font_size = 14
 text = "Credits"
+
+[node name="Label" type="RichTextLabel" parent="MainMenu/menuStuff/windowmenustuff/menus/credits" unique_id=1231043970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 211.0
+offset_top = 19.0
+offset_right = -224.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.3366075, 0.33660766, 0.33660755, 1)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 11
+bbcode_enabled = true
+text = "[b]Developer:[/b]
+NonsenseNH
+
+[b]Among us:[/b]
+Innsersloth
+
+[b]Impossible Quiz:[/b]
+Splapp-Me-Do
+
+[b]SFX Sources:[/b]
+Pixabay
+Cook Serve Delicious 2
+Team Fortress 2
+Among Us
+[font_size=7]and a couple more that 
+I don't remember[/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="MainMenu/menuStuff/windowmenustuff/menus/credits" unique_id=1017656575]
+self_modulate = Color(1, 1, 1, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = 19.0
+offset_right = -374.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 11
+bbcode_enabled = true
+text = "[b]Voice Submissions:[/b]
+NonsenseNH
+Zacaroni
+Puppetflip
+CrystalSlime
+Julnz
+Jamfleecy
+Peachiihiira
+OfficialJuhin
+LopilOfficial
+MysteriousToons
+Miel
+Azmodeuz
+Dxllybattery
+RynnBirb"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="MainMenu/menuStuff/windowmenustuff/menus/credits" unique_id=364717221]
+self_modulate = Color(1, 1, 1, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 354.0
+offset_top = 19.0
+offset_right = -81.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 11
+bbcode_enabled = true
+text = "[b]Popup Submissions:[/b]
+Slash_7629
+jwl_wzy
+AzaleaTransfem
+Oiionblackberry
+emj0159
+an_nonsensefan
+Azzy4live
+sybil
+waffleisawaffle
+thesketchdude
+ehbehceh
+badbanjo94"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
 [node name="settings" type="Button" parent="MainMenu/menuStuff" unique_id=1075713628]
 layout_mode = 1
@@ -4048,13 +4280,16 @@ text = "Credits"
 
 [node name="disable_click" type="ColorRect" parent="MainMenu" unique_id=576161376]
 visible = false
+top_level = true
+z_index = 3
+z_as_relative = false
 offset_left = -77.0
 offset_right = 1290.0
 offset_bottom = 788.0
 color = Color(1, 1, 1, 0)
 
 [node name="MicrogameGameplay" type="Node2D" parent="." unique_id=1477501503 groups=["main_game"]]
-visible = false
+z_index = 2
 script = ExtResource("1_36rkl")
 cur_microgame_pool = "campaign"
 
@@ -4571,6 +4806,11 @@ bus = &"Sounds"
 
 [connection signal="pressed" from="MainMenu/captchabox/captchaSprite/Button" to="MicrogameGameplay" method="checkbox_pressed"]
 [connection signal="pressed" from="MainMenu/menuStuff/windowmenustuff/ad/x" to="MainMenu" method="_on_close_menu_pressed"]
+[connection signal="drag_ended" from="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control2/Master Volume" to="MainMenu" method="_on_master_volume_drag_ended"]
+[connection signal="drag_ended" from="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control/Music Volume" to="MainMenu" method="_on_music_volume_drag_ended"]
+[connection signal="drag_ended" from="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control3/Sound Volume" to="MainMenu" method="_on_sound_volume_drag_ended"]
+[connection signal="drag_ended" from="MainMenu/menuStuff/windowmenustuff/menus/options/VBoxContainer/Control4/Scroll Speed" to="MainMenu" method="_on_scroll_speed_drag_ended"]
+[connection signal="pressed" from="MainMenu/menuStuff/windowmenustuff/menus/options/reset_default" to="MainMenu" method="_on_reset_default_pressed"]
 [connection signal="pressed" from="MainMenu/menuStuff/settings" to="MainMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenu/menuStuff/credits" to="MainMenu" method="_on_credits_pressed"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
