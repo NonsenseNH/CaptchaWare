@@ -295,7 +295,7 @@ func end_game() -> void:
 	disconnect_prev_microgame_signals()
 	game_started = false
 
-	if games_played > GameData.save_file.highscore:
+	if games_played > GameData.save_file.highscore && GameData.save_file.endless_mode:
 		GameData.save_file.highscore = games_played
 		GameData.save_cur_data(GameData.GAME_SAVE_NAME)
 
