@@ -30,6 +30,8 @@ const default_game_settings := {
 
 @onready var volume_check: AudioStreamPlayer = $menuStuff/windowmenustuff/menus/options/VolumeCheck
 
+@onready var ui_anim: AnimationPlayer = $"../CanvasLayer/AnimationPlayer"
+
 var game_settings := {
 	"master_volume" : 0.0,
 	"music_volume" : 0.0,
@@ -128,3 +130,11 @@ func _on_reset_default_pressed() -> void:
 	
 	for i in SettingsSliders.size():
 		set_value_settings(i)
+
+
+func _on_submit_button_pressed() -> void:
+	ui_anim.play("end")
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name != "end": return
+	get_tree().change_scene_to_file("uid://b1ie1wbaj5lne")
