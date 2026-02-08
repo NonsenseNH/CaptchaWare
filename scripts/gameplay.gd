@@ -3,9 +3,6 @@ extends Node2D
 const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 const JUDGEMENT_TEXT_LOCATION : String = "res://scripts/"
 
-const GAME_SAVE_NAME := "save_data"
-const SETTINGS_FILE_NAME := "settings_data"
-
 const TOTAL_CAPTCHAS := 20
 
 @export_enum("normal", "absurd", "all", "campaign") var cur_microgame_pool : String = "all"
@@ -75,6 +72,8 @@ var judgement_text : Dictionary = {
 }
 @onready var judgement_text_intro: Label = $window/intermissionText/judgementTextIntro
 
+@onready var scores: Control = $window/captcha_window/blueBorder/scores
+
 var difficulty : int = 1
 
 var game_started := false
@@ -95,27 +94,9 @@ var win_streak : int = 0
 
 var fails : int = 0
 
-var save_file := {
-	"highscore" : 0,
-	"upcoming_boss" : "",
-	"played_intro" : false,
-	"beaten_full_game" : false,
-}
-
-var settings := {
-	"master_volume" : 0.0,
-	"music_volume" : 0.0,
-	"sfx_volume" : 0.0,
-	"fullscreen" : false,
-	"bg_scroll_speed" : 0.03,
-}
-
 signal on_transition_complete
 
 func _ready() -> void:
-	save_file = SaveHandler.load_data(GAME_SAVE_NAME, save_file)
-	settings = SaveHandler.load_data(SETTINGS_FILE_NAME, settings)
-
 	var file := FileAccess.open(JUDGEMENT_TEXT_LOCATION + "win_judgement_text.txt", FileAccess.READ)
 	judgement_text.win_dialogue = file.get_as_text().split(",", false)
 	
@@ -136,6 +117,8 @@ func start_game() -> void:
 	
 	var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 	AudioServer.set_bus_volume_db(bus_index, -80)
+	
+	cur_microgame_pool = "all" if GameData.save_file.endless_mode else "campaign"
 	
 	fails = 0
 	win_streak = 0
@@ -280,7 +263,7 @@ func transition_game() -> void:
 			AudioServer.set_bus_volume_db(bus_index, 0)
 		return
 	
-	ui_captcha_window.set_score_num(games_played, cur_microgame_pool == "campaign")
+	ui_captcha_window.set_score_num(games_played)
 	set_judgement_text(did_fail)
 	
 	if did_fail:
@@ -297,19 +280,24 @@ func transition_game() -> void:
 	captcha_transition.set("parameters/conditions/failed", did_fail)
 
 func game_over() -> void:
+	scores.visible = GameData.save_file.endless_mode
+	
+	if GameData.save_file.endless_mode:
+		scores.get_child(0).text = "Captchas Solved: " + str(games_played) 
+		scores.get_child(1).text = "Most Captchas: " + str(GameData.save_file.highscore)
+	
 	end_game()
-
+	
 	captcha_transition.set("parameters/conditions/no lives", true)
 	error_message.visible = true
-	
-	
+
 func end_game() -> void:
 	disconnect_prev_microgame_signals()
 	game_started = false
 
-	if games_played > save_file.highscore:
-		save_file.highscore = games_played
-		SaveHandler.save(GAME_SAVE_NAME, save_file)
+	if games_played > GameData.save_file.highscore:
+		GameData.save_file.highscore = games_played
+		GameData.save_cur_data(GameData.GAME_SAVE_NAME)
 
 func disconnect_prev_microgame_signals() -> void:
 	if prev_microgame == null || !on_transition_complete.is_connected(prev_microgame.on_transition_complete): return

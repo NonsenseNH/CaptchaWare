@@ -15,8 +15,6 @@ const DIFFICULTY_ARRAY ={
 @onready var boat: Node2D = $boat
 @onready var fishes: Node2D = $fishes
 
-@onready var mouse_pos_marker: Marker2D = $boat/boat_sprite/mouse_pos
-
 @onready var score: Label = $score
 
 var grabbed := false

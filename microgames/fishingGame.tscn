@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://05mkerdmgsks"]
+[gd_scene format=3 uid="uid://05mkerdmgsks"]
 
 [ext_resource type="Script" uid="uid://dh5khsmhmx0cf" path="res://scripts/microgames/fishing_game/fishing_game.gd" id="1_141ru"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_pbios"]
@@ -37,7 +37,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("10_sgk76")
 
-[node name="fishingGame" type="Control"]
+[node name="fishingGame" type="Control" unique_id=524297259]
 z_index = -1
 layout_mode = 3
 anchors_preset = 0
@@ -47,7 +47,7 @@ mouse_filter = 2
 script = ExtResource("1_141ru")
 microgame_data = SubResource("Resource_v48nj")
 
-[node name="bg" type="TextureRect" parent="."]
+[node name="bg" type="TextureRect" parent="." unique_id=684746857]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,36 +58,36 @@ mouse_filter = 2
 texture = ExtResource("2_quheh")
 expand_mode = 5
 
-[node name="fishes" type="Node2D" parent="."]
+[node name="fishes" type="Node2D" parent="." unique_id=966387283]
 position = Vector2(6.1035156e-05, -28.05249)
 scale = Vector2(0.99999994, 1)
 
-[node name="boat" type="Node2D" parent="."]
+[node name="boat" type="Node2D" parent="." unique_id=1036491907]
 position = Vector2(209, 92.69502)
 script = ExtResource("3_ogolv")
 
-[node name="boat_sprite" type="Sprite2D" parent="boat"]
+[node name="boat_sprite" type="Sprite2D" parent="boat" unique_id=75949714]
 position = Vector2(0, -50)
 scale = Vector2(0.30188674, 0.30188677)
 texture = ExtResource("4_wllv6")
 
-[node name="Line2D" type="Line2D" parent="boat/boat_sprite"]
+[node name="Line2D" type="Line2D" parent="boat/boat_sprite" unique_id=468126429]
 scale = Vector2(0.99999994, 1)
 points = PackedVector2Array(-341.18762, -238.50006, -341.1875, 496.87506)
 width = 3.0
 default_color = Color(0.28060427, 0.28060427, 0.28060427, 1)
 antialiased = true
 
-[node name="mouse_pos" type="Marker2D" parent="boat/boat_sprite"]
+[node name="mouse_pos" type="Marker2D" parent="boat/boat_sprite" unique_id=519830924]
 gizmo_extents = 57.6
 
-[node name="hook" type="Sprite2D" parent="boat/boat_sprite/mouse_pos"]
+[node name="hook" type="Sprite2D" parent="boat/boat_sprite/mouse_pos" unique_id=1634690257]
 rotation = -0.04534006
 scale = Vector2(0.24371117, 0.24371117)
 texture = ExtResource("5_ypxt3")
 offset = Vector2(-109.3125, 182.1875)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=398602005]
 self_modulate = Color(1, 1, 1, 0.24300002)
 z_index = 4
 layout_mode = 0
@@ -97,7 +97,7 @@ offset_bottom = 539.695
 mouse_filter = 2
 color = Color(0, 0.4366271, 0.7327163, 1)
 
-[node name="mask" type="TextureRect" parent="."]
+[node name="mask" type="TextureRect" parent="." unique_id=134550218]
 z_index = 1
 layout_mode = 0
 offset_top = 92.69502
@@ -107,50 +107,50 @@ mouse_filter = 2
 texture = ExtResource("6_sgk76")
 expand_mode = 1
 
-[node name="visible_area" type="Area2D" parent="."]
+[node name="visible_area" type="Area2D" parent="." unique_id=42913866]
 collision_layer = 0
 input_pickable = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visible_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visible_area" unique_id=1688669234]
 visible = false
 position = Vector2(212, 266.34747)
 shape = SubResource("RectangleShape2D_4rwuo")
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="." unique_id=745629442]
 wait_time = 0.5
 autostart = true
 
-[node name="sounds" type="Node" parent="."]
+[node name="sounds" type="Node" parent="." unique_id=1303773630]
 
-[node name="FishingRod" type="AudioStreamPlayer" parent="sounds"]
+[node name="FishingRod" type="AudioStreamPlayer" parent="sounds" unique_id=1753039009]
 stream = ExtResource("7_quheh")
 volume_db = 0.703
 autoplay = true
 bus = &"Sounds"
 
-[node name="SharkBite" type="AudioStreamPlayer" parent="sounds"]
+[node name="SharkBite" type="AudioStreamPlayer" parent="sounds" unique_id=1311336682]
 stream = ExtResource("8_wllv6")
 volume_db = -10.0
 bus = &"Sounds"
 
-[node name="FishHooked" type="AudioStreamPlayer" parent="sounds"]
+[node name="FishHooked" type="AudioStreamPlayer" parent="sounds" unique_id=208765260]
 stream = SubResource("AudioStreamRandomizer_v48nj")
 volume_db = -10.0
 bus = &"Sounds"
 
-[node name="CollectedFish" type="AudioStreamPlayer" parent="sounds"]
+[node name="CollectedFish" type="AudioStreamPlayer" parent="sounds" unique_id=1724255700]
 stream = SubResource("AudioStreamRandomizer_isc22")
 volume_db = -10.0
 bus = &"Sounds"
 
-[node name="Win" type="AudioStreamPlayer" parent="sounds"]
+[node name="Win" type="AudioStreamPlayer" parent="sounds" unique_id=556098331]
 stream = ExtResource("11_pbios")
 volume_db = 5.0
 pitch_scale = 1.3
 bus = &"Sounds"
 
-[node name="score" type="Label" parent="."]
+[node name="score" type="Label" parent="." unique_id=32357911]
 z_index = 4
 layout_mode = 0
 offset_top = 146.695
@@ -161,7 +161,7 @@ theme_override_font_sizes/font_size = 23
 text = "0/5 FISHES"
 horizontal_alignment = 1
 
-[node name="tutorial" type="Label" parent="."]
+[node name="tutorial" type="Label" parent="." unique_id=699782689]
 visible = false
 layout_mode = 0
 offset_top = 151.0

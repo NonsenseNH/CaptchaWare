@@ -27,7 +27,7 @@ buses/default_bus_layout="uid://cat0jjbtti4ij"
 
 [autoload]
 
-SaveHandler="*res://scenes/save_system.tscn"
+GameData="*uid://va7073fxdiyv"
 
 [display]
 

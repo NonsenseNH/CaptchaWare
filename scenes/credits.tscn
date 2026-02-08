@@ -1,6 +1,46 @@
 [gd_scene format=3 uid="uid://b1ie1wbaj5lne"]
 
 [ext_resource type="AudioStream" uid="uid://ju3rrh136ix1" path="res://music/credits.ogg" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://br2a1fh83tnee" path="res://scripts/credits.gd" id="1_0ctdu"]
+[ext_resource type="Texture2D" uid="uid://b5rnl0p2u0a5y" path="res://sprites/cat.png" id="1_2ckv8"]
+
+[sub_resource type="Animation" id="Animation_0ctdu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2fbfq"]
+resource_name = "loop"
+length = 2.299
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.299),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 119]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gwij"]
+_data = {
+&"RESET": SubResource("Animation_0ctdu"),
+&"loop": SubResource("Animation_2fbfq")
+}
 
 [sub_resource type="Animation" id="Animation_0bpdh"]
 length = 0.001
@@ -40,10 +80,59 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[b]Made by:[/b]
+NonsenseNH"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("extras:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2ckv8"]
 resource_name = "credits"
-length = 42.882
+length = 31.7925
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,10 +152,10 @@ tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 28.627449, 31.1, 31.133335),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0]
+"values": [0.0, 0.0, -20.0, -80.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -75,17 +164,142 @@ tracks/2/path = NodePath("ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.028897),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.028897, 28.633335),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5.0000005, 9, 13.000001, 25.000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["[b]The End[/b]", "[b]Made by:[/b]
+NonsenseNH", "[b]Among us:[/b]
+Innsersloth
+
+[b]Impossible Quiz:[/b]
+Splapp-Me-Do", "[b]SFX Sources:[/b]
+Pixabay
+Cook Serve Delicious 2
+Team Fortress 2
+Among Us
+[font_size=30]and a couple more that 
+I don't remember[/font_size]", "[b]Thanks for Playing :)[/b]"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 17, 25.000002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("extras:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 17, 25.000002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 27.666666, 28.633335, 31.100002),
+"transitions": PackedFloat32Array(0, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8gwij"]
+resource_name = "end"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3036927),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -25.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.3036927),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ctdu"]
 _data = {
 &"RESET": SubResource("Animation_0bpdh"),
-&"credits": SubResource("Animation_2ckv8")
+&"credits": SubResource("Animation_2ckv8"),
+&"end": SubResource("Animation_8gwij")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyyw8"]
+bg_color = Color(0.21568628, 0.2, 0.99215686, 1)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.42592245, 0.44901365, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qimb"]
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb578"]
+bg_color = Color(0.1340642, 5.390644e-06, 0.5976224, 1)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.3729457, 0.13217106, 0.99999994, 1)
+
+[sub_resource type="Theme" id="Theme_0ctdu"]
+Button/colors/font_color = Color(0.203482, 0.15510142, 0.9999998, 1)
+Button/colors/font_hover_color = Color(0.216849, 0.19875765, 0.9938707, 1)
+Button/colors/font_pressed_color = Color(0.19876501, 1.9059777e-05, 0.78640586, 1)
+Button/icons/icon = null
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_dyyw8")
+Button/styles/normal = SubResource("StyleBoxEmpty_0qimb")
+Button/styles/pressed = SubResource("StyleBoxFlat_pb578")
 
 [node name="credits" type="Control" unique_id=58332938]
 layout_mode = 3
@@ -94,8 +308,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0ctdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=962070004]
+self_modulate = Color(1, 1, 1, 0.24313726)
+position = Vector2(978, 542.99994)
+scale = Vector2(5.62, 3.105)
+texture = ExtResource("1_2ckv8")
+hframes = 5
+vframes = 24
+
+[node name="loop" type="AnimationPlayer" parent="Sprite2D" unique_id=1416584151]
+libraries/ = SubResource("AnimationLibrary_8gwij")
+autoplay = &"loop"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=660855681]
+top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,25 +352,104 @@ offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.3366075, 0.33660766, 0.33660755, 1)
-theme_override_font_sizes/normal_font_size = 12
-theme_override_font_sizes/bold_font_size = 11
+theme_override_font_sizes/normal_font_size = 63
+theme_override_font_sizes/bold_font_size = 63
 bbcode_enabled = true
-text = "[b]Developer:[/b]
-NonsenseNH
-
-[b]Among us:[/b]
-Innsersloth
-
-[b]Impossible Quiz:[/b]
-Splapp-Me-Do
-
-[b]SFX Sources:[/b]
-Pixabay
-Cook Serve Delicious 2
-Team Fortress 2
-Among Us
-[font_size=7]and a couple more that 
-I don't remember[/font_size]"
+text = "[b]Made by:[/b]
+NonsenseNH"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="extras" type="Control" parent="." unique_id=154302047]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="RichTextLabel" parent="extras" unique_id=1523968250]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = 19.0
+offset_right = -567.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+theme_override_font_sizes/normal_font_size = 41
+theme_override_font_sizes/bold_font_size = 46
+bbcode_enabled = true
+text = "[b]Voice Submissions:[/b]
+Zacaroni
+Foxfleep
+CrystalSlime
+Julnz
+Jamfleecy
+Peachiihiira
+OfficialJuhin
+LopilOfficial
+MysteriousToons
+Miel
+Azmodeuz
+Dxllybattery
+RynnBirb"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="extras" unique_id=1070984489]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 537.0
+offset_top = 19.0
+offset_right = 102.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+theme_override_font_sizes/normal_font_size = 41
+theme_override_font_sizes/bold_font_size = 46
+bbcode_enabled = true
+text = "[b]Popup Submissions:[/b]
+Slash_7629
+jwl_wzy
+AzaleaTransfem
+Oiionblackberry
+emj0159
+an_nonsensefan
+Azzy4live
+sybil
+waffleisawaffle
+thesketchdude
+ehbehceh
+badbanjo94"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="skip" type="Button" parent="." unique_id=925893200]
+visible = false
+self_modulate = Color(1, 1, 1, 0.34117648)
+layout_mode = 0
+offset_left = 1526.0
+offset_top = 924.0
+offset_right = 1800.0
+offset_bottom = 993.0
+focus_mode = 0
+theme = SubResource("Theme_0ctdu")
+theme_override_font_sizes/font_size = 48
+text = "Skip Credits"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="skip" to="." method="_on_skip_pressed"]

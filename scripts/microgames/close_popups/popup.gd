@@ -54,7 +54,7 @@ func _input(event: InputEvent) -> void:
 	if !focused || clicked: return
 
 	if event is InputEventMouseButton:
-		if event.double_click:
+		if Input.is_action_just_pressed("Left Click") && get_parent().get_child(-1) == self:
 			clicked = true
 			block_popups.emit()
 

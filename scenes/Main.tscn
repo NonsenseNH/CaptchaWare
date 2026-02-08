@@ -18,8 +18,10 @@
 [ext_resource type="AudioStream" uid="uid://c2gvitjhs4mah" path="res://sounds/microgames/simonSays/blue.mp3" id="9_pb578"]
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="9_pnhog"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="10_2c4at"]
+[ext_resource type="Texture2D" uid="uid://dsjxtqyby2lnn" path="res://sprites/check.png" id="10_2ki8c"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="10_g6wdg"]
 [ext_resource type="AudioStream" uid="uid://timh0mbrw21y" path="res://sounds/mouse_click_down.mp3" id="10_wp0k4"]
+[ext_resource type="Texture2D" uid="uid://dsk61pncmp7ax" path="res://sprites/uncheck.png" id="11_0owt5"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="11_g6wdg"]
 [ext_resource type="AudioStream" uid="uid://cfdwa54pxxvwa" path="res://sounds/keyboard_1.mp3" id="11_hq6as"]
 [ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="12_gsxep"]
@@ -300,16 +302,16 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_2ki8c")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0owt5")
 HSlider/styles/slider = SubResource("StyleBoxFlat_o1tg2")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyyw8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb578"]
 bg_color = Color(0.21568628, 0.2, 0.99215686, 1)
 draw_center = false
 border_width_bottom = 2
 border_color = Color(0.42592245, 0.44901365, 1, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qimb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vshs7"]
 content_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb578"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyu0y"]
 bg_color = Color(0.1340642, 5.390644e-06, 0.5976224, 1)
 draw_center = false
 border_width_bottom = 2
@@ -321,9 +323,66 @@ Button/colors/font_hover_color = Color(0.216849, 0.19875765, 0.9938707, 1)
 Button/colors/font_pressed_color = Color(0.19876501, 1.9059777e-05, 0.78640586, 1)
 Button/icons/icon = null
 Button/styles/focus = null
-Button/styles/hover = SubResource("StyleBoxFlat_dyyw8")
-Button/styles/normal = SubResource("StyleBoxEmpty_0qimb")
-Button/styles/pressed = SubResource("StyleBoxFlat_pb578")
+Button/styles/hover = SubResource("StyleBoxFlat_pb578")
+Button/styles/normal = SubResource("StyleBoxEmpty_vshs7")
+Button/styles/pressed = SubResource("StyleBoxFlat_hyu0y")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nu61c"]
+bg_color = Color(0.96862745, 0.96862745, 0.96862745, 1)
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 7.0
+expand_margin_right = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2bht"]
+bg_color = Color(0.99997073, 0.3371962, 0.42475688, 1)
+border_width_bottom = 3
+border_color = Color(0.8978471, 0.26548254, 0.34490192, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 7.0
+expand_margin_right = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfilp"]
+bg_color = Color(0.646029, 0.64602906, 0.6460289, 1)
+border_width_bottom = 3
+border_color = Color(0.39688924, 0.3968893, 0.396889, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 7.0
+expand_margin_right = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3hxr"]
+bg_color = Color(0.8969557, 0.23551327, 0.28259173, 1)
+border_width_bottom = 3
+border_color = Color(0.58070964, 1.853034e-06, 0.12674722, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 7.0
+expand_margin_right = 7.0
+
+[sub_resource type="Theme" id="Theme_nu61c"]
+CheckButton/colors/font_color = Color(0.12890664, 0.124600135, 0.12675408, 1)
+CheckButton/colors/font_hover_color = Color(0.29411766, 0.28627452, 0.2901961, 1)
+CheckButton/icons/checked = ExtResource("10_2ki8c")
+CheckButton/icons/unchecked = ExtResource("11_0owt5")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_nu61c")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_e2bht")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_lfilp")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_a3hxr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qpfo2"]
 shader = ExtResource("2_fs0b5")
@@ -954,6 +1013,18 @@ tracks/34/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("../window/captcha_window/blueBorder/scores:modulate")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_v0vrg"]
 resource_name = "gameIntro"
@@ -1137,6 +1208,18 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../window/captcha_window/blueBorder/scores:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pnhog"]
@@ -2712,6 +2795,30 @@ tracks/17/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../window/captcha_window/lowbar/captchaCount:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.86666673),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../window/captcha_window/blueBorder/scores:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.86666673),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_dg70y"]
 resource_name = "gametransition_intro"
@@ -3936,7 +4043,6 @@ texture = ExtResource("1_8cp6k")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=549486833]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -3945,6 +4051,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=713255015]
 libraries/ = SubResource("AnimationLibrary_vshs7")
@@ -4382,6 +4489,19 @@ focus_mode = 0
 theme = SubResource("Theme_in2eo")
 text = "Credits"
 
+[node name="endless_mode" type="CheckButton" parent="MainMenu/menuStuff" unique_id=977492915]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 453.0
+offset_right = 653.0
+offset_bottom = 502.0
+scale = Vector2(0.6, 0.6)
+focus_mode = 0
+theme = SubResource("Theme_nu61c")
+theme_override_colors/font_color = Color(0.29411766, 0.28627452, 0.2901961, 1)
+theme_override_font_sizes/font_size = 26
+text = "ENDLESS "
+
 [node name="disable_click" type="ColorRect" parent="MainMenu" unique_id=576161376]
 visible = false
 top_level = true
@@ -4391,6 +4511,7 @@ offset_left = -77.0
 offset_right = 1290.0
 offset_bottom = 788.0
 color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." unique_id=1477501503 groups=["main_game"]]
 z_index = 2
@@ -4563,6 +4684,54 @@ offset_right = 3.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="scores" type="Control" parent="MicrogameGameplay/window/captcha_window/blueBorder" unique_id=826622687]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="score" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/scores" unique_id=215939394]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.665
+offset_bottom = 13.334999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 28
+text = "Captchas Solved: 50"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="highscore" type="Label" parent="MicrogameGameplay/window/captcha_window/blueBorder/scores" unique_id=139716990]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 11.334991
+offset_bottom = 42.33499
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "Most Captchas: 50"
+horizontal_alignment = 1
+clip_text = true
 
 [node name="lowbar" type="TextureRect" parent="MicrogameGameplay/window/captcha_window" unique_id=431579401]
 use_parent_material = true
@@ -4919,6 +5088,7 @@ bus = &"Sounds"
 [connection signal="pressed" from="MainMenu/menuStuff/windowmenustuff/menus/options/reset_default" to="MainMenu" method="_on_reset_default_pressed"]
 [connection signal="pressed" from="MainMenu/menuStuff/settings" to="MainMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenu/menuStuff/credits" to="MainMenu" method="_on_credits_pressed"]
+[connection signal="toggled" from="MainMenu/menuStuff/endless_mode" to="MainMenu" method="_on_endless_mode_toggled"]
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay/window" method="_on_verify_button_pressed"]
 [connection signal="animation_finished" from="MicrogameGameplay/captchaTransition" to="MicrogameGameplay" method="_on_captcha_animation_player_animation_finished"]
 [connection signal="timeout" from="MicrogameGameplay/Timer" to="MicrogameGameplay" method="_on_timer_timeout"]

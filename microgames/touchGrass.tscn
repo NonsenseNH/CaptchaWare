@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ceavec6yp3k7y"]
+[gd_scene format=3 uid="uid://ceavec6yp3k7y"]
 
 [ext_resource type="Script" uid="uid://c33tf7db1ih2y" path="res://scripts/microgames/touch_grass/touch_grass.gd" id="1_f6ok3"]
 [ext_resource type="Texture2D" uid="uid://hbaxg7brte0p" path="res://sprites/touch_grass/grass_images/grass1.png" id="2_4gcub"]
@@ -285,7 +285,7 @@ _data = {
 &"shake": SubResource("Animation_kuf18")
 }
 
-[node name="touchGrass" type="ColorRect"]
+[node name="touchGrass" type="ColorRect" unique_id=520749725]
 clip_children = 1
 z_index = 2
 offset_right = 414.0
@@ -293,7 +293,7 @@ offset_bottom = 533.0
 script = ExtResource("1_f6ok3")
 microgame_data = SubResource("Resource_hihd0")
 
-[node name="grass" type="TextureRect" parent="."]
+[node name="grass" type="TextureRect" parent="." unique_id=778794721]
 clip_children = 2
 z_index = 1
 layout_mode = 1
@@ -305,43 +305,39 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_4gcub")
 
-[node name="hand" type="Node2D" parent="grass" node_paths=PackedStringArray("gameplay_code")]
+[node name="hand" type="Node2D" parent="grass" unique_id=1195840222 node_paths=PackedStringArray("gameplay_code")]
 position = Vector2(247, 138)
 script = ExtResource("3_2tcok")
 gameplay_code = NodePath("../..")
 
-[node name="particles" type="Node2D" parent="grass/hand"]
+[node name="particles" type="Node2D" parent="grass/hand" unique_id=1456886220]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="grass/hand"]
-libraries = {
-&"": SubResource("AnimationLibrary_7nf3m")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="grass/hand" unique_id=909341792]
+libraries/ = SubResource("AnimationLibrary_7nf3m")
 
-[node name="grass" type="AudioStreamPlayer" parent="grass/hand/AnimationPlayer"]
+[node name="grass" type="AudioStreamPlayer" parent="grass/hand/AnimationPlayer" unique_id=1753042277]
 stream = SubResource("AudioStreamRandomizer_hihd0")
 bus = &"Microgame Sounds"
 
-[node name="whip" type="AudioStreamPlayer" parent="grass/hand/AnimationPlayer"]
+[node name="whip" type="AudioStreamPlayer" parent="grass/hand/AnimationPlayer" unique_id=981756419]
 stream = ExtResource("10_q0dx4")
 bus = &"Microgame Sounds"
 
-[node name="handSprite" type="Node2D" parent="grass/hand"]
+[node name="handSprite" type="Node2D" parent="grass/hand" unique_id=1031999382]
 
-[node name="handSpriteImage" type="Sprite2D" parent="grass/hand/handSprite"]
+[node name="handSpriteImage" type="Sprite2D" parent="grass/hand/handSprite" unique_id=1040571850]
 scale = Vector2(2.23, 2.23)
 texture = ExtResource("4_667yt")
 offset = Vector2(12.037, 34.2593)
 
-[node name="handShake" type="AnimationPlayer" parent="grass/hand/handSprite"]
-libraries = {
-&"": SubResource("AnimationLibrary_n0wup")
-}
-autoplay = "shake"
+[node name="handShake" type="AnimationPlayer" parent="grass/hand/handSprite" unique_id=707647332]
+libraries/ = SubResource("AnimationLibrary_n0wup")
+autoplay = &"shake"
 
-[node name="handPosition" type="Marker2D" parent="grass"]
+[node name="handPosition" type="Marker2D" parent="grass" unique_id=1700976573]
 position = Vector2(415, 664)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=646879676]
 layout_mode = 0
 offset_top = 386.0
 offset_right = 414.0

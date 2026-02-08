@@ -11,6 +11,9 @@ var parallax_offset := Vector2.ZERO
 
 var force_pause : bool = false
 
+func _ready() -> void:
+	parallax_system()
+
 #region Effects
 func pause_game(paused : bool) -> void: #use this function to prevent hitstop from unpausing the tree
 	force_pause = paused

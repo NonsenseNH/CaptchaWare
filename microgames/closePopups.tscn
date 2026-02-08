@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://df8hwigslhyia"]
+[gd_scene format=3 uid="uid://df8hwigslhyia"]
 
 [ext_resource type="Script" uid="uid://dide8kbk8k6xk" path="res://scripts/microgames/close_popups/close_popups.gd" id="1_s7cn4"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_ary7l"]
@@ -30,7 +30,7 @@ stream_1/stream = ExtResource("5_gk5a5")
 stream_2/stream = ExtResource("6_s74fy")
 stream_3/stream = ExtResource("7_kp0ch")
 
-[node name="closePopups" type="Control"]
+[node name="closePopups" type="Control" unique_id=598161275]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 414.0
@@ -38,13 +38,13 @@ offset_bottom = 420.0
 script = ExtResource("1_s7cn4")
 microgame_data = SubResource("Resource_7a5sd")
 
-[node name="ad" type="ColorRect" parent="."]
+[node name="ad" type="ColorRect" parent="." unique_id=2077053546]
 layout_mode = 0
 offset_right = 413.0
 offset_bottom = 420.0
 color = Color(0.90794176, 0.90794164, 0.9079419, 1)
 
-[node name="Label" type="Label" parent="ad"]
+[node name="Label" type="Label" parent="ad" unique_id=1351687139]
 layout_mode = 0
 offset_top = 25.0
 offset_right = 412.0
@@ -56,7 +56,7 @@ text = "An ad will
 appear in.."
 horizontal_alignment = 1
 
-[node name="timer" type="TextureProgressBar" parent="ad"]
+[node name="timer" type="TextureProgressBar" parent="ad" unique_id=1255296889]
 layout_mode = 0
 offset_left = 89.0
 offset_top = 118.99999
@@ -70,7 +70,7 @@ fill_mode = 5
 texture_progress = ExtResource("3_bw2m1")
 tint_progress = Color(0, 0, 0, 0.28627452)
 
-[node name="CountDown" type="Label" parent="ad"]
+[node name="CountDown" type="Label" parent="ad" unique_id=2131975544]
 layout_mode = 0
 offset_left = 87.0
 offset_top = 118.0
@@ -82,45 +82,45 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="popUps" type="Control" parent="."]
+[node name="popUps" type="Control" parent="." unique_id=1958154037]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PopUpTimer" type="Timer" parent="."]
+[node name="PopUpTimer" type="Timer" parent="." unique_id=1309466048]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="sounds" type="Node" parent="."]
+[node name="sounds" type="Node" parent="." unique_id=406138022]
 
-[node name="popup" type="AudioStreamPlayer" parent="sounds"]
+[node name="popup" type="AudioStreamPlayer" parent="sounds" unique_id=61636235]
 stream = SubResource("AudioStreamRandomizer_5lnet")
 volume_db = -3.0
 max_polyphony = 10
 bus = &"Sounds"
 
-[node name="popupClose" type="AudioStreamPlayer" parent="sounds"]
+[node name="popupClose" type="AudioStreamPlayer" parent="sounds" unique_id=685196039]
 stream = ExtResource("8_hc56t")
 volume_db = -5.0
 bus = &"Sounds"
 
-[node name="reload" type="AudioStreamPlayer" parent="sounds"]
+[node name="reload" type="AudioStreamPlayer" parent="sounds" unique_id=1368515516]
 stream = ExtResource("9_rn2nn")
 volume_db = 1.0
 bus = &"Sounds"
 
-[node name="riflesounds" type="AudioStreamPlayer" parent="sounds"]
+[node name="riflesounds" type="AudioStreamPlayer" parent="sounds" unique_id=385947052]
 stream = ExtResource("10_hn6nl")
 volume_db = -5.0
 bus = &"Sounds"
 
-[node name="tickingSound" type="AudioStreamPlayer" parent="sounds"]
+[node name="tickingSound" type="AudioStreamPlayer" parent="sounds" unique_id=2044739090]
 stream = ExtResource("11_c31rj")
 volume_db = -7.0
 bus = &"Sounds"
 
-[node name="crosshair" type="Sprite2D" parent="."]
+[node name="crosshair" type="Sprite2D" parent="." unique_id=2111453499]
 modulate = Color(0.71528774, 0, 0.22399902, 1)
 self_modulate = Color(1, 1, 1, 0.7137255)
 z_index = 3

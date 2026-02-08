@@ -25,22 +25,26 @@ signal get_fish
 
 func _ready() -> void:
 	mouse_pos_marker.global_position = mouse_pos
+	set_boat_position()
 
 func _input(event: InputEvent) -> void:
 	if failed: return
 	if event is InputEventMouseMotion:
-		var mouse_x = clampf(get_global_mouse_position().x, 440.272, 780.8995)
-		var mouse_y = clampf(get_global_mouse_position().y, 210.9047, 600.6229)
+		set_boat_position()
 
-		mouse_pos = Vector2(mouse_x, mouse_y if !win else 210.9047)
+func set_boat_position() -> void:
+	var mouse_x = clampf(get_global_mouse_position().x, 440.272, 780.8995)
+	var mouse_y = clampf(get_global_mouse_position().y, 210.9047, 600.6229)
 
-		global_position = Vector2(mouse_pos.x + BOAT_OFFSET_X, global_position.y)
+	mouse_pos = Vector2(mouse_x, mouse_y if !win else 210.9047)
 
-		boat_velocity += (mouse_pos - prev_mouse_pos)
+	global_position = Vector2(mouse_pos.x + BOAT_OFFSET_X, global_position.y)
 
-		prev_mouse_pos = mouse_pos
+	boat_velocity += (mouse_pos - prev_mouse_pos)
 
-		collect_fish()
+	prev_mouse_pos = mouse_pos
+
+	collect_fish()
 
 func collect_fish() -> void:
 	if mouse_pos.y > 260:
