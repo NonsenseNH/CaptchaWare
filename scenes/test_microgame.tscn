@@ -15,7 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bjtsmdu6p8j4o" path="res://sprites/shadow.png" id="10_exop1"]
 [ext_resource type="FontFile" uid="uid://bqkbtlxbjg48r" path="res://font/Futura Book font.ttf" id="11_eq5xm"]
 [ext_resource type="Script" uid="uid://hl3ajv8krgk6" path="res://scripts/health_attempts.gd" id="12_2ebhr"]
+[ext_resource type="Texture2D" uid="uid://sid4cj4h8lc6" path="res://sprites/bosses/nuclear/point.png" id="13_0qi3o"]
 [ext_resource type="Texture2D" uid="uid://dcue5hf26vstn" path="res://sprites/captcha_x.png" id="13_6cmcy"]
+[ext_resource type="Texture2D" uid="uid://dgs1k6onanhwk" path="res://sprites/bosses/nuclear/border_pipes_lol.png" id="13_h8wee"]
 [ext_resource type="Script" uid="uid://cwna2q5k1tltb" path="res://scripts/cam_script.gd" id="23_cwhth"]
 [ext_resource type="AudioStream" uid="uid://5qixynf18hwv" path="res://sounds/mouse_click_up.mp3" id="24_5eq45"]
 [ext_resource type="AudioStream" uid="uid://timh0mbrw21y" path="res://sounds/mouse_click_down.mp3" id="25_hejar"]
@@ -61,6 +63,9 @@ script = ExtResource("10_budfu")
 set_size = Vector2(1416, 1062)
 noTimer = true
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h8wee"]
+blend_mode = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyf67"]
 bg_color = Color(0.7962427, 0.7962432, 0.7962428, 1)
@@ -551,13 +556,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/nuke" unique_id=493906961]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="nuclear" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/nuke" unique_id=1230528084]
-clip_children = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -574,11 +573,44 @@ texture = ExtResource("9_rmvoj")
 expand_mode = 1
 
 [node name="button" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/nuke/nuclear" unique_id=575802112]
-z_index = 1
-position = Vector2(315.22113, 270.99997)
-scale = Vector2(0.485, 0.485)
+position = Vector2(315.22113, 269)
+scale = Vector2(0.595, 0.595)
 texture = ExtResource("10_5lnet")
 hframes = 4
+
+[node name="hand" type="Node2D" parent="MicrogameGameplay/window/captcha_window/curGame/nuke/nuclear" unique_id=264196709]
+
+[node name="Sprite2D" type="Sprite2D" parent="MicrogameGameplay/window/captcha_window/curGame/nuke/nuclear/hand" unique_id=1898243699]
+position = Vector2(405.22116, 169)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("13_0qi3o")
+offset = Vector2(212.50012, 241.66656)
+
+[node name="ColorRect" type="ColorRect" parent="MicrogameGameplay/window/captcha_window/curGame/nuke/nuclear" unique_id=1052727985]
+material = SubResource("CanvasItemMaterial_h8wee")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9999998, 0.9145169, 0.8266597, 1)
+metadata/_edit_lock_ = true
+
+[node name="border" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/nuke" unique_id=493906961]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -148.83502
+offset_right = 137.0
+offset_bottom = 95.16498
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_h8wee")
+expand_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="shadow" type="TextureRect" parent="MicrogameGameplay/window/captcha_window" unique_id=122397994]
 self_modulate = Color(0, 0, 0, 0.2509804)

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbwhd3o45u21a"
-valid=false
+uid="uid://dgs1k6onanhwk"
+path="res://.godot/imported/border_pipes_lol.png-a6a44e03ba55b446d68b7b69e5f78526.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://sprites/bosses/nuclear/border_pipes.png"
+source_file="res://sprites/bosses/nuclear/border_pipes_lol.png"
+dest_files=["res://.godot/imported/border_pipes_lol.png-a6a44e03ba55b446d68b7b69e5f78526.ctex"]
 
 [params]
 
