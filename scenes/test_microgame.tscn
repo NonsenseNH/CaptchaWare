@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3p1teu1ilhf" path="res://sprites/captcha_tab.png" id="7_tt0xq"]
 [ext_resource type="Texture2D" uid="uid://cy2tf1ed020ki" path="res://sprites/captcha_bar.png" id="8_wxqbu"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="9_0la4d"]
-[ext_resource type="Script" uid="uid://br266on7lhinu" path="res://scripts/bosses/nuke/nuke.gd" id="9_2h35w"]
+[ext_resource type="Script" path="res://scripts/bosses/nuke/nuke.gd" id="9_2h35w"]
 [ext_resource type="Texture2D" uid="uid://q05qqnemcpx4" path="res://sprites/bosses/nuclear/nuclear_missile_bg.png" id="9_rmvoj"]
 [ext_resource type="Texture2D" uid="uid://1po6ux0cu3ih" path="res://sprites/bosses/nuclear/button.png" id="10_5lnet"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="10_budfu"]
@@ -550,6 +550,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/nuke" unique_id=493906961]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="nuclear" type="TextureRect" parent="MicrogameGameplay/window/captcha_window/curGame/nuke" unique_id=1230528084]
 clip_children = 2

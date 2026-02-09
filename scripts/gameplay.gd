@@ -282,22 +282,22 @@ func transition_game() -> void:
 func game_over() -> void:
 	scores.visible = GameData.save_file.endless_mode
 	
-	if GameData.save_file.endless_mode:
-		scores.get_child(0).text = "Captchas Solved: " + str(games_played) 
-		scores.get_child(1).text = "Most Captchas: " + str(GameData.save_file.highscore)
-	
 	end_game()
 	
 	captcha_transition.set("parameters/conditions/no lives", true)
 	error_message.visible = true
+	
+	if !GameData.save_file.endless_mode: return
+	if games_played > GameData.save_file.highscore && GameData.save_file.endless_mode:
+		GameData.save_file.highscore = games_played
+		GameData.save_cur_data(GameData.GAME_SAVE_NAME)
+	
+	scores.get_child(0).text = "Captchas Solved: " + str(games_played) 
+	scores.get_child(1).text = "Most Captchas: " + str(GameData.save_file.highscore)
 
 func end_game() -> void:
 	disconnect_prev_microgame_signals()
 	game_started = false
-
-	if games_played > GameData.save_file.highscore && GameData.save_file.endless_mode:
-		GameData.save_file.highscore = games_played
-		GameData.save_cur_data(GameData.GAME_SAVE_NAME)
 
 func disconnect_prev_microgame_signals() -> void:
 	if prev_microgame == null || !on_transition_complete.is_connected(prev_microgame.on_transition_complete): return
