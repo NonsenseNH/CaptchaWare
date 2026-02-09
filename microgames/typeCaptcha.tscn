@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq0gqjrsoabbl"]
+[gd_scene format=3 uid="uid://cq0gqjrsoabbl"]
 
 [ext_resource type="Script" uid="uid://shdh67xy4pom" path="res://scripts/microgames/type_captcha/type_captcha.gd" id="1_lf2gx"]
 [ext_resource type="Theme" uid="uid://cu51pqcwmnm0l" path="res://captcha_theme.tres" id="2_7oitm"]
@@ -12,7 +12,7 @@ errorMessage = "Please type the words in the box."
 set_size = Vector2(430, 294.835)
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
-[node name="typeCaptcha" type="Control"]
+[node name="typeCaptcha" type="Control" unique_id=1171732030]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -20,7 +20,7 @@ offset_bottom = 40.0
 script = ExtResource("1_lf2gx")
 microgame_data = SubResource("Resource_jacen")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LineEdit" type="LineEdit" parent="." unique_id=853941526]
 light_mask = 0
 layout_mode = 0
 offset_left = 25.0
@@ -30,6 +30,7 @@ offset_bottom = 99.0
 theme = ExtResource("2_7oitm")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
+placeholder_text = "Type Here"
 keep_editing_on_text_submit = true
 
 [connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]

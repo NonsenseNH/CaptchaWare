@@ -20,9 +20,12 @@ var game_settings := {
 var save_file := {
 	"highscore" : 0,
 	"previous_boss" : "",
-	"played_intro" : false,
 	"beaten_full_game" : false,
 	"endless_mode" : false
+}
+
+var stored_data := {
+	"played_intro" : false
 }
 
 # Called when the node enters the scene tree for the first time.

@@ -22,12 +22,75 @@ enum SettingsSliders{
 @onready var volume_check: AudioStreamPlayer = $menuStuff/windowmenustuff/menus/options/VolumeCheck
 
 @onready var ui_anim: AnimationPlayer = $"../CanvasLayer/AnimationPlayer"
+@onready var captcha_animation_player: AnimationPlayer = $"../MicrogameGameplay/captchaTransition/captchaAnimationPlayer"
 
 @onready var endless_mode: CheckButton = $menuStuff/endless_mode
 
+@onready var email_n_password: Control = $intro
+
+var intro_cutscene := false
+var cur_tab_text_typing := 0
+
+var cur_text_node : Label
+
+const random_emails = [
+	"lemon@gmail.com",
+	"paperhatprojects@gmail.com",
+	"averagejoe@gmail.com",
+	"genericemail@gmail.com",
+	"tetokasane@gmail.com",
+	"egglover@gmail.com",
+	"iwillfindyou@gmail.com",
+	"randomstreamer@gmail.com",
+	"funnyjoke@gmail.com",
+	"coincidence@neal.fun",
+	"warioware@gmail.com",
+	"internetculture@gmail.com",
+	"notapuzzlegame@gmail.com",
+	"insertfunnytext@gmail.com",
+	"lostandfound@gmail.com",
+	"horses@gmail.com",
+	"iabsolutely@gmail.com",
+	"icantestthis@gmail.com"
+]
+
 func _ready() -> void:
+	if GameData.stored_data.played_intro:
+		start_with_no_intro()
+	else:
+		intro_cutscene_start()
+	
 	load_settings()
 	endless_mode.visible = GameData.save_file.beaten_full_game
+
+func intro_cutscene_start() -> void:
+	intro_cutscene = true
+	captcha_animation_player.play("intro_cutscene_1")
+	change_text_box_intro()
+	cur_text_node.text = random_emails.pick_random()
+
+func _input(event: InputEvent) -> void:
+	if !(intro_cutscene && event is InputEventKey): return
+	
+	if event.is_pressed() && !event.is_echo() && !Input.is_action_just_pressed("ui_text_submit"):
+		if cur_text_node.visible_characters == 0:
+			cur_text_node.get_parent().placeholder_text = ""
+		cur_text_node.visible_characters += 1
+	
+	if Input.is_action_just_pressed("ui_text_submit") && cur_text_node.visible_characters >= cur_text_node.get_total_character_count():
+		cur_text_node.get_parent().modulate = Color("d8d8d8ff")
+		
+		if cur_tab_text_typing >= 2:
+			captcha_animation_player.play("intro_cutscene_2")
+			intro_cutscene = false
+			
+			GameData.stored_data.played_intro = true
+		else:
+			change_text_box_intro()
+
+func change_text_box_intro() -> void:
+	cur_text_node = email_n_password.get_child(cur_tab_text_typing).get_child(0)
+	cur_tab_text_typing += 1
 
 func _on_credits_pressed() -> void:
 	open_menu(MenuType.CREDITS)
@@ -114,3 +177,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_endless_mode_toggled(toggled_on: bool) -> void:
 	GameData.save_file.endless_mode = toggled_on
 	GameData.save_cur_data(GameData.GAME_SAVE_NAME)
+
+func _on_captcha_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name != "intro_cutscene_2": return
+	start_with_no_intro()
+
+func start_with_no_intro() -> void:
+	captcha_animation_player.play("gamecaptchaidle")
+	email_n_password.visible = false
