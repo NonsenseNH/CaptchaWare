@@ -38,7 +38,8 @@ const random_emails = [
 	"paperhatprojects@gmail.com",
 	"averagejoe@gmail.com",
 	"genericemail@gmail.com",
-	"tetokasane@gmail.com",
+	"kasaneteto@gmail.com",
+	"mrkevinsynthv@gmail.com",
 	"egglover@gmail.com",
 	"iwillfindyou@gmail.com",
 	"randomstreamer@gmail.com",
@@ -51,7 +52,8 @@ const random_emails = [
 	"lostandfound@gmail.com",
 	"horses@gmail.com",
 	"iabsolutely@gmail.com",
-	"icantestthis@gmail.com"
+	"icantestthis@gmail.com",
+	"nonsensenhreal@gmail.com"
 ]
 
 func _ready() -> void:
@@ -77,7 +79,7 @@ func _input(event: InputEvent) -> void:
 			cur_text_node.get_parent().placeholder_text = ""
 		cur_text_node.visible_characters += 1
 	
-	if Input.is_action_just_pressed("ui_text_submit") && cur_text_node.visible_characters >= cur_text_node.get_total_character_count():
+	if cur_text_node.visible_characters >= cur_text_node.get_total_character_count():
 		cur_text_node.get_parent().modulate = Color("d8d8d8ff")
 		
 		if cur_tab_text_typing >= 2:
