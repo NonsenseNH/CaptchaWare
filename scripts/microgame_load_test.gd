@@ -26,6 +26,7 @@ const JSON_FILE_LOCATION : String = "res://scripts/microgames/microgames.json"
 @onready var verify_button: Button = $window/captcha_window/lowbar/verifyButton
 
 @onready var cur_game: ColorRect = $window/captcha_window/curGame
+@onready var music: AudioStreamPlayer = $"../Mosik"
 
 var cur_microgame : Node = null
 
