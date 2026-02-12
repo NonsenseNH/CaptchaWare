@@ -11,4 +11,5 @@ func _on_card_swipe_completed() -> void:
 	complete = true
 
 func isWinning() -> bool:
+	card.can_win_card = false
 	return complete

@@ -19,6 +19,8 @@ var card_moving := false
 var card_can_swipe := false
 var card_tweening := false
 
+var can_win_card := true
+
 var tween_card_pos : Tween
 
 signal swipe_completed
@@ -85,6 +87,8 @@ func _process(delta):
 		card_swipe_timer += delta
 
 func check_card_reader() -> bool:
+	if !can_win_card: return false
+	
 	if position.x < 406.0:
 		reader_text.text = "BAD READ. TRY AGAIN."
 		return false
