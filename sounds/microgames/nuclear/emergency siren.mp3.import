@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1qc1q1g7hnw8"
+path="res://.godot/imported/emergency siren.mp3-674ac4c1a1e2599f5a2d8c97fc0495c8.mp3str"
+
+[deps]
+
+source_file="res://sounds/microgames/nuclear/emergency siren.mp3"
+dest_files=["res://.godot/imported/emergency siren.mp3-674ac4c1a1e2599f5a2d8c97fc0495c8.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
