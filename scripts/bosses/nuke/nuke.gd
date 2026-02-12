@@ -12,7 +12,7 @@ extends Microgame
 var cur_monitor_frame := false
 var activate_monitors : = true
 
-func _ready() -> void:
+func on_transition_complete() -> void:
 	monitors()
 
 func monitors() -> void:

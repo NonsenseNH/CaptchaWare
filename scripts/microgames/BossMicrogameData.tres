@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BossMicrogameData" format=3 uid="uid://csp01gqksrmxm"]
+
+[ext_resource type="Script" uid="uid://cmqqijogjff5s" path="res://scripts/microgames/bosses_microgame_class.gd" id="1_ew8ma"]
+
+[resource]
+script = ExtResource("1_ew8ma")
+metadata/_custom_type_script = "uid://cmqqijogjff5s"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0p7ondkf4f7k"]
 
 [ext_resource type="Script" uid="uid://br266on7lhinu" path="res://scripts/bosses/nuke/nuke.gd" id="1_y5pul"]
-[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_ac2wq"]
+[ext_resource type="Script" uid="uid://cmqqijogjff5s" path="res://scripts/microgames/bosses_microgame_class.gd" id="2_y5pul"]
 [ext_resource type="Texture2D" uid="uid://q05qqnemcpx4" path="res://sprites/bosses/nuclear/nuclear_missile_bg.png" id="3_x157c"]
 [ext_resource type="Script" uid="uid://24rk6airgga7" path="res://scripts/bosses/nuke/nuclear_room_pan.gd" id="4_7wbiq"]
 [ext_resource type="Texture2D" uid="uid://cwdpi8v7gq3r1" path="res://sprites/bosses/nuclear/monitor_text.png" id="5_3qpb0"]
@@ -22,11 +22,12 @@
 [ext_resource type="AudioStream" uid="uid://dstt34ofnhptl" path="res://sounds/microgames/nuclear/nuke_launch.mp3" id="20_da035"]
 [ext_resource type="AudioStream" uid="uid://1qc1q1g7hnw8" path="res://sounds/microgames/nuclear/emergency siren.mp3" id="21_q6n5c"]
 
-[sub_resource type="Resource" id="Resource_h8wee"]
-script = ExtResource("2_ac2wq")
+[sub_resource type="Resource" id="Resource_ac2wq"]
+script = ExtResource("2_y5pul")
+ending_cutscene_name = "gametransition_final_ending_2"
 set_size = Vector2(1416, 1062)
 noTimer = true
-metadata/_custom_type_script = "uid://bse3lar4v6hur"
+metadata/_custom_type_script = "uid://cmqqijogjff5s"
 
 [sub_resource type="Animation" id="Animation_wxqbu"]
 length = 0.001
@@ -165,7 +166,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [2]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -226,6 +227,18 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-10.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("nuclear/hand/hand:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_exop1"]
@@ -350,6 +363,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0.0, -17.0, -5.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("nuclear/hand/hand:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.5333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_2ebhr"]
@@ -563,7 +588,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_y5pul")
-microgame_data = SubResource("Resource_h8wee")
+microgame_data = SubResource("Resource_ac2wq")
 metadata/_edit_lock_ = true
 
 [node name="bg" type="ColorRect" parent="." unique_id=576997935]
@@ -602,7 +627,7 @@ position = Vector2(306.22107, 241.325)
 scale = Vector2(0.46862596, 0.422)
 texture = ExtResource("5_3qpb0")
 vframes = 8
-frame = 3
+frame = 2
 
 [node name="press" type="AudioStreamPlayer" parent="nuclear/Monitors" unique_id=1719120193]
 stream = ExtResource("6_1vnod")
@@ -626,6 +651,7 @@ frame = 3
 position = Vector2(397.22113, 200)
 
 [node name="hand" type="Sprite2D" parent="nuclear/hand" unique_id=1166315089]
+visible = false
 texture_filter = 1
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("11_dhhul")

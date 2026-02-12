@@ -193,7 +193,7 @@ func set_game_speed(speed: float = 0) -> void:
 
 func get_boss_game() -> void:
 	captcha_transition.set("parameters/conditions/boss", true)
-	get_microgame_data(microgame_pool_json["bosses"][randi_range(0, microgame_pool_json["bosses"].size() - 1)])
+	get_microgame_data(microgame_pool_json["bosses"][randi_range(1, microgame_pool_json["bosses"].size() - 1)])
 
 func set_up_window_size(tween_window: bool = false, play_sound := true, size_override : Vector2 = Vector2.ZERO) -> void:
 	ui_captcha_window.set_up_ui_data({
@@ -213,7 +213,11 @@ func _on_timer_timeout() -> void:
 	cur_microgame.end_microgame.emit()
 
 func win() -> void:
-	captcha_animation_player.play("gametransition_final_ending_1")
+	var prev_microgame_anim_name : String = prev_microgame.microgame_data.ending_cutscene_name
+	if captcha_animation_player.has_animation(prev_microgame_anim_name):
+		captcha_animation_player.play(prev_microgame_anim_name)
+	else:
+		captcha_animation_player.play("gametransition_final_ending_1")
 	end_game()
 
 func transition_game() -> void:

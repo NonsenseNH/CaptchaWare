@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgqe0836v1w13"]
 
 [ext_resource type="Script" uid="uid://b5h06a6dntegm" path="res://scripts/bosses/scary_maze_game/scary_maze_game.gd" id="1_fvd87"]
-[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_7yjbb"]
+[ext_resource type="Script" uid="uid://cmqqijogjff5s" path="res://scripts/microgames/bosses_microgame_class.gd" id="2_w8gio"]
 [ext_resource type="Texture2D" uid="uid://drep10fwh54lo" path="res://sprites/bosses/scary_maze_game/mouse.png" id="3_vygbt"]
 [ext_resource type="Script" uid="uid://d0kpe4rjqryf2" path="res://scripts/bosses/scary_maze_game/mouse.gd" id="4_j2ak1"]
 [ext_resource type="Texture2D" uid="uid://b3ccd8i64l8nn" path="res://sprites/bosses/scary_maze_game/start.png" id="5_ws82h"]
@@ -12,11 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://cpyoer88w32w6" path="res://sprites/bosses/scary_maze_game/jumpscare.png" id="10_kagbk"]
 [ext_resource type="AudioStream" uid="uid://cg0ye4v28h7ya" path="res://sounds/microgames/scary_maze_game/jumpscare.mp3" id="11_7mc5i"]
 
-[sub_resource type="Resource" id="Resource_2h35w"]
-script = ExtResource("2_7yjbb")
+[sub_resource type="Resource" id="Resource_1ph5y"]
+script = ExtResource("2_w8gio")
 set_size = Vector2(1416, 1062)
 noTimer = true
-metadata/_custom_type_script = "uid://bse3lar4v6hur"
+metadata/_custom_type_script = "uid://cmqqijogjff5s"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tt0xq"]
 size = Vector2(2, 2.0000153)
@@ -38,7 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fvd87")
-microgame_data = SubResource("Resource_2h35w")
+microgame_data = SubResource("Resource_1ph5y")
 
 [node name="mouse" type="Sprite2D" parent="." unique_id=1872233530]
 z_index = 5
