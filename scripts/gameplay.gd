@@ -165,8 +165,6 @@ func get_game_pool(pool_override : String) -> Array:
 		return microgame_pool_json[pool_override]
 
 func set_game_speed(speed: float = 0) -> void:
-	var anim_speed := maxf(speed * 1.15, 3.0)
-	var wait_time := maxf(cur_wait_time - ((cur_wait_time / 2) / og_wait_time), 3.0)
 	if speed == 0.0:
 		music.pitch_scale = 1
 		cur_speed = original_speed
@@ -178,11 +176,14 @@ func set_game_speed(speed: float = 0) -> void:
 			captcha_transition.set("parameters/" + anim + "/TimeScale/scale", 1)
 		return
 	
+	var anim_speed := maxf(speed * 1.15, 3.0)
+	var wait_time := maxf(cur_wait_time - ((cur_wait_time / 2) / og_wait_time), 3.0)
 	var added_speed := speed / (cur_speed + speed)
 	
 	cur_speed += added_speed
 	
-	cur_wait_time = wait_time if wait_time > 3.0 else cur_wait_time - 0.05
+	if cur_wait_time >= 2.0:
+		cur_wait_time = wait_time if wait_time > 3.0 else cur_wait_time - 0.1
 	
 	for anim in captcha_animation_player.get_animation_list():
 		if anim == "RESET": continue
@@ -192,6 +193,7 @@ func set_game_speed(speed: float = 0) -> void:
 		difficulty += 1
 
 func get_boss_game() -> void:
+	set_game_speed(0)
 	captcha_transition.set("parameters/conditions/boss", true)
 	get_microgame_data(microgame_pool_json["bosses"][randi_range(1, microgame_pool_json["bosses"].size() - 1)])
 
@@ -284,6 +286,7 @@ func transition_game() -> void:
 	captcha_transition.set("parameters/conditions/failed", did_fail)
 
 func game_over() -> void:
+	set_game_speed(0)
 	scores.visible = GameData.save_file.endless_mode
 	
 	end_game()
@@ -337,7 +340,7 @@ func music_handler(intermission : bool = false, has_failed : bool = false, reset
 	music.get_stream_playback().switch_to_clip_by_name(musicState)
 
 func _streak_music_check():
-	if win_streak >= 3:
+	if win_streak >= 7:
 		musicState = "Captchaware Win"
 	else:
 		musicState = "Captchaware Game"
