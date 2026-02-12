@@ -115,7 +115,7 @@ func fish_collecting(fish_thing : Fish) -> void:
 	cur_fishes = fish_thing
 
 func _on_boat_get_fish() -> void:
-	if cur_fishes == null: return
+	if cur_fishes == null || boat.failed: return
 
 	set_camera_shake.emit(5, .5)
 	collected_fishes += 1
