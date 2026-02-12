@@ -18,7 +18,8 @@
 		"simonSays"
 	],
 	"bosses" : [
-		"scaryMazeGame"
+		"scaryMazeGame",
+		"nuke"
 	],
 	"all" : [
 		"puzzlePiece",

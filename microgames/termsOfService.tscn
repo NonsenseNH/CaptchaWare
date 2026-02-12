@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl36pjasx6rub"]
+[gd_scene format=3 uid="uid://bl36pjasx6rub"]
 
 [ext_resource type="Script" uid="uid://3v73d1wdwjpe" path="res://scripts/microgames/terms_of_service/terms_of_service.gd" id="1_wfjr7"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_tfbiu"]
@@ -21,7 +21,7 @@ random_pitch = 1.15
 streams_count = 1
 stream_0/stream = ExtResource("4_tfbiu")
 
-[node name="termsOfService" type="ColorRect"]
+[node name="termsOfService" type="ColorRect" unique_id=1520901361]
 offset_right = 413.0
 offset_bottom = 376.0
 mouse_filter = 2
@@ -29,7 +29,7 @@ color = Color(0.9471993, 0.9471994, 0.9471993, 1)
 script = ExtResource("1_wfjr7")
 microgame_data = SubResource("Resource_rq1yt")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2055065106]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,14 +41,14 @@ theme = ExtResource("2_ualve")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=458502418]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TermsOfConditionsArticle" type="Control" parent="ScrollContainer/VBoxContainer"]
+[node name="TermsOfConditionsArticle" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1453633954]
 layout_mode = 2
 
-[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/TermsOfConditionsArticle"]
+[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/TermsOfConditionsArticle" unique_id=1666856594]
 self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
@@ -60,10 +60,10 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="_Control_5" type="Control" parent="ScrollContainer/VBoxContainer"]
+[node name="_Control_5" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=257220784]
 layout_mode = 2
 
-[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/_Control_5"]
+[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/_Control_5" unique_id=1793758037]
 self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
@@ -74,10 +74,10 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="_Control_7" type="Control" parent="ScrollContainer/VBoxContainer"]
+[node name="_Control_7" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=822002677]
 layout_mode = 2
 
-[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/_Control_7"]
+[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/_Control_7" unique_id=4906124]
 self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
@@ -88,10 +88,10 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="_Control_9" type="Control" parent="ScrollContainer/VBoxContainer"]
+[node name="_Control_9" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=305327342]
 layout_mode = 2
 
-[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/_Control_9"]
+[node name="TosArticle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/_Control_9" unique_id=340701503]
 self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 layout_mode = 0
@@ -102,7 +102,7 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="CheckBox" type="CheckBox" parent="."]
+[node name="CheckBox" type="CheckBox" parent="." unique_id=1724235649]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 383.0
@@ -118,13 +118,13 @@ theme_override_colors/font_disabled_color = Color(0.15949741, 0.32257837, 0.7260
 disabled = true
 text = "I agree to the Terms and Conditions"
 
-[node name="scroll_fast" type="AudioStreamPlayer" parent="."]
+[node name="scroll_fast" type="AudioStreamPlayer" parent="." unique_id=2023040537]
 stream = ExtResource("3_yjdjo")
 volume_db = -80.0
 autoplay = true
 bus = &"Microgame Sounds"
 
-[node name="scroll_impact" type="AudioStreamPlayer" parent="."]
+[node name="scroll_impact" type="AudioStreamPlayer" parent="." unique_id=1561171410]
 stream = SubResource("AudioStreamRandomizer_rq1yt")
 volume_db = -5.27
 bus = &"Microgame Sounds"

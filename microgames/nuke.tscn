@@ -1,0 +1,691 @@
+[gd_scene format=3 uid="uid://0p7ondkf4f7k"]
+
+[ext_resource type="Script" uid="uid://br266on7lhinu" path="res://scripts/bosses/nuke/nuke.gd" id="1_y5pul"]
+[ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_ac2wq"]
+[ext_resource type="Texture2D" uid="uid://q05qqnemcpx4" path="res://sprites/bosses/nuclear/nuclear_missile_bg.png" id="3_x157c"]
+[ext_resource type="Script" uid="uid://24rk6airgga7" path="res://scripts/bosses/nuke/nuclear_room_pan.gd" id="4_7wbiq"]
+[ext_resource type="Texture2D" uid="uid://cwdpi8v7gq3r1" path="res://sprites/bosses/nuclear/monitor_text.png" id="5_3qpb0"]
+[ext_resource type="AudioStream" uid="uid://ckk7m1as1kpao" path="res://sounds/microgames/nuclear/scr_press.mp3" id="6_1vnod"]
+[ext_resource type="AudioStream" uid="uid://2sffdv4ur7vw" path="res://sounds/microgames/nuclear/scr_it.mp3" id="7_v4rde"]
+[ext_resource type="Texture2D" uid="uid://1po6ux0cu3ih" path="res://sprites/bosses/nuclear/button.png" id="8_pnpaq"]
+[ext_resource type="Texture2D" uid="uid://p3dis4vxv2ow" path="res://sprites/bosses/nuclear/press.png" id="9_wml7r"]
+[ext_resource type="Texture2D" uid="uid://dgs1k6onanhwk" path="res://sprites/bosses/nuclear/border_pipes_lol.png" id="10_57btw"]
+[ext_resource type="Texture2D" uid="uid://sid4cj4h8lc6" path="res://sprites/bosses/nuclear/point.png" id="11_dhhul"]
+[ext_resource type="AudioStream" uid="uid://dbhswl0ut1ick" path="res://sounds/microgames/reaction_time/clothes.mp3" id="12_c8ho8"]
+[ext_resource type="AudioStream" uid="uid://do254prjubs0i" path="res://sounds/microgames/nuclear/button_appear.mp3" id="13_rltj5"]
+[ext_resource type="AudioStream" uid="uid://dx8a42bn3vk2" path="res://sounds/microgames/simonSays/press.mp3" id="14_21ayi"]
+[ext_resource type="AudioStream" uid="uid://bc0wwf2najc2h" path="res://sounds/microgames/nuclear/scr_prep_launch.mp3" id="15_50ckh"]
+[ext_resource type="AudioStream" uid="uid://4ivsnn3ui8nd" path="res://sounds/microgames/nuclear/scr_3.mp3" id="16_4b03l"]
+[ext_resource type="AudioStream" uid="uid://cvef1s2d0v8bp" path="res://sounds/microgames/nuclear/scr_2.mp3" id="17_n55yk"]
+[ext_resource type="AudioStream" uid="uid://bn6emv2idaujt" path="res://sounds/microgames/nuclear/scr_1.mp3" id="18_0rpqw"]
+[ext_resource type="AudioStream" uid="uid://d01d6h568qerd" path="res://sounds/microgames/nuclear/scr_launching_nuke.mp3" id="19_61j6s"]
+[ext_resource type="AudioStream" uid="uid://dstt34ofnhptl" path="res://sounds/microgames/nuclear/nuke_launch.mp3" id="20_da035"]
+[ext_resource type="AudioStream" uid="uid://1qc1q1g7hnw8" path="res://sounds/microgames/nuclear/emergency siren.mp3" id="21_q6n5c"]
+
+[sub_resource type="Resource" id="Resource_h8wee"]
+script = ExtResource("2_ac2wq")
+set_size = Vector2(1416, 1062)
+noTimer = true
+metadata/_custom_type_script = "uid://bse3lar4v6hur"
+
+[sub_resource type="Animation" id="Animation_wxqbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0la4d"]
+resource_name = "shake"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(-3.604991, -3.604991, -3.604991, -3.604991),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-0.7788696, -2), Vector2(-1.7788696, 1), Vector2(1.2211304, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_exop1"]
+_data = {
+&"RESET": SubResource("Animation_wxqbu"),
+&"shake": SubResource("Animation_0la4d")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h8wee"]
+blend_mode = 3
+
+[sub_resource type="Animation" id="Animation_eq5xm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NukeButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("nuclear/button:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nuclear/hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(397.22113, 200)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("nuclear/hand/hand:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_dhhul")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("nuclear/hand:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nuclear/hand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9999998, 0.9145169, 0.8266597, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("nuclear/Monitors:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("audio:stream")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("audio:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("audio:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("siren:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("siren:volume_db")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-10.0]
+}
+
+[sub_resource type="Animation" id="Animation_exop1"]
+resource_name = "intro"
+length = 3.89
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NukeButton:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("nuclear/button:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.5666668, 3.6333334, 3.6666667, 3.7333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 3, 2, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nuclear/hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5345824, 3.767889),
+"transitions": PackedFloat32Array(1, 0.25881627, 1),
+"update": 0,
+"values": [Vector2(397.22113, 411), Vector2(397.22113, 411), Vector2(397.221, 187)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("nuclear/hand/hand:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_dhhul")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("nuclear/hand:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nuclear/hand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9999998, 0.9145169, 0.8266597, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("audio:stream")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("12_c8ho8"), ExtResource("13_rltj5")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("audio:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("audio:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.5000002, 3.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, -17.0, -5.0]
+}
+
+[sub_resource type="Animation" id="Animation_2ebhr"]
+resource_name = "press"
+length = 14.193
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("nuclear/hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.43333337, 0.53333336, 0.5666667, 0.9333334, 1.7333335, 3.2499998),
+"transitions": PackedFloat32Array(0, 1, 3.363586, 0, 0.32987702, 1, 2.2973974, 1),
+"update": 0,
+"values": [Vector2(308.22113, 172), Vector2(310.22113, 170), Vector2(310.22113, 170), Vector2(353.22113, 151), Vector2(428.22113, 136), Vector2(466.22113, 144), Vector2(466.22113, 144), Vector2(466.22113, 470.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("nuclear/hand/hand:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("9_wml7r"), ExtResource("11_dhhul")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nuclear/button:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("nuclear/hand:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.43333337, 0.53333336, 0.56666666),
+"transitions": PackedFloat32Array(0, 1, 3.363586, 0, 0.32987702),
+"update": 0,
+"values": [-0.05235988, -0.033161256, -0.033161256, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("nuclear/hand:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.43333337, 0.53333336, 0.5666667, 0.93333334),
+"transitions": PackedFloat32Array(0, 3.363586, 0, 0.32987702, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.14835298, 0.38397244, 0.49741885]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("NukeButton:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("nuclear/hand/animhandshake")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"stop"
+}, {
+"args": [&"shake"],
+"method": &"play"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.5666667, 1.7, 2.3333333, 2.5333335, 2.6666667, 3.3, 3.5000002, 3.6333334, 4.266667, 4.4666667, 4.6, 5.233333, 5.433334, 5.5666666, 6.2, 6.4, 6.5333333, 7.166667, 7.366667, 7.5, 8.133333, 8.333334, 8.466667, 9.1),
+"transitions": PackedFloat32Array(1, 1, 3.0314336, 1, 1, 3.0314336, 1, 1, 3.0314336, 1, 1, 3.0314336, 1, 1, 3.0314336, 1, 1, 3.0314336, 1, 1, 3.0314336, 1, 1, 3.0314336, 1),
+"update": 0,
+"values": [Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.15254208, 0.12974843, 0.09550264, 1), Color(0.9443298, 0.4122916, 0.46054327, 1), Color(0.15254208, 0.12974843, 0.09550264, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("nuclear/Monitors:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.5666667, 3.6333334, 4.6000004, 5.566667, 6.533334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("audio:stream")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.5666667, 3.6333334, 4.6000004, 5.566667, 6.533334, 9.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_21ayi"), ExtResource("12_c8ho8"), ExtResource("15_50ckh"), ExtResource("16_4b03l"), ExtResource("17_n55yk"), ExtResource("18_0rpqw"), ExtResource("19_61j6s"), ExtResource("20_da035")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("audio:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.5666667, 3.6333334, 4.6000004, 5.566667, 6.533334, 9.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("audio:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.5666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-8.0, -17.0, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("siren:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.5666667, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("siren:volume_db")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 9.1, 9.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-10.0, -10.0, -30.0]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(9.7, 14.193),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"shake_launch_nuke"
+}, {
+"args": [false],
+"method": &"shake_launch_nuke"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq5xm"]
+_data = {
+&"RESET": SubResource("Animation_eq5xm"),
+&"intro": SubResource("Animation_exop1"),
+&"press": SubResource("Animation_2ebhr")
+}
+
+[node name="nuke" type="Control" unique_id=58963202]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_y5pul")
+microgame_data = SubResource("Resource_h8wee")
+metadata/_edit_lock_ = true
+
+[node name="bg" type="ColorRect" parent="." unique_id=576997935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="nuclear" type="TextureRect" parent="." unique_id=171745025]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.22113
+offset_top = -228.83502
+offset_right = 319.22113
+offset_bottom = 177.49493
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x157c")
+expand_mode = 1
+script = ExtResource("4_7wbiq")
+parallax_offset_amount = 1.0
+metadata/_edit_lock_ = true
+
+[node name="Monitors" type="Sprite2D" parent="nuclear" unique_id=1234360087]
+texture_filter = 1
+position = Vector2(306.22107, 241.325)
+scale = Vector2(0.46862596, 0.422)
+texture = ExtResource("5_3qpb0")
+vframes = 8
+frame = 3
+
+[node name="press" type="AudioStreamPlayer" parent="nuclear/Monitors" unique_id=1719120193]
+stream = ExtResource("6_1vnod")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="it" type="AudioStreamPlayer" parent="nuclear/Monitors" unique_id=1883851293]
+stream = ExtResource("7_v4rde")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="button" type="Sprite2D" parent="nuclear" unique_id=1501670064]
+texture_filter = 1
+position = Vector2(315.22113, 269)
+scale = Vector2(0.595, 0.595)
+texture = ExtResource("8_pnpaq")
+hframes = 4
+frame = 3
+
+[node name="hand" type="Node2D" parent="nuclear" unique_id=1555674960]
+position = Vector2(397.22113, 200)
+
+[node name="hand" type="Sprite2D" parent="nuclear/hand" unique_id=1166315089]
+texture_filter = 1
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("11_dhhul")
+offset = Vector2(212.50012, 241.66656)
+
+[node name="animhandshake" type="AnimationPlayer" parent="nuclear/hand" unique_id=52210270]
+libraries/ = SubResource("AnimationLibrary_exop1")
+autoplay = &"shake"
+
+[node name="border" type="TextureRect" parent="." unique_id=614328036]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = -113.83502
+offset_right = 185.0
+offset_bottom = 130.16504
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.935, 0.935)
+texture = ExtResource("10_57btw")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1393908419]
+material = SubResource("CanvasItemMaterial_h8wee")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9999998, 0.9145169, 0.8266597, 1)
+metadata/_edit_lock_ = true
+
+[node name="NukeButton" type="Button" parent="." unique_id=862016482]
+layout_mode = 0
+offset_left = 661.0
+offset_top = 463.16498
+offset_right = 731.0
+offset_bottom = 530.165
+focus_mode = 0
+mouse_default_cursor_shape = 2
+disabled = true
+flat = true
+
+[node name="nuclearanimcutscene" type="AnimationPlayer" parent="." unique_id=1027193363]
+libraries/ = SubResource("AnimationLibrary_eq5xm")
+autoplay = &"intro"
+
+[node name="audio" type="AudioStreamPlayer" parent="." unique_id=599175610]
+max_polyphony = 5
+bus = &"Sounds"
+
+[node name="siren" type="AudioStreamPlayer" parent="." unique_id=350530755]
+stream = ExtResource("21_q6n5c")
+volume_db = -10.0
+bus = &"Sounds"
+
+[connection signal="pressed" from="NukeButton" to="." method="_on_nuke_button_pressed"]
+[connection signal="animation_finished" from="nuclearanimcutscene" to="." method="_on_nuclearanimcutscene_animation_finished"]
