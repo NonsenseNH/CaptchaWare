@@ -195,7 +195,7 @@ func set_game_speed(speed: float = 0) -> void:
 func get_boss_game() -> void:
 	set_game_speed(0)
 	captcha_transition.set("parameters/conditions/boss", true)
-	get_microgame_data(microgame_pool_json["bosses"][randi_range(1, microgame_pool_json["bosses"].size() - 1)])
+	get_microgame_data(microgame_pool_json["bosses"][randi_range(0, microgame_pool_json["bosses"].size() - 1)])
 
 func set_up_window_size(tween_window: bool = false, play_sound := true, size_override : Vector2 = Vector2.ZERO) -> void:
 	ui_captcha_window.set_up_ui_data({
