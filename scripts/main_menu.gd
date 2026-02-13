@@ -50,10 +50,11 @@ const random_emails = [
 	"notapuzzlegame@gmail.com",
 	"insertfunnytext@gmail.com",
 	"lostandfound@gmail.com",
-	"horses@gmail.com",
+	"horsesnuts@gmail.com",
 	"iabsolutely@gmail.com",
 	"icantestthis@gmail.com",
-	"nonsensenhreal@gmail.com"
+	"nonsensenhreal@gmail.com",
+	"impossiblechris@gmail.com"
 ]
 
 func _ready() -> void:
