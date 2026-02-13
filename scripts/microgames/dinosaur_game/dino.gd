@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		velocity += (get_gravity() * 6)* delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") || Input.is_action_just_pressed("Left Click"):
+	if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("Left Click"):
 		buffer_jump_timer = .5
 	
 	if is_on_floor() && buffer_jump_timer > 0:
