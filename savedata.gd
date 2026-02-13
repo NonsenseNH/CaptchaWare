@@ -25,7 +25,8 @@ var save_file := {
 }
 
 var stored_data := {
-	"played_intro" : false
+	"played_intro" : false,
+	"previous_boss" : 0
 }
 
 # Called when the node enters the scene tree for the first time.

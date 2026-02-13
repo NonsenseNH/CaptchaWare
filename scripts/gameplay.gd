@@ -195,7 +195,14 @@ func set_game_speed(speed: float = 0) -> void:
 func get_boss_game() -> void:
 	set_game_speed(0)
 	captcha_transition.set("parameters/conditions/boss", true)
-	get_microgame_data(microgame_pool_json["bosses"][randi_range(0, microgame_pool_json["bosses"].size() - 1)])
+	
+	var boss_int := 0
+	if GameData.stored_data.previous_boss == 0:
+		boss_int = randi_range(0, 1)
+	else:
+		boss_int = int(GameData.stored_data.previous_boss == 1)
+	GameData.stored_data.previous_boss = boss_int + 1
+	get_microgame_data(microgame_pool_json["bosses"][boss_int])
 
 func set_up_window_size(tween_window: bool = false, play_sound := true, size_override : Vector2 = Vector2.ZERO) -> void:
 	ui_captcha_window.set_up_ui_data({
