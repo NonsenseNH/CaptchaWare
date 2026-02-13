@@ -264,7 +264,7 @@ func transition_game() -> void:
 	
 	if intro_sequence: 
 		judgement_text_intro.text = "Good!" if !did_fail else "Try Again!"
-		if games_played >= 3:
+		if games_played >= games_on_intro:
 			intro_sequence = false
 			games_played = 0
 			captcha_transition.set("parameters/conditions/speed up", true)

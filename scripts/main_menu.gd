@@ -127,14 +127,23 @@ func set_value_settings(value_type : SettingsSliders) -> void:
 	
 	match value_type:
 		SettingsSliders.MASTER:
-			GameData.game_settings.master_volume = cur_slider.value
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), cur_slider.value)
+			var final_value : float = cur_slider.value
+			if cur_slider.value == cur_slider.min_value:
+				final_value = -80
+			GameData.game_settings.master_volume = final_value
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), final_value)
 		SettingsSliders.MUSIC:
-			GameData.game_settings.music_volume = cur_slider.value
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), cur_slider.value)
+			var final_value : float = cur_slider.value
+			if cur_slider.value == cur_slider.min_value:
+				final_value = -80
+			GameData.game_settings.music_volume = final_value
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), final_value)
 		SettingsSliders.SOUND:
-			GameData.game_settings.sound_volume = cur_slider.value
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), cur_slider.value)
+			var final_value : float = cur_slider.value
+			if cur_slider.value == cur_slider.min_value:
+				final_value = -80
+			GameData.game_settings.sound_volume = final_value
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), final_value)
 		SettingsSliders.SCROLL:
 			GameData.game_settings.scroll_speed = cur_slider.value
 			bg.material.set("shader_parameter/set_speed", cur_slider.value)
