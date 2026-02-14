@@ -118,6 +118,8 @@ func start_game() -> void:
 	var bus_index = AudioServer.get_bus_index("Microgame Sounds")
 	AudioServer.set_bus_volume_db(bus_index, -80)
 	
+	games_on_intro = 1 if GameData.save_file.endless_mode else 3
+	
 	cur_microgame_pool = "all" if GameData.save_file.endless_mode else "campaign"
 	
 	fails = 0
