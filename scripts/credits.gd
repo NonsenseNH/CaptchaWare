@@ -14,7 +14,7 @@ func _ready() -> void:
 	GameData.save_cur_data(GameData.GAME_SAVE_NAME)
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	get_tree().change_scene_to_file("uid://bfsemdv668ekw")
+	get_tree().change_scene_to_file("uid://clyfqepsqmse8")
 
 func _on_skip_pressed() -> void:
 	animation_player.play("end")

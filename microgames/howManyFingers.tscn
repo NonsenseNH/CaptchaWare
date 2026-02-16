@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddv4qb5wkwi1m"]
+[gd_scene format=3 uid="uid://ddv4qb5wkwi1m"]
 
 [ext_resource type="Script" uid="uid://5tbpaivwvlrc" path="res://scripts/microgames/how_many_fingers/how_many_fingers.gd" id="1_o7y65"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_y7ptt"]
@@ -13,7 +13,7 @@ instructionsBig = "watch closely"
 instructionSmall2 = "Watch the hand."
 errorMessage = "Please choose an answer."
 set_size = Vector2(430, 573.835)
-bonusTime = 1.5
+bonusTime = 3.0
 slowGame = true
 metadata/_custom_type_script = "uid://bse3lar4v6hur"
 
@@ -344,7 +344,7 @@ _data = {
 &"thumbs up": SubResource("Animation_o7y65")
 }
 
-[node name="howManyFingers" type="Control"]
+[node name="howManyFingers" type="Control" unique_id=32843964]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -356,31 +356,29 @@ mouse_filter = 2
 script = ExtResource("1_o7y65")
 microgame_data = SubResource("Resource_0ccle")
 
-[node name="bg" type="ColorRect" parent="."]
+[node name="bg" type="ColorRect" parent="." unique_id=1130879884]
 layout_mode = 1
 offset_right = 414.0
 offset_bottom = 420.0
 mouse_filter = 2
 color = Color(0.9515795, 0.95157963, 0.9515794, 1)
 
-[node name="hand_group" type="Node2D" parent="."]
+[node name="hand_group" type="Node2D" parent="." unique_id=757253377]
 position = Vector2(0, -7)
 
-[node name="hand" type="Sprite2D" parent="hand_group"]
+[node name="hand" type="Sprite2D" parent="hand_group" unique_id=445155164]
 position = Vector2(205, 142.835)
 scale = Vector2(1.35, 1.35)
 texture = ExtResource("2_yo7k4")
 
-[node name="anim" type="AnimationPlayer" parent="hand_group/hand"]
-libraries = {
-&"": SubResource("AnimationLibrary_t2a6w")
-}
+[node name="anim" type="AnimationPlayer" parent="hand_group/hand" unique_id=1167087941]
+libraries/ = SubResource("AnimationLibrary_t2a6w")
 
-[node name="animSound" type="AudioStreamPlayer" parent="hand_group/hand/anim"]
+[node name="animSound" type="AudioStreamPlayer" parent="hand_group/hand/anim" unique_id=1120252255]
 volume_db = -13.0
 bus = &"Microgame Sounds"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1980696613]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -396,7 +394,7 @@ theme_override_constants/h_separation = 203
 theme_override_constants/v_separation = 68
 columns = 2
 
-[node name="Numbers" type="Label" parent="."]
+[node name="Numbers" type="Label" parent="." unique_id=1514298545]
 layout_mode = 0
 offset_top = 239.0
 offset_right = 406.0
