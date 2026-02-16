@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bfaa6ff8240hq"]
+[gd_scene format=3 uid="uid://bfaa6ff8240hq"]
 
 [ext_resource type="Script" uid="uid://crsxod7bwc171" path="res://scripts/microgames/burger_game/burger_game.gd" id="1_p6c3f"]
 [ext_resource type="Script" uid="uid://bse3lar4v6hur" path="res://scripts/microgames/microgame_data_script.gd" id="2_wfoii"]
@@ -102,7 +102,7 @@ stream_1/stream = ExtResource("15_uxjr7")
 stream_2/stream = ExtResource("16_77qjh")
 stream_3/stream = ExtResource("17_wx8mm")
 
-[node name="burgerGame" type="Control"]
+[node name="burgerGame" type="Control" unique_id=21408461]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 414.0
@@ -110,7 +110,7 @@ offset_bottom = 536.27496
 script = ExtResource("1_p6c3f")
 microgame_data = SubResource("Resource_7a5sd")
 
-[node name="bg" type="ColorRect" parent="."]
+[node name="bg" type="ColorRect" parent="." unique_id=860986292]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,7 +121,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.9515795, 0.95157963, 0.9515794, 1)
 
-[node name="plate" type="TextureRect" parent="."]
+[node name="plate" type="TextureRect" parent="." unique_id=1213576577]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 261.275
@@ -130,14 +130,14 @@ offset_bottom = 364.275
 scale = Vector2(0.76, 0.76)
 texture = ExtResource("3_yhqx6")
 
-[node name="burger_pos" type="Marker2D" parent="."]
+[node name="burger_pos" type="Marker2D" parent="." unique_id=520635631]
 position = Vector2(207, 290.27496)
 
-[node name="ingredients" type="Sprite2D" parent="burger_pos"]
+[node name="ingredients" type="Sprite2D" parent="burger_pos" unique_id=328952100]
 scale = Vector2(0.39, 0.39)
 texture = ExtResource("4_r73wq")
 
-[node name="ingredients tab" type="ColorRect" parent="."]
+[node name="ingredients tab" type="ColorRect" parent="." unique_id=2118962032]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,7 +149,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.85606724, 0.85606736, 0.85606664, 1)
 
-[node name="ButtonGrid" type="GridContainer" parent="ingredients tab"]
+[node name="ButtonGrid" type="GridContainer" parent="ingredients tab" unique_id=1827564521]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 13.0
@@ -159,11 +159,11 @@ theme_override_constants/h_separation = 124
 theme_override_constants/v_separation = 84
 columns = 3
 
-[node name="top_bun" type="Control" parent="ingredients tab/ButtonGrid"]
+[node name="top_bun" type="Control" parent="ingredients tab/ButtonGrid" unique_id=1065599683]
 layout_mode = 2
 script = ExtResource("5_nhw6e")
 
-[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/top_bun"]
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/top_bun" unique_id=1078833535]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 84.0
@@ -174,7 +174,7 @@ text = "B"
 icon = ExtResource("6_uxjr7")
 expand_icon = true
 
-[node name="name" type="Label" parent="ingredients tab/ButtonGrid/top_bun"]
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/top_bun" unique_id=860288113]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 45.0
@@ -184,11 +184,11 @@ theme = SubResource("Theme_8u1fw")
 text = "Bun"
 horizontal_alignment = 1
 
-[node name="button5" type="Control" parent="ingredients tab/ButtonGrid"]
+[node name="button5" type="Control" parent="ingredients tab/ButtonGrid" unique_id=85844460]
 layout_mode = 2
 script = ExtResource("5_nhw6e")
 
-[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button5"]
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button5" unique_id=1741478551]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 84.0
@@ -199,7 +199,7 @@ text = "O"
 icon = ExtResource("7_77qjh")
 expand_icon = true
 
-[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button5"]
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button5" unique_id=1046756179]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 45.0
@@ -209,11 +209,11 @@ theme = SubResource("Theme_8u1fw")
 text = "Onion"
 horizontal_alignment = 1
 
-[node name="button4" type="Control" parent="ingredients tab/ButtonGrid"]
+[node name="button4" type="Control" parent="ingredients tab/ButtonGrid" unique_id=1510050732]
 layout_mode = 2
 script = ExtResource("5_nhw6e")
 
-[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button4"]
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button4" unique_id=1130350051]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 84.0
@@ -224,7 +224,7 @@ text = "L"
 icon = ExtResource("8_wx8mm")
 expand_icon = true
 
-[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button4"]
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button4" unique_id=808522620]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 45.0
@@ -234,11 +234,11 @@ theme = SubResource("Theme_8u1fw")
 text = "Lettuce"
 horizontal_alignment = 1
 
-[node name="button6" type="Control" parent="ingredients tab/ButtonGrid"]
+[node name="button6" type="Control" parent="ingredients tab/ButtonGrid" unique_id=1239738956]
 layout_mode = 2
 script = ExtResource("5_nhw6e")
 
-[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button6"]
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button6" unique_id=1283721730]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 84.0
@@ -249,7 +249,7 @@ text = "T"
 icon = ExtResource("9_ub72g")
 expand_icon = true
 
-[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button6"]
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button6" unique_id=2128185008]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 45.0
@@ -259,11 +259,11 @@ theme = SubResource("Theme_8u1fw")
 text = "Tomato"
 horizontal_alignment = 1
 
-[node name="button3" type="Control" parent="ingredients tab/ButtonGrid"]
+[node name="button3" type="Control" parent="ingredients tab/ButtonGrid" unique_id=1069107345]
 layout_mode = 2
 script = ExtResource("5_nhw6e")
 
-[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button3"]
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button3" unique_id=1220424768]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 84.0
@@ -274,7 +274,7 @@ text = "C"
 icon = ExtResource("10_ixie1")
 expand_icon = true
 
-[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button3"]
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button3" unique_id=557740914]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 45.0
@@ -284,11 +284,11 @@ theme = SubResource("Theme_8u1fw")
 text = "Cheese"
 horizontal_alignment = 1
 
-[node name="button2" type="Control" parent="ingredients tab/ButtonGrid"]
+[node name="button2" type="Control" parent="ingredients tab/ButtonGrid" unique_id=1020228849]
 layout_mode = 2
 script = ExtResource("5_nhw6e")
 
-[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button2"]
+[node name="Button" type="Button" parent="ingredients tab/ButtonGrid/button2" unique_id=1449525111]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 84.0
@@ -299,7 +299,7 @@ text = "P"
 icon = ExtResource("11_u2nfb")
 expand_icon = true
 
-[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button2"]
+[node name="name" type="Label" parent="ingredients tab/ButtonGrid/button2" unique_id=1602387153]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 45.0
@@ -309,7 +309,7 @@ theme = SubResource("Theme_8u1fw")
 text = "Patty"
 horizontal_alignment = 1
 
-[node name="notepad" type="TextureRect" parent="."]
+[node name="notepad" type="TextureRect" parent="." unique_id=3783491]
 layout_mode = 0
 offset_left = 304.0
 offset_top = 3.0
@@ -319,7 +319,7 @@ texture = ExtResource("12_1p5fd")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="RichTextLabel" parent="notepad"]
+[node name="Label" type="RichTextLabel" parent="notepad" unique_id=1329003754]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 4.0
@@ -336,7 +336,7 @@ TOMATO
 CHEESE"
 horizontal_alignment = 1
 
-[node name="Fail text" type="Label" parent="."]
+[node name="Fail text" type="Label" parent="." unique_id=894363500]
 visible = false
 layout_mode = 0
 offset_left = 88.0
@@ -351,20 +351,22 @@ text = "WRONG ORDER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="sounds" type="Node" parent="."]
+[node name="sounds" type="Node" parent="." unique_id=1527399975]
 
-[node name="SlapIngredientSound" type="AudioStreamPlayer" parent="sounds"]
+[node name="SlapIngredientSound" type="AudioStreamPlayer" parent="sounds" unique_id=1799924977]
 stream = SubResource("AudioStreamRandomizer_ub72g")
 volume_db = 2.0
 bus = &"Sounds"
 
-[node name="DingSound" type="AudioStreamPlayer" parent="sounds"]
+[node name="DingSound" type="AudioStreamPlayer" parent="sounds" unique_id=1599109594]
 stream = ExtResource("18_uxjr7")
 volume_db = 1.0
+bus = &"Sounds"
 
-[node name="BuzzerSound" type="AudioStreamPlayer" parent="sounds"]
+[node name="BuzzerSound" type="AudioStreamPlayer" parent="sounds" unique_id=617881853]
 stream = ExtResource("19_77qjh")
 volume_db = -8.0
+bus = &"Sounds"
 
 [connection signal="ingredient_button_pressed" from="ingredients tab/ButtonGrid/top_bun" to="." method="_on_ingredient_button_pressed"]
 [connection signal="button_up" from="ingredients tab/ButtonGrid/top_bun/Button" to="ingredients tab/ButtonGrid/top_bun" method="_on_button_button_up"]

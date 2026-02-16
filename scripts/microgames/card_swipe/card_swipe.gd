@@ -13,3 +13,6 @@ func _on_card_swipe_completed() -> void:
 func isWinning() -> bool:
 	card.can_win_card = false
 	return complete
+
+func canSkip() -> bool:
+	return complete
