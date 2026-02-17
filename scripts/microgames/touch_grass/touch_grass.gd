@@ -27,8 +27,5 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	progress_bar.value = lerpf(progress_bar.value, points_percentage, minf(delta * 20, 1))
 
-func canSkip() -> bool:
-	return points_percentage > 100
-
 func isWinning() -> bool:
-	return points_percentage > 100
+	return points_percentage >= 100
