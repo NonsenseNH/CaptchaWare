@@ -303,7 +303,7 @@ metadata/_edit_lock_ = true
 
 [node name="MicrogameGameplay" type="Node2D" parent="." unique_id=1296380513 groups=["main_game"]]
 script = ExtResource("2_xqagn")
-force_microgame = "cardSwipe"
+force_microgame = "alignCircle"
 cur_difficulty_test = 1
 
 [node name="bg" type="TextureRect" parent="MicrogameGameplay" unique_id=616933943]
@@ -743,12 +743,10 @@ bus = &"Sounds"
 [node name="monitor cooler" type="AudioStreamPlayer" parent="MicrogameGameplay/sounds" unique_id=396172407]
 stream = SubResource("AudioStreamInteractive_rhq6j")
 volume_db = 6.701
-autoplay = true
 bus = &"Sounds"
 
 [node name="Mosik" type="AudioStreamPlayer" parent="." unique_id=1792492586]
 stream = SubResource("AudioStreamInteractive_0la4d")
-autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="MicrogameGameplay/window/captcha_window/lowbar/verifyButton" to="MicrogameGameplay" method="_on_verify_button_pressed"]
