@@ -15,7 +15,7 @@ but there are other things you should keep in mind:
   
 - You're not allowed in any way shape or form to modify this game to promote hate, discrimination, NSFW, or other bad content
 
-- You're not allowed to find any sketchy loopholes to avoid these rules in any way
+- You're not allowed to find any sketchy loopholes to avoid these terms in any way
 
 - This source code follows the "Apache 2.0 License"
 
