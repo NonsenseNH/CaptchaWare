@@ -3,6 +3,7 @@
 
 ## Download
 Itch: https://paperhatprojects.itch.io/captchaware
+
 Newgrounds: https://www.newgrounds.com/portal/view/1019177
 
 ## Disclaimer
