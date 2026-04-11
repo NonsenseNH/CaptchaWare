@@ -22,6 +22,8 @@ but there are other things you should keep in mind:
 
 - You're not allowed to redistribute this game unmodified in any way without my permission
 
+- You're not allowed to use the assets in this game to train AI. That goes for sound effects, music, textures, code, or any data included here
+
 - You're not allowed to find any sketchy loopholes to avoid these terms in any way
 
 - This source code follows the "Apache 2.0 License"
