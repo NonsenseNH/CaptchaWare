@@ -14,6 +14,8 @@ Anyone is allowed to fork and modify this game however you wish since I don't re
 
 but there are other things you should keep in mind:
 
+- You're still required to follow these terms if you decompile the game from the pck
+
 - You're allowed to fork and modify the game however you wish and redistribute it (just be sure to credit me)
   
 - You're allowed to steal some snippets of code from this game for your own game if you want to (you don't really have to credit me for that lol)
